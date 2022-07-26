@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.page {
+  display: block;
+  height: 13.5in;
+  width: 8in;
+  margin: 0.25in;
+  position: relative;
+}
+
+@media print {
+
+  .noprint {
+      display: none;
+  }
+
+  .pageBreak {
+      page-break-after: always;
+  }
+  
+}
+
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+td, th {
+  border: 1px solid black;
+  margin: 0;
+  padding: 3px;
+}
+
+.noborder td, .noborder th {
+  border: none;
+  padding: 0;
+}
+
+.border td, .border th {
+  border: 1px solid black;
+  padding: 3px;
+}
+
+h4 {
+  font-size: 14px;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+/* For instructions insert */
+.red {
+    font-size: 10pt;
+    color: red;
+}
+
+/* For use in header */
+header {
+  height: 90px;
+  width: 8in;
+  position: relative;
+}
+
+.psb {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.psb-logo {
+    display: inline-block;
+    height: 40px;
+}
+
+.psb-text {
+    display: inline-block;
+    height: 40px;
+    vertical-align: middle;
+}
+
+.report-card-head {
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  display: block;
+}
+
+/* Table styles */
+.wide {
+  width: 8in;
+  font-size: 12px;
+  margin: 10px 0 10px 0;
+}
+
+.row1 {
+background: #bbb
+}
+
+.center {
+text-align: center;
+}
+
+.course-details {
+font-size: 10px;
+}
+
+.course-comment {
+vertical-align: top;
+overflow-wrap: break-word;
+}
+
+.course {
+font-size: 12px;
+margin: 5px 0 5px 0;
+}
+
+.narrow {
+width: 3.9in;
+height: 2.3in;
+}
+
+.narrow-row {
+  height: 1.6in;
+}
+
+.narrow-comment {
+  height: 1.60in;
+  min-height: 1.6in;
+  vertical-align: top;
+  overflow-wrap: break-word;
+  width: 3.9in;
+}
+
+.footer {
+position: absolute;
+bottom: 0;
+}
+
+.footer3 {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+width: 8in;
+font-size: 12px;
+margin: 5px 0;
+font-weight: bold
+}
+
+.footer3-left {
+grid-column-start: 1;
+grid-column-end: 2;
+text-align: left;
+}
+
+.footer3-center {
+grid-column-start: 2;
+grid-column-end: 3;
+text-align: center;
+}
+
+.footer3-right {
+grid-column-start: 3;
+grid-column-end: 4;
+text-align: right;
+}
+
+
+/* Page 2 */
+.alp {
+  display: none;
+}
+
+.resa {
+  margin-bottom: 5px;
+}
+
+
+.signature {
+width: 8in;
+font-size: 12px;
+text-align: left;
+margin: 30px 0;
+}
+
+.sig-line {
+display: inline-block;
+width: 4in;
+border-bottom: 1px solid;
+margin-left: 30px;
+}
+
+.definitions p {
+margin-bottom: 5px;
+}
+
+.row2 {
+background: #ddd;
+}

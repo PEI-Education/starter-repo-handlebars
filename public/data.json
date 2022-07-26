@@ -1,0 +1,108 @@
+{ 
+  "students": [
+    {
+      "id": "1001",
+      "firstname": "Sally",
+      "lastname": "Student",
+      "number": "12345678",
+      "homeroom": "7A",
+      "gradelevel": "7",
+      "program": "English",
+      "school": {
+        "name": "Summerside Intermediate School",
+        "principal": "Doug Doyle",
+        "url": "https://sis.com",
+        "street": "123 Central Street",
+        "city": "Summerside",
+        "province": "PE",
+        "postalcode": "C1N 1P1" 
+      },
+      "attendance": {
+        "r1absences": "3",
+        "r2absences": "7",
+        "r3absences": "5",
+        "totalabsences": "15",
+        "r1membership": "65",
+        "r2membership": "65",
+        "r3membership": "60",
+        "totalmembership": "190"
+      },
+      "ela": {
+        "teacher": "Susan Teacher",
+        "program": "Regular",
+        "iep": "1",
+        "i1grade": "95",
+        "i2grade": "",
+        "i3grade": "",
+        "r1effort": "C",
+        "r2effort": "D",
+        "r3effort": "",
+        "comment": "Great work!"
+      },
+      "mat": {
+        "teacher": "Ted Johnston",
+        "program": "Regular with ALP",
+        "adaptation": "1",
+        "i1grade": "92",
+        "i2grade": "94",
+        "i3grade": "",
+        "r1effort": "C",
+        "r2effort": "D",
+        "r3effort": "",
+        "comment": "Great work!"
+      }
+    },
+    {
+      "id": "1002",
+      "firstname": "Sam",
+      "lastname": "Student",
+      "number": "87654321",
+      "homeroom": "7B",
+      "gradelevel": "7",
+      "program": "French Immersion",
+      "school": {
+        "name": "Summerside Intermediate School",
+        "principal": "Doug Doyle",
+        "url": "https://sis.com",
+        "street": "123 Central Street",
+        "city": "Summerside",
+        "province": "PE",
+        "postalcode": "C1N 1P1" 
+      },
+      "attendance": {
+        "r1absences": "3",
+        "r2absences": "7",
+        "r3absences": "5",
+        "totalabsences": "15",
+        "r1membership": "65",
+        "r2membership": "65",
+        "r3membership": "60",
+        "totalmembership": "190"
+      },
+      "ela": {
+        "teacher": "Susan Teacher",
+        "program": "Regular",
+        "iep": "1",
+        "i1grade": "93",
+        "i2grade": "95",
+        "i3grade": "",
+        "r1effort": "C",
+        "r2effort": "D",
+        "r3effort": "",
+        "comment": "Great work!"
+      },
+      "mat": {
+        "teacher": "Ted Johnston",
+        "program": "Regular with ALP",
+        "adaptation": "1",
+        "i1grade": "80",
+        "i2grade": "76",
+        "i3grade": "",
+        "r1effort": "C",
+        "r2effort": "D",
+        "r3effort": "",
+        "comment": "Needs work!"
+      }
+    }
+  ]
+}
