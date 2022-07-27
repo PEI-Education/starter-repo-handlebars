@@ -1,10 +1,9 @@
 {
-  "name": "webpack-boilerplate",
-  "version": "3.0.1",
-  "description": "Sensible webpack 5 boilerplate using Babel and PostCSS.",
+  "name": "pei_reportcards",
+  "version": "2.0.0",
+  "description": "PEI's provincial Report Cards as PowerSchool Web Reports, rebuilt using Handlebars.js templates",
   "main": "index.js",
-  "author": "Tania Rascia",
-  "license": "MIT",
+  "author": "Luke Walker - DELL",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
@@ -12,9 +11,9 @@
     "prettify": "prettier --write 'src/**/*.js'"
   },
   "keywords": [
-    "webpack",
-    "webpack 5",
-    "webpack boilerplate"
+    "pei",
+    "report cards",
+    "PowerSchool"
   ],
   "devDependencies": {
     "@babel/core": "^7.15.8",
@@ -42,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:taniarascia/webpack-boilerplate"
+    "url": "git@github.com:ubershibs/pei_reportcards.git"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
