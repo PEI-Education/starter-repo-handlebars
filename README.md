@@ -1,8 +1,9 @@
-# 📦 webpack Boilerplate
+# PEI Report Cards vs
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+Rebuilt PEI Report Cards using Handlebars.js for templating.
 
-Sensible webpack 5 boilerplate using Babel, PostCSS and Sass.
+Started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), which got us around an blocking error around require.js and a conflict with something already running on PowerSchool. 
+
 
 ## Installation
 
@@ -21,6 +22,7 @@ npm start
 ```
 
 You can view the development server at `localhost:8080`.
+To view report cards in development, change the reference to 'data.json' in 'index.js' to 'dataFake.json'. This file won't have any of the db calls or PSHTML tags that only work within PowerSchool.
 
 ### Production build
 
@@ -28,24 +30,12 @@ You can view the development server at `localhost:8080`.
 npm run build
 ```
 
-> Note: Install [http-server](https://www.npmjs.com/package/http-server) globally to deploy a simple server.
-
-```bash
-npm i -g http-server
-```
-
-You can view the deploy by creating a server in `dist`.
-
-```bash
-cd dist && http-server
-```
+Reports must then be content of each project's 'dist' folder can be added to a named folder for that report card in the pei_reportcards plugin.
 
 ## Features
 
 - [webpack](https://webpack.js.org/)
 - [Babel](https://babeljs.io/)
-- [Sass](https://sass-lang.com/)
-- [PostCSS](https://postcss.org/)
 
 ## Dependencies
 
@@ -63,15 +53,15 @@ cd dist && http-server
 - [`@babel/plugin-proposal-class-properties`](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties) - Use properties directly on a class (an example Babel config)
 - [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) - Smart defaults for Babel
 
+### Handlebars.js
+- [`handlebars`](https://www.npmjs.com/package/handlebars) - Templating language used in v2 of report cards
+
 ### Loaders
 
 - [`babel-loader`](https://webpack.js.org/loaders/babel-loader/) - Transpile files with Babel and webpack
-- [`sass-loader`](https://webpack.js.org/loaders/sass-loader/) - Load SCSS and compile to CSS
-  - [`sass`](https://www.npmjs.com/package/sass) - Node Sass
-- [`postcss-loader`](https://webpack.js.org/loaders/postcss-loader/) - Process CSS with PostCSS
-  - [`postcss-preset-env`](https://www.npmjs.com/package/postcss-preset-env) - Sensible defaults for PostCSS
 - [`css-loader`](https://webpack.js.org/loaders/css-loader/) - Resolve CSS imports
 - [`style-loader`](https://webpack.js.org/loaders/style-loader/) - Inject CSS into the DOM
+- ['handlebars-loader'[(https://webpack.js.org/loaders/handlebars-loader) -
 
 ### Plugins
 
@@ -88,10 +78,4 @@ cd dist && http-server
   - - [`prettier`](https://github.com/prettier/prettier) - Dependency for `prettier-webpack-plugin` plugin
 - [`eslint-import-resolver-webpack`](https://github.com/benmosher/eslint-plugin-import/tree/master/resolvers/webpack) - Throw exceptions for import/export in webpack
 
-## Author
-
-- [Tania Rascia](https://www.taniarascia.com)
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+Notes: I removed Sass and PostCSS because they were introducing vulnerabilities and neither was going to be in use. 
