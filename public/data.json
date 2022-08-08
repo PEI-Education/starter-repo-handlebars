@@ -50,7 +50,22 @@
         "r2effort": "D",
         "r3effort": "",
         "comment": "Great work!"
-      }
+      },
+      "courses": [
+        {
+          "course_number": "7SCIF",
+          "teacher": "Mario Fiset",
+          "program": "Regular with ALP",
+          "adaptation": "1",
+          "i1grade": "92",
+          "i2grade": "94",
+          "i3grade": "",
+          "r1effort": "C",
+          "r2effort": "D",
+          "r3effort": "",
+          "comment": "Great work!"
+        }
+      ]
     },
     {
       "id": "1002",
