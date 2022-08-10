@@ -1,4 +1,4 @@
-# PEI Report Cards vs
+# PEI Report Cards v2
 
 Rebuilt PEI Report Cards using Handlebars.js for templating.
 
@@ -61,7 +61,7 @@ Reports must then be content of each project's 'dist' folder can be added to a n
 - [`babel-loader`](https://webpack.js.org/loaders/babel-loader/) - Transpile files with Babel and webpack
 - [`css-loader`](https://webpack.js.org/loaders/css-loader/) - Resolve CSS imports
 - [`style-loader`](https://webpack.js.org/loaders/style-loader/) - Inject CSS into the DOM
-- ['handlebars-loader'[(https://webpack.js.org/loaders/handlebars-loader) -
+- [`handlebars-loader`](https://webpack.js.org/loaders/handlebars-loader) -
 
 ### Plugins
 

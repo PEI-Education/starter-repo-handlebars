@@ -16,13 +16,13 @@
 @media print {
 
   .noprint {
-      display: none;
+    display: none;
   }
 
   .pageBreak {
-      page-break-after: always;
+    page-break-after: always;
   }
-  
+
 }
 
 
@@ -31,18 +31,21 @@ table {
   table-layout: fixed;
 }
 
-td, th {
+td,
+th {
   border: 1px solid black;
   margin: 0;
   padding: 3px;
 }
 
-.noborder td, .noborder th {
+.noborder td,
+.noborder th {
   border: none;
   padding: 0;
 }
 
-.border td, .border th {
+.border td,
+.border th {
   border: 1px solid black;
   padding: 3px;
 }
@@ -55,8 +58,8 @@ h4 {
 
 /* For instructions insert */
 .red {
-    font-size: 10pt;
-    color: red;
+  font-size: 10pt;
+  color: red;
 }
 
 /* For use in header */
@@ -67,19 +70,19 @@ header {
 }
 
 .psb {
-    text-align: center;
-    vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .psb-logo {
-    display: inline-block;
-    height: 40px;
+  display: inline-block;
+  height: 40px;
 }
 
 .psb-text {
-    display: inline-block;
-    height: 40px;
-    vertical-align: middle;
+  display: inline-block;
+  height: 40px;
+  vertical-align: middle;
 }
 
 .report-card-head {
@@ -97,30 +100,31 @@ header {
 }
 
 .row1 {
-background: #bbb
+  background: #bbb
 }
 
 .center {
-text-align: center;
+  text-align: center;
 }
 
 .course-details {
-font-size: 10px;
+  font-size: 10px;
 }
 
 .course-comment {
-vertical-align: top;
-overflow-wrap: break-word;
+  vertical-align: top;
+  overflow-wrap: break-word;
+  padding: 5px;
 }
 
 .course {
-font-size: 12px;
-margin: 5px 0 5px 0;
+  font-size: 12px;
+  margin: 5px 0 5px 0;
 }
 
 .narrow {
-width: 3.9in;
-height: 2.3in;
+  width: 3.9in;
+  height: 2.3in;
 }
 
 .narrow-row {
@@ -133,38 +137,39 @@ height: 2.3in;
   vertical-align: top;
   overflow-wrap: break-word;
   width: 3.9in;
+  padding: 5px;
 }
 
 .footer {
-position: absolute;
-bottom: 0;
+  position: absolute;
+  bottom: 0;
 }
 
 .footer3 {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-width: 8in;
-font-size: 12px;
-margin: 5px 0;
-font-weight: bold
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 8in;
+  font-size: 12px;
+  margin: 5px 0;
+  font-weight: bold
 }
 
 .footer3-left {
-grid-column-start: 1;
-grid-column-end: 2;
-text-align: left;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  text-align: left;
 }
 
 .footer3-center {
-grid-column-start: 2;
-grid-column-end: 3;
-text-align: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  text-align: center;
 }
 
 .footer3-right {
-grid-column-start: 3;
-grid-column-end: 4;
-text-align: right;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  text-align: right;
 }
 
 
@@ -179,23 +184,28 @@ text-align: right;
 
 
 .signature {
-width: 8in;
-font-size: 12px;
-text-align: left;
-margin: 30px 0;
+  width: 8in;
+  font-size: 12px;
+  text-align: left;
+  margin: 30px 0;
 }
 
 .sig-line {
-display: inline-block;
-width: 4in;
-border-bottom: 1px solid;
-margin-left: 30px;
+  display: inline-block;
+  width: 4in;
+  border-bottom: 1px solid;
+  margin-left: 30px;
+}
+
+.definitions,
+.legend {
+  font-size: 12px;
 }
 
 .definitions p {
-margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .row2 {
-background: #ddd;
+  background: #ddd;
 }
