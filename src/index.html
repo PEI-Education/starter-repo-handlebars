@@ -6,21 +6,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <script>
-    /* use this on server */
-    let latestTerm = "~(gpv.terms)".substr(-4,4) 
     let reportconfig = {
       dothisfor: '~[gpv:dothisfor]',
-      storecode: latestTerm,
-      terms: "~(gpv.terms)"
+      storecode: '~(gpv.terms)',
+      attcutoff: '~(gpv.attcutoff)',
+      printDate: '~[date]'
     } 
-    /* for testing locally
-    let fstorecode = "'I1','I2','I3','I4'".substr(-4,4);
-    let reportconfig = {
-      dothisfor: 'selected',
-      storecode: fstorecode,
-      terms: "'I1','I2','I3','I4'"
+    if ("~(gpv.teachersig)"==="true") {
+        reportconfig.teachersig = "true"
     }
-    */
+    if ("~(gpv.principalsig)"==="true") {
+        reportconfig.principalsig = "true"
+    }
   </script>
 </head>
 <body>

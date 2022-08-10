@@ -62,8 +62,9 @@ const process = (students, courses) => {
       }
     })
   })
-  console.log(students);
-  const outputData = {students: students}
+
+  const outputData = {reportconfig: reportconfig, students: students}
+  console.log(outputData)
   const container = document.getElementById('output')
   container.innerHTML = template(outputData)
 }
@@ -71,8 +72,8 @@ const process = (students, courses) => {
 const populate = async () => {
   try {
     const results = await Promise.all([
-      fetch('./assets/students.json?dothisfor=' + reportconfig.dothisfor + '&storecode=' + reportconfig.storecode),
-      fetch('./assets/courses.json?dothisfor=' + reportconfig.dothisfor),
+      fetch('./assets/students.json?dothisfor=' + reportconfig.dothisfor + '&attcutoff=' + reportconfig.attcutoff),
+      fetch('./assets/courses.json?dothisfor=' + reportconfig.dothisfor + '&storecode=' + reportconfig.storecode),
     ])
     const finalData = await Promise.all(results.map((result) => result.json()))
 

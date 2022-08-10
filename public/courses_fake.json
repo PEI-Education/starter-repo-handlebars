@@ -1,482 +1,219 @@
 [
+  ~[tlist_sql;
+    with currentTerm as (select
+          s.id,
+          sg.course_number,
+          sg.course_name,
+          sg.teacher_name,
+          sg.comment_value
+      from students s
+      join cc on cc.studentid = s.id
+      join storedgrades sg
+          on sg.studentid = cc.studentid and sg.sectionid = cc.sectionid
+      where
+        ~[if.~(gpv.dothisfor)=selected] s.dcid in (select dcid from ~[temp.table.current.selection:students])[/if]
+        ~[if.~(gpv.dothisfor)=enrolled] s.Enroll_Status = 0[/if]
+        ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
+        ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.school]
+          and sg.storecode = '~(gpv.storecode)'
+          and sg.termid = ~(curtermid)
+          and cc.termid > 0),
+      termGrades as (select
+          s.id,
+          sg.course_number,
+          sg.storecode,
+          sg.grade
+      from students s
+      join storedgrades sg 
+          on sg.studentid = s.id
+      where 
+        ~[if.~(gpv.dothisfor)=selected] s.dcid in (select dcid from ~[temp.table.current.selection:students])[/if]
+        ~[if.~(gpv.dothisfor)=enrolled] s.Enroll_Status = 0[/if]
+        ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
+        ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.school]
+          and sg.termid = ~(curtermid)),
+      gradesPivot as (select *
+          from termGrades   a
+          PIVOT (
+          MAX ( grade )
+          FOR storecode
+          IN ( 'I1' I1, 'I2' I2, 'I3' I3, 'I4' I4 ))
+          order by id, course_number)
+          
+      select
+          ct.id,
+          ct.course_number,
+          ct.course_name,
+          ct.teacher_name,
+          ct.comment_value,
+          gp.i1,
+          gp.i2,
+          gp.i3,
+          gp.i4,
+          case 
+              when substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_adaptation
+              WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_adaptation
+              WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_adaptation
+              WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_adaptation
+              WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_math_adaptation
+              WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_adaptation
+              WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_adaptation
+              WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_adaptation
+              WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_adaptation
+              WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_adaptation
+              WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_adaptation
+              WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_adaptation
+              WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_ped_adaptation
+              WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_ped_adaptation
+              WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_adaptation
+              WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_adaptation
+          else
+              0
+          end as adaptation,
+          case 
+              WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_program
+              WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_program
+              WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_program
+              WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_program
+              WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_program        
+              WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_program
+              WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_program
+              WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_program
+              WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_program        
+              WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_math_program
+              WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_program
+              WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_program
+              WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_ped_program
+              WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_ped_program
+              WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_program
+              WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_program
+          else
+              'Regular'
+          end as program,
+          case
+              WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_iep
+              WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_iep
+              WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_iep
+              WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_math_iep
+          else
+              0
+          end as iep,
+          case
+              WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_eal
+              WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_eal
+              WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_eal
+              WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_mat_eal
+          else
+              0
+          end as eal,
+          case 
+              WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_effort_r1
+              WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_effort_r1
+              WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_effort_r1
+              WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_effort_r1
+              WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_effort_r1        
+              WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_effort_r1
+              WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_effort_r1
+              WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_effort_r1
+              WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_effort_r1        
+              WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_mat_effort_r1
+              WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_effort_r1
+              WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_effort_r1
+              WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_phea_effort_r1
+              WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_phea_effort_r1
+              WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_effort_r1
+              WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_effort_r1
+          else
+              null
+          end as effort1,
+              case 
+              WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_effort_r2
+              WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_effort_r2
+              WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_effort_r2
+              WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_effort_r2
+              WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_effort_r2        
+              WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_effort_r2
+              WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_effort_r2
+              WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_effort_r2
+              WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_effort_r2        
+              WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_mat_effort_r2
+              WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_effort_r2
+              WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_effort_r2
+              WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_phea_effort_r2
+              WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_phea_effort_r2
+              WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_effort_r2
+              WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_effort_r2
+          else
+              null
+          end as effort2,    
+          case 
+              WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_effort_r3
+              WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_effort_r3
+              WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_effort_r3
+              WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_effort_r3
+              WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_effort_r3        
+              WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_effort_r3
+              WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_effort_r3
+              WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_effort_r3
+              WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_effort_r3        
+              WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_mat_effort_r3
+              WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_effort_r3
+              WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_effort_r3
+              WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_phea_effort_r3
+              WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_phea_effort_r3
+              WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_effort_r3
+              WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_effort_r3
+          else
+              null
+          end as effort3,
+          case 
+              WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_effort_r4
+              WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_effort_r4
+              WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_effort_r4
+              WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_effort_r4
+              WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_effort_r4        
+              WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_effort_r4
+              WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_effort_r4
+              WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_effort_r4
+              WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_effort_r4        
+              WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_mat_effort_r4
+              WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_effort_r4
+              WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_effort_r4
+              WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_phea_effort_r4
+              WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_phea_effort_r4
+              WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_effort_r4
+              WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_effort_r4
+          else
+              null
+          end as effort4
+      from currentTerm ct
+      join gradesPivot gp
+          on ct.id = gp.id and ct.course_number = gp.course_number
+      join students s 
+          on ct.id = s.id
+      left join u_def_ext_students0 rpt
+          on rpt.studentsdcid = s.dcid
+      order by id
+  ]
   {
-    "id": "4230",
-    "lastfirst": "Adams, Caleb",
-    "course_number": "7PHEA",
-    "course_name": "Physical and Health Education 7",
-    "teacher": "Connell, Rob",
-    "comment": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 'What's happened to me?' he tho",
-    "i2grade": "88.5",
-    "i3grade": "90.5",
-    "i4grade": "90.5",
-    "adaptation": "1",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "4230",
-    "course_number": "7RESA",
-    "comment": "Since our last reporting period, we have covered themes in the creation of Canada and confederation, and cultural, political, and national empowerment with a special emphasis on Indigenous history in Canada and World War One.\nTia, through our work, you have shown an excellent understanding of the curriculum outcomes. Congratulations and well done!  I hope you have an awesome, safe and inspirational summer and good luck in grade 8! Mr. DesRoches",
-    "teacher": "Fiset, Mario",
-    "i1grade": "88.25"
-  },
-  {
-    "id": "4230",
-    "lastfirst": "Adams, Caleb",
-    "course_number": "7ENGA",
-    "course_name": "English Language Arts 7",
-    "teacher": "Thain, Stacy",
-    "comment": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 'What's happened to me?' he tho",
-    "i4grade": "76",
-    "i1grade": "82.5",
-    "adaptation": "0",
-    "program": "Regular",
-    "iep": "0",
-    "eal": "0",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "4230",
-    "lastfirst": "Adams, Caleb",
-    "course_number": "7EXPA",
-    "course_name": "Exploratory 7",
-    "teacher": "MacDonald, Willard",
-    "comment": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 'What's happened to me?' he tho",
-    "i4grade": "92",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "4230",
-    "lastfirst": "Adams, Caleb",
-    "course_number": "7MATA",
-    "course_name": "Math 7",
-    "teacher": "Coyle, Pat",
-    "comment": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 'What's happened to me?' he tho",
-    "i4grade": "80.75",
-    "adaptation": "0",
-    "program": "Regular"
-  },
-  {
-    "id": "4230",
-    "lastfirst": "Adams, Caleb",
-    "course_number": "7SOCF",
-    "course_name": "Social Studies 7 (EFI)",
-    "teacher": "Parent MacDonald, Michelle",
-    "comment": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 'What's happened to me?' he tho",
-    "i4grade": "77",
-    "adaptation": 0,
-    "program": "Regular"
-  },
-  {
-    "id": "4230",
-    "lastfirst": "Adams, Caleb",
-    "course_number": "7EXPB",
-    "course_name": "Exploratory 7",
-    "teacher": "Boyd, Kelly",
-    "comment": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 'What's happened to me?' he tho",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "4230",
-    "lastfirst": "Adams, Caleb",
-    "course_number": "7SCIF",
-    "course_name": "Science 7 (EFI)",
-    "teacher": "Uhlig, Timara",
-    "comment": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 'What's happened to me?' he tho",
-    "i4grade": "67",
-    "adaptation": "0",
-    "program": "Regular"
-  },
-  {
-    "id": "4230",
-    "lastfirst": "Adams, Caleb",
-    "course_number": "7FREF",
-    "course_name": "French Language Arts 7 (EFI)",
-    "teacher": "Robichaud, Mario",
-    "comment": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 'What's happened to me?' he tho",
-    "i4grade": "76.5",
-    "adaptation": "0",
-    "program": "Regular",
-    "iep": "0",
-    "eal": "0",
-    "r1effort": "C",
-    "r2effort": "M",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "4907",
-    "lastfirst": "Aitken, Nolan",
-    "course_number": "7SOCA",
-    "course_name": "Social Studies 7",
-    "teacher": "Desroches, Darrell",
-    "comment": "Since our last reporting period, we have covered themes in the creation of Canada and confederation, and cultural, political, and national empowerment with a special emphasis on Indigenous history in Canada and World War One.\nNolan, through our work, you have shown an excellent understanding of the curriculum outcomes. Congratulations and well done!  I hope you have an awesome, safe and inspirational summer and good luck in grade 8! Mr. DesRoches",
-    "i4grade": "96.5",
-    "adaptation": "0",
-    "program": "Regular"
-  },
-  {
-    "id": "4907",
-    "lastfirst": "Aitken, Nolan",
-    "course_number": "7EXPB",
-    "course_name": "Exploratory 7",
-    "teacher": "Boyd, Kelly",
-    "comment": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 'What's happened to me?' he tho",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "4907",
-    "lastfirst": "Aitken, Nolan",
-    "course_number": "7FREA",
-    "course_name": "Core French 7",
-    "teacher": "Ricketts, Paige",
-    "comment": "Nolan Describes, interprets and responds well to Francophone songs.Nolan demonstrates a wonderful understanding and appreciation of personal, social and cultural environmental contexts in relation to Francophone music.  Wonderful work and have a great summer!!!",
-    "i4grade": "84.25",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "M",
-    "r3effort": "M",
-    "r4effort": "C"
-  },
-  {
-    "id": "4907",
-    "lastfirst": "Aitken, Nolan",
-    "course_number": "7PHEA",
-    "course_name": "Physical and Health Education 7",
-    "teacher": "Fraser, Keturah",
-    "comment": "In Physical Education this term, we covered the following units; badminton, handball, fitness room activities, spike ball, pickleball, disc golf and low organized games. The following outcomes were graded; active living, sport education, social and personal responsibility.\nAdditionally, during PHE (Health) class, Nolan has made significant progress on all outcomes.",
-    "i4grade": "90.75",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "4907",
-    "lastfirst": "Aitken, Nolan",
-    "course_number": "7EXPA",
-    "course_name": "Exploratory 7",
-    "teacher": "MacKinnon, Gina Louise",
-    "comment": "The third term grade is a cumulative mark for Foods, Woods and Technology.",
-    "i4grade": "90",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "4907",
-    "lastfirst": "Aitken, Nolan",
-    "course_number": "7SCIA",
-    "course_name": "Science 7",
-    "teacher": "Murchison, Steven",
-    "comment": "During this reporting period, Nolan has explored physical science (heat) as well as gaining experience with Project Based Learning. Nolan has also studied geological science as we examined Earth's composition most recently. Students have been evaluated on in-class assignments, lab reports and on projects. Nolan's effort and interest in Science has grown. Nolan has potential to further develop in the realm of Science. Wishing you a wonderful summer Nolan!",
-    "i4grade": "96.25",
-    "adaptation": "0",
-    "program": "Regular"
-  },
-  {
-    "id": "4907",
-    "lastfirst": "Aitken, Nolan",
-    "course_number": "7MATA",
-    "course_name": "Math 7",
-    "teacher": "Duplain, Ghislaine",
-    "comment": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. 'What's happened to me?' he tho",
-    "i4grade": "88.25",
-    "adaptation": "0",
-    "program": "Regular"
-  },
-  {
-    "id": "4907",
-    "lastfirst": "Aitken, Nolan",
-    "course_number": "7ENGA",
-    "course_name": "English Language Arts 7",
-    "teacher": "Murchison, Steven",
-    "comment": "Nolan has exhibited mastery in generating his ideas before putting pen to paper. Nolan has been able to do this well in his persuasive pieces and actively engages in the writing process. In reading, and viewing in particular, he can identify prominent persuasive techniques and can even identify more subtle ones. He can also apply this to poetry. You made great growth this year Nolan! Keep opening books, to open up new worlds.Have a marvelous summer!",
-    "i4grade": "91.25",
-    "adaptation": "0",
-    "program": "Regular",
-    "iep": "0",
-    "eal": "0",
-    "r1effort": "C",
-    "r2effort": "M",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "7464",
-    "lastfirst": "Arsenault, Jaxen",
-    "course_number": "7SCIF",
-    "course_name": "Science 7 (EFI)",
-    "teacher": "Uhlig, Timara",
-    "comment": "During this final reporting period we did our Earth and Space Unit which included topics like parts of the earth, geological phenomena and the rotation/revolution of the Earth. We also did our Technology Unit which included topics like forces and engineering. Jaxen has met some of the outcomes for this year. In order to meet all outcomes in future years is it recommended that they reach out for assistance and clarification when needed. I wish them all the best next year in grade 8.",
-    "i4grade": "56",
-    "adaptation": "0",
-    "program": "Regular"
-  },
-  {
-    "id": "7464",
-    "lastfirst": "Arsenault, Jaxen",
-    "course_number": "7EXPB",
-    "course_name": "Exploratory 7",
-    "teacher": "Boyd, Kelly",
-    "comment": "Throughout this school year, students have had the opportunity to develop skills and habits that would benefit them across multiple subject areas. It has been a privilege to be part of your child’s educational journey and to help them foster a love for reading, increase their reading stamina, and improve their literacy skills. I look forward to working with them again this fall. I wish you all a safe and fun-filled summer.",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "7464",
-    "lastfirst": "Arsenault, Jaxen",
-    "course_number": "7MUSA",
-    "course_name": "Music 7",
-    "teacher": "MacLellan, Carrie",
-    "comment": "In our final term, we continued to work music literacy skills and develop tone. I am really pleased with Jaxen's continued progress. I look forward to continuing our adventure next year. Have a safe and happy summer!",
-    "i4grade": "82.75",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "7464",
-    "lastfirst": "Arsenault, Jaxen",
-    "course_number": "7PHEA",
-    "course_name": "Physical and Health Education 7",
-    "teacher": "Fraser, Keturah",
-    "comment": "In Physical Education this term, we covered the following units; badminton, handball, fitness room activities, spike ball, pickleball, disc golf and low organized games. The following outcomes were graded; active living, sport education, social and personal responsibility.\nAdditionally, during PHE (Health) class, Jaxen has made steady progress on all outcomes.",
-    "i4grade": "89.75",
-    "adaptation": 0,
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "7464",
-    "lastfirst": "Arsenault, Jaxen",
-    "course_number": "7EXPA",
-    "course_name": "Exploratory 7",
-    "teacher": "Arnold, Carl A",
-    "i4grade": "87",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "7464",
-    "lastfirst": "Arsenault, Jaxen",
-    "course_number": "7MATA",
-    "course_name": "Math 7",
-    "teacher": "Charette, Sarah",
-    "comment": "Our final term covered the topics of Linear Equations, Geometry and Measurement, and Operations on Decimal Numbers.\nJaxen’s work demonstrates a developing understanding of the curriculum outcomes.\nHave a wonderful summer Jaxen; best of luck in grade 8!",
-    "i4grade": "63.5",
-    "adaptation": "0",
-    "program": "Regular"
-  },
-  {
-    "id": "7464",
-    "lastfirst": "Arsenault, Jaxen",
-    "course_number": "7ENGA",
-    "course_name": "English Language Arts 7",
-    "teacher": "Thain, Stacy",
-    "comment": "It has been a pleasure to witness the academic growth that Jaxen has demonstrated again this term in our three major outcomes. Such great conversations emerged from a variety of texts and I believe we also had fun doing this. To avoid the summer slide, I would encourage Jaxen to read for enjoyment this summer. Two hours a week can have long-term academic benefits.  It has been an honour to learn with Jaxen this year.",
-    "i4grade": "73.5",
-    "adaptation": "0",
-    "program": "Regular",
-    "iep": "0",
-    "eal": "0",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "7464",
-    "lastfirst": "Arsenault, Jaxen",
-    "course_number": "7FREF",
-    "course_name": "French Language Arts 7 (EFI)",
-    "teacher": "Robichaud, Mario",
-    "comment": "Jaxen participated well all year. He is capable of speaking well in French but he would benefit having a tutor in the summer to help with his writing. Keep reading in French when you can and you will see some improvement. It was a pleasure having Jaxen in my class and I wish you success in grade 8. Have a well deserved summer!",
-    "i4grade": "83.25",
-    "adaptation": "0",
-    "program": "Regular",
-    "iep": "0",
-    "eal": "0",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "7464",
-    "lastfirst": "Arsenault, Jaxen",
-    "course_number": "7SOCF",
-    "course_name": "Social Studies 7 (EFI)",
-    "teacher": "Parent MacDonald, Michelle",
-    "comment": "This last term we finished up Ancient Greece and managed to keep up with some Current events.\nThis is a respectable mark, Jaxen and I appreciate your effort. I hope you keep this up for next year. Enjoy your puppy and summer break!",
-    "i4grade": "74.25",
-    "adaptation": "0",
-    "program": "Regular"
-  },
-  {
-    "id": "11440",
-    "lastfirst": "Allison, Tia",
-    "course_number": "7SCIA",
-    "course_name": "Science 7",
-    "teacher": "Arnold, Carl A",
-    "comment": "Tia put in a great year of work and is well prepare for next year.",
-    "i4grade": "85.25",
-    "adaptation": 0,
-    "program": "Regular"
-  },
-  {
-    "id": "11440",
-    "lastfirst": "Allison, Tia",
-    "course_number": "7MATA",
-    "course_name": "Math 7",
-    "teacher": "Coyle, Pat",
-    "comment": "During third term the outcomes covered were: add and subtract fractions and mixed numbers, solving equations, finding areas of 2d shapes and calculating decimal numbers. It was a pleasure having Tia in the class.  Tia has made significant progress on the foundational learning outcomes during this reporting period and throughout the year. Her achievement has been consistent throughout the year.  If you have any questions, please email me at: pccoyle@edu.pe.ca.",
-    "i4grade": "94",
-    "adaptation": 0,
-    "program": "Regular"
-  },
-  {
-    "id": "11440",
-    "lastfirst": "Allison, Tia",
-    "course_number": "7MUSA",
-    "course_name": "Music 7",
-    "teacher": "MacLellan, Carrie",
-    "comment": "In our final term, we continued to work music literacy skills and develop tone. I am really pleased with Tia's continued progress. I look forward to continuing our adventure next year. Have a safe and happy summer!",
-    "i4grade": "90",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "M",
-    "r3effort": "M",
-    "r4effort": "C"
-  },
-  {
-    "id": "11440",
-    "lastfirst": "Allison, Tia",
-    "course_number": "7EXPA",
-    "course_name": "Exploratory 7",
-    "teacher": "MacDonald, Willard",
-    "comment": "It's been a pleasure to teach Tia Technology the final quarter. This grade is cumulative of the 3 specialty areas; Foods, Woods, and Tech. In Tech, students created/continued e-portfolios, personal website (Google Sites); working on web site design and showcase technology skills in an area(s) of their choice. Areas of focus: Google Suite, programming, typing, coding, video game design, CAD, 3-D Printing and photo/video editing. Enjoy your summer, Tia! See you in September :)",
-    "i4grade": "86",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "11440",
-    "lastfirst": "Allison, Tia",
-    "course_number": "7SOCA",
-    "course_name": "Social Studies 7",
-    "teacher": "Desroches, Darrell",
-    "comment": "Since our last reporting period, we have covered themes in the creation of Canada and confederation, and cultural, political, and national empowerment with a special emphasis on Indigenous history in Canada and World War One.\nTia, through our work, you have shown an excellent understanding of the curriculum outcomes. Congratulations and well done!  I hope you have an awesome, safe and inspirational summer and good luck in grade 8! Mr. DesRoches",
-    "i4grade": "83.5",
-    "adaptation": "0",
-    "program": "Regular"
-  },
-  {
-    "id": "11440",
-    "lastfirst": "Allison, Tia",
-    "course_number": "7ENGA",
-    "course_name": "English Language Arts 7",
-    "teacher": "Aylward, Courtney",
-    "comment": "Tia showed an excellent understanding of topics covered in term three Language Arts. These topics included working on research skills to create an expository essay, reading and writing various forms of poetry, creating a visual ‘one pager’ for a novel, as well as participating in book clubs while learning to communicate effectively and collaborate with peers. I wish Tia continued success in grade eight! Have a wonderful summer!",
-    "i4grade": "93",
-    "adaptation": "0",
-    "program": "Regular",
-    "iep": "0",
-    "eal": "0",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "M",
-    "r4effort": "C"
-  },
-  {
-    "id": "11440",
-    "lastfirst": "Allison, Tia",
-    "course_number": "7EXPB",
-    "course_name": "Exploratory 7",
-    "teacher": "Boyd, Kelly",
-    "comment": "Throughout this school year, students have had the opportunity to develop skills and habits that would benefit them across multiple subject areas. It has been a privilege to be part of your child’s educational journey and to help them foster a love for reading, increase their reading stamina, and improve their literacy skills. I look forward to working with them again this fall. I wish you all a safe and fun-filled summer.",
-    "adaptation": "1",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "11440",
-    "lastfirst": "Allison, Tia",
-    "course_number": "7FREA",
-    "course_name": "Core French 7",
-    "teacher": "Thain, Stacy",
-    "comment": "Term three, we worked very hard to combine our prior knowledge, use high yield learning strategies and expand our vocabulary in French. Auditory, visual and tactile learning activities were key in helping students experience success. Connecting real-life scenarios to French language instruction was also important. Merci sincèrement Tia pour tes efforts en français. Wishing you a healthy and happy summer vacation. Madame Thain et merci à  Mademoiselle Parker.",
-    "i4grade": "95.5",
-    "adaptation": "1",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
-  {
-    "id": "11440",
-    "lastfirst": "Allison, Tia",
-    "course_number": "7PHEA",
-    "course_name": "Physical and Health Education 7",
-    "teacher": "Connell, Rob",
-    "comment": "In Physical Education this term, we covered the following units; badminton, handball, fitness room activities, spike ball, pickleball, disc golf and low organized games. The following outcomes were graded; active living, sport education, social and personal responsibility.\nAdditionally, during PHE (Health) class, Tia has made steady progress on all outcomes.",
-    "i4grade": "80.25",
-    "adaptation": "0",
-    "program": "Regular",
-    "r1effort": "C",
-    "r2effort": "C",
-    "r3effort": "C",
-    "r4effort": "C"
-  },
+      "id": "~(id;l)",
+      "course_number": "~(course_number;json)",
+      "course_name": "~(course_name;json)",
+      "teacher": "~(teacher;json)",
+      "comment": "~(comment;json)",
+      "i1grade": "~(i1)",
+      "i2grade": "~(i2)",
+      "i3grade": "~(i3)",
+      "i4grade": "~(i4)",
+      "adaptation": "~(adaptation)",
+      "program": "~(program)",
+      "iep": "~(iep)",
+      "eal": "~(eal)",
+      "r1effort": "~(effort1)",
+      "r2effort": "~(effort2)",
+      "r3effort": "~(effort3)",
+      "r4effort": "~(effort4)"
+  },    
+  [/tlist_sql]
   {}
-]
+  ]

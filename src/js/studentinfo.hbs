@@ -52,7 +52,7 @@
               <col style="width: 2in;">
           </colgroup>
           <tr>
-              <td class="row1" colspan="4"><strong>Days Absent as of ~(gpv.attcutoff)</strong></td>
+              <td class="row1" colspan="4"><strong>Days Absent as of {{../reportconfig.attcutoff}}</strong></td>
           </tr>
           <tr>
             <th>Reporting Period 1</th>
@@ -406,7 +406,7 @@
           <div class="footer3">
             <div class="footer3-left">V01</div>
             <div class="footer3-center">{{firstname}} {{lastname}} ({{homeroom}})</div>
-            <div class="footer3-right">Printed: ~[date]</div>
+            <div class="footer3-right">Printed: {{../reportconfig.printDate}}</div>
           </div>
       </div>
 
@@ -616,8 +616,12 @@
         <div class="wide alp" id="1001-alp">
             Your child will have a learning plan to support his/her progress during the next school year.
         </div>
+        {{#if ../reportconfig.teachersig}}
         <div class="signature teacher">Teacher's Signature: <span class="sig-line"></span></div>
+        {{/if}}
+        {{#if ../reportconfig.principalsig}}
         <div class="signature principal">Principal's Signature: <span class="sig-line"></span></div>
+        {{/if}}
         <div class="definitions">
           <h4><strong>Definitions</strong></h4>
           <p><strong>Adaptation(s)</strong> are provided for students who need one or more specific supports to meet the curriculum outcomes for the grade level. The grade level expectations are not changed.</p>
@@ -704,7 +708,7 @@
           <div class="footer3">
             <div class="footer3-left">V01</div>
             <div class="footer3-center">{{firstname}} {{lastname}} ({{homeroom}})</div>
-            <div class="footer3-right">Printed: ~[date]</div>
+            <div class="footer3-right">Printed: {{../reportconfig.printDate}}</div>
           </div>
         </div>
       </div>
