@@ -1,21 +1,35 @@
-import './styles.css'
+import './styles/spinner.css'
+import './styles/styles.css'
 
 const template = require('./js/studentinfo.hbs')
 
+const fadeOutEffect = () => {
+  var fadeTarget = document.getElementById("overlay");
+  var fadeEffect = setInterval(function () {
+      if (!fadeTarget.style.opacity) {
+          fadeTarget.style.opacity = .8;
+      }
+      if (fadeTarget.style.opacity > 0) {
+          fadeTarget.style.opacity -= 0.1;
+      } else {
+          clearInterval(fadeEffect);
+      }
+  }, 200);
+}
+
 const process = (students, courses) => {
-  let highestTerm = reportconfig.terms.substr(-2,1);
-  console.log(highestTerm);
+  let highestTerm = parseInt(reportconfig.storecode.substr(1))
   courses.pop();
   courses.forEach((course) => {
-    if (highestTerm <= "1") {
+    if (highestTerm <= 1) {
       delete course.i2grade
       delete course.r2effort
     }
-    if (highestTerm <= "2") {
+    if (highestTerm <= 2) {
       delete course.i3grade
       delete course.r3effort
     }
-    if (highestTerm <= "3") {
+    if (highestTerm <= 3) {
       delete course.i4grade
       delete course.r4effort
     }
@@ -64,9 +78,11 @@ const process = (students, courses) => {
   })
 
   const outputData = {reportconfig: reportconfig, students: students}
-  console.log(outputData)
   const container = document.getElementById('output')
   container.innerHTML = template(outputData)
+  const overlay = document.getElementById('overlay')
+  fadeOutEffect();
+  document.getElementById('overlay').remove()
 }
 
 const populate = async () => {

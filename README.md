@@ -1,7 +1,10 @@
 # PEI Report Cards v2
 
-Rebuilt PEI Report Cards using Handlebars.js for templating.
+Rebuilt PEI Report Cards using Handlebars.js for templating. Significant performance improvement on first one done (PSB Intermediate) - loads all of SIS's R3 report cards in under 30 seconds, with no reloading or errors.
 
+This plugin will eventually contain new versions of all report cards. Structure will have to be different from v1.
+
+## To start new report card project
 Started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), which got us around an blocking error around require.js and a conflict with something already running on PowerSchool. 
 
 
@@ -22,7 +25,7 @@ npm start
 ```
 
 You can view the development server at `localhost:8080`.
-To view report cards in development, change the reference to 'data.json' in 'index.js' to 'dataFake.json'. This file won't have any of the db calls or PSHTML tags that only work within PowerSchool.
+To view report cards in development, change the reference to 'data.json' in 'index.js' to 'data_fake.json'. This file won't have any of the db calls or PSHTML tags that only work within PowerSchool. (Will have to build such a file for each new report card.)
 
 ### Production build
 
