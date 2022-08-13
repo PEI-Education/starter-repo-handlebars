@@ -78,7 +78,6 @@ const process = (students, courses) => {
   })
 
   const outputData = {reportconfig: reportconfig, students: students}
-  console.log(outputData)
   const container = document.getElementById('output')
   container.innerHTML = template(outputData)
   const overlay = document.getElementById('overlay')
