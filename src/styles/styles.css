@@ -122,6 +122,10 @@ header {
   margin: 5px 0 5px 0;
 }
 
+.tall {
+  height: 100vh;
+}
+
 .narrow {
   width: 3.9in;
   height: 2.3in;

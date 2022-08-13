@@ -12,6 +12,7 @@ module.exports = merge(common, {
     path: paths.build,
     publicPath: '/',
     filename: 'js/[name].bundle.js',
+    hashFunction: "xxhash64"
   },
   module: {
     rules: [

@@ -51,138 +51,138 @@
             gp.i3,
             gp.i4,
             case 
-                when substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_adaptation
-                WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_adaptation
-                WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_adaptation
-                WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_adaptation
-                WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_math_adaptation
-                WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_adaptation
-                WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_adaptation
-                WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_adaptation
-                WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_adaptation
-                WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_adaptation
-                WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_adaptation
-                WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_adaptation
-                WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_ped_adaptation
-                WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_ped_adaptation
-                WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_adaptation
-                WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_adaptation
+                when substr(ct.course_number,2,4) = 'ENGA' then rpt.e_ela_adaptation
+                WHEN substr(ct.course_number,2,4) = 'FREF' then rpt.e_fla_adaptation
+                WHEN substr(ct.course_number,2,4) = 'FREG' then rpt.e_fla_adaptation
+                WHEN substr(ct.course_number,2,4) = 'FREA' then rpt.e_fre_adaptation
+                WHEN substr(ct.course_number,2,3) = 'MAT' then rpt.e_math_adaptation
+                WHEN substr(ct.course_number,2,3) = 'CTE' then rpt.e_cte_adaptation
+                WHEN substr(ct.course_number,2,4) = 'EXPA' then rpt.e_expa_adaptation
+                WHEN substr(ct.course_number,2,4) = 'EXPB' then rpt.e_expb_adaptation
+                WHEN substr(ct.course_number,2,3) = 'ART' then rpt.e_art_adaptation
+                WHEN substr(ct.course_number,2,3) = 'HEC' then rpt.e_hec_adaptation
+                WHEN substr(ct.course_number,2,4) = 'MKQK' then rpt.e_mkqk_adaptation
+                WHEN substr(ct.course_number,2,4) = 'MUSA' then rpt.e_mus_adaptation
+                WHEN substr(ct.course_number,2,3) = 'PED' then rpt.e_ped_adaptation
+                WHEN substr(ct.course_number,2,4) = 'PHEA' then rpt.e_ped_adaptation
+                WHEN substr(ct.course_number,2,3) = 'SCI' then rpt.e_sci_adaptation
+                WHEN substr(ct.course_number,2,3) = 'SOC' then rpt.e_soc_adaptation
             else
                 0
             end as adaptation,
             case 
-                WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_program
-                WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_program
-                WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_program
-                WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_program
-                WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_program        
-                WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_program
-                WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_program
-                WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_program
-                WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_program        
-                WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_math_program
-                WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_program
-                WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_program
-                WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_ped_program
-                WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_ped_program
-                WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_program
-                WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_program
+                WHEN substr(ct.course_number,2,3) = 'ART' then rpt.e_art_program
+                WHEN substr(ct.course_number,2,3) = 'CTE' then rpt.e_cte_program
+                WHEN substr(ct.course_number,2,4) = 'ENGA' then rpt.e_ela_program
+                WHEN substr(ct.course_number,2,4) = 'EXPA' then rpt.e_expa_program
+                WHEN substr(ct.course_number,2,4) = 'EXPB' then rpt.e_expb_program        
+                WHEN substr(ct.course_number,2,4) = 'FREF' then rpt.e_fla_program
+                WHEN substr(ct.course_number,2,4) = 'FREG' then rpt.e_fla_program
+                WHEN substr(ct.course_number,2,4) = 'FREA' then rpt.e_fre_program
+                WHEN substr(ct.course_number,2,3) = 'HEC' then rpt.e_hec_program        
+                WHEN substr(ct.course_number,2,3) = 'MAT' then rpt.e_math_program
+                WHEN substr(ct.course_number,2,4) = 'MKQK' then rpt.e_mkqk_program
+                WHEN substr(ct.course_number,2,4) = 'MUSA' then rpt.e_mus_program
+                WHEN substr(ct.course_number,2,3) = 'PED' then rpt.e_ped_program
+                WHEN substr(ct.course_number,2,4) = 'PHEA' then rpt.e_ped_program
+                WHEN substr(ct.course_number,2,3) = 'SCI' then rpt.e_sci_program
+                WHEN substr(ct.course_number,2,3) = 'SOC' then rpt.e_soc_program
             else
                 'Regular'
             end as program,
             case
-                WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_iep
-                WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_iep
-                WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_iep
-                WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_math_iep
+                WHEN substr(ct.course_number,2,4) = 'ENGA' then rpt.e_ela_iep
+                WHEN substr(ct.course_number,2,4) = 'FREF' then rpt.e_fla_iep
+                WHEN substr(ct.course_number,2,4) = 'FREG' then rpt.e_fla_iep
+                WHEN substr(ct.course_number,2,3) = 'MAT' then rpt.e_math_iep
             else
                 0
             end as iep,
             case
-                WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_eal
-                WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_eal
-                WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_eal
-                WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_mat_eal
+                WHEN substr(ct.course_number,2,4) = 'ENGA' then rpt.e_ela_eal
+                WHEN substr(ct.course_number,2,4) = 'FREF' then rpt.e_fla_eal
+                WHEN substr(ct.course_number,2,4) = 'FREG' then rpt.e_fla_eal
+                WHEN substr(ct.course_number,2,3) = 'MAT' then rpt.e_mat_eal
             else
                 0
             end as eal,
             case 
-                WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_effort_r1
-                WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_effort_r1
-                WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_effort_r1
-                WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_effort_r1
-                WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_effort_r1        
-                WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_effort_r1
-                WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_effort_r1
-                WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_effort_r1
-                WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_effort_r1        
-                WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_mat_effort_r1
-                WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_effort_r1
-                WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_effort_r1
-                WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_phea_effort_r1
-                WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_phea_effort_r1
-                WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_effort_r1
-                WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_effort_r1
+                WHEN substr(ct.course_number,2,3) = 'ART' then rpt.e_art_effort_r1
+                WHEN substr(ct.course_number,2,3) = 'CTE' then rpt.e_cte_effort_r1
+                WHEN substr(ct.course_number,2,4) = 'ENGA' then rpt.e_ela_effort_r1
+                WHEN substr(ct.course_number,2,4) = 'EXPA' then rpt.e_expa_effort_r1
+                WHEN substr(ct.course_number,2,4) = 'EXPB' then rpt.e_expb_effort_r1        
+                WHEN substr(ct.course_number,2,4) = 'FREF' then rpt.e_fla_effort_r1
+                WHEN substr(ct.course_number,2,4) = 'FREG' then rpt.e_fla_effort_r1
+                WHEN substr(ct.course_number,2,4) = 'FREA' then rpt.e_fre_effort_r1
+                WHEN substr(ct.course_number,2,3) = 'HEC' then rpt.e_hec_effort_r1        
+                WHEN substr(ct.course_number,2,3) = 'MAT' then rpt.e_mat_effort_r1
+                WHEN substr(ct.course_number,2,4) = 'MKQK' then rpt.e_mkqk_effort_r1
+                WHEN substr(ct.course_number,2,4) = 'MUSA' then rpt.e_mus_effort_r1
+                WHEN substr(ct.course_number,2,3) = 'PED' then rpt.e_phea_effort_r1
+                WHEN substr(ct.course_number,2,4) = 'PHEA' then rpt.e_phea_effort_r1
+                WHEN substr(ct.course_number,2,3) = 'SCI' then rpt.e_sci_effort_r1
+                WHEN substr(ct.course_number,2,3) = 'SOC' then rpt.e_soc_effort_r1
             else
                 null
             end as effort1,
                 case 
-                WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_effort_r2
-                WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_effort_r2
-                WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_effort_r2
-                WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_effort_r2
-                WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_effort_r2        
-                WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_effort_r2
-                WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_effort_r2
-                WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_effort_r2
-                WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_effort_r2        
-                WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_mat_effort_r2
-                WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_effort_r2
-                WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_effort_r2
-                WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_phea_effort_r2
-                WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_phea_effort_r2
-                WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_effort_r2
-                WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_effort_r2
+                WHEN substr(ct.course_number,2,3) = 'ART' then rpt.e_art_effort_r2
+                WHEN substr(ct.course_number,2,3) = 'CTE' then rpt.e_cte_effort_r2
+                WHEN substr(ct.course_number,2,4) = 'ENGA' then rpt.e_ela_effort_r2
+                WHEN substr(ct.course_number,2,4) = 'EXPA' then rpt.e_expa_effort_r2
+                WHEN substr(ct.course_number,2,4) = 'EXPB' then rpt.e_expb_effort_r2        
+                WHEN substr(ct.course_number,2,4) = 'FREF' then rpt.e_fla_effort_r2
+                WHEN substr(ct.course_number,2,4) = 'FREG' then rpt.e_fla_effort_r2
+                WHEN substr(ct.course_number,2,4) = 'FREA' then rpt.e_fre_effort_r2
+                WHEN substr(ct.course_number,2,3) = 'HEC' then rpt.e_hec_effort_r2        
+                WHEN substr(ct.course_number,2,3) = 'MAT' then rpt.e_mat_effort_r2
+                WHEN substr(ct.course_number,2,4) = 'MKQK' then rpt.e_mkqk_effort_r2
+                WHEN substr(ct.course_number,2,4) = 'MUSA' then rpt.e_mus_effort_r2
+                WHEN substr(ct.course_number,2,3) = 'PED' then rpt.e_phea_effort_r2
+                WHEN substr(ct.course_number,2,4) = 'PHEA' then rpt.e_phea_effort_r2
+                WHEN substr(ct.course_number,2,3) = 'SCI' then rpt.e_sci_effort_r2
+                WHEN substr(ct.course_number,2,3) = 'SOC' then rpt.e_soc_effort_r2
             else
                 null
             end as effort2,    
             case 
-                WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_effort_r3
-                WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_effort_r3
-                WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_effort_r3
-                WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_effort_r3
-                WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_effort_r3        
-                WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_effort_r3
-                WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_effort_r3
-                WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_effort_r3
-                WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_effort_r3        
-                WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_mat_effort_r3
-                WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_effort_r3
-                WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_effort_r3
-                WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_phea_effort_r3
-                WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_phea_effort_r3
-                WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_effort_r3
-                WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_effort_r3
+                WHEN substr(ct.course_number,2,3) = 'ART' then rpt.e_art_effort_r3
+                WHEN substr(ct.course_number,2,3) = 'CTE' then rpt.e_cte_effort_r3
+                WHEN substr(ct.course_number,2,4) = 'ENGA' then rpt.e_ela_effort_r3
+                WHEN substr(ct.course_number,2,4) = 'EXPA' then rpt.e_expa_effort_r3
+                WHEN substr(ct.course_number,2,4) = 'EXPB' then rpt.e_expb_effort_r3        
+                WHEN substr(ct.course_number,2,4) = 'FREF' then rpt.e_fla_effort_r3
+                WHEN substr(ct.course_number,2,4) = 'FREG' then rpt.e_fla_effort_r3
+                WHEN substr(ct.course_number,2,4) = 'FREA' then rpt.e_fre_effort_r3
+                WHEN substr(ct.course_number,2,3) = 'HEC' then rpt.e_hec_effort_r3        
+                WHEN substr(ct.course_number,2,3) = 'MAT' then rpt.e_mat_effort_r3
+                WHEN substr(ct.course_number,2,4) = 'MKQK' then rpt.e_mkqk_effort_r3
+                WHEN substr(ct.course_number,2,4) = 'MUSA' then rpt.e_mus_effort_r3
+                WHEN substr(ct.course_number,2,3) = 'PED' then rpt.e_phea_effort_r3
+                WHEN substr(ct.course_number,2,4) = 'PHEA' then rpt.e_phea_effort_r3
+                WHEN substr(ct.course_number,2,3) = 'SCI' then rpt.e_sci_effort_r3
+                WHEN substr(ct.course_number,2,3) = 'SOC' then rpt.e_soc_effort_r3
             else
                 null
             end as effort3,
             case 
-                WHEN substr(ct.course_number,2,4) = 'ART' then rpt.e_art_effort_r4
-                WHEN substr(ct.course_number,2,4) = 'CTE' then rpt.e_cte_effort_r4
-                WHEN substr(ct.course_number,2,5) = 'ENGA' then rpt.e_ela_effort_r4
-                WHEN substr(ct.course_number,2,5) = 'EXPA' then rpt.e_expa_effort_r4
-                WHEN substr(ct.course_number,2,5) = 'EXPB' then rpt.e_expb_effort_r4        
-                WHEN substr(ct.course_number,2,5) = 'FREF' then rpt.e_fla_effort_r4
-                WHEN substr(ct.course_number,2,5) = 'FREG' then rpt.e_fla_effort_r4
-                WHEN substr(ct.course_number,2,5) = 'FREA' then rpt.e_fre_effort_r4
-                WHEN substr(ct.course_number,2,4) = 'HEC' then rpt.e_hec_effort_r4        
-                WHEN substr(ct.course_number,2,4) = 'MAT' then rpt.e_mat_effort_r4
-                WHEN substr(ct.course_number,2,5) = 'MKQK' then rpt.e_mkqk_effort_r4
-                WHEN substr(ct.course_number,2,5) = 'MUSA' then rpt.e_mus_effort_r4
-                WHEN substr(ct.course_number,2,4) = 'PED' then rpt.e_phea_effort_r4
-                WHEN substr(ct.course_number,2,5) = 'PHEA' then rpt.e_phea_effort_r4
-                WHEN substr(ct.course_number,2,4) = 'SCI' then rpt.e_sci_effort_r4
-                WHEN substr(ct.course_number,2,4) = 'SOC' then rpt.e_soc_effort_r4
+                WHEN substr(ct.course_number,2,3) = 'ART' then rpt.e_art_effort_r4
+                WHEN substr(ct.course_number,2,3) = 'CTE' then rpt.e_cte_effort_r4
+                WHEN substr(ct.course_number,2,4) = 'ENGA' then rpt.e_ela_effort_r4
+                WHEN substr(ct.course_number,2,4) = 'EXPA' then rpt.e_expa_effort_r4
+                WHEN substr(ct.course_number,2,4) = 'EXPB' then rpt.e_expb_effort_r4        
+                WHEN substr(ct.course_number,2,4) = 'FREF' then rpt.e_fla_effort_r4
+                WHEN substr(ct.course_number,2,4) = 'FREG' then rpt.e_fla_effort_r4
+                WHEN substr(ct.course_number,2,4) = 'FREA' then rpt.e_fre_effort_r4
+                WHEN substr(ct.course_number,2,3) = 'HEC' then rpt.e_hec_effort_r4        
+                WHEN substr(ct.course_number,2,3) = 'MAT' then rpt.e_mat_effort_r4
+                WHEN substr(ct.course_number,2,4) = 'MKQK' then rpt.e_mkqk_effort_r4
+                WHEN substr(ct.course_number,2,4) = 'MUSA' then rpt.e_mus_effort_r4
+                WHEN substr(ct.course_number,2,3) = 'PED' then rpt.e_phea_effort_r4
+                WHEN substr(ct.course_number,2,4) = 'PHEA' then rpt.e_phea_effort_r4
+                WHEN substr(ct.course_number,2,3) = 'SCI' then rpt.e_sci_effort_r4
+                WHEN substr(ct.course_number,2,3) = 'SOC' then rpt.e_soc_effort_r4
             else
                 null
             end as effort4
