@@ -4,9 +4,19 @@ Rebuilt PEI Report Cards using Handlebars.js for templating. Significant perform
 
 This plugin will eventually contain new versions of all report cards. Structure will have to be different from v1.
 
-## To start new report card project
-Started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), which got us around an blocking error around require.js and a conflict with something already running on PowerSchool. 
+## Current Report Cards (Branches)
 
+- PSB Intermediate Report Card, 3-term version (currently on pei-test1)
+- PSB Intermediate Report Card, 4-term version
+## To start new report card project
+
+Originally started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), which got us around an blocking error around require.js and a conflict with something already running on PowerSchool. 
+
+To add a new report card, create a new branch from Master and switch to it. Once your development is complete, copy the 'dist' folder to the plugin and rename it appropriately. You will need to add it to the navigation and group functions page fragments.
+
+To view the code for different report cards, switch between branches.
+
+Code for the PS plugin will be maintained in the [Report Card Plugin repo](https://github.com/ubershibs/pei_report_card_plugin).
 
 ## Installation
 
@@ -25,7 +35,8 @@ npm start
 ```
 
 You can view the development server at `localhost:8080`.
-To view report cards in development, change the reference to 'data.json' in 'index.js' to 'data_fake.json'. This file won't have any of the db calls or PSHTML tags that only work within PowerSchool. (Will have to build such a file for each new report card.)
+
+To view report cards in development, change the reference to 'students.json' in 'index.js' to 'students_fake.json', and the same thing for 'courses.json'. This file contains fake data in the correct format, with no SQL queries or PSHTML tags that only work within PowerSchool. 
 
 ### Production build
 
