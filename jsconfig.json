@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["psb_intermediate_3/src/*"]
     },
     "allowJs": true
   }

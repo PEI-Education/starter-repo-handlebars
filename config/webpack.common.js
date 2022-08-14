@@ -13,6 +13,7 @@ module.exports = {
     path: paths.build,
     filename: '[name].bundle.js',
     publicPath: '/',
+    hashFunction: "xxhash64"  
   },
 
   // Customize the webpack build process
