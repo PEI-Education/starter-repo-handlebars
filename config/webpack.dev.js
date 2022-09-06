@@ -1,6 +1,9 @@
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { merge } = require('webpack-merge')
 
 const common = require('./webpack.common')
+const paths = require('./paths')
 
 module.exports = merge(common, {
   // Set the mode to development or production
@@ -26,4 +29,20 @@ module.exports = merge(common, {
       },
     ],
   },
+
+  plugins:      // Removes/cleans build folders and unused assets when rebuilding
+    [ new CleanWebpackPlugin(),// Copies files from target to destination folder
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: paths.public,
+          to: 'assets',
+          globOptions: {
+            ignore: ['*.DS_Store'],
+          },
+          noErrorOnMissing: true,
+        },
+      ],
+
+    }),],
 })

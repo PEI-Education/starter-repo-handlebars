@@ -1,7 +1,7 @@
-import './styles/spinner.css'
-import './styles/styles.css'
+import './styles/spinner.css';
+import './styles/styles.css';
 
-const template = require('./js/studentinfo.hbs')
+const template = require('./js/psb_int.hbs')
 
 const fadeOutEffect = () => {
   var fadeTarget = document.getElementById("overlay");
@@ -88,8 +88,8 @@ const process = (students, courses) => {
 const populate = async () => {
   try {
     const results = await Promise.all([
-      fetch('./assets/students.json?dothisfor=' + reportconfig.dothisfor + '&attcutoff=' + reportconfig.attcutoff),
-      fetch('./assets/courses.json?dothisfor=' + reportconfig.dothisfor + '&storecode=' + reportconfig.storecode),
+      fetch('./assets/students_fake.json?dothisfor=' + reportconfig.dothisfor + '&attcutoff=' + reportconfig.attcutoff),
+      fetch('./assets/courses_fake.json?dothisfor=' + reportconfig.dothisfor + '&storecode=' + reportconfig.storecode),
     ])
     const finalData = await Promise.all(results.map((result) => result.json()))
 
