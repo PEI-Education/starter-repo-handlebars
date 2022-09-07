@@ -1,15 +1,13 @@
 <html>
 <head>
-  <title>PSB 7-9 Report Card</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <title>CSLF Bulletin 7-9</title>
   ~[wc:commonscripts]
   <script>
     let reportconfig = {
       dothisfor: '~[gpv:dothisfor]',
-      storecode: '~(gpv.terms)',
-      attcutoff: '~(gpv.attcutoff)',
+      terms: '~(gpv.terms)',
+      rptdate: '~(gpv.rptdate)',
+      addcomment: '~(gpv.addcomment)',
       printDate: '~[date]'
     } 
     if ("~(gpv.teachersig)"==="true") {

@@ -1,0 +1,413 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-family: 'Times New Roman', serif;
+   line-height: 1.2;
+ }
+ 
+ .page {
+   display: block;
+   height: 10.5in;
+   width: 8in;
+   margin: 0.25in;
+   position: relative;
+ }
+ 
+ @media print {
+ 
+     .noprint {
+         display: none;
+     }
+ 
+     .pageBreak {
+         page-break-after: always;
+     }
+ }
+ 
+ .red {
+     font-size: 9pt;
+     color: red;
+ }
+ 
+ .grey {
+     background-color: #b3b3b3;
+ }
+ 
+ header {
+   text-align: center;
+   width: 7.75in;
+   position: relative;
+ }
+ 
+ header .school {
+   font-size: 16px;
+   font-weight: bold;
+   margin-top: 0.2in;
+   margin-bottom: 0.1in;
+ }
+ 
+ header .schaddress {
+   font-weight: bold;
+   font-size: 12px;
+   margin-bottom: 0.3in;
+ }
+ 
+ header .title {
+   font-size: 15px;
+   font-weight: bold;
+   margin-bottom: 0.2in;
+ }
+ 
+ #cslf-logo {
+   height: 80px;
+   position: absolute;
+   top: 0;
+   left: 0;
+ }
+ 
+ #school-logo {
+   height: 80px;
+   position: absolute;
+   top: 0;
+   right: 0;
+ }
+ 
+ .student-info {
+   display: grid;
+   grid-template-columns: 1.2fr 2fr 1.2fr 2fr;
+   width: 7.75in;
+   margin-bottom: 0.1in;
+ }
+ 
+ .student1 {
+   grid-column-start: 1;
+   grid-column-end: 2;
+   border: none;
+   padding: 3px;
+   font-size: 9pt;
+ }
+ 
+ .student2 {
+   grid-column-start: 2;
+   grid-column-end: 3;
+   border: none;
+   padding: 3px;
+   font-size: 9pt;
+ }
+ 
+ .student3 {
+   grid-column-start: 3;
+   grid-column-end: 4;
+   border: none;
+   padding: 3px;
+   font-size: 9pt;
+ }
+ .student4 {
+   grid-column-start: 4;
+   grid-column-end: 5;
+   border: none;
+   padding: 3px;
+   font-size: 9pt;
+ }
+ 
+ .courses {
+   border: 1px solid black;
+   border-collapse: collapse;
+   width: 7.75in;
+   font-size: 9pt;
+   font-weight: bold;
+   margin-top: 5px;
+   margin-bottom: 5px;
+ }
+ 
+ .courses th {
+   border: 1px solid black;
+   border-collapse: collapse;
+   padding: 3px;
+ }
+ 
+ .courses td {
+   border: 1px solid black;
+   border-collapse: collapse;
+   padding: 3px;
+   font-weight: normal;
+ }
+ 
+ .table-center-align {
+   text-align: center;
+ }
+ 
+ .table-left-align {
+   text-align: left;
+ }
+ 
+ .gen-info {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   margin: 0 5px;
+   width: 7.75in;
+ }
+ 
+ .addcomment {
+   grid-column-start: 1;
+   grid-column-end: 2;
+   font-size: 9pt;
+ }
+ 
+ .legend {
+   grid-column-start: 2;
+   grid-column-end: 3;
+   font-size: 9pt;
+ }
+ 
+ .legend ul {
+     list-style-position: outside;
+ }
+ 
+ .footer {
+   position: absolute;
+   bottom: 0.1in;
+   font-size: 9pt;
+ }
+ 
+ .signature {
+   width: 7.75in;
+   font-size: 9pt;
+   text-align: left;
+   margin: 5px;
+ }
+ 
+ .sig-line {
+   display: inline-block;
+   width: 2.4in;
+   border-bottom: 1px solid;
+ }
+ 
+ .footer2 {
+   font-size: 9px;
+   font-weight: bold;
+   margin: 0px 5px 10px 5px;
+   text-align: center;
+   display: block;
+   width: 7.75in;
+   padding-bottom: 5px;
+   border-bottom: 2px solid;
+ }
+ 
+ .footer2-gap {
+   display: inline-block;
+   margin-right: 0.2in;
+ }
+ 
+ .footer3 {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   width: 7.75in;
+   font-size: 9pt;
+   margin: 5px;
+   font-weight: bold
+ }
+ 
+ .footer3-left {
+   grid-column-start: 1;
+   grid-column-end: 2;
+   text-align: left;
+ }
+ 
+ .footer3-center {
+   grid-column-start: 2;
+   grid-column-end: 3;
+   text-align: center;
+ }
+ 
+ .footer3-right {
+   grid-column-start: 3;
+   grid-column-end: 4;
+   text-align: right;
+ }
+ 
+ .course {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr 4fr;
+   grid-template-rows: auto 18px 22px;
+   width: 7.75in;
+   font-size: 9pt;
+   margin: 5px;
+ }
+ 
+ .course-info {
+   grid-column-start: 1;
+   grid-column-end: 4;
+   grid-row-start: 1;
+   grid-row-end: 2;
+   border: 1px solid;
+   border-right-width: 0;
+   padding: 3px;
+ }
+ 
+ .attendance {
+   grid-column-start: 4;
+   grid-column-end: 5;
+   grid-row-start: 1;
+   grid-row-end: 2;
+   border: 1px solid;
+   padding: 3px;
+   text-align: right;
+   border-left-width: 0;
+   padding-right: 7px;
+ }
+ .comment {
+   grid-column-start: 5;
+   grid-column-end: 6;
+   grid-row-start: 1;
+   grid-row-end: 4;
+   border: 1px solid;
+   border-left-width: 0;
+   padding: 3px;
+ }
+ 
+ .sem-m1-head {
+   grid-column-start: 1;
+   grid-column-end: 3;
+   grid-row-start: 2;
+   grid-row-end: 3;
+   border: 1px solid;
+   border-top-width: 0;
+   border-bottom-width: 0;
+   padding: 3px;
+   text-align: center;
+ }
+ 
+ .sem-m2-head {
+   grid-column-start: 3;
+   grid-column-end: 5;
+   grid-row-start: 2;
+   grid-row-end: 3;
+   border: 1px solid;
+   border-top-width: 0;
+   border-bottom-width: 0;
+   border-left-width: 0;
+   padding: 3px;
+   text-align: center;
+ }
+ 
+ .sem-m1-mark {
+   grid-column-start: 1;
+   grid-column-end: 3;
+   grid-row-start: 3;
+   grid-row-end: 4;
+   border: 1px solid;
+   padding: 3px;
+   text-align: center;
+ }
+ 
+ .sem-m2-mark {
+   grid-column-start: 3;
+   grid-column-end: 5;
+   grid-row-start: 3;
+   grid-row-end: 4;
+   border: 1px solid;
+   border-left-width: 0;
+   padding: 3px;
+   text-align: center;
+ }
+ 
+ .q-m1-head {
+   grid-column-start: 1;
+   grid-column-end: 2;
+   grid-row-start: 2;
+   grid-row-end: 3;
+   border: 1px solid;
+   border-top-width: 0;
+   border-bottom-width: 0;
+   padding: 3px;
+   text-align: center;
+ }
+ 
+ .q-m1-mark {
+   grid-column-start: 1;
+   grid-column-end: 2;
+   grid-row-start: 3;
+   grid-row-end: 4;
+   border: 1px solid;
+   padding: 3px;
+   text-align: center;
+ }
+ 
+ .q-m2-head {
+   grid-column-start: 2;
+   grid-column-end: 3;
+   grid-row-start: 2;
+   grid-row-end: 3;
+   border: 1px solid;
+   border-top-width: 0;
+   border-bottom-width: 0;
+   border-left-width: 0;
+   padding: 2px;
+   text-align: center;
+ }
+ 
+ .q-m2-mark {
+   grid-column-start: 2;
+   grid-column-end: 3;
+   grid-row-start: 3;
+   grid-row-end: 4;
+   border: 1px solid;
+   border-left-width: 0;
+   padding: 3px;
+   text-align: center;
+ }
+ 
+ .q-m3-head {
+   grid-column-start: 3;
+   grid-column-end: 4;
+   grid-row-start: 2;
+   grid-row-end: 3;
+   border: 1px solid;
+   border-top-width: 0;
+   border-bottom-width: 0;
+   border-left-width: 0;
+   padding: 2px;
+   text-align: center;
+ }
+ 
+ .q-m3-mark {
+   grid-column-start: 3;
+   grid-column-end: 4;
+   grid-row-start: 3;
+   grid-row-end: 4;
+   border: 1px solid;
+   border-left-width: 0;
+   padding: 3px;
+   text-align: center;
+ }
+ 
+ .q-m4-head {
+   grid-column-start: 4;
+   grid-column-end: 5;
+   grid-row-start: 2;
+   grid-row-end: 3;
+   border: 1px solid;
+   border-top-width: 0;
+   border-bottom-width: 0;
+   border-left-width: 0;
+   padding: 2px;
+   text-align: center;
+ }
+ 
+ .q-m4-mark {
+   grid-column-start: 4;
+   grid-column-end: 5;
+   grid-row-start: 3;
+   grid-row-end: 4;
+   border: 1px solid;
+   border-left-width: 0;
+   padding: 3px;
+   text-align: center;
+ }
+ 
+ .legend td, .legend th {
+     vertical-align: top;
+ }
+ 

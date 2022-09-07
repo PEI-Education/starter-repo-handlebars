@@ -1,5 +1,5 @@
+import './styles/psb_int_styles.css';
 import './styles/spinner.css';
-import './styles/styles.css';
 
 const template = require('./js/psb_int.hbs')
 

@@ -1,0 +1,766 @@
+ {{#each students}}
+      <div class="page">
+        <header>
+          <div class="cslf">
+            <img src="./assets/cslf.jpg" id="cslf-logo">
+            <div class="psb-text"><strong>Public Schools Branch</strong></div>
+          </div>
+          <div class="report-card-head">Report Card</div>
+        </header>
+<!-- student info -->     
+        <table id="student_info-1001" class="wide">
+          <colgroup>
+            <col style="width: 2in;" />
+            <col style="width: 2in;" />
+            <col style="width: 2in;" />
+            <col style="width: 2in;" />
+          </colgroup>
+          <tr>
+          <td>
+            <strong>Student:</strong> {{firstname}} {{lastname}}<br />
+            <strong>Student Number:</strong> {{number}}
+          </td>
+          <td>
+            <strong>Principal:</strong> {{school.principal}}<br />
+          </td>
+          <td colspan="2">
+            <strong>School:</strong> {{school.name}}<br />
+            <strong>Website:</strong> {{school.url}}
+          </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Homeroom:</strong> {{homeroom}}
+            </td>
+            <td>
+              <strong>School Year:</strong> {{yearname}}
+            </td>
+            <td>
+              <strong>Grade:</strong> {{gradelevel}}
+            </td>
+            <td>
+                <strong>Program:</strong> {{program}}
+            </td>
+          </tr>
+        </table>
+        <!-- Attendance -->
+        <table class="wide">
+          <colgroup>
+              <col style="width: 1.6in;" />
+              <col style="width: 1.6in;" />
+              <col style="width: 1.6in;" />
+              <col style="width: 1.6in;" />
+              <col style="width: 1.6in;" />
+          </colgroup>
+          <tr>
+              <td class="row1" colspan="5"><strong>Days Absent as of {{../reportconfig.attcutoff}}</strong></td>
+          </tr>
+          <tr>
+            <th>Reporting Period 1</th>
+            <th>Reporting Period 2</th>
+            <th>Reporting Period 3</th>
+            <th>Reporting Period 4</th>
+            <th>Total Absences</th>
+          </tr>
+          <tr>
+            <td class="center">{{attendance.r1absences}} days</td>
+            <td class="center">{{attendance.r2absences}} days</td>
+            <td class="center">{{attendance.r3absences}} days</td>
+            <td class="center">{{attendance.r4absences}} days</td>
+            <td class="center">{{attendance.totalabsences}} days</td>
+          </tr>
+          <tr>
+            <td class="center">{{attendance.r1membership}} teaching days</td>
+            <td class="center">{{attendance.r2membership}} teaching days</td>
+            <td class="center">{{attendance.r3membership}} teaching days</td>
+            <td class="center">{{attendance.r4membership}} teaching days</td>
+            <td class="center">{{attendance.totalmembership}} teaching days</td>
+          </tr>
+        </table>
+        <!-- ELA -->
+        <table class="wide">
+        <colgroup>
+          <col style="width: 1.6in;" />
+          <col style="width: 0.6in;" />
+          <col style="width: 0.6in;" />
+          <col style="width: 0.6in;" />
+          <col style="width: 0.6in;" />
+          <col style="width: 4in;" />
+        </colgroup>
+        <tr>
+          <td class="row1 leftFixed">
+            <strong>Language Arts</strong><br />
+            English<br />
+            <span class="course-details">
+              Teacher: <span>{{ela.teacher}}</span><br />
+              Program: <span>{{ela.program}}</span><br />
+              {{#if ela.adaptation}}
+                <span>Adaptation<br /></span>
+              {{/if}}
+              {{#if ela.iep}}
+                <span>IEP<br /></span>
+              {{/if}}
+              {{#if ela.eal}}
+                <span>EAL<br /></span>
+              {{/if}}
+            </span>
+          </td>
+          <td class="row1 center">Report 1</td>
+          <td class="row1 center">Report 2</td>
+          <td class="row1 center">Report 3</td>
+          <td class="row1 center">End of the Year</td>
+          <td rowspan="3" class="course-comment"><strong>Progress and Next Steps:</strong> {{ela.comment}}</td>
+        </tr>
+        <tr>
+          <td>Curriculum Outcomes</td>
+          <td class="center">{{ela.i1grade}}</td>
+          <td class="center">{{ela.i2grade}}</td>
+          <td class="center">{{ela.i3grade}}</td>
+          <td class="center">{{ela.i4grade}}</td>
+        </tr>
+        <tr>
+          <td>Work Habits/Learning Skills</td>
+          <td class="center">{{ela.r1effort}}</td>
+          <td class="center">{{ela.r2effort}}</td>
+          <td class="center">{{ela.r3effort}}</td>
+          <td class="center">{{ela.r4effort}}</td>
+        </tr>
+        </table>
+        <!-- FLA -->
+        {{#if fla}}
+        <table class="wide">
+          <colgroup>
+            <col style="width: 1.6in;" />
+            <col style="width: 0.6in;" />
+            <col style="width: 0.6in;" />
+            <col style="width: 0.6in;" />
+            <col style="width: 0.6in;" />
+            <col style="width: 4in;" />
+          </colgroup>
+          <tr>
+            <td class="row1 leftFixed">
+              <strong>Language Arts</strong><br />
+              French<br />
+              <span class="course-details">
+                Teacher: <span>{{fla.teacher}}</span><br />
+                Program: <span>{{fla.program}}</span><br />
+                {{#if fla.adaptation}}
+                  <span>Adaptation<br /></span>
+                {{/if}}
+                {{#if fla.iep}}
+                  <span>IEP<br /></span>
+                {{/if}}
+                {{#if fla.eal}}
+                  <span>EAL<br /></span>
+                {{/if}}
+              </span>
+            </td>
+            <td class="row1 center">Report 1</td>
+            <td class="row1 center">Report 2</td>
+            <td class="row1 center">Report 3</td>
+            <td class="row1 center">End of the Year</td>
+            <td rowspan="3" class="course-comment"><strong>Progress and Next Steps:</strong> {{fla.comment}}</td>
+          </tr>
+          <tr>
+            <td>Curriculum Outcomes</td>
+            <td class="center">{{fla.i1grade}}</td>
+            <td class="center">{{fla.i2grade}}</td>
+            <td class="center">{{fla.i3grade}}</td>
+            <td class="center">{{fla.i4grade}}</td>
+          </tr>
+          <tr>
+            <td>Work Habits/Learning Skills</td>
+            <td class="center">{{fla.r1effort}}</td>
+            <td class="center">{{fla.r2effort}}</td>
+            <td class="center">{{fla.r3effort}}</td>
+            <td class="center">{{fla.r4effort}}</td>
+          </tr>
+        </table>
+        {{/if}}
+
+        <!-- Math -->
+        <table class="wide">
+        <colgroup>
+          <col style="width: 1.6in;" />
+          <col style="width: 0.6in;" />
+          <col style="width: 0.6in;" />
+          <col style="width: 0.6in;" />
+          <col style="width: 0.6in;" />
+          <col style="width: 4in;" />
+        </colgroup>
+        <tr>
+          <td class="row1 leftFixed">
+            <strong>Mathematics</strong><br />
+            <span class="course-details">
+              Teacher: <span>{{mat.teacher}}</span><br />
+              Program: <span>{{mat.program}}</span><br />
+              {{#if mat.adaptation}}
+                <span>Adaptation<br /></span>
+              {{/if}}
+              {{#if mat.iep}}
+                <span>IEP<br /></span>
+              {{/if}}
+              {{#if mat.eal}}
+                <span>EAL<br /></span>
+              {{/if}}
+            </span>
+          </td>
+          <td class="row1 center">Report 1</td>
+          <td class="row1 center">Report 2</td>
+          <td class="row1 center">Report 3</td>
+          <td class="row1 center">End of the Year</td>
+          <td rowspan="3" class="course-comment"><strong>Progress and Next Steps:</strong> {{mat.comment}}</td>
+        </tr>
+        <tr>
+          <td>Curriculum Outcomes</td>
+          <td class="center">{{mat.i1grade}}</td>
+          <td class="center">{{mat.i2grade}}</td>
+          <td class="center">{{mat.i3grade}}</td>
+          <td class="center">{{mat.i4grade}}</td>
+        </tr>
+        <tr>
+          <td>Work Habits/Learning Skills</td>
+          <td class="center">{{mat.r1effort}}</td>
+          <td class="center">{{mat.r2effort}}</td>
+          <td class="center">{{mat.r3effort}}</td>
+          <td class="center">{{mat.r4effort}}</td>
+        </tr>
+        </table>
+<!--Other courses -->
+        <table class="wide noborder">
+            <colgroup>
+                <col style="width: 3.9in;" />
+                <col style="width: 0.2in;" />
+                <col style="width: 3.9in;" />
+            </colgroup>
+            <tr >
+              <td valign="top">
+                 {{#if courses.[0]}}
+                  {{#with courses.[0]}}
+                    <table class="course narrow border tall">
+                      <colgroup>
+                        <col style="width: 1.85in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                      </colgroup>
+                      <tr>
+                        <td class="row1 titleRow">
+                          <strong>{{course_name}}</strong><br />
+                          <span class="course-details">
+                            Teacher: {{teacher}}<br />
+                            Program: {{program}}<br />
+                            {{#if adaptation}}Adaptation<br />{{/if}}
+                          </span>
+                        </td>
+                        <td class="row1 center">Report 1</td>
+                        <td class="row1 center">Report 2</td>
+                        <td class="row1 center">Report 3</td>
+                        <td class="row1 center">End of the Year</td>
+                      </tr>
+                      <tr>
+                        <td>Curriculum Achievement</td>
+                        <td class="center">{{i1grade}}</td>
+                        <td class="center">{{i2grade}}</td>
+                        <td class="center">{{i3grade}}</td>
+                        <td class="center">{{i4grade}}</td>
+                      </tr>
+                      <tr>
+                        <td>Work Habits/Learning Skills</td>
+                        <td class="center">{{r1effort}}</td>
+                        <td class="center">{{r2effort}}</td>
+                        <td class="center">{{r3effort}}</td>
+                        <td class="center">{{r4effort}}</td>
+                      </tr>
+                      <tr class="narrow-row">
+                        <td valign="top" colspan="5" class="narrow-comment">
+                          <strong>Progress and Next Steps:</strong> {{comment}}
+                        </td>
+                      </tr>
+                    </table>
+                  {{/with}}
+                {{/if}}
+              </td>
+              <td>&nbsp;</td>
+              <td valign="top">
+                                {{#if courses.[1]}}
+                  {{#with courses.[1]}}
+                    <table class="course narrow border tall">
+                      <colgroup>
+                        <col style="width: 1.9in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                      </colgroup>
+                      <tr>
+                        <td class="row1 titleRow">
+                          <strong>{{course_name}}</strong><br />
+                          <span class="course-details">
+                            Teacher: {{teacher}}<br />
+                            Program: {{program}}<br />
+                            {{#if adaptation}}Adaptation<br />{{/if}}
+                          </span>
+                        </td>
+                        <td class="row1 center">Report 1</td>
+                        <td class="row1 center">Report 2</td>
+                        <td class="row1 center">Report 3</td>
+                        <td class="row1 center">End of the Year</td>
+                      </tr>
+                      <tr>
+                        <td>Curriculum Achievement</td>
+                        <td class="center">{{i1grade}}</td>
+                        <td class="center">{{i2grade}}</td>
+                        <td class="center">{{i3grade}}</td>
+                        <td class="center">{{i4grade}}</td>
+                      </tr>
+                      <tr>
+                        <td>Work Habits/Learning Skills</td>
+                        <td class="center">{{r1effort}}</td>
+                        <td class="center">{{r2effort}}</td>
+                        <td class="center">{{r3effort}}</td>
+                        <td class="center">{{r4effort}}</td>
+                      </tr>
+                      <tr class="narrow-row">
+                        <td valign="top" colspan="5" class="narrow-comment">
+                          <strong>Progress and Next Steps:</strong> {{comment}}
+                        </td>
+                      </tr>
+                    </table>
+                  {{/with}}
+                {{/if}}
+              </td>
+            </tr>
+            <tr>
+              <td valign="top">
+                {{#if courses.[2]}}
+                  {{#with courses.[2]}}
+                    <table class="course narrow border tall">
+                      <colgroup>
+                        <col style="width: 1.9in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                      </colgroup>
+                      <tr>
+                        <td class="row1 titleRow">
+                          <strong>{{course_name}}</strong><br />
+                          <span class="course-details">
+                            Teacher: {{teacher}}<br />
+                            Program: {{program}}<br />
+                            {{#if adaptation}}Adaptation<br />{{/if}}
+                          </span>
+                        </td>
+                        <td class="row1 center">Report 1</td>
+                        <td class="row1 center">Report 2</td>
+                        <td class="row1 center">Report 3</td>
+                        <td class="row1 center">End of the Year</td>
+                      </tr>
+                      <tr>
+                        <td>Curriculum Achievement</td>
+                        <td class="center">{{i1grade}}</td>
+                        <td class="center">{{i2grade}}</td>
+                        <td class="center">{{i3grade}}</td>
+                        <td class="center">{{i4grade}}</td>
+                      </tr>
+                      <tr>
+                        <td>Work Habits/Learning Skills</td>
+                        <td class="center">{{r1effort}}</td>
+                        <td class="center">{{r2effort}}</td>
+                        <td class="center">{{r3effort}}</td>
+                        <td class="center">{{r4effort}}</td>
+                      </tr>
+                      <tr class="narrow-row">
+                        <td valign="top" colspan="5" class="narrow-comment">
+                          <strong>Progress and Next Steps:</strong> {{comment}}
+                        </td>
+                      </tr>
+                    </table>
+                  {{/with}}
+                {{/if}}    
+              </td>
+              <td>&nbsp;</td>
+              <td valign="top">
+                 {{#if courses.[3]}}
+                  {{#with courses.[3]}}
+                    <table class="course narrow border tall">
+                      <colgroup>
+                        <col style="width: 1.9in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                      </colgroup>
+                      <tr>
+                        <td class="row1 titleRow">
+                          <strong>{{course_name}}</strong><br />
+                          <span class="course-details">
+                            Teacher: {{teacher}}<br />
+                            Program: {{program}}<br />
+                            {{#if adaptation}}Adaptation<br />{{/if}}
+                          </span>
+                        </td>
+                        <td class="row1 center">Report 1</td>
+                        <td class="row1 center">Report 2</td>
+                        <td class="row1 center">Report 3</td>
+                        <td class="row1 center">End of the Year</td>
+                      </tr>
+                      <tr>
+                        <td>Curriculum Achievement</td>
+                        <td class="center">{{i1grade}}</td>
+                        <td class="center">{{i2grade}}</td>
+                        <td class="center">{{i3grade}}</td>
+                        <td class="center">{{i4grade}}</td>
+                      </tr>
+                      <tr>
+                        <td>Work Habits/Learning Skills</td>
+                        <td class="center">{{r1effort}}</td>
+                        <td class="center">{{r2effort}}</td>
+                        <td class="center">{{r3effort}}</td>
+                        <td class="center">{{r4effort}}</td>
+                      </tr>
+                      <tr class="narrow-row">
+                        <td valign="top" colspan="5" class="narrow-comment">
+                          <strong>Progress and Next Steps:</strong> {{comment}}
+                        </td>
+                      </tr>
+                    </table>
+                  {{/with}}
+                {{/if}}
+              </td>
+          </tr>
+      </table>
+
+  <!-- Footer -->
+      <div class="footer">
+          <div class="footer3">
+            <div class="footer3-left">V01</div>
+            <div class="footer3-center">{{firstname}} {{lastname}} ({{homeroom}})</div>
+            <div class="footer3-right">Printed: {{../reportconfig.printDate}}</div>
+          </div>
+      </div>
+
+    </div>
+
+  <!-- Page break -->
+    <div class="pageBreak" style="clear: both;">
+        <div class="noprint" style="border-top: thin dotted;width: 100%;"></div>
+    </div>
+
+  <!-- Start of page 2 -->
+    <div class="page">
+
+      <table class="wide noborder">
+          <colgroup>
+              <col style="width: 3.9in;" />
+              <col style="width: 0.2in;" />
+              <col style="width: 3.9in;" />
+          </colgroup>
+          <tr>
+              <td valign="top">
+                {{#if courses.[4]}}
+                  {{#with courses.[4]}}
+                    <table class="course narrow border tall">
+                      <colgroup>
+                        <col style="width: 1.9in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                      </colgroup>
+                      <tr>
+                        <td class="row1 titleRow">
+                          <strong>{{course_name}}</strong><br />
+                          <span class="course-details">
+                            Teacher: {{teacher}}<br />
+                            Program: {{program}}<br />
+                            {{#if adaptation}}Adaptation<br />{{/if}}
+                          </span>
+                        </td>
+                        <td class="row1 center">Report 1</td>
+                        <td class="row1 center">Report 2</td>
+                        <td class="row1 center">Report 3</td>
+                        <td class="row1 center">End of the Year</td>
+                      </tr>
+                      <tr>
+                        <td>Curriculum Achievement</td>
+                        <td class="center">{{i1grade}}</td>
+                        <td class="center">{{i2grade}}</td>
+                        <td class="center">{{i3grade}}</td>
+                        <td class="center">{{i4grade}}</td>
+                      </tr>
+                      <tr>
+                        <td>Work Habits/Learning Skills</td>
+                        <td class="center">{{r1effort}}</td>
+                        <td class="center">{{r2effort}}</td>
+                        <td class="center">{{r3effort}}</td>
+                        <td class="center">{{r4effort}}</td>
+                      </tr>
+                      <tr class="narrow-row">
+                        <td valign="top" colspan="5" class="narrow-comment">
+                          <strong>Progress and Next Steps:</strong> {{comment}}
+                        </td>
+                      </tr>
+                    </table>
+                  {{/with}}
+                {{/if}}
+              </td>
+              <td>&nbsp;</td>
+              <td valign="top">
+                {{#if courses.[5]}}
+                  {{#with courses.[5]}}
+                    <table class="course narrow border tall">
+                      <colgroup>
+                        <col style="width: 1.9in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                      </colgroup>
+                      <tr>
+                        <td class="row1 titleRow">
+                          <strong>{{course_name}}</strong><br />
+                          <span class="course-details">
+                            Teacher: {{teacher}}<br />
+                            Program: {{program}}<br />
+                            {{#if adaptation}}Adaptation<br />{{/if}}
+                          </span>
+                        </td>
+                        <td class="row1 center">Report 1</td>
+                        <td class="row1 center">Report 2</td>
+                        <td class="row1 center">Report 3</td>
+                        <td class="row1 center">End of the Year</td>
+                      </tr>
+                      <tr>
+                        <td>Curriculum Achievement</td>
+                        <td class="center">{{i1grade}}</td>
+                        <td class="center">{{i2grade}}</td>
+                        <td class="center">{{i3grade}}</td>
+                        <td class="center">{{i4grade}}</td>
+                      </tr>
+                      <tr>
+                        <td>Work Habits/Learning Skills</td>
+                        <td class="center">{{r1effort}}</td>
+                        <td class="center">{{r2effort}}</td>
+                        <td class="center">{{r3effort}}</td>
+                        <td class="center">{{r4effort}}</td>
+                      </tr>
+                      <tr class="narrow-row">
+                        <td valign="top" colspan="5" class="narrow-comment">
+                          <strong>Progress and Next Steps:</strong> {{comment}}
+                        </td>
+                      </tr>
+                    </table>
+                  {{/with}}
+                {{/if}}
+              </td>
+            </tr>
+            <tr>
+              <td valign="top">
+                {{#if courses.[6]}}
+                  {{#with courses.[6]}}
+                    <table class="course narrow border tall">
+                      <colgroup>
+                        <col style="width: 1.9in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                      </colgroup>
+                      <tr>
+                        <td class="row1 titleRow">
+                          <strong>{{course_name}}</strong><br />
+                          <span class="course-details">
+                            Teacher: {{teacher}}<br />
+                            Program: {{program}}<br />
+                            {{#if adaptation}}Adaptation<br />{{/if}}
+                          </span>
+                        </td>
+                        <td class="row1 center">Report 1</td>
+                        <td class="row1 center">Report 2</td>
+                        <td class="row1 center">Report 3</td>
+                        <td class="row1 center">End of the Year</td>
+                      </tr>
+                      <tr>
+                        <td>Curriculum Achievement</td>
+                        <td class="center">{{i1grade}}</td>
+                        <td class="center">{{i2grade}}</td>
+                        <td class="center">{{i3grade}}</td>
+                        <td class="center">{{i4grade}}</td>
+                      </tr>
+                      <tr>
+                        <td>Work Habits/Learning Skills</td>
+                        <td class="center">{{r1effort}}</td>
+                        <td class="center">{{r2effort}}</td>
+                        <td class="center">{{r3effort}}</td>
+                        <td class="center">{{r4effort}}</td>
+                      </tr>
+                      <tr class="narrow-row">
+                        <td valign="top" colspan="5" class="narrow-comment">
+                          <strong>Progress and Next Steps:</strong> {{comment}}
+                        </td>
+                      </tr>
+                    </table>
+                  {{/with}}
+                {{/if}}   
+              </td>
+              <td>&nbsp;</td>
+              <td valign="top">
+                {{#if courses.[7]}}
+                  {{#with courses.[7]}}
+                    <table class="course narrow border all">
+                      <colgroup>
+                        <col style="width: 1.9in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                        <col style="width: 0.5in;" />
+                      </colgroup>
+                      <tr>
+                        <td class="row1 titleRow">
+                          <strong>{{course_name}}</strong><br />
+                          <span class="course-details">
+                            Teacher: {{teacher}}<br />
+                            Program: {{program}}<br />
+                            {{#if adaptation}}Adaptation<br />{{/if}}
+                          </span>
+                        </td>
+                        <td class="row1 center">Report 1</td>
+                        <td class="row1 center">Report 2</td>
+                        <td class="row1 center">End of the Year</td>
+                      </tr>
+                      <tr>
+                        <td>Curriculum Achievement</td>
+                        <td class="center">{{i1grade}}</td>
+                        <td class="center">{{i2grade}}</td>
+                        <td class="center">{{i3grade}}</td>
+                        <td class="center">{{i4grade}}</td>
+                      </tr>
+                      <tr>
+                        <td>Work Habits/Learning Skills</td>
+                        <td class="center">{{r1effort}}</td>
+                        <td class="center">{{r2effort}}</td>
+                        <td class="center">{{r3effort}}</td>
+                        <td class="center">{{r4effort}}</td>
+                      </tr>
+                      <tr class="narrow-row">
+                        <td valign="top" colspan="5" class="narrow-comment">
+                          <strong>Progress and Next Steps:</strong> {{comment}}
+                        </td>
+                      </tr>
+                    </table>
+                  {{/with}}
+                {{/if}}
+              </td>
+          </tr>
+      </table>
+      <div class="wide">
+        {{#if resa}}
+        <div><table class="wide resa"><tr><td><strong>Additional Support: </strong>{{resa}}</td></tr></table></div>
+        {{/if}}
+        <div class="wide alp" id="1001-alp">
+            Your child will have a learning plan to support his/her progress during the next school year.
+        </div>
+        {{#if ../reportconfig.teachersig}}
+        <div class="signature teacher">Teacher's Signature: <span class="sig-line"></span></div>
+        {{/if}}
+        {{#if ../reportconfig.principalsig}}
+        <div class="signature principal">Principal's Signature: <span class="sig-line"></span></div>
+        {{/if}}
+        <div class="definitions">
+          <h4><strong>Definitions</strong></h4>
+          <p><strong>Adaptation(s)</strong> are provided for students who need one or more specific supports to meet the curriculum outcomes for the grade level. The grade level expectations are not changed.</p>
+          <p><strong>Regular Program</strong> - Your child is working on the prescribed provincial curriculum for this grade.</p>
+          <p><strong>Regular with ALP</strong> - Your child is working on grade level outcomes as well as foundational learnings from a previous grade.</p>
+          <p><strong>Academic Learning Plan</strong> - Your child is working on outcomes and foundational learnings from a previous grade.</p>
+        </div>
+        <table class="legend">
+          <colgroup>
+            <col style="width: 7%;" />
+            <col style="width: 50%;" />
+            <col style="width: 7%;" />
+            <col style="width: 46%;" />
+          </colgroup>
+          <thead>
+            <tr class="row1">
+              <th colspan="2">Provincial Grade Level Expectations for Progress</th>
+              <th colspan="2">Provincial Grade Level Expectations for the End of the Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row2">
+              <td class="center">90% &gt;</td>
+              <td>At this time, the pace of your child's learning is likely to exceed the end of the year expectations.</td>
+              <td class="center">90% &gt;</td>
+              <td>Your child has exceeded the end of the year expectations.</td>
+            </tr>
+            <tr class="row2">
+              <td class="center">75-89%</td>
+              <td>At this time, the pace of your child's learning is on target to meet the end of the year (grade level) expectations.</td>
+              <td  class="center" rowspan="2">65-89%</td>
+              <td rowspan="2">Your child has met the end of the year expectations.</td>
+            </tr>
+            <tr class="row2">
+              <td  class="center">65-74%</td>
+              <td>At this time, the pace of your child's learning is on target to meet the end (minimum grade level expectation) for the end of the year expectations.</td>
+            </tr>
+            <tr>
+              <td  class="center">50-64%</td>
+              <td>At this time, the pace of your child's learning may impact meeting the end of the year expectations.</td>
+              <td  class="center">50-64%</td>
+              <td>Your child is approaching the end of the year expectation</td>
+            </tr>
+            <tr>
+              <td  class="center">&lt; 49%</td>
+              <td>At this time, the pace of your child's learning will likely make it difficult to meet the end of the year expectations.</td>
+              <td  class="center">&lt; 49%</td>
+              <td>Your child has not met the end of the year expectations.</td>
+            </tr>
+            <tr>
+              <td  class="center">NA</td>
+              <td>This area of the curriculum has not been taught during this reporting period.</td>
+              <td  class="center" rowspan="3">EX</td>
+              <td rowspan="3">Your child is exempt from this area of the curriculum.</td>
+            </tr>
+            <tr>
+                <td  class="center">INS</td>
+                <td>Insufficient evidence to report on achievement of the expected learning outcomes.</td>
+            </tr>
+            <tr>
+              <td  class="center">EX</td>
+              <td>Your child is exempt from this curriculum area.</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+                <td colspan="4"><strong>Learning Skills and Work Habits Key (Age appropriate expectations)</strong></td>
+            </tr>
+            <tr>
+                <td colspan="4"><strong>M</strong> - Your child uses the learning skills and/or work habits to <strong>maximize</strong> his/her learning.</td>
+            </tr>
+            <tr>
+                <td colspan="4"><strong>C</strong> - Your child uses the learning skills and/or work habits <strong>consistently</strong>.</td>
+            </tr>
+            <tr>
+                <td colspan="4"><strong>D</strong> - Your child is <strong>developing</strong> the learning skills and/or work habits.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="wide">
+          <strong>Parents/Guardians: Please retain this report for your records. A copy of the End of the Year report will be placed in your child's cumulative record folder.</strong>
+        </div>
+        <div class="footer">
+          <div class="footer3">
+            <div class="footer3-left">V01</div>
+            <div class="footer3-center">{{firstname}} {{lastname}} ({{homeroom}})</div>
+            <div class="footer3-right">Printed: {{../reportconfig.printDate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pageBreak" style="clear: both;">
+        <div class="noprint" style="border-top: thin dotted;width: 100%;"></div>
+    </div>
+    {{/each}}
