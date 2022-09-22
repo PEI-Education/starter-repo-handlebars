@@ -36,7 +36,7 @@
  
  header {
    text-align: center;
-   width: 7.75in;
+   width: 8in;
    position: relative;
  }
  
@@ -76,7 +76,7 @@
  .student-info {
    display: grid;
    grid-template-columns: 1.2fr 2fr 1.2fr 2fr;
-   width: 7.75in;
+   width: 8in;
    margin-bottom: 0.1in;
  }
  
