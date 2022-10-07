@@ -25,11 +25,13 @@
       "r1absences": "3",
       "r2absences": "7",
       "r3absences": "5",
-      "totalabsences": "15",
-      "r1membership": "65",
-      "r2membership": "65",
-      "r3membership": "60",
-      "totalmembership": "190"
+      "r4absences": "4",
+      "totalabsences": "19",
+      "r1membership": "45",
+      "r2membership": "45",
+      "r3membership": "40",
+      "r4membership": "50",
+      "totalmembership": "180"
     },
     "courses": []
   },
@@ -54,11 +56,13 @@
       "r1absences": "3",
       "r2absences": "7",
       "r3absences": "5",
-      "totalabsences": "15",
-      "r1membership": "65",
-      "r2membership": "65",
-      "r3membership": "60",
-      "totalmembership": "190"
+      "r4absences": "6",
+      "totalabsences": "21",
+      "r1membership": "44",
+      "r2membership": "45",
+      "r3membership": "40",
+      "r4membership": "50",
+      "totalmembership": "179"
     },
     "courses": []
   },
@@ -80,14 +84,16 @@
       "postalcode": "C1N 1P1" 
     },
     "attendance": {
-      "r1absences": "10",
-      "r2absences": "3",
-      "r3absences": "17",
-      "totalabsences": "15",
-      "r1membership": "65",
-      "r2membership": "65",
-      "r3membership": "60",
-      "totalmembership": "190"
+      "r1absences": "6",
+      "r2absences": "7",
+      "r3absences": "5",
+      "r4absences": "4",
+      "totalabsences": "22",
+      "r1membership": "45",
+      "r2membership": "45",
+      "r3membership": "40",
+      "r4membership": "50",
+      "totalmembership": "180"
     },
     "courses": []
   },
@@ -109,14 +115,16 @@
       "postalcode": "C1N 1P1" 
     },
     "attendance": {
-      "r1absences": "10",
+      "r1absences": "3",
       "r2absences": "3",
-      "r3absences": "17",
+      "r3absences": "5",
+      "r4absences": "4",
       "totalabsences": "15",
-      "r1membership": "65",
-      "r2membership": "65",
-      "r3membership": "60",
-      "totalmembership": "190"
+      "r1membership": "45",
+      "r2membership": "45",
+      "r3membership": "40",
+      "r4membership": "50",
+      "totalmembership": "180"
     },
     "courses": []
   },
@@ -138,14 +146,16 @@
       "postalcode": "C1N 1P1" 
     },
     "attendance": {
-      "r1absences": "10",
-      "r2absences": "3",
-      "r3absences": "17",
-      "totalabsences": "15",
-      "r1membership": "65",
-      "r2membership": "65",
-      "r3membership": "60",
-      "totalmembership": "190"
+      "r1absences": "3",
+      "r2absences": "7",
+      "r3absences": "5",
+      "r4absences": "5",
+      "totalabsences": "20",
+      "r1membership": "45",
+      "r2membership": "45",
+      "r3membership": "40",
+      "r4membership": "50",
+      "totalmembership": "180"
     },
     "courses": []
   }
