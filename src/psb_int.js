@@ -1,11 +1,13 @@
+/* eslint-disable no-nested-ternary */
 import './styles/psb_int_styles.css';
 import './styles/spinner.css';
 
+// eslint-disable-next-line no-undef
 const template = require('./js/psb_int.hbs')
 
 const fadeOutEffect = () => {
-  var fadeTarget = document.getElementById("overlay");
-  var fadeEffect = setInterval(function () {
+  let fadeTarget = document.getElementById("overlay");
+  let fadeEffect = setInterval(function () {
       if (!fadeTarget.style.opacity) {
           fadeTarget.style.opacity = .8;
       }
@@ -18,6 +20,7 @@ const fadeOutEffect = () => {
 }
 
 const process = (students, courses) => {
+  // eslint-disable-next-line no-undef
   let highestTerm = parseInt(reportconfig.storecode.substr(1))
   courses.pop();
   courses.forEach((course) => {
@@ -77,19 +80,22 @@ const process = (students, courses) => {
     })
   })
 
+  // eslint-disable-next-line no-undef
   const outputData = {reportconfig: reportconfig, students: students}
   const container = document.getElementById('output')
   container.innerHTML = template(outputData)
   const overlay = document.getElementById('overlay')
   fadeOutEffect();
-  document.getElementById('overlay').remove()
+  overlay.remove()
 }
 
 const populate = async () => {
   try {
     const results = await Promise.all([
-      fetch('./assets/students_fake.json?dothisfor=' + reportconfig.dothisfor + '&attcutoff=' + reportconfig.attcutoff),
-      fetch('./assets/courses_fake.json?dothisfor=' + reportconfig.dothisfor + '&storecode=' + reportconfig.storecode),
+      // eslint-disable-next-line no-undef
+      fetch('./assets/psb_int_3term.json?dothisfor=' + reportconfig.dothisfor + '&attcutoff=' + reportconfig.attcutoff),
+      // eslint-disable-next-line no-undef
+      fetch('./assets/psb_int_courses.json?dothisfor=' + reportconfig.dothisfor + '&storecode=' + reportconfig.storecode),
     ])
     const finalData = await Promise.all(results.map((result) => result.json()))
 

@@ -1,11 +1,12 @@
+/* eslint-disable no-nested-ternary */
 import './styles/psb_int_styles.css';
 import './styles/spinner.css';
 
 const template = require('./js/psb_int4.hbs')
 
 const fadeOutEffect = () => {
-  var fadeTarget = document.getElementById("overlay");
-  var fadeEffect = setInterval(function () {
+  let fadeTarget = document.getElementById("overlay");
+  let fadeEffect = setInterval(function () {
       if (!fadeTarget.style.opacity) {
           fadeTarget.style.opacity = .8;
       }
@@ -17,6 +18,7 @@ const fadeOutEffect = () => {
   }, 200);
 }
 
+// Process deletes data that should not be included, rounds marks, and separates ELA, FLA and Math from other subjects.
 const process = (students, courses) => {
   let highestTerm = parseInt(reportconfig.storecode.substr(1))
   courses.pop();
@@ -82,17 +84,18 @@ const process = (students, courses) => {
   container.innerHTML = template(outputData)
   const overlay = document.getElementById('overlay')
   fadeOutEffect();
-  document.getElementById('overlay').remove()
+  overlay.remove()
 }
 
+// Populate fetches the data and hands it off to process once both files are retrieved.
 const populate = async () => {
   try {
     const results = await Promise.all([
-      fetch(`./assets/students_fake.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}`),
-      fetch(`./assets/courses_fake.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}`),
+      fetch(`./assets/psb_int_4term.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}`),
+      fetch(`./assets/psb_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}`),
     ])
     const finalData = await Promise.all(results.map((result) => result.json()))
-
+    
     process(finalData[0], finalData[1])
   } catch (err) {
     console.error(err)

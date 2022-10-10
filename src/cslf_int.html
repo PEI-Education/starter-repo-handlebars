@@ -7,8 +7,10 @@
       dothisfor: '~[gpv:dothisfor]',
       terms: '~(gpv.terms)',
       period: '~(gpv.reportperiod)',
-      addcomment: '~(gpv.addcomment)',
       printDate: '~[date]'
+    } 
+    if (typeof "~(gpv.addcomments)" === 'string' && "~(gpv.addcomment)" !== "") {
+      reportconfig.addcomment = "~(gpv.addcomment)"
     } 
     if ("~(gpv.teachersig)"==="true") {
         reportconfig.teachersig = "true"
@@ -16,6 +18,7 @@
     if ("~(gpv.principalsig)"==="true") {
         reportconfig.principalsig = "true"
     }
+    
   </script>
 </head>
 <body>

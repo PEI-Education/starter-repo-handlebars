@@ -7,6 +7,7 @@
     "street": "123 rue Main",
     "city": "Wellington",
     "postalcode": "C0B 0B0",
+    "phone": "902-436-1234",
     "dob": "09/09/2014",
     "homeroom": "7A",
     "gradelevel": "7",
@@ -19,7 +20,9 @@
       "street": "123 Central Street",
       "city": "Summerside",
       "province": "PE",
-      "postalcode": "C1N 1P1" 
+      "postalcode": "C1N 1P1",
+      "phone": "902-303-6455",
+      "fax": "902-888-1234" 
     },
     "attendance": {
       "r1absences": "3",
@@ -44,6 +47,7 @@
     "gradelevel": "7",
     "program": "French Immersion",
     "school": {
+      "id":"511",
       "name": "Summerside Intermediate School",
       "principal": "Doug Doyle",
       "url": "https://sis.com",
