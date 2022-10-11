@@ -6,9 +6,9 @@ This plugin will eventually contain new versions of all report cards. Structure 
 
 ## Current Report Cards (Branches)
 
-- PSB Intermediate Report Card, 3-term version (currently on pei-test1)
-- PSB Intermediate Report Card, 4-term version (ready to deploy to pei-test1)
-- CSLF Intermediate Report Card (ready to deploy to test)
+- PSB Intermediate Report Card, 3-term version (currently working on pei-test1)
+- PSB Intermediate Report Card, 4-term version (currently working on pei-test1)
+- CSLF Intermediate Report Card (currently working on pei-test1)
 ## To start new report card project
 
 Originally started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), which got us around an blocking error around require.js and a conflict with something already running on PowerSchool. 

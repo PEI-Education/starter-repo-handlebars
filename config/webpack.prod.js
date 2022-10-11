@@ -45,6 +45,14 @@ module.exports = merge(common, {
           },
           noErrorOnMissing: true,
         },
+        {
+          from: paths.images,
+          to: 'images',
+          globOptions: {
+            ignore: ['*.DS_Store'],
+          },
+          noErrorOnMissing: true,          
+        }
       ],
 
     }),

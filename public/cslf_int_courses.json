@@ -1,13 +1,13 @@
 [
     ~[tlist_sql;
-        with currentTerm as (select
+      with currentTerm as (select
             s.id,
             sg.course_number,
             sg.course_name,
             sg.teacher_name,
             sg.comment_value,
-            nvl(sg.absences,0),
-            nvl(sg.tardies,0)
+            nvl(sg.absences,0) as absences,
+            nvl(sg.tardies,0) as lates
         from students s
         join cc on cc.studentid = s.id
         join storedgrades sg
@@ -18,9 +18,9 @@
             ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
             ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.school]
             and sg.storecode = '~(gpv.storecode)'
-            and sg.termid = ~(curtermid)
+            and sg.termid = '~[x:termid]'
             and cc.termid > 0),
-        termGrades as (select
+    termGrades as (select
             s.id,
             sg.course_number,
             sg.storecode,
@@ -32,9 +32,9 @@
             ~[if.~(gpv.dothisfor)=selected] s.dcid in (select dcid from ~[temp.table.current.selection:students])[/if]
             ~[if.~(gpv.dothisfor)=enrolled] s.Enroll_Status = 0[/if]
             ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
-            ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.schokol]
-            and sg.termid = ~(curtermid)),
-        gradesPivot as (select *
+            ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.school]
+            and sg.termid = '~[x:termid]'),
+       gradesPivot as (select *
             from termGrades
             PIVOT (
             MAX ( grade )
@@ -57,21 +57,21 @@
         from currentTerm ct
         join gradesPivot gp
             on ct.id=gp.id and ct.course_number = gp.course_number
-        order by ct.id
+        order by ct.id;
     ]
     {
-        "id": "~(id)",
-        "course_number": "~(course_number;json)",
-        "course_name": "~(cname;json)",
-        "teacher": "~(teacher)",
-        "comment": "~(comment;json)",
-        "absences": "~(absences;json)",
-        "lates": "~(tardies;json)",
-        "i1grade": "~(i1;json)",
-        "i2grade": "~(i2;json)",
-        "i3grade": "~(i3;json)",
-        "i4grade": "~(i4;json)"
+        "id":               "~(id;json)",
+        "course_number":    "~(course_number;json)",
+        "course_name":      "~(cname;json)",
+        "teacher":          "~(teacher;json)",
+        "comment":          "~(comment;json)",
+        "absences":         "~(absences;json)",
+        "lates":            "~(tardies;json)",
+        "i1grade":          "~(i1;json)",
+        "i2grade":          "~(i2;json)",
+        "i3grade":          "~(i3;json)",
+        "i4grade":          "~(i4;json)"
     },    
     [/tlist_sql]
     {}
-    ]
+]

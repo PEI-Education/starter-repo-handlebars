@@ -9,4 +9,7 @@ module.exports = {
 
   // Static files that get copied to build folder
   public: path.resolve(__dirname, '../public'),
+
+  // Images that get copied to build folder
+  images: path.resolve(__dirname, '../images')
 }

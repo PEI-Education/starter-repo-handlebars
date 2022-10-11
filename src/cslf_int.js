@@ -19,8 +19,7 @@ const fadeOutEffect = () => {
 }
 
 const process = (students, courses) => {
-  // eslint-disable-next-line no-undef
-  let highestTerm = parseInt(reportconfig.terms.substr(1))
+  let highestTerm = parseInt(reportconfig.storecode.substr(1))
   courses.pop();
   courses.forEach((course) => {
     if (highestTerm <= 1) {
@@ -47,15 +46,6 @@ const process = (students, courses) => {
     if (course.comment) {
       course.comment = course.comment.substr(0,500)    
     }
-    if (course.eal==="0") {
-      delete course.eal
-    }
-    if (course.iep==="0") {
-      delete course.iep
-    }
-    if (course.adaptation==="0") {
-      delete course.adaptation
-    }
     students.forEach((student) => {
       if (student.id === course.id) {
           student.courses.push(course)
@@ -75,8 +65,8 @@ const process = (students, courses) => {
 const populate = async () => {
   try {
     const results = await Promise.all([
-      fetch(`./assets/cslf_int_students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}`),
-      fetch(`./assets/cslf_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.terms}`),
+      fetch(`./assets/cslf_int_students.json?dothisfor=${reportconfig.dothisfor}`),
+      fetch(`./assets/cslf_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}`),
     ])
     const finalData = await Promise.all(results.map((result) => result.json()))
 

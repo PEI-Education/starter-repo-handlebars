@@ -1,4 +1,5 @@
 {
+  "parser": "@babel/eslint-parser",
   "rules": {
     "prefer-template": "off",
     "no-var": 1,
