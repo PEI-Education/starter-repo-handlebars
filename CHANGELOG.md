@@ -1,4 +1,6 @@
 # Change Log
+## October 12, 2022
+- CSLF Intermediate report card complete and working on test1
 ## September 6, 2022
 - Rebuilt Webpack config to allow for multi-page app, merged branches
 ## September 4, 2022

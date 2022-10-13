@@ -1,64 +1,64 @@
 [
-    ~[x:GetDoThisForStudents]
-    ~[x:SortSelection;Students:~[displayprefschool:report_card_sort]]
-    ~[RepeatForEach:Students]
-      {
-        ~[tlist_sql;
-          select
-             s.id,
-             s.first_name,
-             s.last_name,
-             s.street,
-             s.city,
-             s.zip, 
-             s.home_phone,
-             s.student_number,
-             s.home_room,
-             s.dob,
-             s.grade_level,
-             sch.school_number,
-             sch.name,
-             sch.schooladdress,
-             sch.schoolcity,
-             sch.schoolzip,
-             sch.schoolphone,
-             sch.schoolfax,
-             sch.principal,
-             schext.schoolurl
-          from students s
-          join u_def_ext_students stuext
-             on stuext.studentsdcid = s.dcid
-          join schools sch
-             on sch.school_number = s.schoolid
-          join u_dyn_schools_1 schext
-             on schext.schoolsdcid = sch.dcid
-          where s.id = ~(curstudid); 
-        ]
-        "id": "~(id)",
-        "firstname": "~(first_name)",
-        "lastname": "~(last_name)",
-        "street": "~(street)",
-        "city": "~(city)",
-        "postalcode": "~(zip)",
-        "phone": "~(home_phone)",
-        "number": "~(student_number)",
-        "homeroom": "~(home_room)",
-        "dob": "~(dob)",
-        "gradelevel": "~(grade_level)",
-        "school": {
-          "id": "~(school_number)",
-          "name": "~(name)",
-          "street": "~(schooladdress)",
-          "city": "~(schoolcity)",
-          "postalcode": "~(schoolzip)", 
-          "phone": "~(schoolphone)",
-          "fax": "~(schoolfax)",
-          "principal": "~(principal)",
-          "url": "~(url)"
-        },
-        [/tlist_sql]
-        "courses": []
-      }
-      [between:Students],
-      [/RepeatForEach:Students] 
-    ]
+  ~[x:GetDoThisForStudents]
+  ~[x:SortSelection;Students:~[displayprefschool:report_card_sort]]
+  ~[RepeatForEach:Students]
+    {
+      ~[tlist_sql;
+        select
+           s.id,
+           s.first_name,
+           s.last_name,
+           s.street,
+           s.city,
+           s.zip, 
+           s.home_phone,
+           s.student_number,
+           s.home_room,
+           s.dob,
+           s.grade_level,
+           sch.school_number,
+           sch.name,
+           sch.schooladdress,
+           sch.schoolcity,
+           sch.schoolzip,
+           sch.schoolphone,
+           sch.schoolfax,
+           sch.principal,
+           schext.schoolurl
+        from students s
+        join u_def_ext_students stuext
+           on stuext.studentsdcid = s.dcid
+        join schools sch
+           on sch.school_number = s.schoolid
+        join u_dyn_schools_1 schext
+           on schext.schoolsdcid = sch.dcid
+        where s.id = ~(curstudid); 
+      ]
+      "id": "~(id;json)",
+      "firstname": "~(first_name;json)",
+      "lastname": "~(last_name;json)",
+      "street": "~(street;json)",
+      "city": "~(city;json)",
+      "postalcode": "~(zip;json)",
+      "phone": "~(home_phone;json)",
+      "number": "~(student_number;json)",
+      "homeroom": "~(home_room;json)",
+      "dob": "~(dob;json)",
+      "gradelevel": "~(grade_level;json)",
+      "school": {
+        "id": "~(school_number;json)",
+        "name": "~(name;json)",
+        "street": "~(schooladdress;json)",
+        "city": "~(schoolcity;json)",
+        "postalcode": "~(schoolzip;json)", 
+        "phone": "~(schoolphone;json)",
+        "fax": "~(schoolfax;json)",
+        "principal": "~(principal;json)",
+        "url": "~(url;json)"
+      },
+      [/tlist_sql]
+      "courses": []
+    }
+    [between:Students],
+    [/RepeatForEach:Students] 
+  ]
