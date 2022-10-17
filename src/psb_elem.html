@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PSB 1-6 Report Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  ~[wc:commonscripts]
+  <script>
+    let reportconfig = {
+      dothisfor: '~[gpv:dothisfor]',
+      storecode: '~(gpv.terms)',
+      attcutoff: '~(gpv.attcutoff)',
+      printDate: '~[date]',
+      yearname: '~(yearname)'
+    } 
+    if ("~(gpv.teachersig)"==="true") {
+        reportconfig.teachersig = "true"
+    }
+    if ("~(gpv.principalsig)"==="true") {
+        reportconfig.principalsig = "true"
+    }
+  </script>
+</head>
+<body>
+  <!-- Loading spinner -->
+  <div id="overlay">
+    <div class="spinner"></div>
+    <br/>
+    Loading...
+  </div>
+  <!-- -->
+  ~[x:insertfile;/admin/pei_report_cards/instruction_template/instuctions.html]
+  <div id="output"></div>
+</body>
+</html>

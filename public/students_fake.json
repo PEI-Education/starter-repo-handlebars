@@ -36,6 +36,45 @@
       "r4membership": "50",
       "totalmembership": "180"
     },
+    "absences": {
+      "sep": "4",
+      "oct": "3",
+      "nov": "2",
+      "dec": "1",
+      "jan": "10",
+      "feb": "9",
+      "mar": "8",
+      "apr": "7",
+      "may": "6",
+      "jun": "5",
+      "tot": "55"
+    },
+    "lates": {
+      "sep": "2",
+      "oct": "1",
+      "nov": "2",
+      "dec": "1",
+      "jan": "2",
+      "feb": "1",
+      "mar": "2",
+      "apr": "1",
+      "may": "2",
+      "jun": "1",
+      "tot": "15"
+    },
+    "earlydep": {
+      "sep": "1",
+      "oct": "2",
+      "nov": "1",
+      "dec": "2",
+      "jan": "1",
+      "feb": "2",
+      "mar": "1",
+      "apr": "2",
+      "may": "1",
+      "jun": "2",
+      "tot": "15"
+    },
     "courses": []
   },
   {
@@ -68,6 +107,45 @@
       "r4membership": "50",
       "totalmembership": "179"
     },
+    "absences": {
+      "sep": "4",
+      "oct": "3",
+      "nov": "2",
+      "dec": "1",
+      "jan": "10",
+      "feb": "9",
+      "mar": "8",
+      "apr": "7",
+      "may": "6",
+      "jun": "5",
+      "tot": "55"
+    },
+    "lates": {
+      "sep": "2",
+      "oct": "1",
+      "nov": "2",
+      "dec": "1",
+      "jan": "2",
+      "feb": "1",
+      "mar": "2",
+      "apr": "1",
+      "may": "2",
+      "jun": "1",
+      "tot": "15"
+    },
+    "earlydep": {
+      "sep": "1",
+      "oct": "2",
+      "nov": "1",
+      "dec": "2",
+      "jan": "1",
+      "feb": "2",
+      "mar": "1",
+      "apr": "2",
+      "may": "1",
+      "jun": "2",
+      "tot": "15"
+    },
     "courses": []
   },
   {
@@ -98,6 +176,42 @@
       "r3membership": "40",
       "r4membership": "50",
       "totalmembership": "180"
+    },
+    "absences": {
+      "sep": "4",
+      "oct": "3",
+      "nov": "2",
+      "dec": "1",
+      "jan": "10",
+      "feb": "9",
+      "mar": "8",
+      "apr": "7",
+      "may": "6",
+      "jun": "5"
+    },
+    "lates": {
+      "sep": "2",
+      "oct": "1",
+      "nov": "2",
+      "dec": "1",
+      "jan": "2",
+      "feb": "1",
+      "mar": "2",
+      "apr": "1",
+      "may": "2",
+      "jun": "1"
+    },
+    "earlydep": {
+      "sep": "1",
+      "oct": "2",
+      "nov": "1",
+      "dec": "2",
+      "jan": "1",
+      "feb": "2",
+      "mar": "1",
+      "apr": "2",
+      "may": "1",
+      "jun": "2"
     },
     "courses": []
   },
@@ -160,6 +274,45 @@
       "r3membership": "40",
       "r4membership": "50",
       "totalmembership": "180"
+    },
+    "absences": {
+      "sep": "4",
+      "oct": "3",
+      "nov": "2",
+      "dec": "1",
+      "jan": "10",
+      "feb": "9",
+      "mar": "8",
+      "apr": "7",
+      "may": "6",
+      "jun": "5",
+      "tot": "55"
+    },
+    "lates": {
+      "sep": "2",
+      "oct": "1",
+      "nov": "2",
+      "dec": "1",
+      "jan": "2",
+      "feb": "1",
+      "mar": "2",
+      "apr": "1",
+      "may": "2",
+      "jun": "1",
+      "tot": "15"
+    },
+    "earlydep": {
+      "sep": "1",
+      "oct": "2",
+      "nov": "1",
+      "dec": "2",
+      "jan": "1",
+      "feb": "2",
+      "mar": "1",
+      "apr": "2",
+      "may": "1",
+      "jun": "2",
+      "tot": "15"
     },
     "courses": []
   }

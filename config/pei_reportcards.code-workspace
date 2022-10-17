@@ -6,5 +6,8 @@
 	{
 		"path": "../../../Desktop/RC2_plugin"
 	}
-]
+],
+"settings": {
+	"liveServer.settings.multiRootWorkspaceName": "pei_reportcards"
+}
 }

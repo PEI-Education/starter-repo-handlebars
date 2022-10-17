@@ -2,7 +2,7 @@
       <div class="page">
         <header>
           <div class="psb">
-            <img src="./images/psb.jpg" class="psb-logo">
+            <img src="images/psb.jpg" class="psb-logo">
             <div class="psb-text"><strong>Public Schools Branch</strong></div>
           </div>
           <div class="report-card-head">Report Card</div>
@@ -75,48 +75,48 @@
         </table>
         <!-- ELA -->
         <table class="wide">
-        <colgroup>
-          <col style="width: 2in;" />
-          <col style="width: 0.667in;" />
-          <col style="width: 0.667in;" />
-          <col style="width: 0.668in;" />
-          <col style="width: 4in;" />
-        </colgroup>
-        <tr>
-          <td class="row1 leftFixed">
-            <strong>Language Arts</strong><br />
-            English<br />
-            <span class="course-details">
-              Teacher: <span>{{ela.teacher}}</span><br />
-              Program: <span>{{ela.program}}</span><br />
-              {{#if ela.adaptation}}
-                <span>Adaptation<br /></span>
-              {{/if}}
-              {{#if ela.iep}}
-                <span>IEP<br /></span>
-              {{/if}}
-              {{#if ela.eal}}
-                <span>EAL<br /></span>
-              {{/if}}
-            </span>
-          </td>
-          <td class="row1 center">Report 1</td>
-          <td class="row1 center">Report 2</td>
-          <td class="row1 center">End of the Year</td>
-          <td rowspan="3" class="course-comment"><strong>Progress and Next Steps:</strong> {{ela.comment}}</td>
-        </tr>
-        <tr>
-          <td>Curriculum Outcomes</td>
-          <td class="center">{{ela.i1grade}}</td>
-          <td class="center">{{ela.i2grade}}</td>
-          <td class="center">{{ela.i3grade}}</td>
-        </tr>
-        <tr>
-          <td>Work Habits/Learning Skills</td>
-          <td class="center">{{ela.r1effort}}</td>
-          <td class="center">{{ela.r2effort}}</td>
-          <td class="center">{{ela.r3effort}}</td>
-        </tr>
+          <colgroup>
+            <col style="width: 2in;" />
+            <col style="width: 0.667in;" />
+            <col style="width: 0.667in;" />
+            <col style="width: 0.668in;" />
+            <col style="width: 4in;" />
+          </colgroup>
+          <tr>
+            <td class="row1 leftFixed">
+              <strong>Language Arts</strong><br />
+              English<br />
+              <span class="course-details">
+                Teacher: {{ela.teacher}}<br />
+                Program: {{ela.program}}<br />
+                {{#if ela.adaptation}}
+                  Adaptation<br />
+                {{/if}}
+                {{#if ela.iep}}
+                  IEP<br />
+                {{/if}}
+                {{#if ela.eal}}
+                  EAL<br />
+                {{/if}}
+              </span>
+            </td>
+            <td class="row1 center">Report 1</td>
+            <td class="row1 center">Report 2</td>
+            <td class="row1 center">End of the Year</td>
+            <td rowspan="3" class="course-comment"><strong>Progress and Next Steps:</strong> {{ela.comment}}</td>
+          </tr>
+          <tr>
+            <td>Curriculum Outcomes</td>
+            <td class="center">{{ela.i1grade}}</td>
+            <td class="center">{{ela.i2grade}}</td>
+            <td class="center">{{ela.i3grade}}</td>
+          </tr>
+          <tr>
+            <td>Work Habits/Learning Skills</td>
+            <td class="center">{{ela.r1effort}}</td>
+            <td class="center">{{ela.r2effort}}</td>
+            <td class="center">{{ela.r3effort}}</td>
+          </tr>
         </table>
         <!-- FLA -->
         {{#if fla}}
@@ -133,16 +133,16 @@
               <strong>Language Arts</strong><br />
               French<br />
               <span class="course-details">
-                Teacher: <span>{{fla.teacher}}</span><br />
-                Program: <span>{{fla.program}}</span><br />
+                Teacher: {{fla.teacher}}<br />
+                Program: {{fla.program}}<br />
                 {{#if fla.adaptation}}
-                  <span>Adaptation<br /></span>
+                  Adaptation<br />
                 {{/if}}
                 {{#if fla.iep}}
-                  <span>IEP<br /></span>
+                  IEP<br />
                 {{/if}}
                 {{#if fla.eal}}
-                  <span>EAL<br /></span>
+                  EAL<br />
                 {{/if}}
               </span>
             </td>
@@ -179,16 +179,16 @@
           <td class="row1 leftFixed">
             <strong>Mathematics</strong><br />
             <span class="course-details">
-              Teacher: <span>{{mat.teacher}}</span><br />
-              Program: <span>{{mat.program}}</span><br />
+              Teacher: {{mat.teacher}}<br />
+              Program: {{mat.program}}<br />
               {{#if mat.adaptation}}
-                <span>Adaptation<br /></span>
+                Adaptation<br />
               {{/if}}
               {{#if mat.iep}}
-                <span>IEP<br /></span>
+                IEP<br />
               {{/if}}
               {{#if mat.eal}}
-                <span>EAL<br /></span>
+                EAL<br />
               {{/if}}
             </span>
           </td>
@@ -230,7 +230,7 @@
                       </colgroup>
                       <tr>
                         <td class="row1 titleRow">
-                          <strong>{{course_name}}</strong><br />
+                          <strong>{{courseName}}</strong><br />
                           <span class="course-details">
                             Teacher: {{teacher}}<br />
                             Program: {{program}}<br />
