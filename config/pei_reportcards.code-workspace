@@ -6,9 +6,7 @@
 		{
 			"path": "../../../Desktop/RC2_plugin"
 		},
-		{
-			"path": "../../../Sync/Handlebars-Helpers"
-		}
+
 	],
 "settings": {
 	"liveServer.settings.multiRootWorkspaceName": "pei_reportcards"
