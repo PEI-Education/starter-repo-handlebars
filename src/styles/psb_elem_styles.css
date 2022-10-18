@@ -3,7 +3,7 @@
    margin: 0;
    padding: 0;
    font-family: 'Roboto', Arial, sans-serif;
-   line-height: 1.2;
+   line-height: 1.3;
 }
 
 .page {
@@ -12,6 +12,11 @@
    width: 8in;
    margin: 0.25in;
    position: relative;
+}
+
+.red {
+   font-size: 10px;
+   color: red;
 }
 
 @media print {
@@ -25,228 +30,195 @@
    }
 }
 
-.noborder td,
-.noborder th {
-  border: none;
-  padding: 0;
-}
-   
-.border td,
-.border th {
-  border: 1px solid black;
-  padding: 3px;
-}
-.red {
-   font-size: 10px;
-   color: red;
-}
-
-header {
- height: 120px;
- width: 8in;
- position: relative;
-}
-
-h1  {
- font-size: 24px;
- margin-top: 20px;
-}
-
-.dept-logo {
- display: inline-block;
- height: 120px;
- vertical-align: top;
-}
-
-/* for 7-9 report card header */
-.header-int {
- height: 90px;
-}
-
-.psb {
-   text-align: center;
-   vertical-align: middle;
-}
-
-.psb-logo {
-   display: inline-block;
-   height: 40px;
-}
-
-.psb-text {
-   display: inline-block;
-   height: 40px;
-   vertical-align: middle;
-}
-
-.report-card-head {
-   font-weight: bold;
-   font-size: 24px;
-   text-align: center;
-   display: block;
-}
-
-/* end 7-9 report card head */
-.logo-offset {
- display: inline-block;
- height: 120px;
- padding: 20px 0 20px 40px;
- vertical-align: top;
-
-}
-
-.sh1 {
- font-size: 16px;
-}
-.sh2 {
- font-size: 14px;
-}
-
-.wide {
- width: 8in;
-}
-
 table {
- border-collapse: collapse;
- table-layout: fixed;
+   border-collapse: collapse;
+   table-layout: fixed;
 }
 
 td, th {
- border: 1px solid black;
- margin: 0;
- padding: 3px;
+   border: 1px solid black;
+   margin: 0;
+   padding: 0.05in;
 }
 
-.student-info {
- font-size: 11px;
- border: none;
+.noborder td,
+.noborder th {
+   border: none;
+   padding: 0;
+   margin: 0;
 }
 
-.student-info td {
- vertical-align: top;
- border: none;
+.border td,
+.border th {
+   border: 1px solid black;
+   padding: 0.05in;
 }
 
-.right {
- text-align: right;
+
+
+header {
+   height: 120px;
+   width: 8in;
+   position: relative;
 }
 
-.center {
- text-align: center;
+h1  {
+   font-size: 24px;
+   margin-top: 20px;
 }
 
-.left {
- text-align: left;
+.dept-logo {
+   display: inline-block;
+   height: 120px;
+   vertical-align: top;
 }
 
-.row1 {
- background: #bbb
+.logo-offset {
+   display: inline-block;
+   height: 120px;
+   padding: 20px 0 20px 40px;
+   vertical-align: top;
 }
 
-.row2 {
- background: #ddd;
+.sh1 {
+   font-size: 16px;
 }
 
-.leftFixed {
- width: 170px;
+.sh2 {
+   font-size: 14px;
 }
 
-.comment-big {
- min-height: 1in;
- vertical-align: top;
- overflow-wrap: break-word;
-}
-
-.attendance {
- font-size: 9px;
-}
-
-.attendance h3 {
- margin-top: 0.15in;
-}
-.attendance td, .attendance th {
- width: 0.68in;
-}
-
-.attendance table {
- margin-bottom: 0.15in;
-}
-
-h3 {
- font-size: 14px;
-}
-
-.course {
- font-size: 11px;
- margin: 5px 0 5px 0;
-}
-
-.course-comment {
- width: 4in;
- vertical-align: top;
- overflow-wrap: break-word;
-}
-
-.course-details {
- font-size: 8px;
+.wide {
+   width: 8in;
+   margin-top: 0.1in;
+   margin-bottom: 0.1in; 
 }
 
 .narrow {
- width: 3.9in;
+   width: 3.9in;
+   margin-top: 0.05in;
+   margin-bottom: 0.05in;
+}
+
+.student-info {
+   font-size: 11px;
+   border: none;
+}
+
+.student-info td {
+   vertical-align: top;
+   border: none;
+}
+
+.right {
+   text-align: right;
+}
+
+.center {
+   text-align: center;
+}
+
+.left {
+   text-align: left;
+}
+
+.row1 {
+   background: #bbb
+}
+
+.row2 {
+   background: #ddd;
+}
+
+.leftFixed {
+   width: 170px;
+}
+
+.comment-big {
+   min-height: 1in;
+   vertical-align: top;
+   overflow-wrap: break-word;
+}
+
+.attendance {
+   font-size: 9px;
+}
+
+
+.attendance td, .attendance th {
+   width: 0.68in;
+}
+
+h3 {
+   font-size: 14px;
+}
+
+.course {
+   font-size: 11px;
+}
+
+.course-comment {
+   width: 4in;
+   vertical-align: top;
+   overflow-wrap: break-word;
+}
+
+.course-details {
+   font-size: 8px;
 }
 
 .signature {
- width: 8in;
- font-size: 11px;
- text-align: left;
- margin: 30px 0;
+   width: 8in;
+   font-size: 11px;
+   text-align: left;
+   margin: 30px 0;
 }
 
 .sig-line {
- display: inline-block;
- width: 4in;
- border-bottom: 1px solid;
- margin-left: 30px;
+   display: inline-block;
+   width: 4in;
+   border-bottom: 1px solid;
+   margin-left: 30px;
 }
 
 h4 {
- font-size: 14px;
- text-decoration: underline;
- margin-bottom: 5px;
+   font-size: 14px;
+   text-decoration: underline;
+   margin-bottom: 5px;
 }
 
 .definitions p {
- margin-bottom: 5px;
+   margin-bottom: 5px;
 }
 
 .footer {
- position: absolute;
- bottom: 0;
+   position: absolute;
+   bottom: 0;
 }
 
 .footer3 {
- display: grid;
- grid-template-columns: 1fr 1fr 1fr;
- width: 7.5in;
- font-size: 10px;
- margin: 5px;
- font-weight: bold
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   width: 8in;
+   font-size: 10px;
+   margin: 5px 0;
+   font-weight: bold
 }
-
+ n
 .footer3-left {
- grid-column-start: 1;
- grid-column-end: 2;
- text-align: left;
+   grid-column-start: 1;
+   grid-column-end: 2;
+   text-align: left;
 }
 
 .footer3-center {
- grid-column-start: 2;
- grid-column-end: 3;
- text-align: center;
+   grid-column-start: 2;
+   grid-column-end: 3;
+   text-align: center;
 }
 
 .footer3-right {
- grid-column-start: 3;
- grid-column-end: 4;
- text-align: right;
+   grid-column-start: 3;
+   grid-column-end: 4;
+   text-align: right;
 }

@@ -1,0 +1,193 @@
+[
+   ~[x:GetDoThisForStudents]
+   ~[x:SortSelection;Students:~[displayprefschool:report_card_sort]]
+   ~[RepeatForEach:Students]
+     {
+       ~[tlist_sql;
+         select
+            s.id,
+            s.first_name,
+            s.last_name,
+            s.student_number,
+            s.home_room,
+            s.grade_level,
+            case 
+               when stuext.pei_frenchprograms = 'E' then 'French Immersion'
+               when stuext.pei_frenchprograms = 'M' then 'French Immersion'
+               when stuext.pei_frenchprograms = 'L' then 'French Immersion'
+               when stuext.pei_frenchprograms = 'B' then 'French Immersion'
+               else 'English' end as progam,
+            to_char(1990+substr(to_char(~(curtermid)),1,2)) || '-' || to_char(1991+substr(to_char(~(curtermid)),1,2)) AS yearname,
+            sch.name,
+            sch.principal,
+            schext.schoolurl
+         from students s
+         join u_def_ext_students stuext
+            on stuext.studentsdcid = s.dcid
+         join schools sch
+            on sch.school_number = s.schoolid
+         join u_dyn_schools_1 schext
+            on schext.schoolsdcid = sch.dcid
+         where s.id = ~(curstudid); 
+       ]
+       "id": "~(id)",
+       "firstname": "~(first_name)",
+       "lastname": "~(last_name)",
+       "number": "~(student_number)",
+       "homeroom": "~(home_room)",
+       "gradelevel": "~(grade_level)",
+       "program": "~(program)",
+       "yearname": "~(yearname)",
+       "school": {
+         "name": "~(name)",
+         "principal": "~(principal)",
+       },
+       [/tlist_sql]
+      ~[tlist_sql;
+      SELECT  
+      s.id, 
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) SepAbs, 
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) OctAbs, 
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) NovAbs, 
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) DecAbs, 
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) JanAbs,  
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) FebAbs, 
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) MarAbs, 
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) AprAbs, 
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) MayAbs, 
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) JunAbs,
+      sum(CASE WHEN TRUNC(cal.date_value) between (t.firstday+1) and least(t.lastday,to_date('10/15/2022','mm/dd/yyyy')) AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) TotalAbs,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('L','LF') THEN 1 else 0 END) SepLates,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('L','LF') THEN 1 else 0 END) OctLates,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('L','LF') THEN 1 else 0 END) NovLates,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('L','LF') THEN 1 else 0 END) DecLates,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('L','LF') THEN 1 else 0 END) JanLates,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('L','LF') THEN 1 else 0 END) FebLates,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('L','LF') THEN 1 else 0 END) MarLates,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('L','LF') THEN 1 else 0 END) AprLates,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('L','LF') THEN 1 else 0 END) MayLates,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('L','LF') THEN 1 else 0 END) JunLates,
+      sum(CASE WHEN TRUNC(cal.date_value) between (t.firstday+1) and least(t.lastday,to_date('10/15/2022','mm/dd/yyyy')) AND att.att_code IN ('L','LF') THEN 1 else 0 END) TotalLates,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('D','DF') THEN 1 else 0 END) SepED,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('D','DF') THEN 1 else 0 END) OctED,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('D','DF') THEN 1 else 0 END) NovED,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('D','DF') THEN 1 else 0 END) DecED,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('D','DF') THEN 1 else 0 END) JanED,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('D','DF') THEN 1 else 0 END) FebED,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('D','DF') THEN 1 else 0 END) MarED,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('D','DF') THEN 1 else 0 END) AprED,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('D','DF') THEN 1 else 0 END) MayED,
+      sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('D','DF') THEN 1 else 0 END) JunED,
+      sum(CASE WHEN TRUNC(cal.date_value) between (t.firstday+1) and least(t.lastday,to_date('10/15/2022','mm/dd/yyyy')) AND att.att_code IN ('D','DF') THEN 1 else 0 END) TotalED
+  from students s
+  left join pssis_attendance_meeting att 
+      on att.studentid = s.id 
+  join calendar_day cal
+      on att.Calendar_DayID = cal.id
+  join cc
+      on abs(att.ccid) = cc.id
+  join terms t
+      on abs(cc.termid) = t.id and cc.schoolid = t.schoolid
+  where
+      t.yearid = ~(gpv.yearid)
+      and t.isyearrec = 1
+      and cal.date_value between (t.firstday+1) and least(t.lastday,to_date(~(gpv.attcutoff),'mm/dd/yyyy'))
+      and s.id=~(curstudid)
+  group by s.id
+  order by 1;
+         ]
+        "absences": {
+          "sep": "~(SepAbs)",
+          "oct": "~(OctAbs)",
+          "nov": "~(NovAbs)",
+          "dec": "~(DecAbs)",
+          "jan": "~(JanAbs)",
+          "feb": "~(FebAbs)",
+          "mar": "~(MarAbs)",
+          "apr": "~(AprAbs)",
+          "may": "~(MayAbs)",
+          "jun": "~(JunAbs)",
+          "tot": "~(TotalAbs)"
+        },
+        "lates": {
+         "sep": "~(SepLates)",
+         "oct": "~(OctLates)",
+         "nov": "~(NovLates)",
+         "dec": "~(DecLates)",
+         "jan": "~(JanLates)",
+         "feb": "~(FebLates)",
+         "mar": "~(MarLates)",
+         "apr": "~(AprLates)",
+         "may": "~(MayLates)",
+         "jun": "~(JunLates)",
+         "tot": "~(TotalLates)"
+        },
+        "earlydep": {
+         "sep": "~(SepED)",
+         "oct": "~(OctED)",
+         "nov": "~(NovED)",
+         "dec": "~(DecED)",
+         "jan": "~(JanED)",
+         "feb": "~(FebED)",
+         "mar": "~(MarED)",
+         "apr": "~(AprED)",
+         "may": "~(MayED)",
+         "jun": "~(JunED)",
+         "tot": "~(TotalED)"
+        },
+        [/tlist_sql]
+     
+      },
+      "courses": [
+        ~[tlist_sql;
+            with currentgrades as (select   
+            pfg.finalgradename storecode,
+            cc.course_number cn,
+            co.course_name,
+            t.lastfirst Teacher_Name,
+            pfg.grade
+        from students s
+        join pgfinalgrades pfg
+            on pfg.studentid = s.id
+        join cc
+            on cc.sectionid = pfg.sectionid
+            and cc.studentid = s.id
+            and cc.schoolid = s.schoolid
+            and cc.studentid = 556
+        join courses co
+            on co.course_number = cc.course_number
+        join sections sec
+            on sec.id = pfg.sectionid
+        join teachers t
+            on t.id = cc.teacherid
+            and t.schoolid = cc.schoolid
+        where   
+        substr(cc.termid,0,2) = ~(gpv.yearid)        
+          and not (substr(cc.course_number,2,3) in ('LAN','MAT') OR substr(cc.course_number,2,4) in ('FREF','FREG') OR substr(co.course_number,1,2) = 'HR')
+        and pfg.finalgradename IN ('R1','R2','R3')
+        order by 2
+        )
+        
+        select *
+        from currentgrades
+        PIVOT (
+        MAX ( grade )
+        FOR storecode
+        IN ( 'R1' R1, 'R2' R2, 'R3' R3))
+        order by cn;
+      ]
+        {
+          "course_number": "~(cn)",
+          "course_name": "~(course_name)",
+          "tescher_nane": "~(teacher_name)",
+          "r1": "~(r1)",
+          "r2": "~(r2)",
+          "r3": "~(r3)"
+        },
+      [/tlist_sql]
+        {}
+      ]
+     }
+     [between:Students],
+     [/RepeatForEach:Students] 
+   ]

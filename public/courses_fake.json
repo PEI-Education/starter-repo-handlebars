@@ -21,7 +21,27 @@
       "r3effort": "C",
       "r4effort": "C"
   },    
-  
+  {
+    "id": "4230",
+    "course_number": "HRAM",
+    "course_name": "Homeroom",
+    "teacher": "Coyle, Pat",
+    "absences":"5",
+    "lates":"4",
+    "comment": "During third term the outcomes covered were: add and subtract fractions and mixed numbers, solving equations, finding areas of 2d shapes and calculating decimal numbers. It was a pleasure having Caleb in the class.  I am happy with Caleb's level of achievement this year.  He is such a polite young man. Moving forward, he could work on his organization and staying focused in class.  If you have any questions, please email me at: pccoyle@edu.pe.ca.During third term the outcomes covered were: add and subtract fractions and mixed numbers, solving equations, finding areas of 2d shapes and calculating decimal numbers. It was a pleasure having Caleb in the class.  I am happy with Caleb's level of achievement this year.  He is such a polite young man. Moving forward, he could work on his organization and staying focused in class.  If you have any questions, please email me at: pccoyle@edu.pe.ca.During third term the outcomes covered were: add and subtract fractions and mixed numbers, solving equations, finding areas of 2d shapes and calcula",
+    "i1grade": "55",
+    "i2grade": "56",
+    "i3grade": "80.75",
+    "i4grade": "80.75",
+    "adaptation": "0",
+    "program": "Academic Learning Plan",
+    "iep": "1",
+    "eal": "0",
+    "r1effort": "C",
+    "r2effort": "M",
+    "r3effort": "C",
+    "r4effort": "C"
+},  
   {
       "id": "4230",
       "course_number": "7SOCF",

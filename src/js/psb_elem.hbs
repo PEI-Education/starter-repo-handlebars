@@ -8,7 +8,7 @@
         <h1>Student Learning Report</h1>
       </div>
     </header>
-    <table id="student_info-~(id)" class="student-info wide">
+    <table class="student-info wide">
       <tr>
         <td>
           School: {{ school.name }}<br />
@@ -19,7 +19,7 @@
         </td>
         <td class="right">
           Principal: {{ school.principal }} <br />
-          School Year: {{ ../reportconfig.yearname }}<br />
+          School Year: {{ yearname }}<br />
           Program: {{ program }} <br />
           Homeroom Teacher(s): {{ hr.teacher }} <br />
         </td>
@@ -45,7 +45,7 @@
           <th>February</th>
           <th>March</th>
           <th>April</th>
-          <th>May</th>444
+          <th>May</th>
           <th>June</th>
           <th>Total</th>
         </tr>
@@ -206,27 +206,27 @@
       </tr>
       <tr>
         <td>Number Sense</td>
-        <td class="center">{{ math.nse1 }}</td>
-        <td class="center">{{ math.nse2 }}</td>
-        <td class="center">{{ math.nse3 }}</td>
+        <td class="center">{{ mat.nse1 }}</td>
+        <td class="center">{{ mat.nse2 }}</td>
+        <td class="center">{{ mat.nse3 }}</td>
       </tr>
       <tr>
         <td>Patterns and Relations</td>
-        <td class="center">{{ math.pre1 }}</td>
-        <td class="center">{{ math.pre2 }}</td>
-        <td class="center">{{ math.pre3 }}</td>
+        <td class="center">{{ mat.pre1 }}</td>
+        <td class="center">{{ mat.pre2 }}</td>
+        <td class="center">{{ mat.pre3 }}</td>
       </tr>
       <tr>
         <td>Shape and Space</td>
-        <td class="center">{{ math.sse1 }}</td>
-        <td class="center">{{ math.sse2 }}</td>
-        <td class="center">{{ math.sse3 }}</td>
+        <td class="center">{{ mat.sse1 }}</td>
+        <td class="center">{{ mat.sse2 }}</td>
+        <td class="center">{{ mat.sse3 }}</td>
       </tr>
       <tr>
         <td>Statistics and Probability</td>
-        <td class="center">{{ math.spe1 }}</td>
-        <td class="center">{{ math.spe2 }}</td>
-        <td class="center">{{ math.spe3 }}</td>
+        <td class="center">{{ mat.spe1 }}</td>
+        <td class="center">{{ mat.spe2 }}</td>
+        <td class="center">{{ mat.spe3 }}</td>
       </tr>
     </table>
     <div class="footer">
@@ -318,10 +318,10 @@
             {{/with}}
           {{/if}}
         </td>
-      </tr>
-      <tr>
-        <td>
-          {{#if courses.[2]}}
+      </tr>          
+      {{#if courses.[2]}}
+        <tr>
+          <td>
             {{#with courses.[2]}}
               <table class="course narrow border">
                 <colgroup>
@@ -351,7 +351,6 @@
                 </tr>
               </table>
             {{/with}}
-          {{/if}}
         </td>
         <td>&nbsp;</td>
         <td>
@@ -388,9 +387,10 @@
           {{/if}}
         </td>
       </tr>
+    {{/if}}
+    {{#if courses.[4]}}
       <tr>
         <td>
-          {{#if courses.[4]}}
             {{#with courses.[4]}}
               <table class="course narrow border">
                 <colgroup>
@@ -420,7 +420,6 @@
                 </tr>
               </table>
             {{/with}}
-          {{/if}}
         </td>
         <td>&nbsp;</td>
         <td>
@@ -457,9 +456,10 @@
           {{/if}}
         </td>
       </tr>
+{{/if}}
+{{#if courses.[6]}}
       <tr>
         <td>
-          {{#if courses.[6]}}
             {{#with courses.[6]}}
               <table class="course narrow border">
                 <colgroup>
@@ -489,7 +489,6 @@
                 </tr>
               </table>
             {{/with}}
-          {{/if}}
         </td>
         <td>&nbsp;</td>
         <td>
@@ -525,7 +524,8 @@
             {{/with}}
           {{/if}}
         </td>
-      </tr>
+      </tr> 
+      {{/if}}   
     </table>
     <div class="wide course">
       <table class="wide">
