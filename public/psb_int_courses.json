@@ -201,14 +201,19 @@
         "course_name": "~(cname;json)",
         "teacher": "~(teacher)",
         "comment": "~(comment;json)",
-        "e1": "~(i1;json)",
-        "e2": "~(i2;json)",
-        "e3": "~(i3;json)",
+        "i1grade": "~(i1;json)",
+        "i2grade": "~(i2;json)",
+        "i3grade": "~(i3;json)",
+        "i4grade": "~(i4;json)",
         "adaptation": "~(adaptation;json)",
         "program": "~(program;json)",
         "iep": "~(iep;json)",
-        "eal": "~(eal;json)"  
-    },    
+        "eal": "~(eal;json)",
+        "r1effort": "~(effort1;json)",
+        "r2effort": "~(effort2;json)",
+        "r3effort": "~(effort3;json)",
+        "r4effort": "~(effort4;json)"
+    },     
     [/tlist_sql]
     {}
     ]
