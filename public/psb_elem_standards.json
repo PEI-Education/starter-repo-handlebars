@@ -1,53 +1,61 @@
 [
    ~[tlist_sql;
-   with outcomeGrades as (select
+     select
       s.id,
       sec.course_number cn,
-      case 
-         when substr(sec.course_number,2,3) = 'MAT' then 'MAT'
-         when substr(sec.course_number,2,3) = 'LAN' then 'ELA'
-         when substr(sec.course_number,2,3) = 'FRE' then 'FLA'
-         else 'HR' end as subject,
-      sgs.storecode storecode,
-      sgs.standardgrade standardgrade,
       st.name StandardName,
-      st.identifier
+      lower(st.identifier) ident,
+      lower(sgs.storecode) store,
+      sgs.standardgrade
    from students s
    join standardgradesection sgs
       on sgs.studentsdcid = s.dcid
    left join sections sec
       on sec.dcid = sgs.sectionsdcid
-   left join teachers t
-      on t.id = sec.teacher
+   join standard st
+      on st.standardid = sgs.standardid
+    Where
+    ~[if.~(gpv.dothisfor)=selected] s.dcid in (select dcid from ~[temp.table.current.selection:students])[/if]
+    ~[if.~(gpv.dothisfor)=enrolled] s.Enroll_Status = 0[/if]
+    ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
+    ~[if.is.a.school] and sec.schoolid = ~(curschoolid) [/if.is.a.school]      
+    and substr(sec.course_number,1,2) = 'HR'
+   and sec.schoolid = s.schoolid   --include only grades from current school
+   and sgs.storecode in ('R1','R2','R3')
+   and sgs.yearid = ~(gpv.yearid)
+   UNION ALL
+   select
+      s.id,
+      sec.course_number cn,
+      st.name StandardName,
+      lower(substr(st.identifier,6)) ident,
+      lower(sgs.storecode) store,
+      sgs.standardgrade
+   from students s
+   join standardgradesection sgs
+      on sgs.studentsdcid = s.dcid
+   left join sections sec
+      on sec.dcid = sgs.sectionsdcid
    join standard st
       on st.standardid = sgs.standardid
    where
-   ~[if.~(gpv.dothisfor)=selected] s.dcid in (select dcid from ~[temp.table.current.selection:students])[/if]
-   ~[if.~(gpv.dothisfor)=enrolled] s.Enroll_Status = 0[/if]
-   ~[if.~(gpv.dothisfor;num4schoolid = ~(curschoolid) [/if.is.a.school]
-   (substr(sec.course_number,2,3) in ('LAN','MAT') OR substr(sec.course_number,2,4) in ('FREF','FREG') OR substr(sec.course_number,1,2) = 'HR')
-   and sgs.gradelevel > 0  
+    ~[if.~(gpv.dothisfor)=selected] s.dcid in (select dcid from ~[temp.table.current.selection:students])[/if]
+    ~[if.~(gpv.dothisfor)=enrolled] s.Enroll_Status = 0[/if]
+    ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
+    ~[if.is.a.school] and sec.schoolid = ~(curschoolid) [/if.is.a.school]  
+    and (substr(sec.course_number,2,3) in ('LAN','MAT') OR substr(sec.course_number,2,4) in ('FREF','FREG'))
    and sec.schoolid = s.schoolid   --include only grades from current school
    and sgs.storecode in ('R1','R2','R3')
-   and sgs.yearid = ~(gpv.yearid))
-   
-   select *
-   from outcomeGrades
-   PIVOT (
-   MAX ( standardgrade )
-   FOR storecode
-   IN ( 'R1' R1, 'R2' R2, 'R3' R3))
-   order by id;
+   and sgs.yearid = ~(gpv.yearid)
+   order by 1; 
    ]
       {
-         "id": "~(id)",
-         "cn": "~(cn)",
-         "subject": "~(subject)",
-         "standardname": "~(standardname)",
-         "identifier": "~(identifier)",
-         "e1": "~(r1)",
-         "e2": "~(r2)",
-         "e3": "~(r3)"
+         "id": "~(id;json)",
+         "cn": "~(cn;json;json)",
+         "standardname": "~(standardname;json)",
+         "identifier": "~(ident;json)",
+         "storecode": "~(sc;json)",
+         "grade": "~(grade;json)"
       },
    [/tlist_sql]
    {}

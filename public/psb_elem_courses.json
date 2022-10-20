@@ -25,34 +25,39 @@
             ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
             ~[if.is.a.school] and cc.schoolid = ~(curschoolid) [/if.is.a.school]
             and pfg.finalgradename = '~(gpv.storecode)'
-            and cc.termid = ~(gpv.yearid),
+            and cc.termid = '~(gpv.yearid)00'
+        order by 1),
         termGrades as (select
             s.id,
-            pfg.course_number,
-            pfg.finalgradename
-            pfg.grade
-        from students s
-        join pgfinalgrades pfg
-            on pfg.studentid = s.id
-        where 
+                sec.course_number,
+                pfg.finalgradename,
+                pfg.grade
+            from students s
+            join pgfinalgrades pfg
+                on pfg.studentid = s.id
+            join sections sec
+                on sec.id = pfg.sectionid
+            where 
             ~[if.~(gpv.dothisfor)=selected] s.dcid in (select dcid from ~[temp.table.current.selection:students])[/if]
             ~[if.~(gpv.dothisfor)=enrolled] s.Enroll_Status = 0[/if]
             ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
-            ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.school]
-            and pfg.termid = ~(curtermid)),
+            ~[if.is.a.school] and sec.schoolid = ~(curschoolid) [/if.is.a.school]
+            and sec.termid = '~(gpv.yearid)00'
+            order by 1),
+        
         gradesPivot as (select *
             from termGrades
             PIVOT (
             MAX ( grade )
-            FOR storecode
+            FOR finalgradename
             IN ( 'R1' R1, 'R2' R2, 'R3' R3))
             order by id, course_number)
             
         select
-            ct.id,
+            gp.id,
             ct.course_number,
             ct.course_name,
-            ct.teacher_name,
+            ct.lastfirst,
             ct.comment_value,
             gp.r1,
             gp.r2,
@@ -83,13 +88,13 @@
                 WHEN substr(ct.course_number,2,4) = 'PHEA' then rpt.e_ped_program
                 WHEN substr(ct.course_number,2,3) = 'SCI' then rpt.e_sci_program
                 WHEN substr(ct.course_number,2,3) = 'SOC' then rpt.e_soc_program
-               WHEN substr(ct.course_numbet,2,3) = 'CIT' then rpt.e_cit_program
-               WHEN substr(ct.course_number,2,3) = 'INT' then rpt.e_int_program
-               WHEN substr(ct.coruse_number,2,3) = 'HEA' then rpt.e_hea_program
+                WHEN substr(ct.course_number,2,3) = 'CIT' then rpt.e_cit_program
+                WHEN substr(ct.course_number,2,3) = 'INT' then rpt.e_int_program
+                WHEN substr(ct.course_number,2,3) = 'HEA' then rpt.e_hea_program
             else
                 'Regular'
             end as program,
-            case
+             case
                 WHEN substr(ct.course_number,2,3) = 'LAN' then rpt.e_ela_iep
                 WHEN substr(ct.course_number,2,4) = 'FREF' then rpt.e_fla_iep
                 WHEN substr(ct.course_number,2,4) = 'FREG' then rpt.e_fla_iep
@@ -105,14 +110,14 @@
             else
                 0
             end as eal
-        from currentTerm ct
+         from currentTerm ct
         join gradesPivot gp
             on ct.id=gp.id and ct.course_number = gp.course_number
         join students s 
             on ct.id = s.id
         left join u_def_ext_students0 rpt
             on rpt.studentsdcid=s.dcid
-        order by id
+        order by ct.id;
     ]
     {
         "id": "~(id)",
@@ -120,19 +125,14 @@
         "course_name": "~(cname;json)",
         "teacher": "~(teacher)",
         "comment": "~(comment;json)",
-        "r1grade": "~(i1;json)",
-        "r2grade": "~(i2;json)",
-        "r3grade": "~(i3;json)",
+        "r1": "~(i1;json)",
+        "r2": "~(i2;json)",
+        "r3": "~(i3;json)",
         "adaptation": "~(adaptation;json)",
         "program": "~(program;json)",
         "iep": "~(iep;json)",
-        "eal": "~(eal;json)"=
+        "eal": "~(eal;json)"
     },     
     [/tlist_sql]
     {}
-
-
-
-
-]
 ]

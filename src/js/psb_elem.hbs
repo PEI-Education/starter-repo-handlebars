@@ -102,8 +102,8 @@
             Teacher: {{ ela.teacher }}<br />
             Program: {{ ela.program }}<br />
             {{#if ela.adaptation}}
-              Adaptation<br />
-            {{/if}}
+              Adaptation<br /> 
+            {{/if}}                           
             {{#if ela.iep}}
               IEP<br />
             {{/if}}
@@ -119,21 +119,21 @@
       </tr>
       <tr>
         <td>Speaking and Listening</td>
-        <td class="center">{{ ela.speaklistene1 }}</td>
-        <td class="center">{{ ela.speaklistene2 }}</td>
-        <td class="center">{{ ela.speaklistene3 }}</td>
+        <td class="center">{{ ela.speaklisten.r1 }}</td>
+        <td class="center">{{ ela.speaklisten.r2 }}</td>
+        <td class="center">{{ ela.speaklisten.r3 }}</td>
       </tr>
       <tr>
         <td>Reading and Viewing</td>
-        <td class="center">{{ ela.readviewe1 }}</td>
-        <td class="center">{{ ela.readviewe2 }}</td>
-        <td class="center">{{ ela.readviewe3 }}</td>
+        <td class="center">{{ ela.readview.r1 }}</td>
+        <td class="center">{{ ela.readview.r2 }}</td>
+        <td class="center">{{ ela.readview.r3 }}</td>
       </tr>
       <tr>
         <td>Writing and Other Ways of Representing</td>
-        <td class="center">{{ ela.writinge1 }}</td>
-        <td class="center">{{ ela.writinge2 }}</td>
-        <td class="center">{{ ela.writinge3 }}</td>
+        <td class="center">{{ ela.writerep.rf1 }}</td>
+        <td class="center">{{ ela.writerep.r2 }}</td>
+        <td class="center">{{ ela.writrep.r3 }}</td>
       </tr>
     </table>
    {{#if fla}}
@@ -153,7 +153,7 @@
             {{/if}}
             {{#if fla.eal}}
                EAL<br />
-            {{/if}}
+            {{/if}} 
           </span>
         </td>
         <td class="row1 center">Report 1</td>
@@ -163,21 +163,21 @@
       </tr>
       <tr>
         <td>Speaking and Listening</td>
-        <td class="center">{{ fla.speaklistene1 }}</td>
-        <td class="center">{{ fla.speaklistene2 }}</td>
-        <td class="center">{{ fla.speaklistene3 }}</td>
+        <td class="center">{{ fla.speaklisten.r1 }}</td>
+        <td class="center">{{ fla.speaklisten.r2 }}</td>
+        <td class="center">{{ fla.speaklisten.r3 }}</td>
       </tr>
       <tr>
         <td>Reading and Viewing</td>
-        <td class="center">{{ fla.readviewe1 }}</td>
-        <td class="center">{{ fla.readviewe2 }}</td>
-        <td class="center">{{ fla.readviewe3 }}</td>
+        <td class="center">{{ fla.readview.r1 }}</td>
+        <td class="center">{{ fla.readview.r2 }}</td>
+        <td class="center">{{ fla.readview.r3 }}</td>
       </tr>
       <tr>
         <td>Writing and Other Ways of Representing</td>
-        <td class="center">{{ fla.writinge1 }}</td>
-        <td class="center">{{ fla.writinge2 }}</td>
-        <td class="center">{{ fla.writinge3 }}</td>
+        <td class="center">{{ fla.writierep.w1 }}</td>
+        <td class="center">{{ fla.writierp.w2 }}</td>
+        <td class="center">{{ fla.writierep.w3 }}</td>
       </tr>
     </table>
     {{/if}}
@@ -206,9 +206,9 @@
       </tr>
       <tr>
         <td>Number Sense</td>
-        <td class="center">{{ mat.nse1 }}</td>
-        <td class="center">{{ mat.nse2 }}</td>
-        <td class="center">{{ mat.nse3 }}</td>
+        <td class="center">{{ mat.ns.e1 }}</td>
+        <td class="center">{{ mat.ns.e2 }}</td>
+        <td class="center">{{ mat.ns.e3 }}</td>
       </tr>
       <tr>
         <td>Patterns and Relations</td>
