@@ -28,7 +28,7 @@
     <table class="wide course comment-big">
       <tr>
         <td colspan="2" class="comment-big">
-          <strong>Overall Comment: </strong> {{ hr.comment }}</span>
+          <strong>Overall Comment: </strong><br /> {{ hr.comment }}</span>
         </td>
       </tr>
     </table>
@@ -233,7 +233,7 @@
       <div class="footer3">
         <div class="footer3-left">V01</div>
         <div class="footer3-center">{{ firstname }} {{ lastname }} ({{ number }} - {{ homeroom }})</div>
-        <div class="footer3-right">Printed: ~[date]</div>
+        <div class="footer3-right">Printed: {{../reportconfig.printDate}}</div>
       </div>
     </div>
   </div>
@@ -244,7 +244,7 @@
 
 <!-- Start of page 2 -->
   <div class="page">
-    <table class="wide noborder">
+    <table class="wide noborder top">
       <colgroup>
           <col style="width: 3.9in;" />
           <col style="width: 0.2in;" />
@@ -276,9 +276,9 @@
                 </tr>
                 <tr>
                   <td>Curriculum Achievement</td>
-                  <td class="center">{{e1grade}}</td>
-                  <td class="center">{{e2grade}}</td>
-                  <td class="center">{{e3grade}}</td>
+                  <td class="center">{{r1}}</td>
+                  <td class="center">{{r2}}</td>
+                  <td class="center">{{r3}}</td>
                 </tr>
               </table>
             {{/with}}
@@ -310,9 +310,9 @@
                 </tr>
                 <tr>
                   <td>Curriculum Achievement</td>
-                  <td class="center">{{e1grade}}</td>
-                  <td class="center">{{e2grade}}</td>
-                  <td class="center">{{e3grade}}</td>
+                  <td class="center">{{r1}}</td>
+                  <td class="center">{{r2}}</td>
+                  <td class="center">{{r3}}</td>
                 </tr>
               </table>
             {{/with}}
@@ -345,9 +345,9 @@
                 </tr>
                 <tr>
                   <td>Curriculum Achievement</td>
-                  <td class="center">{{e1grade}}</td>
-                  <td class="center">{{e2grade}}</td>
-                  <td class="center">{{e3grade}}</td>
+                  <td class="center">{{r1}}</td>
+                  <td class="center">{{r2}}</td>
+                  <td class="center">{{r3}}</td>
                 </tr>
               </table>
             {{/with}}
@@ -378,9 +378,9 @@
                 </tr>
                 <tr>
                   <td>Curriculum Achievement</td>
-                  <td class="center">{{e1grade}}</td>
-                  <td class="center">{{e2grade}}</td>
-                  <td class="center">{{e3grade}}</td>
+                  <td class="center">{{r1}}</td>
+                  <td class="center">{{r2}}</td>
+                  <td class="center">{{r3}}</td>
                 </tr>
               </table>
             {{/with}}
@@ -414,9 +414,9 @@
                 </tr>
                 <tr>
                   <td>Curriculum Achievement</td>
-                  <td class="center">{{e1grade}}</td>
-                  <td class="center">{{e2grade}}</td>
-                  <td class="center">{{e3grade}}</td>
+                  <td class="center">{{r1}}</td>
+                  <td class="center">{{r2}}</td>
+                  <td class="center">{{r3}}</td>
                 </tr>
               </table>
             {{/with}}
@@ -447,9 +447,9 @@
                 </tr>
                 <tr>
                   <td>Curriculum Achievement</td>
-                  <td class="center">{{e1grade}}</td>
-                  <td class="center">{{e2grade}}</td>
-                  <td class="center">{{e3grade}}</td>
+                  <td class="center">{{r1}}</td>
+                  <td class="center">{{r2}}</td>
+                  <td class="center">{{r3}}</td>
                 </tr>
               </table>
             {{/with}}
@@ -483,9 +483,9 @@
                 </tr>
                 <tr>
                   <td>Curriculum Achievement</td>
-                  <td class="center">{{e1grade}}</td>
-                  <td class="center">{{e2grade}}</td>
-                  <td class="center">{{e3grade}}</td>
+                  <td class="center">{{r1}}</td>
+                  <td class="center">{{r2}}</td>
+                  <td class="center">{{r3}}</td>
                 </tr>
               </table>
             {{/with}}
@@ -516,9 +516,9 @@
                 </tr>
                 <tr>
                   <td>Curriculum Achievement</td>
-                  <td class="center">{{e1grade}}</td>
-                  <td class="center">{{e2grade}}</td>
-                  <td class="center">{{e3grade}}</td>
+                  <td class="center">{{r1}}</td>
+                  <td class="center">{{r2}}</td>
+                  <td class="center">{{r3}}</td>
                 </tr>
               </table>
             {{/with}}
@@ -659,7 +659,7 @@
       <div class="footer3">
         <div class="footer3-left">V01</div>
         <div class="footer3-center">{{ firstname }} {{ lastname }} ({{ number }} - {{ homeroom }})</div>
-        <div class="footer3-right">Printed: ~[date]</div>
+        <div class="footer3-right">Printed: {{../reportconfig.printDate}}</div>
       </div>
     </div>
   </div>

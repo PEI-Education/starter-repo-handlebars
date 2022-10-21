@@ -3,6 +3,7 @@
      select
       s.id,
       sec.course_number cn,
+      substr(sec.course_number,1,2) subject,
       st.name StandardName,
       lower(st.identifier) ident,
       lower(sgs.storecode) store,
@@ -27,6 +28,7 @@
    select
       s.id,
       sec.course_number cn,
+      substr(sec.course_number,2,3) subject,
       st.name StandardName,
       lower(substr(st.identifier,6)) ident,
       lower(sgs.storecode) store,
@@ -50,12 +52,12 @@
    order by 1; 
    ]
       {
-         "id": "~(id;json)",
-         "cn": "~(cn;json;json)",
+         "id": "~(id)",
+         "cn": "~(cn;json)",
          "standardname": "~(standardname;json)",
          "identifier": "~(ident;json)",
-         "storecode": "~(sc;json)",
-         "grade": "~(grade;json)"
+         "storecode": "~(sc)",
+         "grade": "~(grade)"
       },
    [/tlist_sql]
    {}

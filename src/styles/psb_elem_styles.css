@@ -54,7 +54,9 @@ td, th {
    padding: 0.05in;
 }
 
-
+.top {
+   vertical-align: top;
+}
 
 header {
    height: 120px;
@@ -165,6 +167,7 @@ h3 {
 
 .course-details {
    font-size: 8px;
+   line-height: 1;
 }
 
 .signature {
