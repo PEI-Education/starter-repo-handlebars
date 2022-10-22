@@ -41,14 +41,38 @@ const formatComments = (student) => {
   })
 }
  
+const assignStandards = (rawStandards, highestTerm) => {
+  rawStandards.pop()
+  let grid = {}
+  rawStandards.forEach(standard => {
+      let sid = standard.id
+      if (sid in grid === false) {
+        grid[sid] = {}
+      }
+      
+      let subject = standard.subject
+      if (subject in grid[sid] === false) {
+        grid[sid][subject] = {}
+      }
+
+      let identifier = standard.identifier
+      if (identifier in grid[sid][subject] === false) {
+        grid[sid][subject][identifier] =  {}
+      }
+      let storecode = standard.storecode
+      if (parseInt(standard.storecode.substring(1)) <= highestTerm) {
+        grid[sid][subject][identifier][storecode] = standard.grade
+      }
+  })
+  return grid
+} 
+
 function process(students, standards) {
 
   // eslint-disable-next-line no-undef
   let highestTerm = parseInt(reportconfig.storecode.substr(1))
-  
-  standards.forEach(standard => {
-    standard
-  })
+
+  const standardsGrid = assignStandards(standards, highestTerm)
 
   students.forEach(student => {
     student.courses.pop()
@@ -72,6 +96,27 @@ function process(students, standards) {
       delete student.fla
     }
 
+    let stuStand = standardsGrid[student.id]
+    console.log(stuStand)
+    student.ela.readview = stuStand.lan.readview
+    student.ela.speaklisten = stuStand.lan.speaklisten
+    student.ela.writerep = stuStand.lan.writerep
+    
+    if (student.fla) {
+      student.fla.readview = stuStand.frereadview
+      student.fla.speaklisten = stuStand.fre.speaklisten
+      student.fla.writerep = stuStand.fre.writerep
+    }
+    
+    student.mat.numbersense = stuStand.mat.numbersense
+    student.mat.patternsrel = stuStand.mat.patternsrel
+    student.mat.shapespace = stuStand.mat.shapespace
+    student.mat.statprob = stuStand.mat.statprob
+
+    student.hr.collaboration = stuStand.hr.collaboration
+    student.hr.responsibility = stuStand.hr.responsibility
+    student.hr.independence = stuStand.hr.independence
+    student.hr.responsibility = stuStand.hr.responsibility
 
   })
   
@@ -102,3 +147,5 @@ const populate = async () => {
 }
 
 populate()
+
+

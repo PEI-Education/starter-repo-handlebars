@@ -8,12 +8,12 @@
   ~[wc:commonscripts]
   <script>
     let reportconfig = {
-      dothisfor: 'selected', //'~[gpv:dothisfor]',
-      storecode: 'R2', //'~(gpv.terms)',
-      attcutoff: '02/10/2022', //'~(gpv.attcutoff)',
+      dothisfor: '~[gpv:dothisfor]',
+      storecode: '~(gpv.terms)',
+      attcutoff: '~(gpv.attcutoff)',
       printDate: '~[date]',
       yearname:  '~(yearname)',
-      yearid: '31' /*'~(curyearid)'*/ 
+      yearid: '~(curyearid)' 
     } 
     if ("~(gpv.teachersig)"==="true") {
         reportconfig.teachersig = "true"

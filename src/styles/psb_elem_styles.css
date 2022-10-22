@@ -3,7 +3,7 @@
    margin: 0;
    padding: 0;
    font-family: 'Roboto', Arial, sans-serif;
-   line-height: 1.3;
+   line-height: 1.4;
 }
 
 .page {
@@ -134,10 +134,15 @@ h1  {
 
 .leftFixed {
    width: 170px;
+   line-height: 1;
+}
+
+.titleRow {
+   line-height: 1;
 }
 
 .comment-big {
-   min-height: 1in;
+   min-height: 1.2in;
    vertical-align: top;
    overflow-wrap: break-word;
 }
@@ -163,6 +168,8 @@ h3 {
    width: 4in;
    vertical-align: top;
    overflow-wrap: break-word;
+   padding: 0.1in;
+   min-height: 2in;
 }
 
 .course-details {

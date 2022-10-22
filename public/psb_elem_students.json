@@ -160,11 +160,11 @@
                  left join pgfinalgrades pfg
                      on pfg.sectionid = sec.id
                      and pfg.studentid = s.id
-                 where
-                 s.id = ~(curstudid)
-                 and substr(sec.course_number,2,3)  = 'LAN'
-                 and cc.termid = '~(gpv.yearid)00'
-                 and pfg.finalgradename = '~(gpv.storecode)'
+                where
+                s.id = ~(curstudid)
+                and substr(sec.course_number,2,3)  = 'LAN'
+                and cc.termid = '~(gpv.yearid)00'
+                and pfg.finalgradename = '~(gpv.storecode)'
              ]
                  "teacher": "~(teacher)",
                  "comment": "~(comment;json)",
@@ -294,8 +294,8 @@
                  "collaboration": {}
              },
          "courses": [
-             ~[tlist_sql;
-                 with currentTerm as (select
+            ~[tlist_sql;
+               with currentTerm as (select
                      s.id,
                      cc.course_number,
                      co.course_name,
@@ -404,8 +404,8 @@
                  left join u_def_ext_students0 rpt
                      on rpt.studentsdcid=s.dcid
                  order by ct.id;
-             ]
-             {
+            ]
+            {
                  "course_number": "~(course_number;json)",
                  "course_name": "~(cname;json)",
                  "teacher": "~(teacher)",
@@ -418,9 +418,9 @@
                  "iep": "~(iep;json)",
                  "eal": "~(eal;json)"
              },     
-             [/tlist_sql]
-             {}
-         ]  
+            [/tlist_sql]
+            {}
+        ]
       }
       [between:Students],
       [/RepeatForEach:Students] 

@@ -4,8 +4,9 @@ Rebuilt PEI Report Cards using Handlebars.js for templating. Significant perform
 
 This plugin will eventually contain new versions of all report cards. Structure will have to be different from v1.
 
-## Current Report Cards (Branches)
+## Current Report Cards
 
+- PSB Elementary Report Card
 - PSB Intermediate Report Card, 3-term version (currently working on pei-test1)
 - PSB Intermediate Report Card, 4-term version (currently working on pei-test1)
 - CSLF Intermediate Report Card (currently working on pei-test1)
