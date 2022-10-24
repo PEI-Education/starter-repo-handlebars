@@ -97,30 +97,33 @@ function process(students, standards) {
     }
 
     let stuStand = standardsGrid[student.id]
-    console.log(stuStand)
-    student.ela.readview = stuStand.lan.readview
-    student.ela.speaklisten = stuStand.lan.speaklisten
-    student.ela.writerep = stuStand.lan.writerep
-    
-    if (student.fla) {
-      student.fla.readview = stuStand.frereadview
-      student.fla.speaklisten = stuStand.fre.speaklisten
-      student.fla.writerep = stuStand.fre.writerep
+    if (stuStand.lan) {
+      if (stuStand.lan.readview) { student.ela.readview = stuStand.lan.readview }
+      if (stuStand.lan.speaklisten) { student.ela.speaklisten = stuStand.lan.speaklisten }
+      if (stuStand.lan.writerep) { student.ela.writerep = stuStand.lan.writerep }
+    }
+
+    if (student.fla && stuStand.fre) {
+      if (stuStand.fre.readview) { student.fla.readview = stuStand.fre.readview }
+      if (stuStand.fre.speaklisten) { student.fla.speaklisten = stuStand.fre.speaklisten }
+      if (stuStand.fre.writerep) { student.fla.writerep = stuStand.fre.writerep }
     }
     
-    student.mat.numbersense = stuStand.mat.numbersense
-    student.mat.patternsrel = stuStand.mat.patternsrel
-    student.mat.shapespace = stuStand.mat.shapespace
-    student.mat.statprob = stuStand.mat.statprob
+    if (stuStand.mat) {
+      if (stuStand.mat.numbersense) { student.mat.numbersense = stuStand.mat.numbersense }
+      if (stuStand.mat.patternsrel) { student.mat.patternsrel = stuStand.mat.patternsrel }
+      if (stuStand.mat.shapespace) { student.mat.shapespace = stuStand.mat.shapespace }
+      if (stuStand.mat.statprob) { student.mat.statprob = stuStand.mat.statprob }
+    }
 
-    student.hr.collaboration = stuStand.hr.collaboration
-    student.hr.responsibility = stuStand.hr.responsibility
-    student.hr.independence = stuStand.hr.independence
-    student.hr.responsibility = stuStand.hr.responsibility
-
+    if (stuStand.hr) {
+      if (stuStand.hr.collaboration) { student.hr.collaboration = stuStand.hr.collaboration }
+      if (stuStand.hr.organization) { student.hr.responsibility = stuStand.hr.organization }
+      if (stuStand.hr.independence) { student.hr.independence = stuStand.hr.independence }
+      if (stuStand.hr.responsibility) { student.hr.responsibility = stuStand.hr.responsibility }
+    }
   })
-  
-  console.log(students, standards)
+    
   const outputData = { reportconfig: reportconfig, students: students }
   const container = document.getElementById('output')
   container.innerHTML = template(outputData)
@@ -132,11 +135,11 @@ function process(students, standards) {
 const populate = async () => {
 
     const results = await Promise.all([ 
-      //fetch(`./assets/psb_elem_students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yeardid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
-      fetch(`./assets/elem-fake-students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yeardid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
-
-      //fetch(`./assets/psb_elem_standards.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}`),
-      fetch(`./assets/elem-fake-standards.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}`)
+      fetch(`./assets/psb_elem_students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yeardid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
+      //fetch(`./assets/elem-fake-students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yeardid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
+      
+      fetch(`./assets/psb_elem_standards.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}`),
+      //fetch(`./assets/elem-fake-standards.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}`)
 
     ])
 
@@ -147,5 +150,3 @@ const populate = async () => {
 }
 
 populate()
-
-
