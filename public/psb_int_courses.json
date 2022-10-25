@@ -213,7 +213,7 @@
         "r2effort": "~(effort2;json)",
         "r3effort": "~(effort3;json)",
         "r4effort": "~(effort4;json)"
-    },    
+    },     
     [/tlist_sql]
     {}
     ]

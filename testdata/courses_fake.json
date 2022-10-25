@@ -7,7 +7,7 @@
       "teacher": "Coyle, Pat",
       "absences":"5",
       "lates":"4",
-      "comment": "During third term the outcomes covered were: add and subtract fractions and mixed numbers, solving equations, finding areas of 2d shapes and calculating decimal numbers. It was a pleasure having Caleb in the class.  I am happy with Caleb's level of achievement this year.  He is such a polite young man. Moving forward, he could work on his organization and staying focused in class.  If you have any questions, please email me at: pccoyle@edu.pe.ca.",
+      "comment": "During third term the outcomes covered were: add and subtract fractions and mixed numbers, solving equations, finding areas of 2d shapes and calculating decimal numbers. It was a pleasure having Caleb in the class.  I am happy with Caleb's level of achievement this year.  He is such a polite young man. Moving forward, he could work on his organization and staying focused in class.  If you have any questions, please email me at: pccoyle@edu.pe.ca.During third term the outcomes covered were: add and subtract fractions and mixed numbers, solving equations, finding areas of 2d shapes and calculating decimal numbers. It was a pleasure having Caleb in the class.  I am happy with Caleb's level of achievement this year.  He is such a polite young man. Moving forward, he could work on his organization and staying focused in class.  If you have any questions, please email me at: pccoyle@edu.pe.ca.During third term the outcomes covered were: add and subtract fractions and mixed numbers, solving equations, finding areas of 2d shapes and calcula",
       "i1grade": "55",
       "i2grade": "56",
       "i3grade": "80.75",
@@ -21,7 +21,27 @@
       "r3effort": "C",
       "r4effort": "C"
   },    
-  
+  {
+    "id": "4230",
+    "course_number": "HRAM",
+    "course_name": "Homeroom",
+    "teacher": "Coyle, Pat",
+    "absences":"5",
+    "lates":"4",
+    "comment": "During third term the outcomes covered were: add and subtract fractions and mixed numbers, solving equations, finding areas of 2d shapes and calculating decimal numbers. It was a pleasure having Caleb in the class.  I am happy with Caleb's level of achievement this year.  He is such a polite young man. Moving forward, he could work on his organization and staying focused in class.  If you have any questions, please email me at: pccoyle@edu.pe.ca.During third term the outcomes covered were: add and subtract fractions and mixed numbers, solving equations, finding areas of 2d shapes and calculating decimal numbers. It was a pleasure having Caleb in the class.  I am happy with Caleb's level of achievement this year.  He is such a polite young man. Moving forward, he could work on his organization and staying focused in class.  If you have any questions, please email me at: pccoyle@edu.pe.ca.During third term the outcomes covered were: add and subtract fractions and mixed numbers, solving equations, finding areas of 2d shapes and calcula",
+    "i1grade": "55",
+    "i2grade": "56",
+    "i3grade": "80.75",
+    "i4grade": "80.75",
+    "adaptation": "0",
+    "program": "Academic Learning Plan",
+    "iep": "1",
+    "eal": "0",
+    "r1effort": "C",
+    "r2effort": "M",
+    "r3effort": "C",
+    "r4effort": "C"
+},  
   {
       "id": "4230",
       "course_number": "7SOCF",
@@ -39,7 +59,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -59,7 +82,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -79,7 +105,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -99,7 +128,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -107,7 +139,7 @@
       "course_number": "7FREF",
       "course_name": "French Language Arts 7 (EFI)",
       "teacher": "Robichaud, Mario",
-      "comment": "Caleb was a pleasure to have in my class. He was always respectful and worked well in small groups or individually. I know that Caleb will do well in French immersion and I wish him all the success that he deserves. Have a great summer Caleb!",
+      "comment": "Caleb was a pleasure to have in my class. He was always respectful and worked well in small groups or individually. I know that Caleb will do well in French immersion and I wish him all the success that he deserves. Have a great summer Caleb! Caleb was a pleasure to have in my class. He was always respectful and worked well in small groups or individually. I know that Caleb will do well in French immersion and I wish him all the success that he deserves. Have a great summer Caleb! Caleb was a pleasure to have in my class. He was always respectful and worked well in small groups or individually. I know that Caleb will do well in French immersion and I wish him all the success that he deserves. Have a great summer Caleb! Caleb was a pleasure to have in my class. He was always respectful and worked well in small groups or individually. I know that Caleb will do well in French immersion and I wish him all the success that he deserves. Have a great summer Caleb! Caleb was a pleasure to have in my class. He was always respectful and worke",
       "i1grade": "80",
       "i2grade": "69",
       "i3grade": "76.5",
@@ -119,7 +151,10 @@
       "r1effort": "C",
       "r2effort": "M",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -139,7 +174,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -147,7 +185,7 @@
       "course_number": "7ENGA",
       "course_name": "English Language Arts 7",
       "teacher": "Thain, Stacy",
-      "comment": "It has been a pleasure to witness the academic growth that Caleb has demonstrated again this term in our three major outcomes. Such great conversations emerged from a variety of texts and I believe we also had fun doing this. To avoid the summer slide, I would encourage Caleb to read for enjoyment this summer. Two hours a week can have long-term academic benefits.  It has been an honour to learn with Caleb this year.",
+      "comment": "It has been a pleasure to witness the academic growth that Caleb has demonstrated again this term in our three major outcomes. Such great conversations emerged from a variety of texts and I believe we also had fun doing this. To avoid the summer slide, I would encourage Caleb to read for enjoyment this summer. Two hours a week can have long-term academic benefits.  It has been an honour to learn with Caleb this year. It has been a pleasure to witness the academic growth that Caleb has demonstrated again this term in our three major outcomes. Such great conversations emerged from a variety of texts and I believe we also had fun doing this. To avoid the summer slide, I would encourage Caleb to read for enjoyment this summer. Two hours a week can have long-term academic benefits.  It has been an honour to learn with Caleb this year. It has been a pleasure to witness the academic growth that Caleb has demonstrated again this term in our three major outcomes. Such great conversations emerged from a variety of texts and I believe we also ",
       "i1grade": "93",
       "i2grade": "78",
       "i3grade": "76",
@@ -159,7 +197,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -179,7 +220,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -219,7 +263,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -239,9 +286,11 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
-  
   {
       "id": "4907",
       "course_number": "7SCIA",
@@ -259,7 +308,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -279,7 +331,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -319,7 +374,10 @@
       "r1effort": "M",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -339,7 +397,10 @@
       "r1effort": "M",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -359,7 +420,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -379,7 +443,10 @@
       "r1effort": "M",
       "r2effort": "M",
       "r3effort": "M",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -399,7 +466,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -419,7 +489,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -439,7 +512,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -459,7 +535,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -479,7 +558,10 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
   
   {
@@ -499,8 +581,16 @@
       "r1effort": "C",
       "r2effort": "C",
       "r3effort": "C",
-      "r4effort": "C"
+      "r4effort": "C",
+      "e1grade": "1",
+      "e2grade": "2",
+      "e3grade": "3"
   },    
-  
+  {
+    "id": "4230",
+    "course_number": "HRAMF",
+    "course_name": "Homeroom",
+    "comment": "It has been a pleasure to witness the academic growth that Caleb has demonstrated again this term in our three major outcomes. Such great conversations emerged from a variety of texts and I believe we also had fun doing this. To avoid the summer slide, I would encourage Caleb to read for enjoyment this summer. Two hours a week can have long-term academic benefits.  It has been an honour to learn with Caleb this year. It has been a pleasure to witness the academic growth that Caleb has demonstrated again this term in our three major outcomes. Such great conversations emerged from a variety of texts and I believe we also had fun doing this. To avoid the summer slide, I would encourage Caleb to read for enjoyment this summer. Two hours a week can have long-term academic benefits.  It has been an honour to learn with Caleb this year. It has been a pleasure to witness the academic growth that Caleb has demonstrated again this term in our three major outcomes. Such great conversations emerged from a variety of texts and I believe we al"
+  },
   {}
   ]

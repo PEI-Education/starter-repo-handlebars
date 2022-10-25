@@ -11,7 +11,13 @@ module.exports = merge(common, {
 
   // Control how source maps are generated
   devtool: 'inline-source-map',
-
+  // Where webpack outputs the assets and bundles
+  output: {
+    path: paths.start,
+    filename: '[name].bundle.js',
+    publicPath: '/',
+    hashFunction: "xxhash64"  
+  },
   // Spin up a server for quick development
   devServer: {
     historyApiFallback: true,

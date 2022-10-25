@@ -1,0 +1,427 @@
+[
+    ~[x:GetDoThisForStudents]
+    ~[x:SortSelection;Students:~[displayprefschool:report_card_sort]]
+    ~[RepeatForEach:Students]
+      {
+        ~[tlist_sql;
+          select
+             s.id,
+             s.first_name,
+             s.last_name,
+             s.student_number,
+             to_char(s.dob,'mm/dd/yyyy'),
+             s.home_room,
+             s.grade_level,
+             case 
+                when stuext.pei_frenchprograms = 'E' then 'French Immersion'
+                when stuext.pei_frenchprograms = 'M' then 'French Immersion'
+                when stuext.pei_frenchprograms = 'L' then 'French Immersion'
+                when stuext.pei_frenchprograms = 'B' then 'French Immersion'
+                else 'English' end as progam,
+             to_char(1990+substr(to_char(~(curtermid)),1,2)) || '-' || to_char(1991+substr(to_char(~(curtermid)),1,2)) AS yearname,
+             sch.name,
+             sch.principal,
+             schext.schoolurl
+          from students s
+          join u_def_ext_students stuext
+             on stuext.studentsdcid = s.dcid
+          join schools sch
+             on sch.school_number = s.schoolid
+          join u_dyn_schools_1 schext
+             on schext.schoolsdcid = sch.dcid
+          where s.id = ~(curstudid); 
+        ]
+        "id": "~(id)",
+        "firstname": "~(first_name)",
+        "lastname": "~(last_name)",
+        "number": "~(student_number)",
+        "dob": "~(dob)",
+        "homeroom": "~(home_room)",
+        "gradelevel": "~(grade_level)",
+        "program": "~(program)",
+        "yearname": "~(yearname)",
+        "school": {
+          "name": "~(name)",
+          "principal": "~(principal)"
+        },
+        [/tlist_sql]
+         ~[tlist_sql;
+             SELECT 
+              s.id,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) SepAbs, 
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) OctAbs, 
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) NovAbs, 
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) DecAbs, 
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) JanAbs,  
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) FebAbs, 
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) MarAbs, 
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) AprAbs, 
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) MayAbs, 
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) JunAbs,
+               sum(CASE WHEN cal.date_value between(t.firstday+1) and t.lastday AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) TotalAbsences,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('L','LF') THEN 1 else 0 END) SepLates,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('L','LF') THEN 1 else 0 END) OctLates,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('L','LF') THEN 1 else 0 END) NovLates,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('L','LF') THEN 1 else 0 END) DecLates,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('L','LF') THEN 1 else 0 END) JanLates,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('L','LF') THEN 1 else 0 END) FebLates,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('L','LF') THEN 1 else 0 END) MarLates,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('L','LF') THEN 1 else 0 END) AprLates,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('L','LF') THEN 1 else 0 END) MayLates,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('L','LF') THEN 1 else 0 END) JunLates,
+               sum(CASE WHEN cal.date_value between (t.firstday+1) and t.lastday AND att.att_code IN ('L','LF') THEN 1 else 0 END) TotalLates,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('D','DF') THEN 1 else 0 END) SepED,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('D','DF') THEN 1 else 0 END) OctED,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('D','DF') THEN 1 else 0 END) NovED,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('D','DF') THEN 1 else 0 END) DecED,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('D','DF') THEN 1 else 0 END) JanED,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('D','DF') THEN 1 else 0 END) FebED,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('D','DF') THEN 1 else 0 END) MarED,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('D','DF') THEN 1 else 0 END) AprED,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('D','DF') THEN 1 else 0 END) MayED,
+               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('D','DF') THEN 1 else 0 END) JunED,
+               sum(CASE WHEN cal.date_value between (t.firstday+1) and t.lastday AND att.att_code IN ('D','DF') THEN 1 else 0 END) TotalED
+           from students s
+           left join pssis_attendance_meeting att 
+               on att.studentid = s.id 
+           join calendar_day cal
+               on att.Calendar_DayID = cal.id
+           join cc
+               on abs(att.ccid) = cc.id
+           join terms t
+               on abs(cc.termid) = t.id and cc.schoolid = t.schoolid
+           where
+               t.yearid = ~(gpv.yearid)
+               and t.isyearrec = 1
+               and cal.date_value between trunc(t.firstday+1) and least(trunc(t.lastday),to_date('~(gpv.attcutoff)','mm/dd/yyyy'))
+               and s.id = ~(curstudid)
+           group by s.id
+           order by 1;
+          ]
+          "absences": {
+           "id": "~(id)",
+           "sep": "~(SepAbs)",
+           "oct": "~(OctAbs)",
+           "nov": "~(NovAbs)",
+           "dec": "~(DecAbs)",
+           "jan": "~(JanAbs)",
+           "feb": "~(FebAbs)",
+           "mar": "~(MarAbs)",
+           "apr": "~(AprAbs)",
+           "may": "~(MayAbs)",
+           "jun": "~(JunAbs)",
+           "tot": "~(TotalAbs)"
+          },
+         "lates": {
+          "sep": "~(SepLates)",
+          "oct": "~(OctLates)",
+          "nov": "~(NovLates)",
+          "dec": "~(DecLates)",
+          "jan": "~(JanLates)",
+          "feb": "~(FebLates)",
+          "mar": "~(MarLates)",
+          "apr": "~(AprLates)",
+          "may": "~(MayLates)",
+          "jun": "~(JunLates)",
+          "tot": "~(TotalLates)"
+         },
+         "earlydep": {
+          "sep": "~(SepED)",
+          "oct": "~(OctED)",
+          "nov": "~(NovED)",
+          "dec": "~(DecED)",
+          "jan": "~(JanED)",
+          "feb": "~(FebED)",
+          "mar": "~(MarED)",
+          "apr": "~(AprED)",
+          "may": "~(MayED)",
+          "jun": "~(JunED)",
+          "tot": "~(TotalED)"
+         },
+           [/tlist_sql]
+         "ela": {
+             ~[tlist_sql;
+                select
+                   t.lastfirst,
+                   pfg.comment_value,
+                   rpt.e_ela_adaptation as adaptation,
+                   NVL(rpt.e_ela_program, 'Regular') as program,
+                   NVL(rpt.e_ela_iep,0) as iep,
+                   NVL(rpt.e_ela_eal,0) as eal
+                 from students s
+                 join cc
+                   on cc.studentid = s.id
+                 join sections sec
+                   on cc.sectionid = sec.id
+                 join teachers t
+                     on sec.teacher = t.id
+                 left join u_def_ext_students0 rpt
+                     on rpt.studentsdcid=s.dcid
+                 left join pgfinalgrades pfg
+                     on pfg.sectionid = sec.id
+                     and pfg.studentid = s.id
+                where
+                s.id = ~(curstudid)
+                and substr(sec.course_number,2,3)  = 'LAN'
+                and cc.termid = '~(gpv.yearid)00'
+                and pfg.finalgradename = '~(gpv.storecode)'
+             ]
+                 "teacher": "~(teacher)",
+                 "comment": "~(comment;json)",
+                 "adaptation": "~(adaptation;json)",
+                 "program": "~(program;json)",
+                 "iep": "~(iep;json)",
+                 "eal": "~(eal;json)",
+             [/tlist_sql]
+                 "readview": {}, 
+                 "speaklisten": {},
+                 "writerep": {}
+             },
+             "fla":  {
+             ~[tlist_sql;
+                select
+                   t.lastfirst,
+                   pfg.comment_value,
+                   rpt.e_ela_adaptation as adaptation,
+                   NVL(rpt.e_ela_program, 'Regular') as program,
+                   NVL(rpt.e_ela_iep,0) as iep,
+                   NVL(rpt.e_ela_eal,0) as eal
+                 from students s
+                 join cc
+                   on cc.studentid = s.id
+                 join sections sec
+                   on cc.sectionid = sec.id
+                 join teachers t
+                     on sec.teacher = t.id
+                 left join u_def_ext_students0 rpt
+                     on rpt.studentsdcid=s.dcid
+                 left join pgfinalgrades pfg
+                     on pfg.sectionid = sec.id
+                     and pfg.studentid = s.id
+                 where
+                 s.id = ~(curstudid)
+                 and substr(sec.course_number,2,4)  IN ('FREF','FREG')
+                 and cc.termid = '~(gpv.yearid)00'
+                 and pfg.finalgradename = '~(gpv.storecode)'
+             ]
+                 "teacher": "~(teacher)",
+                 "comment": "~(comment;json)",
+                 "adaptation": "~(adaptation;json)",
+                 "program": "~(program;json)",
+                 "iep": "~(iep;json)",
+                 "eal": "~(eal;json)",
+             [/tlist_sql]
+                 "readview": {},
+                 "speaklisten": {},
+                 "writerep": {}
+             },
+             "mat": {
+                  ~[tlist_sql;
+                select
+                   t.lastfirst,
+                   pfg.comment_value,
+                   rpt.e_ela_adaptation as adaptation,
+                   NVL(rpt.e_ela_program, 'Regular') as program,
+                   NVL(rpt.e_ela_iep,0) as iep,
+                   NVL(rpt.e_ela_eal,0) as eal
+                 from students s
+                 join cc
+                   on cc.studentid = s.id
+                 join sections sec
+                   on cc.sectionid = sec.id
+                 join teachers t
+                     on sec.teacher = t.id
+                 left join u_def_ext_students0 rpt
+                     on rpt.studentsdcid=s.dcid
+                 left join pgfinalgrades pfg
+                     on pfg.sectionid = sec.id
+                     and pfg.studentid = s.id
+                 where
+                 s.id = ~(curstudid)
+                 and substr(sec.course_number,2,3) = 'MAT'
+                 and cc.termid = '~(gpv.yearid)00'
+                 and pfg.finalgradename = '~(gpv.storecode)'
+             ]
+                 "teacher": "~(teacher)",
+                 "comment": "~(comment;json)",
+                 "adaptation": "~(adaptation;json)",
+                 "program": "~(program;json)",
+                 "iep": "~(iep;json)",
+                 "eal": "~(eal;json)",
+             [/tlist_sql]
+                 "patternsrel": {},
+                 "shapespace": {},
+                 "numbersense": {},
+                 "statprob":{}
+             },
+              "hr": {
+                  ~[tlist_sql;
+                select
+                   t.lastfirst,
+                   pfg.comment_value,
+                   rpt.e_ela_adaptation as adaptation,
+                   NVL(rpt.e_ela_program, 'Regular') as program,
+                   NVL(rpt.e_ela_iep,0) as iep,
+                   NVL(rpt.e_ela_eal,0) as eal
+                 from students s
+                 join cc
+                   on cc.studentid = s.id
+                 join sections sec
+                   on cc.sectionid = sec.id
+                 join teachers t
+                     on sec.teacher = t.id
+                 left join u_def_ext_students0 rpt
+                     on rpt.studentsdcid=s.dcid
+                 left join pgfinalgrades pfg
+                     on pfg.sectionid = sec.id
+                     and pfg.studentid = s.id
+                 where
+                 s.id = ~(curstudid)
+                 and substr(sec.course_number,1,2) = 'HR'
+                 and cc.termid = '~(gpv.yearid)00'
+                 and pfg.finalgradename = '~(gpv.storecode)'
+             ]
+                 "teacher": "~(teacher)",
+                 "comment": "~(comment;json)",
+                 "adaptation": "~(adaptation;json)",
+                 "program": "~(program;json)",
+                 "iep": "~(iep;json)",
+                 "eal": "~(eal;json)",
+             [/tlist_sql]
+                 "responsibility": {},
+                 "organization": {},
+                 "independence": {},
+                 "collaboration": {}
+             },
+         "courses": [
+            ~[tlist_sql;
+               with currentTerm as (select
+                     s.id,
+                     cc.course_number,
+                     co.course_name,
+                     t.lastfirst,
+                     pfg.comment_value
+                 from students s
+                 join cc 
+                     on cc.studentid = s.id
+                     and cc.schoolid = s.schoolid
+                 join courses co 
+                     on cc.course_number = co.course_number
+                 join sections sec 
+                     on sec.id = cc.sectionid
+                 join teachers t
+                     on t.id = sec.teacher
+                 join pgfinalgrades pfg
+                     on pfg.sectionid = sec.id
+                     and pfg.studentid = s.id
+                 where
+                     s.id=~(curstudid)
+                     and NOT (substr(sec.course_number,2,3) in ('LAN','MAT') OR substr(sec.course_number,2,4) in ('FREF','FREG') OR substr(sec.course_number,1,2) = 'HR')
+                     and pfg.finalgradename = '~(gpv.storecode)'
+                     and cc.termid = '~(gpv.yearid)00'
+                 order by 1),
+                 termGrades as (select
+                     s.id,
+                         sec.course_number,
+                         pfg.finalgradename,
+                         pfg.grade
+                     from students s
+                     join pgfinalgrades pfg
+                         on pfg.studentid = s.id
+                     join sections sec
+                         on sec.id = pfg.sectionid
+                     where 
+                     s.id=~(curstudid)
+                     and NOT (substr(sec.course_number,2,3) in ('LAN','MAT') OR substr(sec.course_number,2,4) in ('FREF','FREG') OR substr(sec.course_number,1,2) = 'HR')
+                     and sec.termid = '~(gpv.yearid)00'
+                     order by 1),
+                 
+                 gradesPivot as (select *
+                     from termGrades
+                     PIVOT (
+                     MAX ( grade )
+                     FOR finalgradename
+                     IN ( 'E1' E1, 'E2' E2, 'E3' E3))
+                     order by id, course_number)
+                     
+                 select
+                     ct.course_number,
+                     ct.course_name,
+                     ct.lastfirst,
+                     ct.comment_value,
+                     gp.e1,
+                     gp.e2,
+                     gp.e3,
+                     case 
+                         WHEN substr(ct.course_number,2,3) = 'ART' then rpt.e_art_adaptation            
+                         WHEN substr(ct.course_number,2,4) = 'FREA' then rpt.e_fre_adaptation
+                         WHEN substr(ct.course_number,2,4) = 'MUSA' then rpt.e_mus_adaptation
+                         WHEN substr(ct.course_number,2,3) = 'PED' then rpt.e_ped_adaptation
+                         WHEN substr(ct.course_number,2,4) = 'PHEA' then rpt.e_ped_adaptation
+                         WHEN substr(ct.course_number,2,3) = 'SCI' then rpt.e_sci_adaptation
+                         WHEN substr(ct.course_number,2,3) = 'SOC' then rpt.e_soc_adaptation
+                         WHEN substr(ct.course_number,2,3) = 'CIT' then rpt.e_cit_adaptation
+                         WHEN substr(ct.course_number,2,3) = 'INT' then rpt.e_int_adaptation
+                         WHEN substr(ct.course_number,2,3) = 'HEA' then rpt.e_hea_adaptation
+                     else
+                         0
+                     end as adaptation,
+                     case 
+                         WHEN substr(ct.course_number,2,3) = 'ART' then rpt.e_art_program             
+                         WHEN substr(ct.course_number,2,4) = 'FREA' then rpt.e_fre_program
+                         WHEN substr(ct.course_number,2,4) = 'MUSA' then rpt.e_mus_program
+                         WHEN substr(ct.course_number,2,3) = 'PED' then rpt.e_ped_program
+                         WHEN substr(ct.course_number,2,4) = 'PHEA' then rpt.e_ped_program
+                         WHEN substr(ct.course_number,2,3) = 'SCI' then rpt.e_sci_program
+                         WHEN substr(ct.course_number,2,3) = 'SOC' then rpt.e_soc_program
+                         WHEN substr(ct.course_number,2,3) = 'CIT' then rpt.e_cit_program
+                         WHEN substr(ct.course_number,2,3) = 'INT' then rpt.e_int_program
+                         WHEN substr(ct.course_number,2,3) = 'HEA' then rpt.e_hea_program
+                     else
+                         'Regular'
+                     end as program,
+                      case
+                         WHEN substr(ct.course_number,2,3) = 'LAN' then rpt.e_ela_iep
+                         WHEN substr(ct.course_number,2,4) = 'FREF' then rpt.e_fla_iep
+                         WHEN substr(ct.course_number,2,4) = 'FREG' then rpt.e_fla_iep
+                         WHEN substr(ct.course_number,2,3) = 'MAT' then rpt.e_math_iep
+                     else
+                         0
+                     end as iep,
+                     case
+                         WHEN substr(ct.course_number,2,3) = 'LAN' then rpt.e_ela_eal
+                         WHEN substr(ct.course_number,2,4) = 'FREF' then rpt.e_fla_eal
+                         WHEN substr(ct.course_number,2,4) = 'FREG' then rpt.e_fla_eal
+                         WHEN substr(ct.course_number,2,3) = 'MAT' then rpt.e_mat_eal
+                     else
+                         0
+                     end as eal
+                  from currentTerm ct
+                 join gradesPivot gp
+                     on ct.id=gp.id and ct.course_number = gp.course_number
+                 join students s 
+                     on ct.id = s.id
+                 left join u_def_ext_students0 rpt
+                     on rpt.studentsdcid=s.dcid
+                 order by ct.id;
+            ]
+            {
+                 "course_number": "~(course_number;json)",
+                 "course_name": "~(cname;json)",
+                 "teacher": "~(teacher)",
+                 "comment": "~(comment;json)",
+                 "e1": "~(i1;json)",
+                 "e2": "~(i2;json)",
+                 "e3": "~(i3;json)",
+                 "adaptation": "~(adaptation;json)",
+                 "program": "~(program;json)",
+                 "iep": "~(iep;json)",
+                 "eal": "~(eal;json)"
+             },     
+            [/tlist_sql]
+            {}
+        ]
+      }
+      [between:Students],
+      [/RepeatForEach:Students] 
+    ]

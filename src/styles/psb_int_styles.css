@@ -25,7 +25,6 @@
 
 }
 
-
 table {
   border-collapse: collapse;
   table-layout: fixed;
@@ -122,8 +121,6 @@ header {
   margin: 5px 0 5px 0;
 }
 
-
-
 .narrow {
   width: 3.9in;
   height: 2.3in;
@@ -174,7 +171,6 @@ header {
   text-align: right;
 }
 
-
 /* Page 2 */
 .alp {
   display: none;
@@ -183,7 +179,6 @@ header {
 .resa {
   margin-bottom: 5px;
 }
-
 
 .signature {
   width: 8in;

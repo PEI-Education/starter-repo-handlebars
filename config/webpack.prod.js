@@ -9,12 +9,12 @@ const common = require('./webpack.common')
 
 module.exports = merge(common, {
   mode: 'production',
-  devtool: false,
   output: {
     path: paths.build,
-    publicPath: '/',
+    publicPath: './',
     filename: 'js/[name].bundle.js',
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -46,6 +46,14 @@ module.exports = merge(common, {
           noErrorOnMissing: true,
         },
         {
+          from: paths.prefs,
+          to: '',
+          globOptions: {
+            ignore: ['*.DS_Store'],
+          },
+          noErrorOnMissing: true,
+        },
+        {
           from: paths.images,
           to: 'images',
           globOptions: {
@@ -63,14 +71,14 @@ module.exports = merge(common, {
     }),
   ],
   optimization: {
-    minimize: true,
+    minimize: false,
     minimizer: [new CssMinimizerPlugin(), '...'],
     runtimeChunk: {
       name: 'runtime',
     },
   },
   performance: {
-    hints: false,
+    hints: "warning",
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },

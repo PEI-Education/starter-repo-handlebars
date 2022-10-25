@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const paths = require('./paths')
 
-const pages = ["psb_int","psb_int4","cslf_int"];
+const pages = ["psb_elem","psb_int","psb_int4","cslf_int"];
 
 module.exports = {
   // Where webpack looks to start building the bundle
@@ -10,14 +10,6 @@ module.exports = {
     config[page] = `./src/${page}.js`;
     return config;
   }, {}),
-
-  // Where webpack outputs the assets and bundles
-  output: {
-    path: paths.build,
-    filename: '[name].bundle.js',
-    publicPath: '/',
-    hashFunction: "xxhash64"  
-  },
 
   optimization: {
     splitChunks: {
