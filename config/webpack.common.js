@@ -11,14 +11,6 @@ module.exports = {
     return config;
   }, {}),
 
-  // Where webpack outputs the assets and bundles
-  output: {
-    path: paths.build,
-    filename: '[name].bundle.js',
-    publicPath: './',
-    hashFunction: "xxhash64"  
-  },
-
   optimization: {
     splitChunks: {
       chunks: "all",

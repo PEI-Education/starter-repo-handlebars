@@ -41,7 +41,7 @@ const formatComments = (student) => {
   })
 }
  
-const assignStandards = (rawStandards, highestTerm) => {
+function assignStandards(rawStandards, highestTerm) {
   rawStandards.pop()
   let grid = {}
   rawStandards.forEach(standard => {
@@ -63,12 +63,11 @@ const assignStandards = (rawStandards, highestTerm) => {
       if (parseInt(standard.storecode.substring(1)) <= highestTerm) {
         grid[sid][subject][identifier][storecode] = standard.grade
       }
-  })
+  })  
   return grid
 } 
 
 function process(students, standards) {
-
   // eslint-disable-next-line no-undef
   let highestTerm = parseInt(reportconfig.storecode.substr(1))
 
@@ -78,10 +77,10 @@ function process(students, standards) {
     student.courses.pop()
     student.courses.forEach(course => {
       if (highestTerm <= 1) {
-        delete course.r2
+        delete course.e2
       }
       if (highestTerm <= 2) {
-        delete course.r3
+        delete course.e3
       }
       clearTag(course)
     })
@@ -117,13 +116,14 @@ function process(students, standards) {
     }
 
     if (stuStand.hr) {
+      if (stuStand.hr.organization) { student.hr.organization = stuStand.hr.organization }
       if (stuStand.hr.collaboration) { student.hr.collaboration = stuStand.hr.collaboration }
-      if (stuStand.hr.organization) { student.hr.responsibility = stuStand.hr.organization }
       if (stuStand.hr.independence) { student.hr.independence = stuStand.hr.independence }
       if (stuStand.hr.responsibility) { student.hr.responsibility = stuStand.hr.responsibility }
     }
   })
-    
+  
+  console.log(students)
   const outputData = { reportconfig: reportconfig, students: students }
   const container = document.getElementById('output')
   container.innerHTML = template(outputData)
@@ -135,8 +135,8 @@ function process(students, standards) {
 const populate = async () => {
 
     const results = await Promise.all([ 
-      fetch(`./assets/psb_elem_students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yeardid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
-      //fetch(`./assets/elem-fake-students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yeardid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
+      fetch(`./assets/psb_elem_students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yearid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
+      //fetch(`./assets/elem-fake-students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yearid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
       
       fetch(`./assets/psb_elem_standards.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}`),
       //fetch(`./assets/elem-fake-standards.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}`)

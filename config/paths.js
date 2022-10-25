@@ -5,6 +5,9 @@ module.exports = {
   src: path.resolve(__dirname, '../src'),
 
   // Production build files
+  start: path.resolve(__dirname, '../dist'),
+  
+  // Production build files
   build: path.resolve(__dirname, '../dist/WEB_ROOT/admin/pei_reportcards_v2'),
 
   // Static files that get copied to build folder
