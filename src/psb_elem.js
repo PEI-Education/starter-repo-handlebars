@@ -4,17 +4,17 @@ import './styles/spinner.css';
 
 const template = require('./js/psb_elem.hbs')
 
-const fadeOutEffect = () => {
+function fadeOutEffect() {
   let fadeTarget = document.getElementById("overlay");
   let fadeEffect = setInterval(function () {
-      if (!fadeTarget.style.opacity) {
-          fadeTarget.style.opacity = .8;
-      }
-      if (fadeTarget.style.opacity > 0) {
-          fadeTarget.style.opacity -= 0.1;
-      } else {
-          clearInterval(fadeEffect);
-      }
+    if (!fadeTarget.style.opacity) {
+      fadeTarget.style.opacity = .8;
+    }
+    if (fadeTarget.style.opacity > 0) {
+      fadeTarget.style.opacity -= 0.1;
+    } else {
+      clearInterval(fadeEffect);
+    }
   }, 200);
 }
 
@@ -94,36 +94,35 @@ function process(students, standards) {
     if (!student.fla.teacher) {
       delete student.fla
     }
-
+    
     let stuStand = standardsGrid[student.id]
-    if (stuStand.lan) {
-      if (stuStand.lan.readview) { student.ela.readview = stuStand.lan.readview }
-      if (stuStand.lan.speaklisten) { student.ela.speaklisten = stuStand.lan.speaklisten }
-      if (stuStand.lan.writerep) { student.ela.writerep = stuStand.lan.writerep }
+    if (stuStand.hasOwnProperty(lan)) {
+      if (stuStand.lan.hasOwnProperty(readview)) { student.ela.readview = stuStand.lan.readview }
+      if (stuStand.lan.hasOwnProperty(speaklisten)) { student.ela.speaklisten = stuStand.lan.speaklisten }
+      if (stuStand.lan.hasOwnProperty(writerep)) { student.ela.writerep = stuStand.lan.writerep }
     }
 
-    if (student.fla && stuStand.fre) {
-      if (stuStand.fre.readview) { student.fla.readview = stuStand.fre.readview }
-      if (stuStand.fre.speaklisten) { student.fla.speaklisten = stuStand.fre.speaklisten }
-      if (stuStand.fre.writerep) { student.fla.writerep = stuStand.fre.writerep }
+    if (student.hasOwnProperty(fla) && stuStand.hasOwnProperty(fre)) {
+      if (stuStand.fre.hasOwnProperty(readview)) { student.fla.readview = stuStand.fre.readview }
+      if (stuStand.fre.hasOwnProperty(speaklisten)) { student.fla.speaklisten = stuStand.fre.speaklisten }
+      if (stuStand.fre.hasOwnProperty(writerep)) { student.fla.writerep = stuStand.fre.writerep }
     }
     
-    if (stuStand.mat) {
-      if (stuStand.mat.numbersense) { student.mat.numbersense = stuStand.mat.numbersense }
-      if (stuStand.mat.patternsrel) { student.mat.patternsrel = stuStand.mat.patternsrel }
-      if (stuStand.mat.shapespace) { student.mat.shapespace = stuStand.mat.shapespace }
-      if (stuStand.mat.statprob) { student.mat.statprob = stuStand.mat.statprob }
+    if (stuStand.hasOwnProperty(mat)) {
+      if (stuStand.mat.hasOwnProperty(numbersense)) { student.mat.numbersense = stuStand.mat.numbersense }
+      if (stuStand.mat.hasOwnProperty(patternsrel)) { student.mat.patternsrel = stuStand.mat.patternsrel }
+      if (stuStand.mat.hasOwnProperty(shapespace)) { student.mat.shapespace = stuStand.mat.shapespace }
+      if (stuStand.mat.hasOwnProperty(statprob)) { student.mat.statprob = stuStand.mat.statprob }
     }
 
     if (stuStand.hr) {
-      if (stuStand.hr.organization) { student.hr.organization = stuStand.hr.organization }
-      if (stuStand.hr.collaboration) { student.hr.collaboration = stuStand.hr.collaboration }
-      if (stuStand.hr.independence) { student.hr.independence = stuStand.hr.independence }
-      if (stuStand.hr.responsibility) { student.hr.responsibility = stuStand.hr.responsibility }
+      if (stuStand.hr.hasOwnProperty(organization)) { student.hr.organization = stuStand.hr.organization }
+      if (stuStand.hr.hasOwnProperty(collaboration)) { student.hr.collaboration = stuStand.hr.collaboration }
+      if (stuStand.hr.hasOwnProperty(independence)) { student.hr.independence = stuStand.hr.independence }
+      if (stuStand.hr.hasOwnProperty(responsibility)) { student.hr.responsibility = stuStand.hr.responsibility }
     }
   })
   
-  console.log(students)
   const outputData = { reportconfig: reportconfig, students: students }
   const container = document.getElementById('output')
   container.innerHTML = template(outputData)
