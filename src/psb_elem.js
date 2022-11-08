@@ -29,34 +29,6 @@ const clearTag = course => {
   })
 }
 
-const fillStandards = (stuStand, student) => {
-  if (stuStand.hasOwnProperty('lan')) {
-    if (stuStand.lan.hasOwnProperty('readview')) { student.ela.readview = stuStand.lan.readview }
-    if (stuStand.lan.hasOwnProperty('speaklisten')) { student.ela.speaklisten = stuStand.lan.speaklisten }
-    if (stuStand.lan.hasOwnProperty('writerep')) { student.ela.writerep = stuStand.lan.writerep }
-  }
-
-  if (student.hasOwnProperty('fla') && stuStand.hasOwnProperty('fre')) {
-    if (stuStand.fre.hasOwnProperty('readview')) { student.fla.readview = stuStand.fre.readview }
-    if (stuStand.fre.hasOwnProperty('speaklisten')) { student.fla.speaklisten = stuStand.fre.speaklisten }
-    if (stuStand.fre.hasOwnProperty('writerep')) { student.fla.writerep = stuStand.fre.writerep }
-  }
-  
-  if (stuStand.hasOwnProperty('mat')) {
-    if (stuStand.mat.hasOwnProperty('numbersense')) { student.mat.numbersense = stuStand.mat.numbersense }
-    if (stuStand.mat.hasOwnProperty('patternsrel')) { student.mat.patternsrel = stuStand.mat.patternsrel }
-    if (stuStand.mat.hasOwnProperty('shapespace')) { student.mat.shapespace = stuStand.mat.shapespace }
-    if (stuStand.mat.hasOwnProperty('statprob')) { student.mat.statprob = stuStand.mat.statprob }
-  }
-
-  if (stuStand.hr) {
-    if (stuStand.hr.hasOwnProperty('organization')) { student.hr.organization = stuStand.hr.organization }
-    if (stuStand.hr.hasOwnProperty('collaboration')) { student.hr.collaboration = stuStand.hr.collaboration }
-    if (stuStand.hr.hasOwnProperty('independence')) { student.hr.independence = stuStand.hr.independence }
-    if (stuStand.hr.hasOwnProperty('responsibility')) { student.hr.responsibility = stuStand.hr.responsibility }
-  }
-}
-
 const formatComments = (student) => {   
 
   Object.keys(student).forEach(key => {
@@ -124,10 +96,33 @@ function process(students, standards) {
       delete student.fla
     }
 
-    if (standardsGrid.hasOwnProperty(student.id)) {
-      fillStandards(standardsGrid[student.id], student)
-    }
+    let stuStand = standardsGrid[student.id] || {};
 
+    if (stuStand.hasOwnProperty('lan')) {
+      if (stuStand.lan.hasOwnProperty('readview')) { student.ela.readview = stuStand.lan.readview }
+      if (stuStand.lan.hasOwnProperty('speaklisten')) { student.ela.speaklisten = stuStand.lan.speaklisten }
+      if (stuStand.lan.hasOwnProperty('writerep')) { student.ela.writerep = stuStand.lan.writerep }
+    }
+  
+    if (student.hasOwnProperty('fla') && stuStand.hasOwnProperty('fre')) {
+      if (stuStand.fre.hasOwnProperty('readview')) { student.fla.readview = stuStand.fre.readview }
+      if (stuStand.fre.hasOwnProperty('speaklisten')) { student.fla.speaklisten = stuStand.fre.speaklisten }
+      if (stuStand.fre.hasOwnProperty('writerep')) { student.fla.writerep = stuStand.fre.writerep }
+    }
+    
+    if (stuStand.hasOwnProperty('mat')) {
+      if (stuStand.mat.hasOwnProperty('numbersense')) { student.mat.numbersense = stuStand.mat.numbersense }
+      if (stuStand.mat.hasOwnProperty('patternsrel')) { student.mat.patternsrel = stuStand.mat.patternsrel }
+      if (stuStand.mat.hasOwnProperty('shapespace')) { student.mat.shapespace = stuStand.mat.shapespace }
+      if (stuStand.mat.hasOwnProperty('statprob')) { student.mat.statprob = stuStand.mat.statprob }
+    }
+  
+    if (stuStand.hr) {
+      if (stuStand.hr.hasOwnProperty('organization')) { student.hr.organization = stuStand.hr.organization }
+      if (stuStand.hr.hasOwnProperty('collaboration')) { student.hr.collaboration = stuStand.hr.collaboration }
+      if (stuStand.hr.hasOwnProperty('independence')) { student.hr.independence = stuStand.hr.independence }
+      if (stuStand.hr.hasOwnProperty('responsibility')) { student.hr.responsibility = stuStand.hr.responsibility }
+    }    
   })
   
   const outputData = { reportconfig: reportconfig, students: students }

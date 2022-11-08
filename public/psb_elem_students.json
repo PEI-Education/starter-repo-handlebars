@@ -143,8 +143,8 @@
              ~[tlist_sql;
                 select
                    t.lastfirst,
-                   pfg.comment_value,
-                   rpt.e_ela_adaptation as adaptation,
+                   SUBSTR(pfg.comment_value,1,1024) as termscomment,
+                   NVL(rpt.e_ela_adaptation,0) as adaptation,
                    NVL(rpt.e_ela_program, 'Regular') as program,
                    NVL(rpt.e_ela_iep,0) as iep,
                    NVL(rpt.e_ela_eal,0) as eal
@@ -160,11 +160,11 @@
                  left join pgfinalgrades pfg
                      on pfg.sectionid = sec.id
                      and pfg.studentid = s.id
-                where
-                s.id = ~(curstudid)
-                and substr(sec.course_number,2,3)  = 'LAN'
-                and cc.termid = '~(gpv.yearid)00'
-                and pfg.finalgradename = '~(gpv.storecode)'
+                     and pfg.finalgradename = '~(gpv.storecode)'
+                 where
+                 s.id = ~(curstudid)
+                 and substr(sec.course_number,2,3)  = 'LAN'
+                 and cc.termid = ~(curyearid) * 100
              ]
                  "teacher": "~(teacher)",
                  "comment": "~(comment;json)",
@@ -181,11 +181,11 @@
              ~[tlist_sql;
                 select
                    t.lastfirst,
-                   pfg.comment_value,
-                   rpt.e_ela_adaptation as adaptation,
-                   NVL(rpt.e_ela_program, 'Regular') as program,
-                   NVL(rpt.e_ela_iep,0) as iep,
-                   NVL(rpt.e_ela_eal,0) as eal
+                   SUBSTR(pfg.comment_value,1,1024) as termscomment,
+                   NVL(rpt.e_fla_adaptation,0) as adaptation,
+                   NVL(rpt.e_fla_program, 'Regular') as program,
+                   NVL(rpt.e_fla_iep,0) as iep,
+                   NVL(rpt.e_fla_eal,0) as eal
                  from students s
                  join cc
                    on cc.studentid = s.id
@@ -198,11 +198,11 @@
                  left join pgfinalgrades pfg
                      on pfg.sectionid = sec.id
                      and pfg.studentid = s.id
+                     and pfg.finalgradename = '~(gpv.storecode)'
                  where
                  s.id = ~(curstudid)
                  and substr(sec.course_number,2,4)  IN ('FREF','FREG')
-                 and cc.termid = '~(gpv.yearid)00'
-                 and pfg.finalgradename = '~(gpv.storecode)'
+                 and cc.termid = ~(curyearid) * 100
              ]
                  "teacher": "~(teacher)",
                  "comment": "~(comment;json)",
@@ -219,11 +219,11 @@
                   ~[tlist_sql;
                 select
                    t.lastfirst,
-                   pfg.comment_value,
-                   rpt.e_ela_adaptation as adaptation,
-                   NVL(rpt.e_ela_program, 'Regular') as program,
-                   NVL(rpt.e_ela_iep,0) as iep,
-                   NVL(rpt.e_ela_eal,0) as eal
+                   SUBSTR(pfg.comment_value,1,1024) as termscomment,
+                   NVL(rpt.e_math_adaptation,0) as adaptation,
+                   NVL(rpt.e_math_program, 'Regular') as program,
+                   NVL(rpt.e_math_iep,0) as iep,
+                   NVL(rpt.e_mat_eal,0) as eal
                  from students s
                  join cc
                    on cc.studentid = s.id
@@ -236,11 +236,11 @@
                  left join pgfinalgrades pfg
                      on pfg.sectionid = sec.id
                      and pfg.studentid = s.id
+                     and pfg.finalgradename = '~(gpv.storecode)'
                  where
                  s.id = ~(curstudid)
                  and substr(sec.course_number,2,3) = 'MAT'
-                 and cc.termid = '~(gpv.yearid)00'
-                 and pfg.finalgradename = '~(gpv.storecode)'
+                 and cc.termid = ~(curyearid) * 100
              ]
                  "teacher": "~(teacher)",
                  "comment": "~(comment;json)",
@@ -256,13 +256,10 @@
              },
               "hr": {
                   ~[tlist_sql;
-                select
+                  
+                  select
                    t.lastfirst,
-                   pfg.comment_value,
-                   rpt.e_ela_adaptation as adaptation,
-                   NVL(rpt.e_ela_program, 'Regular') as program,
-                   NVL(rpt.e_ela_iep,0) as iep,
-                   NVL(rpt.e_ela_eal,0) as eal
+                   SUBSTR(pfg.comment_value,1,1024) as termscomment
                  from students s
                  join cc
                    on cc.studentid = s.id
@@ -270,23 +267,17 @@
                    on cc.sectionid = sec.id
                  join teachers t
                      on sec.teacher = t.id
-                 left join u_def_ext_students0 rpt
-                     on rpt.studentsdcid=s.dcid
                  left join pgfinalgrades pfg
                      on pfg.sectionid = sec.id
                      and pfg.studentid = s.id
+                     and pfg.finalgradename = '~(gpv.storecode)'
                  where
                  s.id = ~(curstudid)
-                 and substr(sec.course_number,1,2) = 'HR'
-                 and cc.termid = '~(gpv.yearid)00'
-                 and pfg.finalgradename = '~(gpv.storecode)'
+                 and substr(sec.course_number,1,4) = 'HRAM'
+                 and cc.termid = ~(curyearid) * 100
              ]
                  "teacher": "~(teacher)",
                  "comment": "~(comment;json)",
-                 "adaptation": "~(adaptation;json)",
-                 "program": "~(program;json)",
-                 "iep": "~(iep;json)",
-                 "eal": "~(eal;json)",
              [/tlist_sql]
                  "responsibility": {},
                  "organization": {},

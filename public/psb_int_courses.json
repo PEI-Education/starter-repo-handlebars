@@ -31,7 +31,7 @@
             ~[if.~(gpv.dothisfor)=enrolled] s.Enroll_Status = 0[/if]
             ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
             ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.school]
-            and sg.termid = ~(curtermid)),
+            and substr(sg.termid,1,2) = ~(curyearid)),
         gradesPivot as (select *
             from termGrades
             PIVOT (
@@ -213,7 +213,7 @@
         "r2effort": "~(effort2;json)",
         "r3effort": "~(effort3;json)",
         "r4effort": "~(effort4;json)"
-    },     
+    },    
     [/tlist_sql]
     {}
-    ]
+]
