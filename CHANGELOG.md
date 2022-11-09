@@ -1,4 +1,6 @@
 # Change Log
+## November 9, 2022
+- Uploaded v1.5 of plugin to production with fix for elementary standards issue.
 ## October 12, 2022
 - CSLF Intermediate report card complete and working on test1
 ## September 6, 2022

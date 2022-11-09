@@ -41,38 +41,10 @@ const formatComments = (student) => {
     }
   })
 }
- 
-function assignStandards(rawStandards, highestTerm) {
-  rawStandards.pop()
-  let grid = {}
-  rawStandards.forEach(standard => {
-      let sid = standard.id
-      if (sid in grid === false) {
-        grid[sid] = {}
-      }
-      
-      let subject = standard.subject
-      if (subject in grid[sid] === false) {
-        grid[sid][subject] = {}
-      }
 
-      let identifier = standard.identifier
-      if (identifier in grid[sid][subject] === false) {
-        grid[sid][subject][identifier] =  {}
-      }
-      let storecode = standard.storecode
-      if (parseInt(standard.storecode.substring(1)) <= highestTerm) {
-        grid[sid][subject][identifier][storecode] = standard.grade
-      }
-  })  
-  return grid
-} 
-
-function process(students, standards) {
+function process(students) {
   // eslint-disable-next-line no-undef
   let highestTerm = parseInt(reportconfig.storecode.substr(1))
-
-  const standardsGrid = assignStandards(standards, highestTerm)
 
   students.forEach(student => {
     student.courses.pop()
@@ -95,34 +67,6 @@ function process(students, standards) {
     if (!student.fla.teacher) {
       delete student.fla
     }
-
-    let stuStand = standardsGrid[student.id] || {};
-
-    if (stuStand.hasOwnProperty('lan')) {
-      if (stuStand.lan.hasOwnProperty('readview')) { student.ela.readview = stuStand.lan.readview }
-      if (stuStand.lan.hasOwnProperty('speaklisten')) { student.ela.speaklisten = stuStand.lan.speaklisten }
-      if (stuStand.lan.hasOwnProperty('writerep')) { student.ela.writerep = stuStand.lan.writerep }
-    }
-  
-    if (student.hasOwnProperty('fla') && stuStand.hasOwnProperty('fre')) {
-      if (stuStand.fre.hasOwnProperty('readview')) { student.fla.readview = stuStand.fre.readview }
-      if (stuStand.fre.hasOwnProperty('speaklisten')) { student.fla.speaklisten = stuStand.fre.speaklisten }
-      if (stuStand.fre.hasOwnProperty('writerep')) { student.fla.writerep = stuStand.fre.writerep }
-    }
-    
-    if (stuStand.hasOwnProperty('mat')) {
-      if (stuStand.mat.hasOwnProperty('numbersense')) { student.mat.numbersense = stuStand.mat.numbersense }
-      if (stuStand.mat.hasOwnProperty('patternsrel')) { student.mat.patternsrel = stuStand.mat.patternsrel }
-      if (stuStand.mat.hasOwnProperty('shapespace')) { student.mat.shapespace = stuStand.mat.shapespace }
-      if (stuStand.mat.hasOwnProperty('statprob')) { student.mat.statprob = stuStand.mat.statprob }
-    }
-  
-    if (stuStand.hr) {
-      if (stuStand.hr.hasOwnProperty('organization')) { student.hr.organization = stuStand.hr.organization }
-      if (stuStand.hr.hasOwnProperty('collaboration')) { student.hr.collaboration = stuStand.hr.collaboration }
-      if (stuStand.hr.hasOwnProperty('independence')) { student.hr.independence = stuStand.hr.independence }
-      if (stuStand.hr.hasOwnProperty('responsibility')) { student.hr.responsibility = stuStand.hr.responsibility }
-    }    
   })
   
   const outputData = { reportconfig: reportconfig, students: students }
@@ -146,7 +90,7 @@ const populate = async () => {
 
     const finalData = await Promise.all(results.map((result) => result.json()))
 
-    process(finalData[0], finalData[1])
+    process(finalData[0])
 
 }
 

@@ -14,7 +14,7 @@ module.exports = merge(common, {
     publicPath: './',
     filename: 'js/[name].bundle.js',
   },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {
