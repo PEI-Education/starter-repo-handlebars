@@ -5,22 +5,22 @@ Rebuilt PEI Report Cards using Handlebars.js for templating. Significant perform
 This plugin will eventually contain new versions of all report cards. Structure will have to be different from v1.
 
 ## Current Report Cards
-
+There are four report cards currently working in production:
 - PSB Elementary Report Card
-- PSB Intermediate Report Card, 3-term version (currently working on pei-test1)
-- PSB Intermediate Report Card, 4-term version (currently working on pei-test1)
-- CSLF Intermediate Report Card (currently working on pei-test1)
+- PSB Intermediate Report Card, 3-term version 
+- PSB Intermediate Report Card, 4-term version 
+- CSLF Intermediate Report Card 
 ## To start new report card project
 
-Originally started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), which got us around an blocking error around require.js and a conflict with something already running on PowerSchool. 
+Originally started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), because using Node allows us to precompile handlebars templates for faster rendering, and webpack let us bundle the necessary code without intererence from the built-in versions of the same packages in PowerSchool (specifically, Handlebars was giving problems.). 
 
 Note: Updated Webpack config to support multiple entry points, so all report cards can live together easily.
 
-Code for the PS plugin will be maintained in the [Report Card Plugin repo](https://github.com/ubershibs/pei_report_card_plugin).
+Code for the original versions of the report cards plugin will be maintained in the [Report Card Plugin repo](https://github.com/ubershibs/pei_report_card_plugin), until all report cards are migrated to Handlebars.
 
 ## Installation
 
-Clone this repo and npm install.
+Clone this repo and npm install (note: unless you have admin rights, and EUS Technician from ITSS will have to install Node on your machine - get them to select the latest LTS version.)
 
 ```bash
 npm i

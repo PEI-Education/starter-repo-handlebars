@@ -1,4 +1,7 @@
 # Change Log
+## November 13, 2022
+- Removed extraneous data fetch on elementary report card, now that all data is in one JSON file. 
+- Added plugin.xml to 'prefs' folder. Will need to be moved with each build, for the time being.
 ## November 9, 2022
 - Uploaded v1.5 of plugin to production with fix for elementary standards issue.
 ## October 12, 2022

@@ -5,6 +5,10 @@ import './styles/spinner.css';
 
 const template = require('./js/psb_elem.hbs')
 
+const dataSource = `./assets/psb_elem_students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yearid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`
+
+// Test data at `./assets/elem-fake-students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yearid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
+
 function fadeOutEffect() {
   let fadeTarget = document.getElementById("overlay");
   let fadeEffect = setInterval(function () {
@@ -67,6 +71,12 @@ function process(students) {
     if (!student.fla.teacher) {
       delete student.fla
     }
+    if (!student.ela.teacher) {
+      delete student.ela
+    }
+    if (!student.mat.teacher) {
+      delete student.mat
+    }
   })
   
   const outputData = { reportconfig: reportconfig, students: students }
@@ -77,21 +87,12 @@ function process(students) {
   overlay.remove()
 }
 
-const populate = async () => {
+const populate = async (url) => {
 
-    const results = await Promise.all([ 
-      fetch(`./assets/psb_elem_students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yearid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
-      //fetch(`./assets/elem-fake-students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yearid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
-      
-      fetch(`./assets/psb_elem_standards.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}`),
-      //fetch(`./assets/elem-fake-standards.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}`)
-
-    ])
-
-    const finalData = await Promise.all(results.map((result) => result.json()))
-
-    process(finalData[0])
+    const response = await fetch(url)
+    const results = await response.json()
+    process(results)
 
 }
 
-populate()
+populate(dataSource)
