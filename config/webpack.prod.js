@@ -12,7 +12,7 @@ module.exports = merge(common, {
   output: {
     path: paths.build,
     publicPath: './',
-    filename: 'js/[name].bundle.js',
+    filename: 'js/[name].bundle[contenthash].js',
   },
   devtool: 'source-map',
   module: {
@@ -61,13 +61,13 @@ module.exports = merge(common, {
           },
           noErrorOnMissing: true,          
         }
-      ],
+      ],    
 
     }),
     // Extracts CSS into separate files
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].css',
-      chunkFilename: '[id].css',
+      filename: 'styles/[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
     }),
   ],
   optimization: {
