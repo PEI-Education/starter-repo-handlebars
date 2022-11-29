@@ -18,7 +18,7 @@
             ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
             ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.school]
             and sg.storecode = '~(gpv.storecode)'
-            and sg.termid = '~[x:termid]'
+            and substr(sg.termid,1,2) = ~(curyearid)
             and cc.termid > 0),
     termGrades as (select
             s.id,
@@ -33,7 +33,7 @@
             ~[if.~(gpv.dothisfor)=enrolled] s.Enroll_Status = 0[/if]
             ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
             ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.school]
-            and sg.termid = '~[x:termid]'),
+            and substr(sg.termid,1,2) = ~(curyearid)),
        gradesPivot as (select *
             from termGrades
             PIVOT (

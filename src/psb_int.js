@@ -49,7 +49,7 @@ const process = (students, courses) => {
       course.i4grade = course.i4grade == '' ? course.i4grade : isNaN(course.i4grade) ? course.i4grade : Math.round(parseFloat(course.i4grade))
     }
     if (course.comment) {
-      course.comment = course.comment.substr(0,500)    
+      course.comment = course.comment.substr(0,515)    
     }
     if (course.eal==="0") {
       delete course.eal
@@ -101,7 +101,7 @@ const populate = async () => {
 
     process(finalData[0], finalData[1])
   } catch (err) {
-    console.error(err)
+    alert(err)
   }
 }
 

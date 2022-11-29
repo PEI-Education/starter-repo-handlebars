@@ -8,6 +8,7 @@
             s.id,
             s.first_name,
             s.last_name,
+            stuext.pei_uselegal,
             s.student_number,
             s.home_room,
             s.grade_level,
