@@ -32,7 +32,7 @@
       </table> 
       {{#if semCourses.[0]}}
          {{#with semCourses.[0]}}
-            <table id="course0" class="course">
+            <table id="semcourse0" class="course">
                <colgroup>
                   <col style="width: 2in;" />
                   <col style="width: 2in;" />
@@ -44,7 +44,7 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers }}J<br/>
+                        Teacher(s): {{ teachers }}J<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
@@ -68,7 +68,7 @@
       {{/if}}
       {{#if semCourses.[1]}}
          {{#with semCourses.[1]}}
-            <table id="course0" class="course">
+            <table id="semcourse1" class="course">
                <colgroup>
                   <col style="width: 2in;" />
                   <col style="width: 2in;" />
@@ -80,7 +80,7 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers }}J<br/>
+                        Teacher(s): {{ teachers }}J<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
@@ -104,7 +104,7 @@
       {{/if}}
       {{#if semCourses.[2]}}
          {{#with semCourses.[2]}}
-            <table id="course0" class="course">
+            <table id="semcourse2" class="course">
                <colgroup>
                   <col style="width: 2in;" />
                   <col style="width: 2in;" />
@@ -116,7 +116,7 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers }}J<br/>
+                        Teacher(s): {{ teachers }}J<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
@@ -140,7 +140,7 @@
       {{/if}}
       {{#if semCourses.[3]}}
          {{#with semCourses.[3]}}
-            <table id="course0" class="course">
+            <table id="semcourse3" class="course">
                <colgroup>
                   <col style="width: 2in;" />
                   <col style="width: 2in;" />
@@ -152,7 +152,7 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers }}J<br/>
+                        Teacher(s): {{ teachers }}J<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
@@ -176,7 +176,7 @@
       {{/if}}
       {{#if semCourses.[4]}}
          {{#with semCourses.[4]}}
-            <table id="course0" class="course">
+            <table id="semcourse4" class="course">
                <colgroup>
                   <col style="width: 2in;" />
                   <col style="width: 2in;" />
@@ -188,7 +188,7 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers }}J<br/>
+                        Teacher(s): {{ teachers }}J<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
@@ -212,7 +212,7 @@
       {{/if}}
       {{#if semCourses.[5]}}
          {{#with semCourses.[5]}}
-            <table id="course0" class="course">
+            <table id="semcourse5" class="course">
                <colgroup>
                   <col style="width: 2in;" />
                   <col style="width: 2in;" />
@@ -224,7 +224,7 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers }}J<br/>
+                        Teacher(s): {{ teachers }}J<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
@@ -248,7 +248,7 @@
       {{/if}}
       {{#if fyCourses.[0]}}
          {{#with fyCourses.[0]}}
-            <table id="course5" class="course">
+            <table id="fycourse0" class="course">
                <colgroup>
                   <col style="width: 1in;" />
                   <col style="width: 1in;" />
@@ -262,7 +262,7 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers}}<br/>
+                        Teacher(s): {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
@@ -290,7 +290,7 @@
       {{/if}}
       {{#if fyCourses.[1]}}
          {{#with fyCourses.[1]}}
-            <table id="course0" class="course">
+            <table id="fycourse1" class="course">
                <colgroup>
                   <col style="width: 2in;" />
                   <col style="width: 2in;" />
@@ -302,7 +302,7 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers }}J<br/>
+                        Teacher(s): {{ teachers }}J<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
@@ -328,9 +328,9 @@
             </table>
          {{/with}}
       {{/if}}
-      {{#if fyCourses.[0]}}
-         {{#with fyCourses.[0]}}
-            <table id="course1" class="course">
+      {{#if fyCourses.[2]}}
+         {{#with fyCourses.[2]}}
+            <table id="fycourse2" class="course">
                <colgroup>
                   <col style="width: 1in;" />
                   <col style="width: 1in;" />
@@ -344,7 +344,7 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers }}<br/>
+                        Teacher(s): {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
@@ -370,9 +370,9 @@
             </table> 
          {{/with}}  
       {{/if}}  
-      {{#if fyCourses.[2]}}
-         {{#with fyCourses.[2]}}
-            <<table id="course1" class="course">
+      {{#if fyCourses.[3]}}
+         {{#with fyCourses.[3]}}
+            <table id="fycourse3" class="course">
                <colgroup>
                   <col style="width: 1in;" />
                   <col style="width: 1in;" />
@@ -386,7 +386,7 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers }}<br/>
+                        Teacher(s): {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
@@ -412,51 +412,9 @@
             </table> 
          {{/with}}
       {{/if}}
-      {{#if fyCourses.[3]}}
-         {{#with fyCourses.[3]}}
-            <table id="course1" class="course">
-               <colgroup>
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;">
-                  <col style="width: 1in;">
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="4">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{late }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth: </strong>{{comment}}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Q1</td>
-                  <td class="sem bold">Q2</td>
-                  <td class="sem bold">Q3</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{q1}}</td>
-                  <td class="sem">{{q2}}</td>
-                  <td class="sem">{{q3}}</td>
-                  <td class="sem">{{q4}}</td>
-               </tr>
-            </table> 
-         {{/with}}  
-      {{/if}}  
       {{#if fyCourses.[4]}}
          {{#with fyCourses.[4]}}
-            <table id="course1" class="course">
+            <table id="fycourse4" class="course">
                <colgroup>
                   <col style="width: 1in;" />
                   <col style="width: 1in;" />
@@ -470,8 +428,8 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }} {{ coteachers }}<br/>
-                     </div> 
+                        Teacher(s): {{ teachers }}<br/>
+                     </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
                         Late: {{late }}
@@ -498,7 +456,7 @@
       {{/if}}  
       {{#if fyCourses.[5]}}
          {{#with fyCourses.[5]}}
-           <table id="course1" class="course">
+            <table id="fycourse5" class="course">
                <colgroup>
                   <col style="width: 1in;" />
                   <col style="width: 1in;" />
@@ -512,7 +470,49 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher: {{ teacher }}{{#if coteacher}}, {{/if}}{{ coteachers }}<br/>
+                        Teacher(s): {{ teachers }}<br/>
+                     </div> 
+                     <div class="rightblock">
+                        Abs: {{ abs }}<br />
+                        Late: {{late }}
+                     </div>
+                  </td>
+                  <td class="comment left" rowspan="3">
+                     <strong>Strengths and Areas for Growth: </strong>{{comment}}
+                  </td>
+               </tr>
+               <tr>
+                  <td class="sem bold">Q1</td>
+                  <td class="sem bold">Q2</td>
+                  <td class="sem bold">Q3</td>
+                  <td class="sem bold">Final</td>
+               </tr>
+               <tr>
+                  <td class="sem">{{q1}}</td>
+                  <td class="sem">{{q2}}</td>
+                  <td class="sem">{{q3}}</td>
+                  <td class="sem">{{q4}}</td>
+               </tr>
+            </table> 
+         {{/with}}  
+      {{/if}}  
+      {{#if fyCourses.[6]}}
+         {{#with fyCourses.[6]}}
+           <table id="fycourse6" class="course">
+               <colgroup>
+                  <col style="width: 1in;" />
+                  <col style="width: 1in;" />
+                  <col style="width: 1in;">
+                  <col style="width: 1in;">
+                  <col style="width: 4in;" />
+               </colgroup>
+               <tr>
+                  <td class="courseinfo" colspan="4">
+                     <div class="leftblock">
+                        Course name: {{ course_name }}<br/>
+                        Course code: {{ course_number }}<br/>
+                        Level: {{ level }}<br/>
+                        Teacher(s): {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
@@ -540,7 +540,7 @@
       {{/if}}        
       <div class="footer">
          <div class="signature">
-                    {{#if ../reportconfig.teachersig}}<span class="teacher">Teacher: <span class="sig-line">&nbsp;</span></span> &nbsp; &nbsp; {{/if}}{{#if ../reportconfig.principalsig}}<span class="principal">Principal: <span class="sig-line">&nbsp;</span></span>{{/if}}
+                    {{#if ../reportconfig.teachersig}}<span class="teacher">Teacher(s): <span class="sig-line">&nbsp;</span></span> &nbsp; &nbsp; {{/if}}{{#if ../reportconfig.principalsig}}<span class="principal">Principal: <span class="sig-line">&nbsp;</span></span>{{/if}}
          </div>
          <table class="footer1">
             <colgroup>
