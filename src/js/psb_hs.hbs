@@ -44,11 +44,11 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}J<br/>
+                        Teacher(s): {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
-                        Late: {{ late }}
+                        Late: {{ lates }}
                      </div>
                   </td>
                   <td class="comment left" rowspan="3">
@@ -80,11 +80,11 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}J<br/>
+                        Teacher(s): {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
-                        Late: {{ late }}
+                        Late: {{ lates }}
                      </div>
                   </td>
                   <td class="comment left" rowspan="3">
@@ -116,11 +116,11 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}J<br/>
+                        Teacher(s): {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
-                        Late: {{ late }}
+                        Late: {{ lates }}
                      </div>
                   </td>
                   <td class="comment left" rowspan="3">
@@ -152,11 +152,11 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}J<br/>
+                        Teacher(s): {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
-                        Late: {{ late }}
+                        Late: {{ lates }}
                      </div>
                   </td>
                   <td class="comment left" rowspan="3">
@@ -188,11 +188,11 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}J<br/>
+                        Teacher(s): {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
-                        Late: {{ late }}
+                        Late: {{ lates }}
                      </div>
                   </td>
                   <td class="comment left" rowspan="3">
@@ -224,11 +224,11 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}J<br/>
+                        Teacher(s): {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
-                        Late: {{ late }}
+                        Late: {{ lates }}
                      </div>
                   </td>
                   <td class="comment left" rowspan="3">
@@ -302,11 +302,11 @@
                         Course name: {{ course_name }}<br/>
                         Course code: {{ course_number }}<br/>
                         Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}J<br/>
+                        Teacher(s): {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Abs: {{ abs }}<br />
-                        Late: {{ late }}
+                        Late: {{ lates }}
                      </div>
                   </td>
                   <td class="comment left" rowspan="3">
@@ -611,7 +611,7 @@
          <table>
             <tr>
                <td class="left">V 4.0</td>
-               <td class="center">~(First_Name) ~(Last_Name) (~(student_number)) - ~(gpv.reportdate)</td>
+               <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
                <td class="right">Page: 1</td>
             </tr>
          </table>
@@ -651,7 +651,7 @@
                   <th>Mark</th>
                   <th>Credit</th>
                </tr>
-               <tr><td>2021/06</td><td>AUT701A</td><td>Introduction to Auto Service Technology</td><td>79</td><td>1.00</td></tr><tr><td>2022/06</td><td>AUT801B</td><td>Brake Systems 801B</td><td>72</td><td>1.00</td></tr><tr><td>2022/06</td><td>BIO801A</td><td>Human Biology 801A</td><td>77</td><td>1.00</td></tr><tr><td>2021/02</td><td>CAR701A</td><td>Introduction to Carpentry Technology</td><td>81</td><td>1.00</td></tr><tr><td>2022/02</td><td>CAR801A</td><td>Framing Systems Level I</td><td>90</td><td>1.00</td></tr><tr><td>2021/06</td><td>CEO401A</td><td>Career Exploration Opportunities</td><td>90</td><td>1.00</td></tr><tr><td>2022/06</td><td>CHM521A</td><td>Chemistry 521A</td><td>43</td><td>0.00</td></tr><tr><td>2021/06</td><td>ENG421A</td><td>English 10</td><td>74</td><td>1.00</td></tr><tr><td>2022/02</td><td>ENG521A</td><td>English 11</td><td>72</td><td>1.00</td></tr><tr><td>2021/06</td><td>GEO421A</td><td>Geography of Canada</td><td>81</td><td>1.00</td></tr><tr><td>2022/02</td><td>GEO521A</td><td>Global Studies</td><td>87</td><td>1.00</td></tr><tr><td>2022/02</td><td>LAW521A</td><td>Introductory Law</td><td>74</td><td>1.00</td></tr><tr><td>2021/02</td><td>MAT421A</td><td>Mathematics and Pre-Calculus 10</td><td>69</td><td>1.00</td></tr><tr><td>2022/06</td><td>MAT521A</td><td>Foundations of Mathematics 11 521A</td><td>75</td><td>1.00</td></tr><tr><td>2021/02</td><td>PED401A</td><td>Physical Education (Wellness)</td><td>86</td><td>1.00</td></tr><tr><td>2021/02</td><td>SCI421A</td><td>Science</td><td>69</td><td>1.00</td></tr></tbody></table>
+               <tr><td>2021/06</td><td>AUT701A</tr>td><td>	Introduction to Auto Service Technology</td><td>79</td><td>1.00</td>  </tr><tr><td>2022/02</td><td>CAR801A</td><td>Framing Systems Level I</td><td>90</td><td>1.00</td></tr><tr><td>2021/06</td><td>CEO401A</td><td>Career Exploration Opportunities</td><td>90</td><td>1.00</td></tr><tr><td>2022/06</td><td>CHM521A</td><td>Chemistry 521A</td><td>43</td><td>0.00</td></tr><tr><td>2021/06</td><td>ENG421A</td><td>English 10</td><td>74</td><td>1.00</td></tr><tr><td>2022/02</td><td>ENG521A</td><td>English 11</td><td>72</td><td>1.00</td></tr><tr><etd>2021/06</etd><td>GEO421A</td><td>Geography of Canada</td><td>81</td><td>1.00</td></tr><tr><td>2022/02</td><td>GEO521A</td><td>Global Studies</td><td>87</td><td>1.00</td></tr><tr><td>2022/02</td><td>LAW521A</td><td>Introductory Law</td><td>74</td><td>1.00</td></tr><tr><td>2021/02</td><td>MAT421A</td><td>Mathematics and Pre-Calculus 10</td><td>69</td><td>1.00</td></tr><tr><td>2022/06</td><td>MAT521A</td><td>Foundations of Mathematics 11 521A</td><td>75</td><td>1.00</td></tr><tr><td>2021/02</td><td>PED401A</td><td>Physical Education (Wellness)</td><td>86</td><td>1.00</td></tr><tr><td>2021/02</td><td>SCI421A</td><td>Science</td><td>69</td><td>1.00</td></tr></tbody></table>
             <div class="credits-earned">
                Total Credits Earned: ~(credits)
             </div>
@@ -661,7 +661,7 @@
          <table>
             <tr>
                <td class="left">V 4.0</td>
-               <td class="center">~(First_Name) ~(Last_Name) (~(student_number)) - ~(gpv.reportdate)</td>
+               <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
                <td class="right">Page: 1</td>
             </tr>
          </table>
