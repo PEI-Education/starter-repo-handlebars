@@ -3,7 +3,7 @@ import './styles/spinner.css';
 
 const template = require('./js/psb_hs.hbs')
 
-const dataSource = `./assets/psb_hs.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}&termid=${reportconfig.termid}`
+const dataSource = `./assets/psb_hs.json?dothisfor=${reportconfig.dothisfor}&coteachers=${reportconfig.coteachers}&termid=${reportconfig.termid}&storecode=${reportconfig.storecode}`
 
 //Real data -> const dataSource = `./assets/psb_hs.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}&termid=${reportconfig.termid}`
 
@@ -27,6 +27,12 @@ const fadeOutEffect = () => {
 function process(students) {
 
    console.log(students)
+
+   students.forEach((student) => {
+      student.semCourses.pop()
+      student.fyCourses.pop()
+   })
+
    const outputData = { reportconfig: reportconfig, students: students }
    const container = document.getElementById('output')
    container.innerHTML = template(outputData)

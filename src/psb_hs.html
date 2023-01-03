@@ -11,17 +11,15 @@
    }
   </style>
    <script>
-    let titleTerm = '(~gpv.terms)'
     let termEquivalents = {'Q1':'~(curyearid)01','S1':'~(curyearid)01','Q3':'~(curyearid)02','S2':'~(curyearid)02'}
     let reportconfig = {
       dothisfor: '~[gpv:dothisfor]',
-      termid: termEquivalents[titleTerm],
-      title: titleTerm.substring(0,1) == 'Q' ? 'Progress Report' : 'Final Report',
-      printDate: '~[date]',
+      termid: termEquivalents['~(gpv.reportingTerm)'],
+      title: '~(gpv.reportingTerm)'.substring(0,1) == 'Q' ? 'Progress Report' : 'Final Report',
+      printDate: '~(gpv.reportdate)',
       yearname:  '~(yearname)',
-      yearid: '~(curyearid)',
       coteachers: '~(gpv.coteachers)',
-      storecode: titleTerm
+      storecode: '~(gpv.reportingTerm)'
     } 
     if ("~(gpv.teachersig)"==="true") {
         reportconfig.teachersig = "true"
@@ -29,7 +27,6 @@
     if ("~(gpv.principalsig)"==="true") {
         reportconfig.principalsig = "true"
     }
-    console.log(reportconfig.titleTerm + ' ' + reportconfig.termid + ' ' + reportconfig.title)
   </script>
 </head>
 <body>
