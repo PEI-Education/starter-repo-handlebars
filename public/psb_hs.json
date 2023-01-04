@@ -34,8 +34,8 @@
       [/tlist_sql]
          "semCourses": [
       ~[tlist_sql;
-            with currentcourses as (select
-            cc.sectionid,
+        with currentcourses as (select
+         cc.sectionid,
             sg.course_name,
             sg.course_number,
             case substr(sg.course_number,5,1)
@@ -46,7 +46,9 @@
                when '4' then 'Vocational'
                when '5' then 'Vocational'
                when '6' then 'Modified'
-               when '7' then 'Intervention'     
+               when '7' then 'Intervention' 
+               when 'H' then 'IB'
+               when 'S' then 'IB' 
             end as course_level,
             sg.absences,
             sg.tardies,
@@ -57,27 +59,35 @@
       join storedgrades sg
          on sg.studentid = cc.studentid 
          and sg.sectionid = cc.sectionid
+      join courses c
+         on c.course_number = cc.course_number
       where 
          s.id = ~(curstudid)
          and sg.schoolid = ~(curschoolid)
          and sg.termid = ~(gpv.termid)
-         and sg.storecode in '~(gpv.storecode)'
-         ),
-         coursegrades as (select
-            sg.sectionid,
+         and sg.storecode IN (~(gpv.storecode))
+         and nvl(c.sched_do_not_print,0) = 0
+         and nvl(sg.excludefromtranscripts,0) = 0
+      order by 1),
+      coursegrades as (select
+            sg.course_number,
             sg.storecode,
             sg.grade
          from storedgrades sg
+         join courses c
+            on c.course_number = sg.course_number
          where sg.studentid = ~(curstudid)
          and sg.termid = ~(gpv.termid)
-         ),
+         and nvl(c.sched_do_not_print,0) = 0
+         and nvl(sg.excludefromtranscripts,0) = 0
+         order by 1),
          gradespivot as (select *
          from coursegrades
          PIVOT (
          MAX ( grade )
          FOR storecode
          IN ( 'Q1' Q1, 'S1' S1, 'Q3' Q3, 'S2' S2 ))
-         order by sectionid)
+         order by course_number)
          select 
             ci.sectionid,
             ci.course_name,
@@ -102,7 +112,7 @@
             [else](tea.first_name || ' ' || tea.last_name)[/if] as teacher_names
          from currentcourses ci
          join gradespivot cg
-            on ci.sectionid = cg.sectionid
+            on ci.course_number = cg.course_number
          join sections sec
             on sec.id = ci.sectionid
          join teachers tea
@@ -125,8 +135,8 @@
          [/tlist_sql]
          {}],
          "fyCourses":[
-            ~[tlist_sql;
-            with currentcourses as (select
+         ~[tlist_sql;
+               with currentcourses as (select
             cc.sectionid,
             sg.course_name,
             sg.course_number,
@@ -138,7 +148,9 @@
                when '4' then 'Vocational'
                when '5' then 'Vocational'
                when '6' then 'Modified'
-               when '7' then 'Intervention'     
+               when '7' then 'Intervention' 
+               when 'H' then 'IB'
+               when 'S' then 'IB' 
             end as course_level,
             sg.absences,
             sg.tardies,
@@ -149,29 +161,38 @@
       join storedgrades sg
          on sg.studentid = cc.studentid 
          and sg.sectionid = cc.sectionid
+      join courses c
+         on c.course_number = cc.course_number
       where 
          s.id = ~(curstudid)
          and sg.schoolid = ~(curschoolid)
-         and sg.termid = '~(gpv.yearid)00'
-         and sg.storecode in ('Q1')
-         ),
-         coursegrades as (select
-            sg.sectionid,
+         and sg.termid = ~(curyearid) * 100
+         and sg.storecode IN (~(gpv.storecode))
+         and nvl(c.sched_do_not_print,0) = 0
+         and nvl(sg.excludefromtranscripts,0) = 0
+      order by 1),
+      coursegrades as (select
+            sg.course_number,
             sg.storecode,
             sg.grade
          from storedgrades sg
+         join courses c
+            on c.course_number = sg.course_number
          where sg.studentid = ~(curstudid)
-         and sg.termid = '~(gpv.yearid)00'
-         ),
-         gradespivot as (select *
+         and sg.termid = ~(curyearid) * 100
+         and nvl(c.sched_do_not_print,0) = 0
+         and nvl(sg.excludefromtranscripts,0) = 0
+         order by 1),
+        gradespivot as(select 
+        	*
          from coursegrades
          PIVOT (
          MAX ( grade )
          FOR storecode
          IN ( 'Q1' Q1, 'Q2' Q2, 'Q3' Q3, 'Q4' Q4 ))
-         order by sectionid)
-
-         select 
+         order by 1)
+         
+          select 
             ci.sectionid,
             ci.course_name,
             ci.course_number,
@@ -195,14 +216,14 @@
             [else](tea.first_name || ' ' || tea.last_name)[/if] as teacher_names
          from currentcourses ci
          join gradespivot cg
-            on ci.sectionid = cg.sectionid
+            on ci.course_number = cg.course_number
          join sections sec
             on sec.id = ci.sectionid
          join teachers tea
             on tea.id = sec.teacher
          order by 1;]
             {
-               "sectionid":"~(ci.sectionid)",
+              "sectionid":"~(ci.sectionid)",
                "course_name":"~(ci.course_name;json)",
                "course_number":"~(ci.course_number)",
                "level":"~(ci.course_level)",
@@ -216,7 +237,62 @@
                "teachers":"~(teacher_names;json)"
             },
             [/tlist_sql]
-            {}]
+            {}],
+         "transcript": [
+            ~[tlist_sql;
+            select
+                  to_char(t.lastday,'yyyy/mm') date_earned,
+                  sg.course_number,
+                  sg.course_name,
+                  sg.grade,
+                  round(nvl(sg.earnedcrhrs,0),2) earnedcrhrs,
+                  sg.potentialcrhrs,
+                  nvl(sg.credit_type,'ZZ') credit_type
+               from students s
+               join storedgrades sg
+                  on sg.studentid = s.id
+               join terms t
+                  on t.id = sg.termid
+                  and t.schoolid = s.schoolid
+               join courses c
+                  on sg.course_number = c.course_number
+               where
+                  s.id = ~(curstudid)
+                  and s.schoolid = ~(curschoolid)
+                  and sg.storecode = 'F1'
+                  and nvl(c.sched_do_not_print,0) = 0
+                  and nvl(sg.excludefromtranscripts,0) = 0                 
+               order by sg.credit_type ASC, date_earned ASC;
+            ]
+            {
+                  "lastday":"~(1)",
+                  "courseNumber":"~(2)",
+                  "courseName":"~(3;json)",
+                  "grade":"~(4)",
+                  "credits":"~(5)",
+                  "maxCredits":"~(6)",
+                  "creditType":"~(7)"
+            },
+            [/tlist_sql]
+            {}   
+         ],
+         ~[tlist_sql;
+           select
+              sum(sg.earnedcrhrs) credithours
+           from students s
+           join storedgrades sg
+              on sg.studentid = s.id
+           join courses c
+              on sg.course_number = c.course_number
+           where
+              s.id = ~(curstudid)
+              and s.schoolid = ~(curschoolid)
+              and sg.storecode = 'F1'
+              and nvl(c.sched_do_not_print,0) = 0
+              and nvl(sg.excludefromtranscripts,0) = 0 
+            order by 1;]
+            "creditHours": "~(1)"
+            [/tlist_sql]
    }
    [between:Students],
    [/RepeatForEach:Students] 

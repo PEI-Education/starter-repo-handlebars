@@ -49,7 +49,8 @@ module.exports = {
         {
           loader: "handlebars-loader",
           options: {
-            inlineRequire: "/assets/"
+            inlineRequire: "/assets/",
+            helperDirs: paths.helpers
           }
         }
       ]}

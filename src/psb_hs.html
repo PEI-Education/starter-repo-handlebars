@@ -11,16 +11,16 @@
    }
   </style>
    <script>
-    let termEquivalents = {'Q1':'~(curyearid)01','S1':'~(curyearid)01','Q3':'~(curyearid)02','S2':'~(curyearid)02'}
+    let termEquivalents = {"'Q1'":'~(curyearid)01',"'S1','Q2'":'~(curyearid)01',"'Q3'":'~(curyearid)02',"'S2','Q4'":'~(curyearid)02'}
     let reportconfig = {
       dothisfor: '~[gpv:dothisfor]',
-      termid: termEquivalents['~(gpv.reportingTerm)'],
-      title: '~(gpv.reportingTerm)'.substring(0,1) == 'Q' ? 'Progress Report' : 'Final Report',
+      termid: termEquivalents["~(gpv.reportingTerm)"],
+      title: "~(gpv.reportingTerm)".substring(1,2) == 'Q' ? 'Progress Report' : 'Final Report',
       printDate: '~(gpv.reportdate)',
       yearname:  '~(yearname)',
       coteachers: '~(gpv.coteachers)',
-      storecode: '~(gpv.reportingTerm)'
-    } 
+      storecode: "~(gpv.reportingTerm)"
+    }   
     if ("~(gpv.teachersig)"==="true") {
         reportconfig.teachersig = "true"
     }

@@ -17,6 +17,8 @@ module.exports = {
   images: path.resolve(__dirname, '../images'),
 
   // Preferences pages
-  prefs: path.resolve(__dirname,  '../prefs')
+  prefs: path.resolve(__dirname,  '../prefs'),
 
+  // Handlebars helpers
+  helpers: path.resolve(__dirname, '../src/helpers')
 }

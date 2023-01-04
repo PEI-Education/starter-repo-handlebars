@@ -60,10 +60,10 @@
             <td>Reporting Term:</td>
             <td>
               <select name="reportingTerm" id="reportingTerm">
-                  <option value="Q1">S1 Progress</option>
-                  <option value="S1">S1 Final</option>
-                  <option value="Q3">S2 Progress</option>
-                  <option value="S2">S2 Final</option>
+                  <option value="'Q1'">S1 Progress</option>
+                  <option value="'S1','Q2'">S1 Final</option>
+                  <option value="'Q3'">S2 Progress</option>
+                  <option value="'S2','Q4'">S2 Final</option>
               </select>
             </td>
           </tr>
@@ -71,14 +71,14 @@
             <td>Report Card Date</td>
             <td>
               <input type="text" class="psDateWidget" id="rptdate" name="reportdate"  value="~[short.date]">
-              <label for="rptdate">Set Report Card Date</label>
+              <label for="rptdate">Set the print date</label>
             </td>
           </tr>
           <tr>
               <td>Include Co-Teachers?</td>
                 <td>
                     <input type="checkbox" id="coteachers" name="coteachers" value="true">
-                    <label for="coteachers"> Add anyone identified as a co-teacher to the list of teachers for a section. BETA!</label>
+                    <label for="coteachers">Include lead teacher and all staff with the role "co-teacher" for each section</label>
               </td>
           </tr>
           <tr>

@@ -153,7 +153,6 @@ h4 {
 .transcript-border {
    border: 1px solid black;
    width: 8in;
-   margin: 0.1in;
    padding: 0.1in;
  }
  
@@ -162,7 +161,6 @@ h4 {
    font-size: 9pt;
    width: 100%;
    text-align: left;
-   margin-left: 0.1in;
  }
  
  .transcript th {
@@ -203,7 +201,7 @@ h4 {
       display: inline-block;
       border-bottom: 1px solid black;
       margin-bottom: 0.1in;
-      width: 3.35in;
+      width: 3.25in;
    }
 
    .footer1 {

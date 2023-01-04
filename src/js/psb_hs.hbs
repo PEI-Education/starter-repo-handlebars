@@ -60,8 +60,8 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{#if q3}}{{ q3 }}{{else}}{{ q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ s2 }}{{else}}{{ s1 }}{{/if}}</td>
+                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
+                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
                </tr>
             </table>
          {{/with}}
@@ -96,8 +96,8 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{#if q3}}{{ q3 }}{{else}}{{ q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ s2 }}{{else}}{{ s1 }}{{/if}}</td>
+                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
+                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
                </tr>
             </table>
          {{/with}}
@@ -132,8 +132,8 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{#if q3}}{{ q3 }}{{else}}{{ q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ s2 }}{{else}}{{ s1 }}{{/if}}</td>
+                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
+                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
                </tr>
             </table>
          {{/with}}
@@ -168,8 +168,8 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{#if q3}}{{ q3 }}{{else}}{{ q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ s2 }}{{else}}{{ s1 }}{{/if}}</td>
+                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
+                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
                </tr>
             </table>
          {{/with}}
@@ -204,8 +204,8 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{#if q3}}{{ q3 }}{{else}}{{ q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ s2 }}{{else}}{{ s1 }}{{/if}}</td>
+                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
+                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
                </tr>
             </table>
          {{/with}}
@@ -240,8 +240,8 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{#if q3}}{{ q3 }}{{else}}{{ q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ s2 }}{{else}}{{ s1 }}{{/if}}</td>
+                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
+                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
                </tr>
             </table>
          {{/with}}
@@ -280,10 +280,10 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{q1}}</td>
-                  <td class="sem">{{q2}}</td>
-                  <td class="sem">{{q3}}</td>
-                  <td class="sem">{{q4}}</td>
+                  <td class="sem">{{ round q1}}</td>
+                  <td class="sem">{{ round q2}}</td>
+                  <td class="sem">{{ round q3}}</td>
+                  <td class="sem">{{ round q4}}</td>
                </tr>
             </table> 
          {{/with}}  
@@ -292,8 +292,10 @@
          {{#with fyCourses.[1]}}
             <table id="fycourse1" class="course">
                <colgroup>
-                  <col style="width: 2in;" />
-                  <col style="width: 2in;" />
+                  <col style="width: 1in;" />
+                  <col style="width: 1in;" />
+                  <col style="width: 1in;">
+                  <col style="width: 1in;">
                   <col style="width: 4in;" />
                </colgroup>
                <tr>
@@ -320,10 +322,10 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{q1}}</td>
-                  <td class="sem">{{q2}}</td>
-                  <td class="sem">{{q3}}</td>
-                  <td class="sem">{{q4}}</td>
+                  <td class="sem">{{ round q1}}</td>
+                  <td class="sem">{{ round q2}}</td>
+                  <td class="sem">{{ round q3}}</td>
+                  <td class="sem">{{ round q4}}</td>
                </tr>
             </table>
          {{/with}}
@@ -362,10 +364,10 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{q1}}</td>
-                  <td class="sem">{{q2}}</td>
-                  <td class="sem">{{q3}}</td>
-                  <td class="sem">{{q4}}</td>
+                  <td class="sem">{{ round q1}}</td>
+                  <td class="sem">{{ round q2}}</td>
+                  <td class="sem">{{ round q3}}</td>
+                  <td class="sem">{{ round q4}}</td>
                </tr>
             </table> 
          {{/with}}  
@@ -404,10 +406,10 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{q1}}</td>
-                  <td class="sem">{{q2}}</td>
-                  <td class="sem">{{q3}}</td>
-                  <td class="sem">{{q4}}</td>
+                  <td class="sem">{{ round q1}}</td>
+                  <td class="sem">{{ round q2}}</td>
+                  <td class="sem">{{ round q3}}</td>
+                  <td class="sem">{{ round q4}}</td>
                </tr>
             </table> 
          {{/with}}
@@ -446,10 +448,10 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{q1}}</td>
-                  <td class="sem">{{q2}}</td>
-                  <td class="sem">{{q3}}</td>
-                  <td class="sem">{{q4}}</td>
+                  <td class="sem">{{ round q1}}</td>
+                  <td class="sem">{{ round q2}}</td>
+                  <td class="sem">{{ round q3}}</td>
+                  <td class="sem">{{ round q4}}</td>
                </tr>
             </table> 
          {{/with}}  
@@ -488,10 +490,10 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{q1}}</td>
-                  <td class="sem">{{q2}}</td>
-                  <td class="sem">{{q3}}</td>
-                  <td class="sem">{{q4}}</td>
+                  <td class="sem">{{ round q1}}</td>
+                  <td class="sem">{{ round q2}}</td>
+                  <td class="sem">{{ round q3}}</td>
+                  <td class="sem">{{ round q4}}</td>
                </tr>
             </table> 
          {{/with}}  
@@ -530,14 +532,56 @@
                   <td class="sem bold">Final</td>
                </tr>
                <tr>
-                  <td class="sem">{{q1}}</td>
-                  <td class="sem">{{q2}}</td>
-                  <td class="sem">{{q3}}</td>
-                  <td class="sem">{{q4}}</td>
+                  <td class="sem">{{ round q1}}</td>
+                  <td class="sem">{{ round q2}}</td>
+                  <td class="sem">{{ round q3}}</td>
+                  <td class="sem">{{ round q4}}</td>
                </tr>
             </table> 
          {{/with}}  
-      {{/if}}        
+      {{/if}}
+      {{#if fyCourses.[7]}}
+         {{#with fyCourses.[7]}}
+           <table id="fycourse7" class="course">
+               <colgroup>
+                  <col style="width: 1in;" />
+                  <col style="width: 1in;" />
+                  <col style="width: 1in;">
+                  <col style="width: 1in;">
+                  <col style="width: 4in;" />
+               </colgroup>
+               <tr>
+                  <td class="courseinfo" colspan="4">
+                     <div class="leftblock">
+                        Course name: {{ course_name }}<br/>
+                        Course code: {{ course_number }}<br/>
+                        Level: {{ level }}<br/>
+                        Teacher(s): {{ teachers }}<br/>
+                     </div>
+                     <div class="rightblock">
+                        Abs: {{ abs }}<br />
+                        Late: {{late }}
+                     </div>
+                  </td>
+                  <td class="comment left" rowspan="3">
+                     <strong>Strengths and Areas for Growth: </strong>{{comment}}
+                  </td>
+               </tr>
+               <tr>
+                  <td class="sem bold">Q1</td>
+                  <td class="sem bold">Q2</td>
+                  <td class="sem bold">Q3</td>
+                  <td class="sem bold">Final</td>
+               </tr>
+               <tr>
+                  <td class="sem">{{ round q1}}</td>
+                  <td class="sem">{{ round q2}}</td>
+                  <td class="sem">{{ round q3}}</td>
+                  <td class="sem">{{ round q4}}</td>
+               </tr>
+            </table> 
+         {{/with}}  
+      {{/if}}           
       <div class="footer">
          <div class="signature">
                     {{#if ../reportconfig.teachersig}}<span class="teacher">Teacher(s): <span class="sig-line">&nbsp;</span></span> &nbsp; &nbsp; {{/if}}{{#if ../reportconfig.principalsig}}<span class="principal">Principal: <span class="sig-line">&nbsp;</span></span>{{/if}}
@@ -625,7 +669,7 @@
    <!-- Start of page 2 -->
    <div class="page">
       <header>
-         <h2>Colonel Gray Senior High</h2>
+         <h2>{{ school }}</h2>
       </header>
       <div class="gradreqs">
          <h3>Graduation Requirements</h3>
@@ -633,7 +677,7 @@
             <strong><a href="https://www.princeedwardisland.ca/graduationrequirements" target="_blank">https://www.princeedwardisland.ca/graduationrequirements</a></strong>
          </p>
          <br>
-         <br>
+         &nbsp;<br>
          <h3>Credit Summary</h3>
          <div class="transcript-border">
             <table id="transcript-20124" class="transcript">
@@ -651,9 +695,11 @@
                   <th>Mark</th>
                   <th>Credit</th>
                </tr>
-               <tr><td>2021/06</td><td>AUT701A</tr>td><td>	Introduction to Auto Service Technology</td><td>79</td><td>1.00</td>  </tr><tr><td>2022/02</td><td>CAR801A</td><td>Framing Systems Level I</td><td>90</td><td>1.00</td></tr><tr><td>2021/06</td><td>CEO401A</td><td>Career Exploration Opportunities</td><td>90</td><td>1.00</td></tr><tr><td>2022/06</td><td>CHM521A</td><td>Chemistry 521A</td><td>43</td><td>0.00</td></tr><tr><td>2021/06</td><td>ENG421A</td><td>English 10</td><td>74</td><td>1.00</td></tr><tr><td>2022/02</td><td>ENG521A</td><td>English 11</td><td>72</td><td>1.00</td></tr><tr><etd>2021/06</etd><td>GEO421A</td><td>Geography of Canada</td><td>81</td><td>1.00</td></tr><tr><td>2022/02</td><td>GEO521A</td><td>Global Studies</td><td>87</td><td>1.00</td></tr><tr><td>2022/02</td><td>LAW521A</td><td>Introductory Law</td><td>74</td><td>1.00</td></tr><tr><td>2021/02</td><td>MAT421A</td><td>Mathematics and Pre-Calculus 10</td><td>69</td><td>1.00</td></tr><tr><td>2022/06</td><td>MAT521A</td><td>Foundations of Mathematics 11 521A</td><td>75</td><td>1.00</td></tr><tr><td>2021/02</td><td>PED401A</td><td>Physical Education (Wellness)</td><td>86</td><td>1.00</td></tr><tr><td>2021/02</td><td>SCI421A</td><td>Science</td><td>69</td><td>1.00</td></tr></tbody></table>
+               {{#each transcript}}
+                  <td><td>{{lastday}}</td><td>{{courseNumber}}</td><td>{{courseName}}</td><td>{{round grade}}</td><td>{{credits}}.00</td></tr>
+               {{/each}}
             <div class="credits-earned">
-               Total Credits Earned: ~(credits)
+               Total Credits Earned: {{ creditHours }}
             </div>
             </div>
       </div>
