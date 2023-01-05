@@ -28,6 +28,7 @@ function process(students) {
    students.forEach((student) => {
       student.semCourses.pop()
       student.fyCourses.pop()
+      student.transcript.pop()
    })
 
    const outputData = { reportconfig: reportconfig, students: students }

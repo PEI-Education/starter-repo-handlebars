@@ -10,11 +10,11 @@
             <td>&nbsp;</td>
             <td class="center">
                <h2>{{ school }}</h2>
-               <h3>Public Schools Branch</h3>
+               <h4><strong>Public Schools Branch</strong></h4>
                <h4>Prince  Edward Island</h4>
                <h4>Principal: {{ principal }}</h4>
                <h3>{{ ../reportconfig.title }}</h3>
-               <h4>{{ yearname }}</h4>
+               <h4>{{ ../reportconfig.yearname }}</h4>
             </td>
             <td>&nbsp;</td>   
          </tr>
@@ -688,16 +688,19 @@
                   <col style="width: 10%">
                   <col style="width: 10%">
                </colgroup>
-               <tbody><tr>
-                  <th>Year/Month</th>
-                  <th>Course Code</th>
-                  <th>Course Name</th>
-                  <th>Mark</th>
-                  <th>Credit</th>
-               </tr>
+               <tbody>
+                  <tr>
+                     <th>Year/Month</th>
+                     <th>Course Code</th>
+                     <th>Course Name</th>
+                     <th>Mark</th>
+                     <th>Credit</th>
+                  </tr>
                {{#each transcript}}
-                  <td><td>{{lastday}}</td><td>{{courseNumber}}</td><td>{{courseName}}</td><td>{{round grade}}</td><td>{{credits}}.00</td></tr>
+                  <tr><td>{{lastday}}</td><td>{{courseNumber}}</td><td>{{courseName}}</td><td>{{round grade}}</td><td>{{credits}}.00</td></tr>
                {{/each}}
+               </tbody>
+            </table>
             <div class="credits-earned">
                Total Credits Earned: {{ creditHours }}
             </div>
@@ -708,7 +711,7 @@
             <tr>
                <td class="left">V 4.0</td>
                <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
-               <td class="right">Page: 1</td>
+               <td class="right">Page: 2</td>
             </tr>
          </table>
       </div>
