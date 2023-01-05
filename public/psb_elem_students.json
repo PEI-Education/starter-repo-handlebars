@@ -31,18 +31,18 @@
              on schext.schoolsdcid = sch.dcid
           where s.id = ~(curstudid); 
         ]
-        "id": "~(id)",
-        "firstname": "~(first_name)",
-        "lastname": "~(last_name)",
-        "number": "~(student_number)",
-        "dob": "~(dob)",
-        "homeroom": "~(home_room)",
+        "id": "~(id;l)",
+        "firstname": "~(first_name;json)",
+        "lastname": "~(last_name;json)",
+        "number": "~(student_number;l)",
+        "dob": "~(dob;date)",
+        "homeroom": "~(home_room;json)",
         "gradelevel": "~(grade_level)",
-        "program": "~(program)",
-        "yearname": "~(yearname)",
+        "program": "~(program;json)",
+        "yearname": "~(yearname;json)",
         "school": {
-          "name": "~(name)",
-          "principal": "~(principal)"
+          "name": "~(name;json)",
+          "principal": "~(principal;json)"
         },
         [/tlist_sql]
          ~[tlist_sql;
@@ -166,7 +166,7 @@
                  and substr(sec.course_number,2,3)  = 'LAN'
                  and cc.termid = ~(curyearid) * 100
              ]
-                 "teacher": "~(teacher)",
+                 "teacher": "~(teacher;json)",
                  "comment": "~(comment;json)",
                  "adaptation": "~(adaptation;json)",
                  "program": "~(program;json)",
@@ -234,7 +234,7 @@
                  and substr(sec.course_number,2,4)  IN ('FREF','FREG')
                  and cc.termid = ~(curyearid) * 100
              ]
-                 "teacher": "~(teacher)",
+                 "teacher": "~(teacher;json)",
                  "comment": "~(comment;json)",
                  "adaptation": "~(adaptation;json)",
                  "program": "~(program;json)",
@@ -302,7 +302,7 @@
                  and substr(sec.course_number,2,3) = 'MAT'
                  and cc.termid = ~(curyearid) * 100
              ]
-                 "teacher": "~(teacher)",
+                 "teacher": "~(teacher;json)",
                  "comment": "~(comment;json)",
                  "adaptation": "~(adaptation;json)",
                  "program": "~(program;json)",
@@ -364,7 +364,7 @@
                  and substr(sec.course_number,1,4) = 'HRAM'
                  and cc.termid = ~(curyearid) * 100
              ]
-                 "teacher": "~(teacher)",
+                 "teacher": "~(teacher;json)",
                  "comment": "~(comment;json)",
              [/tlist_sql]
              ~[tlist_sql;
@@ -516,7 +516,7 @@
             {
                  "course_number": "~(course_number;json)",
                  "course_name": "~(cname;json)",
-                 "teacher": "~(teacher)",
+                 "teacher": "~(teacher;json)",
                  "comment": "~(comment;json)",
                  "e1": "~(i1;json)",
                  "e2": "~(i2;json)",

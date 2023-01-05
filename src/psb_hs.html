@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PSB High School Report Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+   .page {
+      height: ~(gpv.papersize)in !important;
+   }
+  </style>
+   <script>
+    let termEquivalents = {"'Q1'":'~(curyearid)01',"'S1','Q2'":'~(curyearid)01',"'Q3'":'~(curyearid)02',"'S2','Q4'":'~(curyearid)02'}
+    let reportconfig = {
+      dothisfor: '~[gpv:dothisfor]',
+      termid: termEquivalents["~(gpv.reportingTerm)"],
+      title: "~(gpv.reportingTerm)".substring(1,2) == 'Q' ? 'Progress Report' : 'Final Report',
+      printDate: '~(gpv.reportdate)',
+      yearname:  '~(yearname)',
+      coteachers: '~(gpv.coteachers)',
+      storecode: "~(gpv.reportingTerm)"
+    }   
+    if ("~(gpv.teachersig)"==="true") {
+        reportconfig.teachersig = "true"
+    }
+    if ("~(gpv.principalsig)"==="true") {
+        reportconfig.principalsig = "true"
+    }
+  </script>
+</head>
+<body>
+   <!-- Loading spinner -->
+   <div id="overlay">
+     <div class="spinner"></div>
+     <br/>
+     Loading...
+   </div>
+   <!-- -->
+   ~[x:insertfile;/admin/pei_report_cards/instruction_template/instuctions.html]
+   <div id="output"></div>
+ </body>
+</html>

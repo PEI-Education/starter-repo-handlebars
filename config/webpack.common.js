@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const paths = require('./paths')
 
-const pages = ["psb_elem","psb_int","psb_int4","cslf_int"];
+const pages = ["psb_elem","psb_int","psb_int4","psb_hs","cslf_int"];
 
 module.exports = {
   // Where webpack looks to start building the bundle
@@ -49,7 +49,8 @@ module.exports = {
         {
           loader: "handlebars-loader",
           options: {
-            inlineRequire: "/assets/"
+            inlineRequire: "/assets/",
+            helperDirs: paths.helpers
           }
         }
       ]}

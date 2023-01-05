@@ -10,13 +10,19 @@ There are four report cards currently working in production:
 - PSB Intermediate Report Card, 3-term version 
 - PSB Intermediate Report Card, 4-term version 
 - CSLF Intermediate Report Card 
-## To start new report card project
+- 
+## Background notes on this repo
 
 Originally started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), because using Node allows us to precompile handlebars templates for faster rendering, and webpack let us bundle the necessary code without intererence from the built-in versions of the same packages in PowerSchool (specifically, Handlebars was giving problems.). 
 
 Note: Updated Webpack config to support multiple entry points, so all report cards can live together easily.
 
 Code for the original versions of the report cards plugin will be maintained in the [Report Card Plugin repo](https://github.com/ubershibs/pei_report_card_plugin), until all report cards are migrated to Handlebars.
+
+### PEI ASP
+Versions of the HBS templates for the Affiliated Schools Program can be found in PEIASP. To build that verrsion of the plugin, make sure there is a current backup of the existing templates in the PEI_HBS directory, replace the templates in ./src/js with the PEIASP versions, and run start or build.
+
+We should eventually set up some variables to handle this as, once we figure out what the differences are in all cases. 
 
 ## Installation
 

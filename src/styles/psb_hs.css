@@ -1,0 +1,231 @@
+/*------------------------------------*\
+  #OVERALL & HELPERS
+\*------------------------------------*/
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-family: 'Roboto', sans-serif;
+   font-size: 8pt;
+   line-height: 1.1;
+ }
+
+.page {
+   width: 8in;
+   margin: 0.25in;
+   position: relative;
+   display: block;
+}
+
+@media print {
+
+   .noprint {
+      display: none;
+   }
+
+   .pageBreak {
+      page-break-after: always;
+   }
+}
+
+.pageBreak {
+   page-break-after: always;
+}
+
+.red {
+font-size: 10pt;
+   color: red;
+}
+
+table {
+   border-collapse: collapse;
+   border-spacing: 0;
+   width: 8in;
+}
+
+.left {
+   text-align: left;
+}
+
+.center {
+   text-align: center;
+}
+
+.right {
+   text-align: right;
+}
+
+.top {
+   vertical-align: top;
+}
+
+.bottom {
+   vertical-align: bottom;
+}
+
+.bold {
+   font-weight: bolder;
+}
+
+ /*------------------------------------*\
+  #Header
+\*------------------------------------*/
+header {
+   text-align: center;
+   width: 8in;
+   margin-bottom: 0.2in;
+}
+h1 {
+   margin-top: 0.2in;
+   font-size:  18pt;
+}
+
+h2 {
+   font-size: 16pt;
+   margin-bottom: 0.1in;
+}
+
+h3 {
+   font-size: 13pt;
+   font-weight: 700;
+   margin-top: 0.1in;
+   margin-bottom: 0.05in;
+}
+
+h4 {
+   font-size: 10pt;
+   font-weight: 400;
+}
+h4.strong {
+   font-size: 10pt;
+   font-weight: 700;
+}
+ /*------------------------------------*\
+  #Course blocks
+\*------------------------------------*/
+
+.course {
+   margin: 0.1in 0;
+   border: 1px solid black;
+   min-height: 1.2in;
+}
+
+.courseinfo, .sem {
+   border-bottom: 1px solid black;
+   border-right: 1px solid black;  
+}
+
+.comment {
+   line-height: 1.4;
+   padding: 0.05in;
+   vertical-align: top;
+}
+
+.courseinfo {
+   vertical-align: top;
+   min-height: 0.8in;
+   position: relative;
+}
+
+   .leftblock {
+      text-align: left;
+      display: table-cell;
+      width: 3in;
+      padding: 0.05in;
+      line-height: 1.4;
+   }
+
+   .rightblock {
+      text-align: right;
+      display: table-cell;
+      width: 1in;
+      padding: 0.05in;
+      line-height: 1.4;
+   }
+
+.sem {
+   text-align: center;
+   height: 0.25in;
+}
+
+ /*------------------------------------*\
+  #Transcript
+\*------------------------------------*/
+
+.transcript-border {
+   border: 1px solid black;
+   width: 8in;
+   padding: 0.1in;
+ }
+ 
+ .transcript {
+   border: none;
+   font-size: 9pt;
+   width: 100%;
+   text-align: left;
+   margin-left: 0.1in;
+ }
+ 
+ .transcript th {
+   font-weight: bolder;
+ }
+ 
+ .credits-earned {
+   display: inline-block;
+   bottom: 0.1in;
+   width: 100%;
+   text-align: right;
+   font-size: 9pt;
+   padding: 0.1in 0.1in 0 0;
+ }
+
+ /*------------------------------------*\
+  #Footer
+\*------------------------------------*/
+
+.footer {
+   position: absolute;
+   bottom: 0;
+}
+   .signature {
+      width: 8in;
+      margin-bottom: 0.1in;
+   }
+      .teacher {
+         width: 3.9in;
+         margin-right: 0.2in;
+      }
+
+      .principal {
+         width: 3.9in;
+      }
+
+   .sig-line {
+      display: inline-block;
+      border-bottom: 1px solid black;
+      margin-bottom: 0.1in;
+      width: 3.25in;
+   }
+
+   .footer1 {
+      border-top: 2px solid black;
+   }
+
+   .footer1--padding {
+      padding-top: 0.1in;
+   }
+
+   .data {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 7pt;
+   }
+
+   .footer2 {
+      margin: 0.1in 0;
+      border-bottom: 2px solid black;
+   }  
+
+   .footer2--padding {
+      padding-bottom: 0.1in;
+   }

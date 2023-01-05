@@ -44,7 +44,7 @@ const process = (students, courses) => {
     if (course.i3grade) {
       course.i3grade = course.i3grade == '' ? course.i3grade : isNaN(course.i3grade) ? course.i3grade : Math.round(parseFloat(course.i3grade))
     }
-    if (course.i4grade) {
+    if (course.i4grade) { 4
       course.i4grade = course.i4grade == '' ? course.i4grade : isNaN(course.i4grade) ? course.i4grade : Math.round(parseFloat(course.i4grade))
     }
     if (course.comment) {
