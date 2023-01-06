@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSLF Bulletin Secondaire</title>
+  ~[wc:commonscripts]
+  <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+  <link href="/images/css/print.css" rel="stylesheet" media="print">
+</head>
+
+<body>
+
+  <form target="_blank" action="cslf_hs_report_card.html" method="POST" class="noSubmitLoading">
+    ~[wc:admin_header_css]
+    <!-- breadcrumb start -->
+    <a href="/admin/home.html" target="_top">
+      ~[text:psx.html.admin_reports.studschedmatrixprefs.start_page]
+    </a> &gt;
+    <a href="/admin/functions.html" target="_top">
+      ~[text:psx.html.admin_reports.studschedmatrixprefs.special_functions]
+    </a> &gt;
+    <a href="/admin/studentlist/functions.html">
+      ~[text:psx.html.admin_reports.studschedmatrixprefs.group_functions]
+    </a> &gt;
+    Préférences d'impression du bulletin
+    <!-- breadcrumb end -->
+    ~[wc:admin_navigation_css]
+
+    <h1>Préférences d'impression du bulletin</h1>
+    <!-- start of content and bounding box -->
+    <div class="box-round">
+
+      <table class="linkDescList">
+        <thead>
+          <tr>
+            <th>~[text:psx.html.admin_reports.studschedmatrixprefs.option]</th>
+            <th>~[text:psx.html.admin_reports.studschedmatrixprefs.value]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>~[text:psx.html.admin_reports.studschedmatrixprefs.students_to_scan]</td>
+            <td>~[x:dothisfor;selected;enrolled]</td>
+          </tr>
+          <tr>
+            <td>~[text:psx.html.admin_reports.studschedmatrixprefs.sort_order]</td>
+            <td>
+              <input type="radio" id="sortname" name="[prefschool]report_card_sort"
+                  value="lastfirst,grade_level">
+              <label for="sortname">~[text:psx.html.admin_reports.studschedmatrixprefs.last_name]</label><br>
+              <input type="radio" id="sortgrade" name="[prefschool]report_card_sort"
+                  value="grade_level,lastfirst">
+              <label for="sortgrade">~[text:psx.html.admin_reports.studschedmatrixprefs.grade_level]</label><br>
+              <input type="radio" id="sorthomeroom" name="[prefschool]report_card_sort"
+                  value="home_room,lastfirst"
+                  checked>
+              <label for="sorthomeroom">~[text:psx.html.admin_reports.studschedmatrixprefs.homeroom]</label>
+            </td>
+          </tr>
+          <tr>
+            <td>Période du rapport (bulletin) :</td>
+            <td>
+              <select name="terms" id="terms">
+                  <option value="'Q1','Q1'">R1 - Rapport de novembre</option>
+                  <option value="'S1','Q2'">S1 - Rapport finale (février)</option>
+                  <option value="'Q3','Q3'">R3 - Rapport d'avril</option>
+                  <option value="'S2','Q4'">S2 - Rapport finale (juin)</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Période Visée:</td>
+            <td>
+              <input type="text" id="rptdate" name="reportperiod">
+              <label for="rptdate">Ex : De septembre 2021 à février 2022</label>
+            </td>
+          </tr>
+          <tr>
+            <td>Message de l'école :</td>
+            <td>
+              <input type="text" id="addcomment" name="addcomment">
+              <label for="addcomment">Cette commentaire sera imprimé sur chaque bulletin</label>
+            </td>
+          </tr>
+          <tr>
+            <td>Inclure les co-enseignants?</td>
+            <td>
+               <input type="checkbox" id="coteachers" name="coteachers" value="true">
+               <label for="coteachers">Inclure le "lead teacher" et tout le personnel ayant le rôle de "co-teacher" pour chaque section.</label>
+            </td>
+         </tr>
+         <tr>
+            <td>Signatures à inclure:</td>
+            <td>
+               <input type="checkbox" id="teachersig" name="teachersig" value="true">
+               <label for="teachersig">Enseignant.e titulaire</label><br>
+               <input type="checkbox" id="principalsig" name="principalsig" value="true">
+               <label for="principalsig">Direction scoalire</label><br>
+            </td>
+         </tr>
+          <tr>
+            <td>Taille du papier</td>
+            <td>
+              <select name="papersize" id="papersize">
+                  <option value="letter">Lettre (8.5" x 11")</option>
+                  <option value="legal">Légal (8.5" x 14")</option>
+              </select>
+              <label for="papersize">Vous devrez également sélectionner la même taille de papier lorsque vous imprimerez.</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="button-row">
+        <input type="hidden" name="ac" value="prim">~[submitbutton]
+      </div>
+    </div>
+    <br>
+    <!-- end of content of bounding box -->
+
+   ~[wc:admin_footer_css]
+  </form>
+</body>
+</html>

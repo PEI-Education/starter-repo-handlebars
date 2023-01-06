@@ -30,558 +30,80 @@
             </td>
          </tr>
       </table> 
-      {{#if semCourses.[0]}}
-         {{#with semCourses.[0]}}
-            <table id="semcourse0" class="course">
-               <colgroup>
-                  <col style="width: 2in;" />
-                  <col style="width: 2in;" />
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="2">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{ lates }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth:</strong> {{ comment }}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Progress</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
-               </tr>
-            </table>
-         {{/with}}
-      {{/if}}
-      {{#if semCourses.[1]}}
-         {{#with semCourses.[1]}}
-            <table id="semcourse1" class="course">
-               <colgroup>
-                  <col style="width: 2in;" />
-                  <col style="width: 2in;" />
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="2">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{ lates }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth:</strong> {{ comment }}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Progress</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
-               </tr>
-            </table>
-         {{/with}}
-      {{/if}}
-      {{#if semCourses.[2]}}
-         {{#with semCourses.[2]}}
-            <table id="semcourse2" class="course">
-               <colgroup>
-                  <col style="width: 2in;" />
-                  <col style="width: 2in;" />
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="2">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{ lates }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth:</strong> {{ comment }}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Progress</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
-               </tr>
-            </table>
-         {{/with}}
-      {{/if}}
-      {{#if semCourses.[3]}}
-         {{#with semCourses.[3]}}
-            <table id="semcourse3" class="course">
-               <colgroup>
-                  <col style="width: 2in;" />
-                  <col style="width: 2in;" />
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="2">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{ lates }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth:</strong> {{ comment }}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Progress</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
-               </tr>
-            </table>
-         {{/with}}
-      {{/if}}
-      {{#if semCourses.[4]}}
-         {{#with semCourses.[4]}}
-            <table id="semcourse4" class="course">
-               <colgroup>
-                  <col style="width: 2in;" />
-                  <col style="width: 2in;" />
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="2">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{ lates }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth:</strong> {{ comment }}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Progress</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
-               </tr>
-            </table>
-         {{/with}}
-      {{/if}}
-      {{#if semCourses.[5]}}
-         {{#with semCourses.[5]}}
-            <table id="semcourse5" class="course">
-               <colgroup>
-                  <col style="width: 2in;" />
-                  <col style="width: 2in;" />
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="2">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{ lates }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth:</strong> {{ comment }}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Progress</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
-                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
-               </tr>
-            </table>
-         {{/with}}
-      {{/if}}
-      {{#if fyCourses.[0]}}
-         {{#with fyCourses.[0]}}
-            <table id="fycourse0" class="course">
-               <colgroup>
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;">
-                  <col style="width: 1in;">
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="4">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{late }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth: </strong>{{comment}}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Q1</td>
-                  <td class="sem bold">Q2</td>
-                  <td class="sem bold">Q3</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{ round q1}}</td>
-                  <td class="sem">{{ round q2}}</td>
-                  <td class="sem">{{ round q3}}</td>
-                  <td class="sem">{{ round q4}}</td>
-               </tr>
-            </table> 
-         {{/with}}  
-      {{/if}}
-      {{#if fyCourses.[1]}}
-         {{#with fyCourses.[1]}}
-            <table id="fycourse1" class="course">
-               <colgroup>
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;">
-                  <col style="width: 1in;">
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="2">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{ lates }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth:</strong> {{ comment }}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Q1</td>
-                  <td class="sem bold">Q2</td>
-                  <td class="sem bold">Q3</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{ round q1}}</td>
-                  <td class="sem">{{ round q2}}</td>
-                  <td class="sem">{{ round q3}}</td>
-                  <td class="sem">{{ round q4}}</td>
-               </tr>
-            </table>
-         {{/with}}
-      {{/if}}
-      {{#if fyCourses.[2]}}
-         {{#with fyCourses.[2]}}
-            <table id="fycourse2" class="course">
-               <colgroup>
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;">
-                  <col style="width: 1in;">
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="4">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{late }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth: </strong>{{comment}}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Q1</td>
-                  <td class="sem bold">Q2</td>
-                  <td class="sem bold">Q3</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{ round q1}}</td>
-                  <td class="sem">{{ round q2}}</td>
-                  <td class="sem">{{ round q3}}</td>
-                  <td class="sem">{{ round q4}}</td>
-               </tr>
-            </table> 
-         {{/with}}  
-      {{/if}}  
-      {{#if fyCourses.[3]}}
-         {{#with fyCourses.[3]}}
-            <table id="fycourse3" class="course">
-               <colgroup>
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;">
-                  <col style="width: 1in;">
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="4">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{late }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth: </strong>{{comment}}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Q1</td>
-                  <td class="sem bold">Q2</td>
-                  <td class="sem bold">Q3</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{ round q1}}</td>
-                  <td class="sem">{{ round q2}}</td>
-                  <td class="sem">{{ round q3}}</td>
-                  <td class="sem">{{ round q4}}</td>
-               </tr>
-            </table> 
-         {{/with}}
-      {{/if}}
-      {{#if fyCourses.[4]}}
-         {{#with fyCourses.[4]}}
-            <table id="fycourse4" class="course">
-               <colgroup>
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;">
-                  <col style="width: 1in;">
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="4">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{late }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth: </strong>{{comment}}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Q1</td>
-                  <td class="sem bold">Q2</td>
-                  <td class="sem bold">Q3</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{ round q1}}</td>
-                  <td class="sem">{{ round q2}}</td>
-                  <td class="sem">{{ round q3}}</td>
-                  <td class="sem">{{ round q4}}</td>
-               </tr>
-            </table> 
-         {{/with}}  
-      {{/if}}  
-      {{#if fyCourses.[5]}}
-         {{#with fyCourses.[5]}}
-            <table id="fycourse5" class="course">
-               <colgroup>
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;">
-                  <col style="width: 1in;">
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="4">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div> 
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{late }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth: </strong>{{comment}}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Q1</td>
-                  <td class="sem bold">Q2</td>
-                  <td class="sem bold">Q3</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{ round q1}}</td>
-                  <td class="sem">{{ round q2}}</td>
-                  <td class="sem">{{ round q3}}</td>
-                  <td class="sem">{{ round q4}}</td>
-               </tr>
-            </table> 
-         {{/with}}  
-      {{/if}}  
-      {{#if fyCourses.[6]}}
-         {{#with fyCourses.[6]}}
-           <table id="fycourse6" class="course">
-               <colgroup>
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;">
-                  <col style="width: 1in;">
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="4">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{late }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth: </strong>{{comment}}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Q1</td>
-                  <td class="sem bold">Q2</td>
-                  <td class="sem bold">Q3</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{ round q1}}</td>
-                  <td class="sem">{{ round q2}}</td>
-                  <td class="sem">{{ round q3}}</td>
-                  <td class="sem">{{ round q4}}</td>
-               </tr>
-            </table> 
-         {{/with}}  
-      {{/if}}
-      {{#if fyCourses.[7]}}
-         {{#with fyCourses.[7]}}
-           <table id="fycourse7" class="course">
-               <colgroup>
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;" />
-                  <col style="width: 1in;">
-                  <col style="width: 1in;">
-                  <col style="width: 4in;" />
-               </colgroup>
-               <tr>
-                  <td class="courseinfo" colspan="4">
-                     <div class="leftblock">
-                        Course name: {{ course_name }}<br/>
-                        Course code: {{ course_number }}<br/>
-                        Level: {{ level }}<br/>
-                        Teacher(s): {{ teachers }}<br/>
-                     </div>
-                     <div class="rightblock">
-                        Abs: {{ abs }}<br />
-                        Late: {{late }}
-                     </div>
-                  </td>
-                  <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth: </strong>{{comment}}
-                  </td>
-               </tr>
-               <tr>
-                  <td class="sem bold">Q1</td>
-                  <td class="sem bold">Q2</td>
-                  <td class="sem bold">Q3</td>
-                  <td class="sem bold">Final</td>
-               </tr>
-               <tr>
-                  <td class="sem">{{ round q1}}</td>
-                  <td class="sem">{{ round q2}}</td>
-                  <td class="sem">{{ round q3}}</td>
-                  <td class="sem">{{ round q4}}</td>
-               </tr>
-            </table> 
-         {{/with}}  
-      {{/if}}           
+      {{#each semCourses}}
+         <table id="semcourse0" class="course">
+            <colgroup>
+               <col style="width: 2in;" />
+               <col style="width: 2in;" />
+               <col style="width: 4in;" />
+            </colgroup>
+            <tr>
+               <td class="courseinfo" colspan="2">
+                  <div class="leftblock">
+                     Course name: {{ course_name }}<br/>
+                     Course code: {{ course_number }}<br/>
+                     Level: {{ level }}<br/>
+                     Teacher(s): {{ teachers }}<br/>
+                  </div>
+                  <div class="rightblock">
+                     Abs: {{ abs }}<br />
+                     Late: {{ lates }}
+                  </div>
+               </td>
+               <td class="comment left" rowspan="3">
+                  <strong>Strengths and Areas for Growth:</strong> {{ comment }}
+               </td>
+            </tr>
+            <tr>
+               <td class="sem bold">Progress</td>
+               <td class="sem bold">Final</td>
+            </tr>
+            <tr>
+               <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
+               <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
+            </tr>
+         </table>
+      {{/each}}
+      {{#each fyCourses}}
+         <table id="fycourse0" class="course">
+            <colgroup>
+               <col style="width: 1in;" />
+               <col style="width: 1in;" />
+               <col style="width: 1in;">
+               <col style="width: 1in;">
+               <col style="width: 4in;" />
+            </colgroup>
+            <tr>
+               <td class="courseinfo" colspan="4">
+                  <div class="leftblock">
+                     Course name: {{ course_name }}<br/>
+                     Course code: {{ course_number }}<br/>
+                     Level: {{ level }}<br/>
+                     Teacher(s): {{ teachers }}<br/>
+                  </div>
+                  <div class="rightblock">
+                     Abs: {{ abs }}<br />
+                     Late: {{late }}
+                  </div>
+               </td>
+               <td class="comment left" rowspan="3">
+                  <strong>Strengths and Areas for Growth: </strong>{{comment}}
+               </td>
+            </tr>
+            <tr>
+               <td class="sem bold">Q1</td>
+               <td class="sem bold">Q2</td>
+               <td class="sem bold">Q3</td>
+               <td class="sem bold">Final</td>
+            </tr>
+            <tr>
+               <td class="sem">{{ round q1}}</td>
+               <td class="sem">{{ round q2}}</td>
+               <td class="sem">{{ round q3}}</td>
+               <td class="sem">{{ round q4}}</td>
+            </tr>
+         </table> 
+      {{/each}}   
       <div class="footer">
          <div class="signature">
                     {{#if ../reportconfig.teachersig}}<span class="teacher">Teacher(s): <span class="sig-line">&nbsp;</span></span> &nbsp; &nbsp; {{/if}}{{#if ../reportconfig.principalsig}}<span class="principal">Principal: <span class="sig-line">&nbsp;</span></span>{{/if}}
