@@ -5,8 +5,6 @@ const template = require('./js/cslf_hs.hbs')
 
 const dataSource = `./assets/cslf_hs.json?dothisfor=${reportconfig.dothisfor}&coteachers=${reportconfig.coteachers}&termid=${reportconfig.termid}&storecode=${reportconfig.storecode}`
 
-// Test data -> const dataSource = `./assets/psb_hs.fake.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}&termid=${reportconfig.termid}`
-
 const fadeOutEffect = () => {
    let fadeTarget = document.getElementById("overlay");
    let fadeEffect = setInterval(function () {
