@@ -2,9 +2,9 @@
    <div class="page">
       <table>
          <colgroup>
-            <col style="width: 2in;" />
-            <col style="width: 4in;" />
-            <col style="width: 2in;" />
+            <col style="width: 1.8in;" />
+            <col style="width: 4.4in;" />
+            <col style="width: 1.8in;" />
          </colgroup>
          <tr>
             <td><img src="images/cslf.jpg" id="ea-logo"></td>
@@ -26,33 +26,29 @@
          </colgroup>
          <tbody>
             <tr>
-               <td>
+               <td class="top">
                   NOM DE L'ÉLÈVE :<br>
                   ADRESSE :<br>
                   <br>
                   TÉLÉPHONE :<br>
-                  PÉRIODE VISÉE :
                </td>
-               <td>
+               <td class="top">
                   {{ first_name }} {{ last_name }}<br>
-                  {{ home_address }}<br>
-                  {{ home_city }}, IPE, {{ home_postal }}<br>
-                  {{ home_telephone }}<br>
-                  {{ ../reportconfig.reportingperiod }}
+                  {{ street }}<br>
+                  {{ city }}, IPE, {{ zip }}<br>
+                  {{ home_phone }}<br>
                </td>
-               <td>
+               <td class="top">
                   No DE L'ÉLÈVE :<br>
                   DATE DE NAISANCE :<br>
                   NIVEAU SCOLAIRE :<BR>
-                  <br>
-                  IMPRIMÉ LE :
+                  PÉRIODE VISÉE :
                </td>
-               <td>
+               <td class="top">
                   {{ student_number }}<br>
                   {{ dob }}<br>
                   {{ grade_level }}<br>
-                  <br>
-                  {{ ../reportconfig.printDate }}
+                  {{ ../reportconfig.reportperiod }}
                </td>
             </tr>
          </tbody>
@@ -65,11 +61,11 @@
                   <col style="width: 4in;" />
                </colgroup>
                <tr>
-                             <td class="courseinfo" colspan="2">
+                  <td class="courseinfo" colspan="2">
                      <div class="leftblock">
                         Cours : {{ course_name }}<br/>
                         Code : {{ course_number }}<br/>
-                        Enseignant.es : {{ teachers }}<br/>
+                        Enseignant.e.s : {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Absences : {{ abs }}<br />
@@ -77,7 +73,7 @@
                      </div>
                   </td>
                   <td class="comment left" rowspan="3">
-                     <strong>C5ommentaires :</strong> {{ comment }}
+                     <strong>Commentaires :</strong> {{ comment }}
                   </td>
                </tr>
                <tr>
@@ -104,7 +100,7 @@
                      <div class="leftblock">
                         Cours : {{ course_name }}<br/>
                         Code : {{ course_number }}<br/>
-                        Enseignant.es : {{ teachers }}<br/>
+                        Enseignant.e.s : {{ teachers }}<br/>
                      </div>
                      <div class="rightblock">
                         Absences : {{ abs }}<br />
@@ -112,7 +108,7 @@
                      </div>
                   </td>
                   <td class="comment left" rowspan="3">
-                     <strong>Strengths and Areas for Growth: </strong>{{comment}}
+                     <strong>Commentaires: </strong>{{comment}}
                   </td>
                </tr>
                <tr>
@@ -136,10 +132,10 @@
          </colgroup>
          <tbody>
             <tr>
-               <td>
+               <td class="top">
                   {{#if ../reportconfig.addcomment }}<strong>Message de l'école :</strong> {{ ../reportconfig.addcomment }}{{/if}} &nbsp;
                </td>
-               <td>
+               <td class="top">
                   <strong>Notes :</strong>
                   <ul>
                      <li>Une note de 50% est requise pour recevoir le crédit.</li>
@@ -157,9 +153,14 @@
             {{#if ../reportconfig.teachersig}}<span class="teacher">ENSEIGNANT.E TITULAIRE : <span class="sig-line">&nbsp;</span></span> &nbsp; &nbsp; {{/if}}{{#if ../reportconfig.principalsig}}<span class="principal">DIRECTION : <span class="sig-line">&nbsp;</span></span>{{/if}}
          </div>
          <table>
+            <colgroup>
+               <col style="width: 2in;"/>
+               <col style="width: 4in;"/>
+               <col style="width: 2in;"/>
+            </colgroup>
             <tr>
-               <td class="left">V 4.0</td>
-               <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
+               <td class="left">Imprimé le: {{ ../reportconfig.printDate }}</td>
+               <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }})</td>
                <td class="right">Page: 1</td>
             </tr>
          </table>
@@ -205,7 +206,7 @@
             <div class="credits-earned">
                Total des crédits obtenus : {{ creditHours }}
             </div>
-            </div>
+         </div>
       </div>
       <div class="footer">
          <div class="credits-table-intro">
@@ -232,60 +233,63 @@
                   <strong>Niveau</strong><br>
                   1 caractère
                   <br/>
-                  <span class="data">
+                  <div class="data">
                      4 : 10e année<br>
                      5 : 11e année<br>
                      6 : 12e année<br>
                      7 : 10e/11e année<br>
                      8 : 11e/12e année<br>
                      9 : 10e/11e/12e année<br>
-                  </span>
+                  </div>
                </td>
                <td class="top footer1--padding ">
                   <strong>Catégorie</strong><br>
                   1 caractère
                   <br>
-                  <span class="data">
+                  <div class="data">
                      0 : ouvert<br>
                      1 : enrichi/avancé<br>
                      2 : académique<br>
                      3 : général<br>
                      5 : pratique<br>
                      6 : programme modifié
-                  </span>
+                  </div>
                </td>
                <td class="top footer1--padding ">
                   <strong>Nombre de crédits</strong><br>
                   1 caractère
                   <br>
-                  <span class="data">
+                  <div class="data">
                      0 : aucun crédit<br>
                      1 : un crédit<br>
                      2 : deux crédits<br>
                      3 : trois crédits<br>
                      4 : quatre crédits<br>
                      5 : un demi-crédit
-                  </span>
+                  </div>
                </td>
                <td class="top footer1--padding ">
-                  The fourth digit indicates <br>
-                  the program identifier:<br>
-                  <br>
-                  <span class="data">
+                  <strong>Identification du programme</strong><br>
+                  1 caractère<br>
+                  <div class="data">
                      A-E,K :	Cours de langue anglaise<br>
                      F-J  &nbsp;:	Cours d'immersion française<br>
                      M-R  &nbsp;:	Cours de langue française<br>
-                     S &nbsp;  &nbsp; &nbsp;:	Cours de reclassement<br>
-                     T &nbsp;  &nbsp; &nbsp;:	Crédit externe<br>
+                     S &nbsp;  &nbsp;:	Cours de reclassement<br>
+                     T &nbsp;  &nbsp;:	Crédit externe<br>
                      W-Z  &nbsp;:	Cours de programme local
-                  </span>  
+                  </div>  
                </td>
             </tr>
          </table>
          <table class="footer2">
-         <table>
+            <colgroup>
+               <col style="width: 2in;"/>
+               <col style="width: 4in;"/>
+               <col style="width: 2in;"/>
+            </colgroup>
             <tr>
-               <td class="left"></td>
+               <td class="left">Imprimé le: {{ ../reportconfig.printDate }}</td>
                <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
                <td class="right">Page: 2</td>
             </tr>
