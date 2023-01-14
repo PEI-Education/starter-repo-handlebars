@@ -1,11 +1,9 @@
-import './styles/psb_hs.css';
+import './styles/cslf_hs.css';
 import './styles/spinner.css';
 
-const template = require('./js/psb_hs.hbs')
+const template = require('./js/cslf_hs.hbs')
 
-const dataSource = `./assets/psb_hs.json?dothisfor=${reportconfig.dothisfor}&coteachers=${reportconfig.coteachers}&termid=${reportconfig.termid}&storecode=${reportconfig.storecode}`
-
-// Test data -> const dataSource = `./assets/psb_hs.fake.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}&termid=${reportconfig.termid}`
+const dataSource = `./assets/cslf_hs.json?dothisfor=${reportconfig.dothisfor}&coteachers=${reportconfig.coteachers}&termid=${reportconfig.termid}&storecode=${reportconfig.storecode}`
 
 const fadeOutEffect = () => {
    let fadeTarget = document.getElementById("overlay");
@@ -22,7 +20,9 @@ const fadeOutEffect = () => {
 }
 
 function process(students) {
-   
+
+   console.log(students)
+
    students.forEach((student) => {
       student.semCourses.pop()
       student.fyCourses.pop()

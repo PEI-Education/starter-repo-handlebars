@@ -1,0 +1,303 @@
+{{#each students}}
+   <div class="page">
+      <table>
+         <colgroup>
+            <col style="width: 1.8in;" />
+            <col style="width: 4.4in;" />
+            <col style="width: 1.8in;" />
+         </colgroup>
+         <tr>
+            <td><img src="images/cslf.jpg" id="ea-logo"></td>
+            <td class="center">
+               <h2>{{ schoolName }}</h2>
+               <h4>{{ schoolAddress }}</h4>
+               <h4>Tél : {{ schoolTelephone }} Fax : {{ schoolFax}}</h4>
+               <h1>BULLETIN SCOLAIRE</h1>
+            </td>
+            <td><img src="images/{{schoolNumber}}.jpg" id="school-logo"></td>   
+         </tr>
+      </table> 
+      <table>
+         <colgroup>
+            <col style="width: 1.5in;" />
+            <col style="width: 2.5in;" />
+            <col style="width: 1.5in;" />
+            <col style="width: 2.5in;" />
+         </colgroup>
+         <tbody>
+            <tr>
+               <td class="top">
+                  NOM DE L'ÉLÈVE :<br>
+                  ADRESSE :<br>
+                  <br>
+                  TÉLÉPHONE :<br>
+               </td>
+               <td class="top">
+                  {{ first_name }} {{ last_name }}<br>
+                  {{ street }}<br>
+                  {{ city }}, IPE, {{ zip }}<br>
+                  {{ home_phone }}<br>
+               </td>
+               <td class="top">
+                  No DE L'ÉLÈVE :<br>
+                  DATE DE NAISANCE :<br>
+                  NIVEAU SCOLAIRE :<BR>
+                  PÉRIODE VISÉE :
+               </td>
+               <td class="top">
+                  {{ student_number }}<br>
+                  {{ dob }}<br>
+                  {{ grade_level }}<br>
+                  {{ ../reportconfig.reportperiod }}
+               </td>
+            </tr>
+         </tbody>
+      </table>
+         {{#each semCourses}}
+            <table class="course">
+               <colgroup>
+                  <col style="width: 2in;" />
+                  <col style="width: 2in;" />
+                  <col style="width: 4in;" />
+               </colgroup>
+               <tr>
+                  <td class="courseinfo" colspan="2">
+                     <div class="leftblock">
+                        Cours : {{ course_name }}<br/>
+                        Code : {{ course_number }}<br/>
+                        Enseignant.e.s : {{ teachers }}<br/>
+                     </div>
+                     <div class="rightblock">
+                        Absences : {{ abs }}<br />
+                        Retards : {{ lates }}
+                     </div>
+                  </td>
+                  <td class="comment left" rowspan="3">
+                     <strong>Commentaires :</strong> {{ comment }}
+                  </td>
+               </tr>
+               <tr>
+                  <td class="sem bold">Étape 1</td>
+                  <td class="sem bold">Note Finale</td>
+               </tr>
+               <tr>
+                  <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
+                  <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
+               </tr>
+            </table>
+         {{/each}}      
+         {{#each fyCourses}}
+            <table class="course">
+               <colgroup>
+                  <col style="width: 1in;" />
+                  <col style="width: 1in;" />
+                  <col style="width: 1in;">
+                  <col style="width: 1in;">
+                  <col style="width: 4in;" />
+               </colgroup>
+               <tr>
+                  <td class="courseinfo" colspan="4">
+                     <div class="leftblock">
+                        Cours : {{ course_name }}<br/>
+                        Code : {{ course_number }}<br/>
+                        Enseignant.e.s : {{ teachers }}<br/>
+                     </div>
+                     <div class="rightblock">
+                        Absences : {{ abs }}<br />
+                        Retards : {{lates }}
+                     </div>
+                  </td>
+                  <td class="comment left" rowspan="3">
+                     <strong>Commentaires: </strong>{{comment}}
+                  </td>
+               </tr>
+               <tr>
+                  <td class="sem bold">Étape 1</td>
+                  <td class="sem bold">Étape 2</td>
+                  <td class="sem bold">Étape 3</td>
+                  <td class="sem bold">Note Finale</td>
+               </tr>
+               <tr>
+                  <td class="sem">{{ round q1}}</td>
+                  <td class="sem">{{ round q2}}</td>
+                  <td class="sem">{{ round q3}}</td>
+                  <td class="sem">{{ round q4}}</td>
+               </tr>
+            </table> 
+         {{/each}}  
+      <table>
+         <colgroup>
+            <col style="width: 4in;" />
+            <col style="width: 4in;" />           
+         </colgroup>
+         <tbody>
+            <tr>
+               <td class="top">
+                  {{#if ../reportconfig.addcomment }}<strong>Message de l'école :</strong> {{ ../reportconfig.addcomment }}{{/if}} &nbsp;
+               </td>
+               <td class="top">
+                  <strong>Notes :</strong>
+                  <ul>
+                     <li>Une note de 50% est requise pour recevoir le crédit.</li>
+                     <li>1 crédit = 92,5 heures.</li>
+                     <li>INC signifie qu'une note n'est pas accordée pour une raison particulière.</li>
+                     <li>ABD signifie que l'élève a abandonné son cours.</li>
+                     <li>R signifie que l'élève a obtenu un crédit externe.</li>
+                  </ul>
+               </td>
+            </tr>
+         </tbody>
+      </table>    
+      <div class="footer">
+         <div class="signature">
+            {{#if ../reportconfig.teachersig}}<span class="teacher">ENSEIGNANT.E TITULAIRE : <span class="sig-line">&nbsp;</span></span> &nbsp; &nbsp; {{/if}}{{#if ../reportconfig.principalsig}}<span class="principal">DIRECTION : <span class="sig-line">&nbsp;</span></span>{{/if}}
+         </div>
+         <table>
+            <colgroup>
+               <col style="width: 2in;"/>
+               <col style="width: 4in;"/>
+               <col style="width: 2in;"/>
+            </colgroup>
+            <tr>
+               <td class="left">Imprimé le: {{ ../reportconfig.printDate }}</td>
+               <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }})</td>
+               <td class="right">Page: 1</td>
+            </tr>
+         </table>
+      </div>              
+   </div>
+   <!-- Page break -->
+   <div class="pageBreak" style="clear: both;">
+      <div class="noprint" style="border-top: thin dotted;width: 100%;"></div>
+   </div>
+   <!-- Start of page 2 -->
+   <div class="page">
+      <header>
+         <h2>{{ schoolName }}</h2>
+      </header>
+      <div class="gradreqs">
+         <br>
+         <strong>Exigences pour l'obtention du diplôme</strong><br>
+         Pour plus d'informations sur les critères d'obtention du diplôme à l'Île-du-Prince-Édouard, veuillez consulter <strong><a href="https://www.princeedwardisland.ca/fr/obtentiondudiplome" target="_blank">https://www.princeedwardisland.ca/fr/obtentiondudiplome</a></strong>
+         <br>
+         <br>
+         <h3>Sommaire des crédits</h3>
+         <div class="transcript-border">
+            <table class="transcript">
+               <colgroup>
+                  <col style="width: 20%">
+                  <col style="width: 20%">
+                  <col style="width: 40%">
+                  <col style="width: 10%">
+                  <col style="width: 10%">
+               </colgroup>
+               <tbody>
+                  <tr>
+                     <th>ANNÉE/MOIS</th>
+                     <th>No. DU COURS</th>
+                     <th>NOM DU COURS</th>
+                     <th>NOTE FINALE</th>
+                     <th>CRÉDIT</th>
+                  </tr>
+               {{#each transcript}}
+                  <tr><td>{{lastday}}</td><td>{{courseNumber}}</td><td>{{courseName}}</td><td>{{round grade}}</td><td>{{credits}}.00</td></tr>
+               {{/each}}
+               </tbody>
+            </table>
+            <div class="credits-earned">
+               Total des crédits obtenus : {{ creditHours }}
+            </div>
+         </div>
+      </div>
+      <div class="footer">
+         <div class="credits-table-intro">
+            <strong>Système provincial de codification des cours - 10e à 12e année :</strong> Chaque code de cours est unique et est composé de sept caractères. Certains codes de cours ont un huitième caractère représentant un qualificatif local qui est utilisé par l'école.
+         </div>
+         <table class="footer1">
+            <colgroup>
+               <col style="width: 1.5in;">
+               <col style="width: 1.5in;">
+               <col style="width: 1.5in;">
+               <col style="width: 1.5in;">
+               <col style="width: 2in;">
+            </colgroup>
+            <tr>
+               <td class="top footer1--padding">
+                  <strong>Sujet</strong><br>
+                  3 caractères<br>
+                  <div class="data">
+                     Ex. : ANG = anglais;<br>
+                     MAT = mathématiques
+                  </div>
+               </td>
+               <td class="top footer1--padding ">
+                  <strong>Niveau</strong><br>
+                  1 caractère
+                  <br/>
+                  <div class="data">
+                     4 : 10e année<br>
+                     5 : 11e année<br>
+                     6 : 12e année<br>
+                     7 : 10e/11e année<br>
+                     8 : 11e/12e année<br>
+                     9 : 10e/11e/12e année<br>
+                  </div>
+               </td>
+               <td class="top footer1--padding ">
+                  <strong>Catégorie</strong><br>
+                  1 caractère
+                  <br>
+                  <div class="data">
+                     0 : ouvert<br>
+                     1 : enrichi/avancé<br>
+                     2 : académique<br>
+                     3 : général<br>
+                     5 : pratique<br>
+                     6 : programme modifié
+                  </div>
+               </td>
+               <td class="top footer1--padding ">
+                  <strong>Nombre de crédits</strong><br>
+                  1 caractère
+                  <br>
+                  <div class="data">
+                     0 : aucun crédit<br>
+                     1 : un crédit<br>
+                     2 : deux crédits<br>
+                     3 : trois crédits<br>
+                     4 : quatre crédits<br>
+                     5 : un demi-crédit
+                  </div>
+               </td>
+               <td class="top footer1--padding ">
+                  <strong>Identification du programme</strong><br>
+                  1 caractère<br>
+                  <div class="data">
+                     A-E,K :	Cours de langue anglaise<br>
+                     F-J  &nbsp;:	Cours d'immersion française<br>
+                     M-R  &nbsp;:	Cours de langue française<br>
+                     S &nbsp;  &nbsp;:	Cours de reclassement<br>
+                     T &nbsp;  &nbsp;:	Crédit externe<br>
+                     W-Z  &nbsp;:	Cours de programme local
+                  </div>  
+               </td>
+            </tr>
+         </table>
+         <table class="footer2">
+            <colgroup>
+               <col style="width: 2in;"/>
+               <col style="width: 4in;"/>
+               <col style="width: 2in;"/>
+            </colgroup>
+            <tr>
+               <td class="left">Imprimé le: {{ ../reportconfig.printDate }}</td>
+               <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
+               <td class="right">Page: 2</td>
+            </tr>
+         </table>
+      </div>   
+   </div>
+   <div class="pageBreak" style="clear: both;">
+      <div class="noprint" style="border-top: thin dotted;width: 100%;"></div>
+   </div>
+{{/each}}
