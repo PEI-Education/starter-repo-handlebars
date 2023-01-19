@@ -10,7 +10,10 @@ There are four report cards currently working in production:
 - PSB Intermediate Report Card, 3-term version 
 - PSB Intermediate Report Card, 4-term version 
 - CSLF Intermediate Report Card 
-- 
+- CSLF High School Report Card
+
+In the current version, both high school report cards and the PSB Intermediate report cards support both adding co-teachers and the pei_uselegal flag.
+
 ## Background notes on this repo
 
 Originally started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), because using Node allows us to precompile handlebars templates for faster rendering, and webpack let us bundle the necessary code without intererence from the built-in versions of the same packages in PowerSchool (specifically, Handlebars was giving problems.). 
