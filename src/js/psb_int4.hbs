@@ -17,7 +17,7 @@
           </colgroup>
           <tr>
           <td>
-            <strong>Student:</strong> {{firstname}} {{lastname}}<br />
+            <strong>Student:</strong> {{ student_name }}<br />
             <strong>Student Number:</strong> {{number}}
           </td>
           <td>
@@ -113,10 +113,10 @@
         </tr>
         <tr>
           <td>Curriculum Outcomes</td>
-          <td class="center">{{ela.i1grade}}</td>
-          <td class="center">{{ela.i2grade}}</td>
-          <td class="center">{{ela.i3grade}}</td>
-          <td class="center">{{ela.i4grade}}</td>
+          <td class="center">{{round ela.i1grade}}</td>
+          <td class="center">{{round ela.i2grade}}</td>
+          <td class="center">{{round ela.i3grade}}</td>
+          <td class="center">{{round ela.i4grade}}</td>
         </tr>
         <tr>
           <td>Work Habits/Learning Skills</td>
@@ -163,10 +163,10 @@
           </tr>
           <tr>
             <td>Curriculum Outcomes</td>
-            <td class="center">{{fla.i1grade}}</td>
-            <td class="center">{{fla.i2grade}}</td>
-            <td class="center">{{fla.i3grade}}</td>
-            <td class="center">{{fla.i4grade}}</td>
+            <td class="center">{{round fla.i1grade}}</td>
+            <td class="center">{{round fla.i2grade}}</td>
+            <td class="center">{{round fla.i3grade}}</td>
+            <td class="center">{{round fla.i4grade}}</td>
           </tr>
           <tr>
             <td>Work Habits/Learning Skills</td>
@@ -179,7 +179,7 @@
         {{/if}}
 
         <!-- Math -->
-        <table class="wide">
+        <table class="wide"> 
         <colgroup>
           <col style="width: 1.6in;" />
           <col style="width: 0.6in;" />
@@ -213,10 +213,10 @@
         </tr>
         <tr>
           <td>Curriculum Outcomes</td>
-          <td class="center">{{mat.i1grade}}</td>
-          <td class="center">{{mat.i2grade}}</td>
-          <td class="center">{{mat.i3grade}}</td>
-          <td class="center">{{mat.i4grade}}</td>
+          <td class="center">{{round mat.i1grade}}</td>
+          <td class="center">{{round mat.i2grade}}</td>
+          <td class="center">{{round mat.i3grade}}</td>
+          <td class="center">{{round mat.i4grade}}</td>
         </tr>
         <tr>
           <td>Work Habits/Learning Skills</td>
@@ -261,10 +261,10 @@
                       </tr>
                       <tr>
                         <td>Curriculum Achievement</td>
-                        <td class="center">{{i1grade}}</td>
-                        <td class="center">{{i2grade}}</td>
-                        <td class="center">{{i3grade}}</td>
-                        <td class="center">{{i4grade}}</td>
+                        <td class="center">{{round i1grade}}</td>
+                        <td class="center">{{round i2grade}}</td>
+                        <td class="center">{{round i3grade}}</td>
+                        <td class="center">{{round i4grade}}</td>
                       </tr>
                       <tr>
                         <td>Work Habits/Learning Skills</td>
@@ -310,10 +310,10 @@
                       </tr>
                       <tr>
                         <td>Curriculum Achievement</td>
-                        <td class="center">{{i1grade}}</td>
-                        <td class="center">{{i2grade}}</td>
-                        <td class="center">{{i3grade}}</td>
-                        <td class="center">{{i4grade}}</td>
+                        <td class="center">{{round i1grade}}</td>
+                        <td class="center">{{round i2grade}}</td>
+                        <td class="center">{{round i3grade}}</td>
+                        <td class="center">{{round i4grade}}</td>
                       </tr>
                       <tr>
                         <td>Work Habits/Learning Skills</td>
@@ -360,10 +360,10 @@
                       </tr>
                       <tr>
                         <td>Curriculum Achievement</td>
-                        <td class="center">{{i1grade}}</td>
-                        <td class="center">{{i2grade}}</td>
-                        <td class="center">{{i3grade}}</td>
-                        <td class="center">{{i4grade}}</td>
+                        <td class="center">{{round i1grade}}</td>
+                        <td class="center">{{round i2grade}}</td>
+                        <td class="center">{{round i3grade}}</td>
+                        <td class="center">{{round i4grade}}</td>
                       </tr>
                       <tr>
                         <td>Work Habits/Learning Skills</td>
@@ -409,10 +409,10 @@
                       </tr>
                       <tr>
                         <td>Curriculum Achievement</td>
-                        <td class="center">{{i1grade}}</td>
-                        <td class="center">{{i2grade}}</td>
-                        <td class="center">{{i3grade}}</td>
-                        <td class="center">{{i4grade}}</td>
+                        <td class="center">{{round i1grade}}</td>
+                        <td class="center">{{round i2grade}}</td>
+                        <td class="center">{{round i3grade}}</td>
+                        <td class="center">{{round i4grade}}</td>
                       </tr>
                       <tr>
                         <td>Work Habits/Learning Skills</td>
@@ -437,7 +437,7 @@
       <div class="footer">
           <div class="footer3">
             <div class="footer3-left">V01</div>
-            <div class="footer3-center">{{ firstname }} {{ lastname}} ({{ number }} - {{ homeroom }})</div>
+            <div class="footer3-center">{{ student_name }} ({{ number }} - {{ homeroom }})</div>
             <div class="footer3-right">Printed: {{../reportconfig.printDate}}</div>
           </div>
       </div>
@@ -486,10 +486,10 @@
                       </tr>
                       <tr>
                         <td>Curriculum Achievement</td>
-                        <td class="center">{{i1grade}}</td>
-                        <td class="center">{{i2grade}}</td>
-                        <td class="center">{{i3grade}}</td>
-                        <td class="center">{{i4grade}}</td>
+                        <td class="center">{{round i1grade}}</td>
+                        <td class="center">{{round i2grade}}</td>
+                        <td class="center">{{round i3grade}}</td>
+                        <td class="center">{{round i4grade}}</td>
                       </tr>
                       <tr>
                         <td>Work Habits/Learning Skills</td>
@@ -535,10 +535,10 @@
                       </tr>
                       <tr>
                         <td>Curriculum Achievement</td>
-                        <td class="center">{{i1grade}}</td>
-                        <td class="center">{{i2grade}}</td>
-                        <td class="center">{{i3grade}}</td>
-                        <td class="center">{{i4grade}}</td>
+                        <td class="center">{{round i1grade}}</td>
+                        <td class="center">{{round i2grade}}</td>
+                        <td class="center">{{round i3grade}}</td>
+                        <td class="center">{{round i4grade}}</td>
                       </tr>
                       <tr>
                         <td>Work Habits/Learning Skills</td>
@@ -585,10 +585,10 @@
                       </tr>
                       <tr>
                         <td>Curriculum Achievement</td>
-                        <td class="center">{{i1grade}}</td>
-                        <td class="center">{{i2grade}}</td>
-                        <td class="center">{{i3grade}}</td>
-                        <td class="center">{{i4grade}}</td>
+                        <td class="center">{{round i1grade}}</td>
+                        <td class="center">{{round i2grade}}</td>
+                        <td class="center">{{round i3grade}}</td>
+                        <td class="center">{{round i4grade}}</td>
                       </tr>
                       <tr>
                         <td>Work Habits/Learning Skills</td>
@@ -633,10 +633,10 @@
                       </tr>
                       <tr>
                         <td>Curriculum Achievement</td>
-                        <td class="center">{{i1grade}}</td>
-                        <td class="center">{{i2grade}}</td>
-                        <td class="center">{{i3grade}}</td>
-                        <td class="center">{{i4grade}}</td>
+                        <td class="center">{{round i1grade}}</td>
+                        <td class="center">{{round i2grade}}</td>
+                        <td class="center">{{round i3grade}}</td>
+                        <td class="center">{{round i4grade}}</td>
                       </tr>
                       <tr>
                         <td>Work Habits/Learning Skills</td>
@@ -754,7 +754,7 @@
         <div class="footer">
           <div class="footer3">
             <div class="footer3-left">V01</div>
-            <div class="footer3-center">{{ firstname }} {{ lastname}} ({{ number }} - {{ homeroom }})</div>
+            <div class="footer3-center">{{ student_name }} ({{ number }} - {{ homeroom }})</div>
             <div class="footer3-right">Printed: {{../reportconfig.printDate}}</div>
           </div>
         </div>

@@ -23,7 +23,7 @@
                Student Number: {{ student_number}}<br />
                Homeroom: {{ home_room }}
             </td>
-            <td class="center"><h1>{{ first_name }} {{ last_name }}</h1></td>
+            <td class="center"><h1>{{ student_name }}</h1></td>
             <td class="right">
                Date of Birth: {{ dob }}<br>
                Grade: {{ grade_level }}
@@ -177,7 +177,7 @@
          <table>
             <tr>
                <td class="left">V 4.0</td>
-               <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
+               <td class="center">{{ student_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
                <td class="right">Page: 1</td>
             </tr>
          </table>
@@ -232,7 +232,7 @@
          <table>
             <tr>
                <td class="left">V 4.0</td>
-               <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
+               <td class="center">{{ student_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
                <td class="right">Page: 2</td>
             </tr>
          </table>

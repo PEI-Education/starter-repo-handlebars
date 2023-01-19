@@ -45,7 +45,7 @@ const process = (students, courses) => {
     if (course.i3grade) {
       course.i3grade = course.i3grade == '' ? course.i3grade : isNaN(course.i3grade) ? course.i3grade : Math.round(parseFloat(course.i3grade))
     }
-    if (course.i4grade) {
+    if (course.i4grade) { 4
       course.i4grade = course.i4grade == '' ? course.i4grade : isNaN(course.i4grade) ? course.i4grade : Math.round(parseFloat(course.i4grade))
     }
     if (course.comment) {
@@ -93,9 +93,9 @@ const populate = async () => {
   try {
     const results = await Promise.all([
       // eslint-disable-next-line no-undef
-      fetch('./assets/psb_int_3term.json?dothisfor=' + reportconfig.dothisfor + '&attcutoff=' + reportconfig.attcutoff),
+      fetch(`./assets/psb_int_4term.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}`),
       // eslint-disable-next-line no-undef
-      fetch('./assets/psb_int_courses.json?dothisfor=' + reportconfig.dothisfor + '&storecode=' + reportconfig.storecode),
+      fetch(`./assets/psb_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}&coteachers=${reportconfig.coteachers}`),
     ])
     const finalData = await Promise.all(results.map((result) => result.json()))
 

@@ -6,8 +6,11 @@
        ~[tlist_sql;
          select
             s.id,
-            s.first_name,
-            s.last_name,
+            case
+               when stuext.pei_uselegal = 1 then (scf.pscore_legal_first_name || ' ' || scf.pscore_legal_last_name) 
+               else (s.first_name || ' ' || s.last_name) 
+               end
+            as student_name,
             stuext.pei_uselegal,
             s.student_number,
             s.home_room,
@@ -29,11 +32,12 @@
             on sch.school_number = s.schoolid
          join u_dyn_schools_1 schext
             on schext.schoolsdcid = sch.dcid
+            left join studentcorefields scf 
+            on scf.studentsdcid = s.dcid
          where s.id = ~(curstudid); 
        ]
        "id": "~(id)",
-       "firstname": "~(first_name)",
-       "lastname": "~(last_name)",
+       "student_name": "~(student_name)",
        "number": "~(student_number)",
        "homeroom": "~(home_room)",
        "gradelevel": "~(grade_level)",

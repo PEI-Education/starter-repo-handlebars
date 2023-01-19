@@ -33,7 +33,7 @@
                   TÉLÉPHONE :<br>
                </td>
                <td class="top">
-                  {{ first_name }} {{ last_name }}<br>
+                  {{ student_name }}<br>
                   {{ street }}<br>
                   {{ city }}, IPE, {{ zip }}<br>
                   {{ home_phone }}<br>
@@ -160,7 +160,7 @@
             </colgroup>
             <tr>
                <td class="left">Imprimé le: {{ ../reportconfig.printDate }}</td>
-               <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }})</td>
+               <td class="center">{{ student_name }} ({{ student_number }})</td>
                <td class="right">Page: 1</td>
             </tr>
          </table>
@@ -291,7 +291,7 @@
             </colgroup>
             <tr>
                <td class="left">Imprimé le: {{ ../reportconfig.printDate }}</td>
-               <td class="center">{{ first_name }} {{ last_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
+               <td class="center">{{ student_name }} ({{ student_number }}) - {{../reportconfig.printDate}}</td>
                <td class="right">Page: 2</td>
             </tr>
          </table>

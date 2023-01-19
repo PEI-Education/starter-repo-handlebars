@@ -11,13 +11,20 @@
          sch.principal,
          s.student_number,
          s.home_room,
-         s.first_name,
-         s.last_name,
+         case
+            when u.pei_uselegal = 1 then (scf.pscore_legal_first_name || ' ' || scf.pscore_legal_last_name) 
+            else (s.first_name || ' ' || s.last_name) 
+            end
+         as student_name,
          to_char(s.dob, 'mm/dd/yyyy') dob,
          s.grade_level
       from students s
       join schools sch
          on sch.school_number = s.schoolid
+      left join u_def_ext_students u
+         on u.studentsdcid = s.dcid
+      left join studentcorefields scf 
+         on scf.studentsdcid = s.dcid
       where s.id = ~(curstudid)
       and s.schoolid = ~(curschoolid)
       order by sid;]
@@ -27,8 +34,7 @@
          "principal":      "~(principal)",
          "student_number": "~(student_number)",
          "home_room":      "~(home_room)",
-         "first_name":     "~(first_name;json)",
-         "last_name":      "~(last_name;json)",
+         "student_name":   "~(student_name)",
          "dob":            "~(dob)",
          "grade_level":    "~(grade_level)",
       [/tlist_sql]
@@ -101,7 +107,7 @@
             cg.q3,
             cg.s2,
             ~[if.~(gpv.coteachers)=true](SELECT
-            LISTAGG(t.first_name || ' ' || t.last_name, ', ') within group (order by st.start_date) as "Co-Teachers"
+            LISTAGG(t.first_name || ' ' || t.last_name, ', ') within group (order by st.roleid, st.start_date) as "Co-Teachers"
             FROM
                sectionteacher st
             JOIN teachers t
@@ -205,7 +211,7 @@
             cg.q3,
             cg.q4,
             ~[if.~(gpv.coteachers)=true](SELECT
-            LISTAGG(t.first_name || ' ' || t.last_name, ', ') within group (order by st.start_date) as "Co-Teachers"
+            LISTAGG(t.first_name || ' ' || t.last_name, ', ') within group (order by st.roleid, st.start_date) as "Co-Teachers"
             FROM
                sectionteacher st
             JOIN teachers t

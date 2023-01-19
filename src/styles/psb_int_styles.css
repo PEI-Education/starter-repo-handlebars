@@ -8,6 +8,7 @@
 .page {
   display: block;
   width: 8in;
+  height: 13.5in;
   margin: 0.25in;
   position: relative;
 }
@@ -98,7 +99,12 @@ header {
 }
 
 .row1 {
-  background: #bbb
+  background: #bbb;
+}
+
+.titleRow {
+  vertical-align: top;
+  height: 0.67in;
 }
 
 .center {
@@ -113,6 +119,7 @@ header {
   vertical-align: top;
   overflow-wrap: break-word;
   padding: 5px;
+  line-height: 1.2;
 }
 
 .course {
@@ -136,6 +143,7 @@ header {
   overflow-wrap: break-word;
   width: 3.9in;
   padding: 5px;
+  line-height: 1.2;
 }
 
 .footer {

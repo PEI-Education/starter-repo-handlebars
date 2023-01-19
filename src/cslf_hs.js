@@ -21,8 +21,6 @@ const fadeOutEffect = () => {
 
 function process(students) {
 
-   console.log(students)
-
    students.forEach((student) => {
       student.semCourses.pop()
       student.fyCourses.pop()
