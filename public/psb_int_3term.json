@@ -11,7 +11,6 @@
                else (s.first_name || ' ' || s.last_name) 
                end
             as student_name,
-            stuext.pei_uselegal,
             s.student_number,
             s.home_room,
             s.grade_level,
@@ -55,12 +54,13 @@
      att.studentid,
          (select nvl(sum(att.membershipvalue - att.attendancevalue),0) from PSSIS_AdaAdm_Meeting_Ptod att where att.studentid = ~(curstudid) and att.schoolid = ~(curschoolid) and att.calendardate between (select to_date(t.date1) + 1 from termbins t where t.schoolid=~(curschoolid) and t.yearid=~(curyearid) and t.storecode='I1') and (select to_date(t.date2) from termbins t where t.schoolid=~(curschoolid) and t.yearid=~(curyearid) and t.storecode='I1') and att.calendardate <= to_date('~(gpv.attcutoff)','mm/dd/yyyy')) as r1_absences,
          (select nvl(sum(att.membershipvalue - att.attendancevalue),0) from PSSIS_AdaAdm_Meeting_Ptod att where att.studentid = ~(curstudid) and att.schoolid = ~(curschoolid) and att.calendardate between (select to_date(t.date2) + 1 from termbins t where t.schoolid=~(curschoolid) and t.yearid=~(curyearid) and t.storecode='I1') and (select to_date(t.date2) from termbins t where t.schoolid=~(curschoolid) and t.yearid=~(curyearid) and t.storecode='I2') and att.calendardate <= to_date('~(gpv.attcutoff)','mm/dd/yyyy')) as r2_absences,
-         (select nvl(sum(att.membershipvalue - att.attendancevalue),0) from PSSIS_AdaAdm_Meeting_Ptod att where att.studentid = ~(curstudid) and att.schoolid = ~(curschoolid) and att.calendardate between (select to_date(t.date2) + 1 from termbins t where t.schoolid=~(curschoolid) and t.yearid=~(curyearid) and t.storecode='R2') and (select to_date(t.date2) from termbins t where t.schoolid=~(curschoolid) and t.yearid=~(curyearid) and t.storecode='R3') and att.calendardate <= to_date('~(gpv.attcutoff)','mm/dd/yyyy')) as r3_absence,
+         (select nvl(sum(att.membershipvalue - att.attendancevalue),0) from PSSIS_AdaAdm_Meeting_Ptod att where att.studentid = ~(curstudid) and att.schoolid = ~(curschoolid) and att.calendardate between (select to_date(t.date2) + 1 from termbins t where t.schoolid=~(curschoolid) and t.yearid=~(curyearid) and t.storecode='I2') and (select to_date(t.date2) from termbins t where t.schoolid=~(curschoolid) and t.yearid=~(curyearid) and t.storecode='I3') and att.calendardate <= to_date('~(gpv.attcutoff)','mm/dd/yyyy')) as r3_absence,
          (select nvl(sum(att.membershipvalue - att.attendancevalue),0) from PSSIS_AdaAdm_Meeting_Ptod att where att.studentid = ~(curstudid) and  att.schoolid =~(curschoolid) and att.calendardate between  (select to_date(t.date1) + 1 from termbins t where t.schoolid=~(curschoolid) and t.yearid=~(curyearid) and t.storecode='I1') and (select to_date(t.date2) from termbins t where t.schoolid=~(curschoolid) and t.yearid=~(curyearid) and t.storecode='I3') and att.calendardate <= to_date('~(gpv.attcutoff)','mm/dd/yyyy')) as total_absences
          from PSSIS_AdaAdm_Meeting_Ptod att
          where att.studentid = ~(curstudid)
          and att.schoolid = ~(curschoolid)
-     group by studentid;
+     group by studentid
+     order by studentid;
          ]
          "studentid_absences": "~(studentid)",
          "r1absences": "~(r1_absences)",
@@ -78,7 +78,8 @@
              from PSSIS_AdaAdm_Meeting_Ptod att
              where att.studentid = ~(curstudid)
              and att.schoolid = ~(curschoolid)
-             group by studentid;
+             group by studentid
+             order by 1;
          ]
          "studentid_membership": "~(studentid)",
          "r1membership": "~(r1_mem)",

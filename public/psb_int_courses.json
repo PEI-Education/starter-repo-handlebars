@@ -29,7 +29,7 @@
             ~[if.~(gpv.dothisfor;num)>0] s.id = ~(gpv.dothisfor)[/if]
             ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.school]
             and sg.storecode = '~(gpv.storecode)'
-            and sg.termid = ~(curtermid)
+            and substr(sg.termid,1,2) = ~(curyearid)
             and cc.termid > 0),
         termGrades as (select
             s.id,
