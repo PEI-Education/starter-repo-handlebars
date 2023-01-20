@@ -212,7 +212,7 @@
         "id": "~(id)",
         "course_number": "~(course_number;json)",
         "course_name": "~(cname;json)",
-        "teacher": "~(teacher)",
+        "teacher": "~(teacher;json)",
         "comment": "~(comment;json)",
         "i1grade": "~(i1;json)",
         "i2grade": "~(i2;json)",

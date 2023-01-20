@@ -4,7 +4,16 @@
             s.id,
             sg.course_number,
             sg.course_name,
-            sg.teacher_name,
+            ~[if.~(gpv.coteachers)=true](SELECT
+            LISTAGG(t.first_name || ' ' || t.last_name, ', ') within group (order by st.roleid, st.start_date) as "Co-Teachers"
+            FROM
+               sectionteacher st
+            JOIN teachers t
+               ON st.teacherid = t.id
+            where
+               st.roleid IN (41,42)
+               and st.sectionid = sg.sectionid)
+            [else](tea.first_name || ' ' || tea.last_name)[/if] as teachers,
             sg.comment_value,
             nvl(sg.absences,0) as absences,
             nvl(sg.tardies,0) as lates
@@ -12,6 +21,10 @@
         join cc on cc.studentid = s.id
         join storedgrades sg
             on sg.studentid = cc.studentid and sg.sectionid = cc.sectionid
+        join sections sec
+            on cc.sectionid = sec.id 
+        join teachers tea
+            on tea.id = sec.teacher
         where
             ~[if.~(gpv.dothisfor)=selected] s.dcid in (select dcid from ~[temp.table.current.selection:students])[/if]
             ~[if.~(gpv.dothisfor)=enrolled] s.Enroll_Status = 0[/if]
@@ -46,7 +59,7 @@
             ct.id,
             ct.course_number,
             ct.course_name,
-            ct.teacher_name,
+            ct.teachers,
             ct.comment_value,
             ct.absences,
             ct.lates,

@@ -5,38 +5,42 @@
     {
       ~[tlist_sql;
         select
-           s.id,
-           s.first_name,
-           s.last_name,
-           s.street,
-           s.city,
-           s.zip, 
-           s.home_phone,
-           s.student_number,
-           s.home_room,
-           s.dob,
-           s.grade_level,
-           sch.school_number,
-           sch.name,
-           sch.schooladdress,
-           sch.schoolcity,
-           sch.schoolzip,
-           sch.schoolphone,
-           sch.schoolfax,
-           sch.principal,
-           schext.schoolurl
+          s.id,
+          case
+            when stuext.pei_uselegal = 1 then (scf.pscore_legal_first_name || ' ' || scf.pscore_legal_last_name) 
+            else (s.first_name || ' ' || s.last_name) 
+            end
+          as student_name,
+          s.street,
+          s.city,
+          s.zip, 
+          s.home_phone,
+          s.student_number,
+          s.home_room,
+          s.dob,
+          s.grade_level,
+          sch.school_number,
+          sch.name,
+          sch.schooladdress,
+          sch.schoolcity,
+          sch.schoolzip,
+          sch.schoolphone,
+          sch.schoolfax,
+          sch.principal,
+          schext.schoolurl
         from students s
         join u_def_ext_students stuext
-           on stuext.studentsdcid = s.dcid
+          on stuext.studentsdcid = s.dcid
         join schools sch
-           on sch.school_number = s.schoolid
+          on sch.school_number = s.schoolid
         join u_dyn_schools_1 schext
-           on schext.schoolsdcid = sch.dcid
+          on schext.schoolsdcid = sch.dcid
+        left join studentcorefields scf 
+          on scf.studentsdcid = s.dcid
         where s.id = ~(curstudid); 
       ]
       "id": "~(id;json)",
-      "firstname": "~(first_name;json)",
-      "lastname": "~(last_name;json)",
+      "student_name": "~(student_name;json)",
       "street": "~(street;json)",
       "city": "~(city;json)",
       "postalcode": "~(zip;json)",

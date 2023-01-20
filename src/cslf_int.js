@@ -31,18 +31,6 @@ const process = (students, courses) => {
     if (highestTerm <= 3) {
       delete course.i4grade
     }
-    if (course.i1grade) {
-      course.i1grade = course.i1grade == '' ? course.i1grade : isNaN(course.i1grade) ? course.i1grade : Math.round(parseFloat(course.i1grade))
-    } 
-    if (course.i2grade) {
-      course.i2grade = course.i2grade == '' ? course.i2grade : isNaN(course.i2grade) ? course.i2grade : Math.round(parseFloat(course.i2grade))
-    }
-    if (course.i3grade) {
-      course.i3grade = course.i3grade == '' ? course.i3grade : isNaN(course.i3grade) ? course.i3grade : Math.round(parseFloat(course.i3grade))
-    }
-    if (course.i4grade) {
-      course.i4grade = course.i4grade == '' ? course.i4grade : isNaN(course.i4grade) ? course.i4grade : Math.round(parseFloat(course.i4grade))
-    }
     if (course.comment) {
       course.comment = course.comment.substr(0,500)    
     }
@@ -66,7 +54,7 @@ const populate = async () => {
   try {
     const results = await Promise.all([
       fetch(`./assets/cslf_int_students.json?dothisfor=${reportconfig.dothisfor}`),
-      fetch(`./assets/cslf_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}`),
+      fetch(`./assets/cslf_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}&coteachers=${coteachers}`),
     ])
     const finalData = await Promise.all(results.map((result) => result.json()))
 

@@ -8,7 +8,8 @@
       dothisfor: '~[gpv:dothisfor]',
       storecode: '~(gpv.storecode)',
       period: '~(gpv.reportperiod)',
-      printDate: '~[date]'
+      printDate: '~[date]',
+      coteachers: '~(gpv.coteachers)'
     } 
     if (typeof "~(gpv.addcomments)" === 'string' && "~(gpv.addcomment)" !== "") {
       reportconfig.addcomment = "~(gpv.addcomment)"

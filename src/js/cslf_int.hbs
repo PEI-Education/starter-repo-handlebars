@@ -20,7 +20,7 @@
         PÉRIODE VISÉE :
       </div>
       <div class="student2">
-        {{firstname}} {{lastname}}<br>
+        {{ student_name }}<br>
         {{ street }}<br>
         {{ city }}, IPE, {{ postalcode }}<br>
         {{ phone }}<br>
@@ -60,10 +60,10 @@
         <div class="q-m2-head">Étape 2</div>
         <div class="q-m3-head">Étape 3</div>
         <div class="q-m4-head">Note Finale</div>
-        <div class="q-m1-mark">{{ i1grade }}</div>
-        <div class="q-m2-mark">{{ i2grade }}</div>
-        <div class="q-m3-mark">{{ i3grade }}</div>
-        <div class="q-m4-mark">{{ i4grade }}</div>
+        <div class="q-m1-mark">{{ round i1grade }}</div>
+        <div class="q-m2-mark">{{ round i2grade }}</div>
+        <div class="q-m3-mark">{{ round i3grade }}</div>
+        <div class="q-m4-mark">{{ round i4grade }}</div>
         <div class="comment">
           <strong><em>Commentaires :</em></strong>
             {{ comment }}
@@ -88,10 +88,10 @@
         <div class="q-m2-head">Étape 2</div>
         <div class="q-m3-head">Étape 3</div>
         <div class="q-m4-head">Note Finale</div>
-        <div class="q-m1-mark">{{ i1grade }}</div>
-        <div class="q-m2-mark">{{ i2grade }}</div>
-        <div class="q-m3-mark">{{ i3grade }}</div>
-        <div class="q-m4-mark">{{ i4grade }}</div>
+        <div class="q-m1-mark">{{ round i1grade }}</div>
+        <div class="q-m2-mark">{{ round i2grade }}</div>
+        <div class="q-m3-mark">{{ round i3grade }}</div>
+        <div class="q-m4-mark">{{ round i4grade }}</div>
         <div class="comment">
           <strong><em>Commentaires :</em></strong>
             {{ comment }}
@@ -144,10 +144,10 @@
         <div class="q-m2-head">Étape 2</div>
         <div class="q-m3-head">Étape 3</div>
         <div class="q-m4-head">Note Finale</div>
-        <div class="q-m1-mark">{{ i1grade }}</div>
-        <div class="q-m2-mark">{{ i2grade }}</div>
-        <div class="q-m3-mark">{{ i3grade }}</div>
-        <div class="q-m4-mark">{{ i4grade }}</div>
+        <div class="q-m1-mark">{{ round i1grade }}</div>
+        <div class="q-m2-mark">{{ round i2grade }}</div>
+        <div class="q-m3-mark">{{ round i3grade }}</div>
+        <div class="q-m4-mark">{{ round i4grade }}</div>
         <div class="comment">
           <strong><em>Commentaires :</em></strong>
             {{ comment }}
@@ -172,10 +172,10 @@
         <div class="q-m2-head">Étape 2</div>
         <div class="q-m3-head">Étape 3</div>
         <div class="q-m4-head">Note Finale</div>
-        <div class="q-m1-mark">{{ i1grade }}</div>
-        <div class="q-m2-mark">{{ i2grade }}</div>
-        <div class="q-m3-mark">{{ i3grade }}</div>
-        <div class="q-m4-mark">{{ i4grade }}</div>
+        <div class="q-m1-mark">{{ round i1grade }}</div>
+        <div class="q-m2-mark">{{ round i2grade }}</div>
+        <div class="q-m3-mark">{{ round i3grade }}</div>
+        <div class="q-m4-mark">{{ round i4grade }}</div>
         <div class="comment">
           <strong><em>Commentaires :</em></strong>
             {{ comment }}
@@ -200,10 +200,10 @@
         <div class="q-m2-head">Étape 2</div>
         <div class="q-m3-head">Étape 3</div>
         <div class="q-m4-head">Note Finale</div>
-        <div class="q-m1-mark">{{ i1grade }}</div>
-        <div class="q-m2-mark">{{ i2grade }}</div>
-        <div class="q-m3-mark">{{ i3grade }}</div>
-        <div class="q-m4-mark">{{ i4grade }}</div>
+        <div class="q-m1-mark">{{ round i1grade }}</div>
+        <div class="q-m2-mark">{{ round i2grade }}</div>
+        <div class="q-m3-mark">{{ round i3grade }}</div>
+        <div class="q-m4-mark">{{ round i4grade }}</div>
         <div class="comment">
           <strong><em>Commentaires :</em></strong>
             {{ comment }}
@@ -216,7 +216,7 @@
   <div class="footer">
     <div class="footer3">
       <div class="footer3-left">V 1.0</div>
-      <div class="footer3-center">{{ firstname }} {{ lastname}} ({{ number }} - {{ homeroom }})</div>
+      <div class="footer3-center">{{ student_name }} ({{ number }} - {{ homeroom }})</div>
       <div class="footer3-right">Voir au verso</div>
     </div>
   </div>
@@ -249,10 +249,10 @@
         <div class="q-m2-head">Étape 2</div>
         <div class="q-m3-head">Étape 3</div>
         <div class="q-m4-head">Note Finale</div>
-        <div class="q-m1-mark">{{ i1grade }}</div>
-        <div class="q-m2-mark">{{ i2grade }}</div>
-        <div class="q-m3-mark">{{ i3grade }}</div>
-        <div class="q-m4-mark">{{ i4grade }}</div>
+        <div class="q-m1-mark">{{ round i1grade }}</div>
+        <div class="q-m2-mark">{{ round i2grade }}</div>
+        <div class="q-m3-mark">{{ round i3grade }}</div>
+        <div class="q-m4-mark">{{ round i4grade }}</div>
         <div class="comment">
           <strong><em>Commentaires :</em></strong>
             {{ comment }}
@@ -277,10 +277,10 @@
         <div class="q-m2-head">Étape 2</div>
         <div class="q-m3-head">Étape 3</div>
         <div class="q-m4-head">Note Finale</div>
-        <div class="q-m1-mark">{{ i1grade }}</div>
-        <div class="q-m2-mark">{{ i2grade }}</div>
-        <div class="q-m3-mark">{{ i3grade }}</div>
-        <div class="q-m4-mark">{{ i4grade }}</div>
+        <div class="q-m1-mark">{{ round i1grade }}</div>
+        <div class="q-m2-mark">{{ round i2grade }}</div>
+        <div class="q-m3-mark">{{ round i3grade }}</div>
+        <div class="q-m4-mark">{{ round i4grade }}</div>
         <div class="comment">
           <strong><em>Commentaires :</em></strong>
             {{ comment }}
@@ -305,10 +305,10 @@
         <div class="q-m2-head">Étape 2</div>
         <div class="q-m3-head">Étape 3</div>
         <div class="q-m4-head">Note Finale</div>
-        <div class="q-m1-mark">{{ i1grade }}</div>
-        <div class="q-m2-mark">{{ i2grade }}</div>
-        <div class="q-m3-mark">{{ i3grade }}</div>
-        <div class="q-m4-mark">{{ i4grade }}</div>
+        <div class="q-m1-mark">{{ round i1grade }}</div>
+        <div class="q-m2-mark">{{ round i2grade }}</div>
+        <div class="q-m3-mark">{{ round i3grade }}</div>
+        <div class="q-m4-mark">{{ round i4grade }}</div>
         <div class="comment">
           <strong><em>Commentaires :</em></strong>
             {{ comment }}
@@ -333,10 +333,10 @@
         <div class="q-m2-head">Étape 2</div>
         <div class="q-m3-head">Étape 3</div>
         <div class="q-m4-head">Note Finale</div>
-        <div class="q-m1-mark">{{ i1grade }}</div>
-        <div class="q-m2-mark">{{ i2grade }}</div>
-        <div class="q-m3-mark">{{ i3grade }}</div>
-        <div class="q-m4-mark">{{ i4grade }}</div>
+        <div class="q-m1-mark">{{ round i1grade }}</div>
+        <div class="q-m2-mark">{{ round i2grade }}</div>
+        <div class="q-m3-mark">{{ round i3grade }}</div>
+        <div class="q-m4-mark">{{ round i4grade }}</div>
         <div class="comment">
           <strong><em>Commentaires :</em></strong>
             {{ comment }}
@@ -361,10 +361,10 @@
         <div class="q-m2-head">Étape 2</div>
         <div class="q-m3-head">Étape 3</div>
         <div class="q-m4-head">Note Finale</div>
-        <div class="q-m1-mark">{{ i1grade }}</div>
-        <div class="q-m2-mark">{{ i2grade }}</div>
-        <div class="q-m3-mark">{{ i3grade }}</div>
-        <div class="q-m4-mark">{{ i4grade }}</div>
+        <div class="q-m1-mark">{{ round i1grade }}</div>
+        <div class="q-m2-mark">{{ round i2grade }}</div>
+        <div class="q-m3-mark">{{ round i3grade }}</div>
+        <div class="q-m4-mark">{{ round i4grade }}</div>
         <div class="comment">
           <strong><em>Commentaires :</em></strong>
             {{ comment }}
@@ -399,7 +399,7 @@
     <br>
     <div class="footer3">
       <div class="footer3-left">V 1.0</div>
-      <div class="footer3-center">{{ firstname }} {{ lastname}} ({{ number }} - {{ homeroom }})</div>
+      <div class="footer3-center">{{ student_name }} ({{ number }} - {{ homeroom }})</div>
       <div class="footer3-right"></div>
     </div>
   </div>

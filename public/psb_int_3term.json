@@ -31,20 +31,20 @@
             on sch.school_number = s.schoolid
          join u_dyn_schools_1 schext
             on schext.schoolsdcid = sch.dcid
-            left join studentcorefields scf 
+         left join studentcorefields scf 
             on scf.studentsdcid = s.dcid
          where s.id = ~(curstudid); 
        ]
        "id": "~(id)",
-       "student_name": "~(student_name)",
+       "student_name": "~(student_name;json)",
        "number": "~(student_number)",
        "homeroom": "~(home_room)",
        "gradelevel": "~(grade_level)",
        "program": "~(program)",
        "yearname": "~(yearname)",
        "school": {
-         "name": "~(name)",
-         "principal": "~(principal)",
+         "name": "~(name;json)",
+         "principal": "~(principal;json)",
          "url": "~(url)"
        },
        [/tlist_sql]
