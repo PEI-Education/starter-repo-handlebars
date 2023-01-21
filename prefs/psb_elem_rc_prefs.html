@@ -61,7 +61,7 @@
                   type="radio"
                   id="sortname"
                   name="[prefschool]report_card_sort"
-                  value="lastfirst,grade_level" />
+                  value="lastfirst,gt,grade_level,gt" />
                   <label for="sortname"
                   >~[text:psx.html.admin_reports.studschedmatrixprefs.last_name]</label
                   ><br />
@@ -69,7 +69,7 @@
                   type="radio"
                   id="sortgrade"
                   name="[prefschool]report_card_sort"
-                  value="grade_level,lastfirst" />
+                  value="grade_level,gt,lastfirst,gt" />
                   <label for="sortgrade"
                   >~[text:psx.html.admin_reports.studschedmatrixprefs.grade_level]</label
                   ><br />
@@ -77,7 +77,7 @@
                   type="radio"
                   id="sorthomeroom"
                   name="[prefschool]report_card_sort"
-                  value="home_room,lastfirst"
+                  value="home_room,gt,lastfirst,gt"
                   checked />
                   <label for="sorthomeroom"
                   >~[text:psx.html.admin_reports.studschedmatrixprefs.homeroom]</label
@@ -110,6 +110,13 @@
                   >
                </td>
             </tr>
+            <tr>
+               <td>Include Co-Teachers?</td>
+                 <td>
+                     <input type="checkbox" id="coteachers" name="coteachers" value="true">
+                     <label for="coteachers">Include lead teacher and all staff with the role "co-teacher" for each section</label>
+               </td>
+           </tr>
             <tr>
                <td>Signatures to include:</td>
                <td>

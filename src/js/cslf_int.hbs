@@ -49,7 +49,7 @@
         <div class="course-info">
           Cours : {{ course_name }} <br>
           Code : {{ course_number }} <br>
-          Enseignant.e : {{ teacher }} <br>
+          Enseignant.e.s : {{ teacher }} <br>
           <br>
         </div>
         <div class="attendance">
@@ -77,7 +77,7 @@
         <div class="course-info">
           Cours : {{ course_name }} <br>
           Code : {{ course_number }} <br>
-          Enseignant.e : {{ teacher }} <br>
+          Enseignant.e.s : {{ teacher }} <br>
           <br>
         </div>
         <div class="attendance">
@@ -105,7 +105,7 @@
         <div class="course-info">
           Cours : {{ course_name }} <br>
           Code : {{ course_number }} <br>
-          Enseignant.e : {{ teacher }} <br>
+          Enseignant.e.s : {{ teacher }} <br>
           <br>
         </div>
         <div class="attendance">
@@ -116,10 +116,10 @@
         <div class="q-m2-head">Étape 2</div>
         <div class="q-m3-head">Étape 3</div>
         <div class="q-m4-head">Note Finale</div>
-        <div class="q-m1-mark">{{ i1grade }}</div>
-        <div class="q-m2-mark">{{ i2grade }}</div>
-        <div class="q-m3-mark">{{ i3grade }}</div>
-        <div class="q-m4-mark">{{ i4grade }}</div>
+        <div class="q-m1-mark">{{ round i1grade }}</div>
+        <div class="q-m2-mark">{{ round i2grade }}</div>
+        <div class="q-m3-mark">{{ round i3grade }}</div>
+        <div class="q-m4-mark">{{ round i4grade }}</div>
         <div class="comment">
           <strong><em>Commentaires :</em></strong>
             {{ comment }}
@@ -133,7 +133,7 @@
         <div class="course-info">
           Cours : {{ course_name }} <br>
           Code : {{ course_number }} <br>
-          Enseignant.e : {{ teacher }} <br>
+          Enseignant.e.s : {{ teacher }} <br>
           <br>
         </div>
         <div class="attendance">
@@ -161,7 +161,7 @@
         <div class="course-info">
           Cours : {{ course_name }} <br>
           Code : {{ course_number }} <br>
-          Enseignant.e : {{ teacher }} <br>
+          Enseignant.e.s : {{ teacher }} <br>
           <br>
         </div>
         <div class="attendance">
@@ -189,7 +189,7 @@
         <div class="course-info">
           Cours : {{ course_name }} <br>
           Code : {{ course_number }} <br>
-          Enseignant.e : {{ teacher }} <br>
+          Enseignant.e.s : {{ teacher }} <br>
           <br>
         </div>
         <div class="attendance">
@@ -238,7 +238,7 @@
         <div class="course-info">
           Cours : {{ course_name }} <br>
           Code : {{ course_number }} <br>
-          Enseignant.e : {{ teacher }} <br>
+          Enseignant.e.s : {{ teacher }} <br>
           <br>
         </div>
         <div class="attendance">
@@ -266,7 +266,7 @@
         <div class="course-info">
           Cours : {{ course_name }} <br>
           Code : {{ course_number }} <br>
-          Enseignant.e : {{ teacher }} <br>
+          Enseignant.e.s : {{ teacher }} <br>
           <br>
         </div>
         <div class="attendance">
@@ -294,7 +294,7 @@
         <div class="course-info">
           Cours : {{ course_name }} <br>
           Code : {{ course_number }} <br>
-          Enseignant.e : {{ teacher }} <br>
+          Enseignant.e.s : {{ teacher }} <br>
           <br>
         </div>
         <div class="attendance">
@@ -322,7 +322,7 @@
         <div class="course-info">
           Cours : {{ course_name }} <br>
           Code : {{ course_number }} <br>
-          Enseignant.e : {{ teacher }} <br>
+          Enseignant.e.s : {{ teacher }} <br>
           <br>
         </div>
         <div class="attendance">
@@ -350,7 +350,7 @@
         <div class="course-info">
           Cours : {{ course_name }} <br>
           Code : {{ course_number }} <br>
-          Enseignant.e : {{ teacher }} <br>
+          Enseignant.e.s : {{ teacher }} <br>
           <br>
         </div>
         <div class="attendance">
@@ -390,7 +390,7 @@
   <div class="footer">
     <div class="signature">
       {{#if ../reportconfig.teachersig}}
-        <span class="teacher">ENSEIGNANT.E TITULAIRE: <span class="sig-line"></span></span> &nbsp; &nbsp;
+        <span class="teacher">Enseignant.e.s TITULAIRE: <span class="sig-line"></span></span> &nbsp; &nbsp;
       {{/if}}
       {{#if ../reportconfig.principalsig}}
         <span class="principal">DIRECTION: <span class="sig-line"></span></span>

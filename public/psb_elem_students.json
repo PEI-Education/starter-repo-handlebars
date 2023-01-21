@@ -6,22 +6,25 @@
         ~[tlist_sql;
           select
              s.id,
-             s.first_name,
-             s.last_name,
-             s.student_number,
-             to_char(s.dob,'mm/dd/yyyy'),
-             s.home_room,
-             s.grade_level,
-             case 
+             case
+                when stuext.pei_uselegal = 1 then (scf.pscore_legal_first_name || ' ' || scf.pscore_legal_last_name) 
+                else (s.first_name || ' ' || s.last_name) 
+                end
+            as student_name,
+            s.student_number,
+            to_char(s.dob,'mm/dd/yyyy'),
+            s.home_room,
+            s.grade_level,
+            case 
                 when stuext.pei_frenchprograms = 'E' then 'French Immersion'
                 when stuext.pei_frenchprograms = 'M' then 'French Immersion'
                 when stuext.pei_frenchprograms = 'L' then 'French Immersion'
                 when stuext.pei_frenchprograms = 'B' then 'French Immersion'
                 else 'English' end as progam,
-             to_char(1990+substr(to_char(~(curtermid)),1,2)) || '-' || to_char(1991+substr(to_char(~(curtermid)),1,2)) AS yearname,
-             sch.name,
-             sch.principal,
-             schext.schoolurl
+            to_char(1990+substr(to_char(~(curtermid)),1,2)) || '-' || to_char(1991+substr(to_char(~(curtermid)),1,2)) AS yearname,
+            sch.name,
+            sch.principal,
+            schext.schoolurl
           from students s
           join u_def_ext_students stuext
              on stuext.studentsdcid = s.dcid
@@ -29,11 +32,12 @@
              on sch.school_number = s.schoolid
           join u_dyn_schools_1 schext
              on schext.schoolsdcid = sch.dcid
-          where s.id = ~(curstudid); 
+          left join studentcorefields scf 
+             on scf.studentsdcid = s.dcid
+          where s.id = ~(curstudid);  
         ]
         "id": "~(id;l)",
-        "firstname": "~(first_name;json)",
-        "lastname": "~(last_name;json)",
+        "studentName": "~(student_name;json)",
         "number": "~(student_number;l)",
         "dob": "~(dob;date)",
         "homeroom": "~(home_room;json)",
@@ -142,7 +146,16 @@
          "ela": {
              ~[tlist_sql;
                 select
-                   t.lastfirst,
+                ~[if.~(gpv.coteachers)=true](SELECT
+                    LISTAGG(t.first_name || ' ' || t.last_name, ', ') within group (order by st.roleid, st.start_date) as "Co-Teachers"
+                    FROM
+                    sectionteacher st
+                    JOIN teachers t
+                    ON st.teacherid = t.id
+                    where
+                    st.roleid IN (41,42)
+                    and st.sectionid = sec.id)
+                [else](tea.first_name || ' ' || tea.last_name)[/if] as teachers,
                    SUBSTR(pfg.comment_value,1,1048) as termscomment,
                    NVL(rpt.e_ela_adaptation,0) as adaptation,
                    NVL(rpt.e_ela_program, 'Regular') as program,
@@ -153,8 +166,8 @@
                    on cc.studentid = s.id
                  join sections sec
                    on cc.sectionid = sec.id
-                 join teachers t
-                     on sec.teacher = t.id
+                 join teachers tea
+                     on sec.teacher = tea.id
                  left join u_def_ext_students0 rpt
                      on rpt.studentsdcid=s.dcid
                  left join pgfinalgrades pfg

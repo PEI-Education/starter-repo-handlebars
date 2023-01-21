@@ -54,7 +54,7 @@ const populate = async () => {
   try {
     const results = await Promise.all([
       fetch(`./assets/cslf_int_students.json?dothisfor=${reportconfig.dothisfor}`),
-      fetch(`./assets/cslf_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}&coteachers=${coteachers}`),
+      fetch(`./assets/cslf_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}&coteachers=${reportconfig.coteachers}`),
     ])
     const finalData = await Promise.all(results.map((result) => result.json()))
 
