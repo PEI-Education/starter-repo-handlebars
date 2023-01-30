@@ -12,13 +12,13 @@ There are four report cards currently working in production:
 - CSLF Intermediate Report Card 
 - CSLF High School Report Card
 
-In the current version, both high school report cards and the PSB Intermediate report cards support both adding co-teachers and the pei_uselegal flag.
+In the current version, all re-written report cards support both adding co-teachers and the pei_uselegal flag.
 
 ## Background notes on this repo
 
 Originally started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), because using Node allows us to precompile handlebars templates for faster rendering, and webpack let us bundle the necessary code without intererence from the built-in versions of the same packages in PowerSchool (specifically, Handlebars was giving problems.). 
 
-Note: Updated Webpack config to support multiple entry points, so all report cards can live together easily.
+Note: Updated Webpack config to support multiple entry points, so all report cards can live together easily, and removed Babel as a dependencies, since we have no need to transpile ES6.
 
 Code for the original versions of the report cards plugin will be maintained in the [Report Card Plugin repo](https://github.com/ubershibs/pei_report_card_plugin), until all report cards are migrated to Handlebars.
 
@@ -58,7 +58,6 @@ Reports must then be content of each project's 'dist' folder can be added to a n
 ## Features
 
 - [webpack](https://webpack.js.org/)
-- [Babel](https://babeljs.io/)
 
 ## Dependencies
 
@@ -70,18 +69,11 @@ Reports must then be content of each project's 'dist' folder can be added to a n
 - [`webpack-merge`](https://github.com/survivejs/webpack-merge) - Simplify development/production configuration
 - [`cross-env`](https://github.com/kentcdodds/cross-env) - Cross platform configuration
 
-### Babel
-
-- [`@babel/core`](https://www.npmjs.com/package/@babel/core) - Transpile ES6+ to backwards compatible JavaScript
-- [`@babel/plugin-proposal-class-properties`](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties) - Use properties directly on a class (an example Babel config)
-- [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) - Smart defaults for Babel
-
 ### Handlebars.js
 - [`handlebars`](https://www.npmjs.com/package/handlebars) - Templating language used in v2 of report cards
 
 ### Loaders
 
-- [`babel-loader`](https://webpack.js.org/loaders/babel-loader/) - Transpile files with Babel and webpack
 - [`css-loader`](https://webpack.js.org/loaders/css-loader/) - Resolve CSS imports
 - [`style-loader`](https://webpack.js.org/loaders/style-loader/) - Inject CSS into the DOM
 - [`handlebars-loader`](https://webpack.js.org/loaders/handlebars-loader) -
@@ -101,4 +93,7 @@ Reports must then be content of each project's 'dist' folder can be added to a n
   - - [`prettier`](https://github.com/prettier/prettier) - Dependency for `prettier-webpack-plugin` plugin
 - [`eslint-import-resolver-webpack`](https://github.com/benmosher/eslint-plugin-import/tree/master/resolvers/webpack) - Throw exceptions for import/export in webpack
 
-Notes: I removed Sass and PostCSS because they were introducing vulnerabilities and neither was going to be in use. 
+Notes on diffs from original config: 
+- I removed Sass and PostCSS because they were introducing vulnerabilities and neither was going to be in use. 
+- I removed Babel because all users are on managed evergreen versions of Chrome or Edge and can interpret ES6 code without transpiling.
+- The linters are having a hard time with both Handlebars templates (mixed context) and PowerSchool DATs (tlist_sql especially), but I haven't had a chance to really investigate how we could possibly solve that
