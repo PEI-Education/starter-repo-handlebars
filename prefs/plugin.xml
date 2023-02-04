@@ -3,7 +3,7 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    description="PEI Report Cards rewritten using Handlebars to improve load time and consistency."
    name="PEI Report Cards v2"
-   version="1.8.5"
+   version="1.8.10"
    xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd">
    <publisher name="DELL - Luke Walker">
    <contact email="lawalker@gov.pe.ca"/>

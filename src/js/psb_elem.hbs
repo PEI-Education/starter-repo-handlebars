@@ -12,7 +12,7 @@
       <tr>
         <td>
           School: {{ school.name }}<br />
-          Student: {{ firstname }} {{ lastname }}<br />
+          Student: {{ studentName }}<br />
           Student Number: {{ number }} <br />
           Date of Birth: {{ dob }} <br />
           Grade: {{ gradelevel }}
@@ -234,7 +234,7 @@
     <div class="footer">
       <div class="footer3">
         <div class="footer3-left">V01</div>
-        <div class="footer3-center">{{ firstname }} {{ lastname }} ({{ number }} - {{ homeroom }})</div>
+        <div class="footer3-center">{{ studentName }} ({{ number }} - {{ homeroom }})</div>
         <div class="footer3-right">Printed: {{../reportconfig.printDate}}</div>
       </div>
     </div>
@@ -664,7 +664,7 @@
     <div class="footer">
       <div class="footer3">
         <div class="footer3-left">V01</div>
-        <div class="footer3-center">{{ firstname }} {{ lastname }} ({{ number }} - {{ homeroom }})</div>
+        <div class="footer3-center">{{ studentName }} ({{ number }} - {{ homeroom }})</div>
         <div class="footer3-right">Printed: {{../reportconfig.printDate}}</div>
       </div>
     </div>
