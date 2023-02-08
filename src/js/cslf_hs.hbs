@@ -63,7 +63,7 @@
                <tr>
                   <td class="courseinfo" colspan="2">
                      <div class="leftblock">
-                        Cours : {{ course_name }}<br/>
+                        Cours : {{{ course_name }}}<br/>
                         Code : {{ course_number }}<br/>
                         Enseignant.e.s : {{ teachers }}<br/>
                      </div>
@@ -73,7 +73,7 @@
                      </div>
                   </td>
                   <td class="comment left" rowspan="3">
-                     <strong>Commentaires :</strong> {{ comment }}
+                     <strong>Commentaires :</strong> {{{ comment }}}
                   </td>
                </tr>
                <tr>
@@ -98,7 +98,7 @@
                <tr>
                   <td class="courseinfo" colspan="4">
                      <div class="leftblock">
-                        Cours : {{ course_name }}<br/>
+                        Cours : {{{ course_name }}}<br/>
                         Code : {{ course_number }}<br/>
                         Enseignant.e.s : {{ teachers }}<br/>
                      </div>
@@ -108,7 +108,7 @@
                      </div>
                   </td>
                   <td class="comment left" rowspan="3">
-                     <strong>Commentaires: </strong>{{comment}}
+                     <strong>Commentaires: </strong>{{{comment}}}
                   </td>
                </tr>
                <tr>
@@ -133,7 +133,7 @@
          <tbody>
             <tr>
                <td class="top">
-                  {{#if ../reportconfig.addcomment }}<strong>Message de l'école :</strong> {{ ../reportconfig.addcomment }}{{/if}} &nbsp;
+                  {{#if ../reportconfig.addcomment }}<strong>Message de l'école :</strong> {{{ ../reportconfig.addcomment }}}{{/if}} &nbsp;
                </td>
                <td class="top">
                   <strong>Notes :</strong>

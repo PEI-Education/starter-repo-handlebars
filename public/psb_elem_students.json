@@ -9,19 +9,18 @@
              case
                 when stuext.pei_uselegal = 1 then (scf.pscore_legal_first_name || ' ' || scf.pscore_legal_last_name) 
                 else (s.first_name || ' ' || s.last_name) 
-                end
-            as student_name,
+            end as student_name,
             s.student_number,
             to_char(s.dob,'mm/dd/yyyy'),
             s.home_room,
-            s.grade_level,
+            se.grade_level,
             case 
                 when stuext.pei_frenchprograms = 'E' then 'French Immersion'
                 when stuext.pei_frenchprograms = 'M' then 'French Immersion'
                 when stuext.pei_frenchprograms = 'L' then 'French Immersion'
                 when stuext.pei_frenchprograms = 'B' then 'French Immersion'
-                else 'English' end as progam,
-            to_char(1990+substr(to_char(~(curtermid)),1,2)) || '-' || to_char(1991+substr(to_char(~(curtermid)),1,2)) AS yearname,
+            else 'English' end as progam,
+            to_char(1990+~(yearid)) || '-' || to_char(1991+~(yearid)) AS yearname,
             sch.name,
             sch.principal,
             schext.schoolurl
@@ -34,6 +33,9 @@
              on schext.schoolsdcid = sch.dcid
           left join studentcorefields scf 
              on scf.studentsdcid = s.dcid
+          join ps_schoolenrollment se
+        	on se.studentid = s.id
+        	and se.yearid = ~(curyearid)
           where s.id = ~(curstudid);  
         ]
         "id": "~(id;l)",
@@ -52,39 +54,39 @@
          ~[tlist_sql;
              SELECT 
               s.id,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) SepAbs, 
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) OctAbs, 
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) NovAbs, 
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) DecAbs, 
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) JanAbs,  
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) FebAbs, 
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) MarAbs, 
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) AprAbs, 
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) MayAbs, 
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) JunAbs,
-               sum(CASE WHEN cal.date_value between(t.firstday+1) and t.lastday AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) TotalAbsences,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('L','LF') THEN 1 else 0 END) SepLates,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('L','LF') THEN 1 else 0 END) OctLates,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('L','LF') THEN 1 else 0 END) NovLates,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('L','LF') THEN 1 else 0 END) DecLates,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('L','LF') THEN 1 else 0 END) JanLates,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('L','LF') THEN 1 else 0 END) FebLates,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('L','LF') THEN 1 else 0 END) MarLates,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('L','LF') THEN 1 else 0 END) AprLates,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('L','LF') THEN 1 else 0 END) MayLates,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('L','LF') THEN 1 else 0 END) JunLates,
-               sum(CASE WHEN cal.date_value between (t.firstday+1) and t.lastday AND att.att_code IN ('L','LF') THEN 1 else 0 END) TotalLates,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('D','DF') THEN 1 else 0 END) SepED,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('D','DF') THEN 1 else 0 END) OctED,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('D','DF') THEN 1 else 0 END) NovED,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('D','DF') THEN 1 else 0 END) DecED,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('D','DF') THEN 1 else 0 END) JanED,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('D','DF') THEN 1 else 0 END) FebED,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('D','DF') THEN 1 else 0 END) MarED,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('D','DF') THEN 1 else 0 END) AprED,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('D','DF') THEN 1 else 0 END) MayED,
-               sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('D','DF') THEN 1 else 0 END) JunED,
-               sum(CASE WHEN cal.date_value between (t.firstday+1) and t.lastday AND att.att_code IN ('D','DF') THEN 1 else 0 END) TotalED
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) SepAbs, 
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) OctAbs, 
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) NovAbs, 
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) DecAbs, 
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) JanAbs,  
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) FebAbs, 
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) MarAbs, 
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) AprAbs, 
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) MayAbs, 
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) JunAbs,
+                sum(CASE WHEN cal.date_value between(t.firstday+1) and t.lastday AND att.att_code IN ('AS','AI','AV','AE','AF','A','Z') THEN 0.5 else 0 END) TotalAbsences,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('L','LF') THEN 1 else 0 END) SepLates,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('L','LF') THEN 1 else 0 END) OctLates,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('L','LF') THEN 1 else 0 END) NovLates,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('L','LF') THEN 1 else 0 END) DecLates,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('L','LF') THEN 1 else 0 END) JanLates,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('L','LF') THEN 1 else 0 END) FebLates,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('L','LF') THEN 1 else 0 END) MarLates,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('L','LF') THEN 1 else 0 END) AprLates,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('L','LF') THEN 1 else 0 END) MayLates,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('L','LF') THEN 1 else 0 END) JunLates,
+                sum(CASE WHEN cal.date_value between (t.firstday+1) and t.lastday AND att.att_code IN ('L','LF') THEN 1 else 0 END) TotalLates,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 9 AND att.att_code IN ('D','DF') THEN 1 else 0 END) SepED,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 10 AND att.att_code IN ('D','DF') THEN 1 else 0 END) OctED,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 11 AND att.att_code IN ('D','DF') THEN 1 else 0 END) NovED,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 12 AND att.att_code IN ('D','DF') THEN 1 else 0 END) DecED,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 1 AND att.att_code IN ('D','DF') THEN 1 else 0 END) JanED,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 2 AND att.att_code IN ('D','DF') THEN 1 else 0 END) FebED,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 3 AND att.att_code IN ('D','DF') THEN 1 else 0 END) MarED,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 4 AND att.att_code IN ('D','DF') THEN 1 else 0 END) AprED,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 5 AND att.att_code IN ('D','DF') THEN 1 else 0 END) MayED,
+                sum(CASE WHEN EXTRACT(MONTH FROM cal.date_value) = 6 AND att.att_code IN ('D','DF') THEN 1 else 0 END) JunED,
+                sum(CASE WHEN cal.date_value between (t.firstday+1) and t.lastday AND att.att_code IN ('D','DF') THEN 1 else 0 END) TotalED
            from students s
            left join pssis_attendance_meeting att 
                on att.studentid = s.id 
@@ -203,14 +205,14 @@
          s.id = ~(curstudid)
          and substr(sec.course_number,2,3) = 'LAN'
          and sec.schoolid = s.schoolid   --include only grades from current school
-         and sgs.storecode in ('E1','E2','E3')
+         and sgs.storecode in (~[if#sy.~(yearid)=32]'E1','E2','E3'[else#sy]'R1','R2','R3'[/if#sy])
          and sgs.yearid = ~(gpv.yearid))
          
-     select ident, E1, E2, E3 from termGrades
+      select ident, ~[if#sy.~(yearid)=32]E1,E2,E3[else#sy]R1,R2,R3[/if#sy] from termGrades
          PIVOT (
          MAX ( grade )
          FOR storecode
-         IN ( 'E1' E1, 'E2' E2, 'E3' E3 ))
+         IN ( ~[if#rc.~(yearid)=32]'E1' E1, 'E2' E2, 'E3' E3[else#rc]'R1' R1, 'R2' R2, 'R3' R3 [/if#rc]))
          order by ident;] 
           "~(ident)": {
              "e1":"~(e1)",
@@ -222,30 +224,39 @@
              },
              "fla":  {
              ~[tlist_sql;
-                select
-                   t.lastfirst,
-                   SUBSTR(pfg.comment_value,1,1048) as termscomment,
-                   NVL(rpt.e_fla_adaptation,0) as adaptation,
-                   NVL(rpt.e_fla_program, 'Regular') as program,
-                   NVL(rpt.e_fla_iep,0) as iep,
-                   NVL(rpt.e_fla_eal,0) as eal
-                 from students s
-                 join cc
-                   on cc.studentid = s.id
-                 join sections sec
-                   on cc.sectionid = sec.id
-                 join teachers t
-                     on sec.teacher = t.id
-                 left join u_def_ext_students0 rpt
-                     on rpt.studentsdcid=s.dcid
-                 left join pgfinalgrades pfg
-                     on pfg.sectionid = sec.id
-                     and pfg.studentid = s.id
-                     and pfg.finalgradename = '~(gpv.storecode)'
-                 where
-                 s.id = ~(curstudid)
-                 and substr(sec.course_number,2,4)  IN ('FREF','FREG')
-                 and cc.termid = ~(curyearid) * 100
+              select
+              ~[if.~(gpv.coteachers)=true](SELECT
+                  LISTAGG(t.first_name || ' ' || t.last_name, ', ') within group (order by st.roleid, st.start_date) as "Co-Teachers"
+                  FROM
+                  sectionteacher st
+                  JOIN teachers t
+                  ON st.teacherid = t.id
+                  where
+                  st.roleid IN (41,42)
+                  and st.sectionid = sec.id)
+              [else](tea.first_name || ' ' || tea.last_name)[/if] as teachers,
+                  SUBSTR(pfg.comment_value,1,1048) as termscomment,
+                  NVL(rpt.e_ela_adaptation,0) as adaptation,
+                  NVL(rpt.e_ela_program, 'Regular') as program,
+                  NVL(rpt.e_ela_iep,0) as iep,
+                  NVL(rpt.e_ela_eal,0) as eal
+                from students s
+                join cc
+                  on cc.studentid = s.id
+                join sections sec
+                  on cc.sectionid = sec.id
+                join teachers tea
+                    on sec.teacher = tea.id
+                left join u_def_ext_students0 rpt
+                    on rpt.studentsdcid=s.dcid
+                left join pgfinalgrades pfg
+                    on pfg.sectionid = sec.id
+                    and pfg.studentid = s.id
+                    and pfg.finalgradename = '~(gpv.storecode)'
+                where
+                s.id = ~(curstudid)
+                and substr(sec.course_number,2,4)  IN ('FREF','FREG')
+                and cc.termid = ~(curyearid) * 100;
              ]
                  "teacher": "~(teacher;json)",
                  "comment": "~(comment;json)",
@@ -271,14 +282,14 @@
             s.id = ~(curstudid)
             and substr(sec.course_number,2,4) = 'FREF'
             and sec.schoolid = s.schoolid   --include only grades from current school
-            and sgs.storecode in ('E1','E2','E3')
+            and sgs.storecode in (~[if#sy.~(yearid)=32]'E1','E2','E3'[else#sy]'R1','R2','R3'[/if#sy])
             and sgs.yearid = ~(gpv.yearid))
             
-        select ident, E1, E2, E3 from termGrades
+        select ident, ~[if#sy.~(yearid)=32]E1,E2,E3[else#sy]R1,R2,R3[/if#sy] from termGrades
             PIVOT (
             MAX ( grade )
             FOR storecode
-            IN ( 'E1' E1, 'E2' E2, 'E3' E3 ))
+            IN ( ~[if#rc.~(yearid)=32]'E1' E1, 'E2' E2, 'E3' E3[else#rc]'R1' R1, 'R2' R2, 'R3' R3 [/if#rc]))
             order by ident;] 
              "~(ident)": {
                 "e1":"~(e1)",
@@ -289,31 +300,40 @@
              "null": {}
             },
              "mat": {
-                  ~[tlist_sql;
-                select
-                   t.lastfirst,
-                   SUBSTR(pfg.comment_value,1,1048) as termscomment,
-                   NVL(rpt.e_math_adaptation,0) as adaptation,
-                   NVL(rpt.e_math_program, 'Regular') as program,
-                   NVL(rpt.e_math_iep,0) as iep,
-                   NVL(rpt.e_mat_eal,0) as eal
-                 from students s
-                 join cc
-                   on cc.studentid = s.id
-                 join sections sec
-                   on cc.sectionid = sec.id
-                 join teachers t
-                     on sec.teacher = t.id
-                 left join u_def_ext_students0 rpt
-                     on rpt.studentsdcid=s.dcid
-                 left join pgfinalgrades pfg
-                     on pfg.sectionid = sec.id
-                     and pfg.studentid = s.id
-                     and pfg.finalgradename = '~(gpv.storecode)'
-                 where
-                 s.id = ~(curstudid)
-                 and substr(sec.course_number,2,3) = 'MAT'
-                 and cc.termid = ~(curyearid) * 100
+              ~[tlist_sql;
+              select
+              ~[if.~(gpv.coteachers)=true](SELECT
+                  LISTAGG(t.first_name || ' ' || t.last_name, ', ') within group (order by st.roleid, st.start_date) as "Co-Teachers"
+                  FROM
+                  sectionteacher st
+                  JOIN teachers t
+                  ON st.teacherid = t.id
+                  where
+                  st.roleid IN (41,42)
+                  and st.sectionid = sec.id)
+              [else](tea.first_name || ' ' || tea.last_name)[/if] as teachers,
+                 SUBSTR(pfg.comment_value,1,1048) as termscomment,
+                 NVL(rpt.e_ela_adaptation,0) as adaptation,
+                 NVL(rpt.e_ela_program, 'Regular') as program,
+                 NVL(rpt.e_ela_iep,0) as iep,
+                 NVL(rpt.e_ela_eal,0) as eal
+               from students s
+               join cc
+                 on cc.studentid = s.id
+               join sections sec
+                 on cc.sectionid = sec.id
+               join teachers tea
+                   on sec.teacher = tea.id
+               left join u_def_ext_students0 rpt
+                   on rpt.studentsdcid=s.dcid
+               left join pgfinalgrades pfg
+                   on pfg.sectionid = sec.id
+                   and pfg.studentid = s.id
+                   and pfg.finalgradename = '~(gpv.storecode)'
+               where
+               s.id = ~(curstudid)
+               and substr(sec.course_number,2,3)  = 'MAT'
+               and cc.termid = ~(curyearid) * 100
              ]
                  "teacher": "~(teacher;json)",
                  "comment": "~(comment;json)",
@@ -339,14 +359,14 @@
          s.id = ~(curstudid)
          and substr(sec.course_number,2,3) = 'MAT'
          and sec.schoolid = s.schoolid   --include only grades from current school
-         and sgs.storecode in ('E1','E2','E3')
+         and sgs.storecode in (~[if#sy.~(yearid)=32]'E1','E2','E3'[else#sy]'R1','R2','R3'[/if#sy])
          and sgs.yearid = ~(gpv.yearid))
          
-     select ident, E1, E2, E3 from termGrades
+      select ident, ~[if#sy.~(yearid)=32]E1,E2,E3[else#sy]R1,R2,R3[/if#sy] from termGrades
          PIVOT (
          MAX ( grade )
          FOR storecode
-         IN ( 'E1' E1, 'E2' E2, 'E3' E3 ))
+         IN ( ~[if#rc.~(yearid)=32]'E1' E1, 'E2' E2, 'E3' E3[else#rc]'R1' R1, 'R2' R2, 'R3' R3 [/if#rc]))
          order by ident;] 
           "~(ident)": {
              "e1":"~(e1)",
@@ -355,73 +375,91 @@
           },
           [/tlist_sql]
           "null": {}
-             },
-              "hr": {
-                  ~[tlist_sql;
-                  select
-                   t.lastfirst,
-                   SUBSTR(pfg.comment_value,1,1048) as termscomment
-                 from students s
-                 join cc
-                   on cc.studentid = s.id
-                 join sections sec
-                   on cc.sectionid = sec.id
-                 join teachers t
-                     on sec.teacher = t.id
-                 left join pgfinalgrades pfg
-                     on pfg.sectionid = sec.id
-                     and pfg.studentid = s.id
-                     and pfg.finalgradename = '~(gpv.storecode)'
-                 where
-                 s.id = ~(curstudid)
-                 and substr(sec.course_number,1,4) = 'HRAM'
-                 and cc.termid = ~(curyearid) * 100
-             ]
-                 "teacher": "~(teacher;json)",
-                 "comment": "~(comment;json)",
-             [/tlist_sql]
-             ~[tlist_sql;
-             with termGrades as (select
-                    s.id,
-                    lower(st.identifier) as ident,
-                    sgs.storecode,
-                    sgs.standardgrade as grade
-                from students s
-                join standardgradesection sgs
-                    on sgs.studentsdcid = s.dcid
-                left join sections sec
-                    on sec.dcid = sgs.sectionsdcid
-                join standard st
-                    on st.standardid = sgs.standardid
-                where
-                s.id = ~(curstudid)
-                and substr(sec.course_number,1,4) = 'HRAM'
-                and sec.schoolid = s.schoolid   --include only grades from current school
-                and sgs.storecode in ('E1','E2','E3')
-                and sgs.yearid = ~(gpv.yearid))
-                
-            select ident, E1, E2, E3 from termGrades
-                PIVOT (
-                MAX ( grade )
-                FOR storecode
-                IN ( 'E1' E1, 'E2' E2, 'E3' E3 ))
-                order by ident;] 
-                "~(ident)": {
-                    "e1":"~(e1)",
-                    "e2":"~(e2)",
-                    "e3":"~(e3)"
-                },
-                [/tlist_sql]
-                "null": {}
-             },
+        },
+        "hr": {
+          ~[tlist_sql;
+          select
+          ~[if.~(gpv.coteachers)=true](SELECT
+              LISTAGG(t.first_name || ' ' || t.last_name, ', ') within group (order by st.roleid, st.start_date) as "Co-Teachers"
+              FROM
+              sectionteacher st
+              JOIN teachers t
+              ON st.teacherid = t.id
+              where
+              st.roleid IN (41,42)
+              and st.sectionid = sec.id)
+          [else](tea.first_name || ' ' || tea.last_name)[/if] as teachers,
+              SUBSTR(pfg.comment_value,1,1048) as termscomment
+            from students s
+            join cc
+              on cc.studentid = s.id
+            join sections sec
+              on cc.sectionid = sec.id
+            join teachers tea
+                on sec.teacher = tea.id
+            left join pgfinalgrades pfg
+                on pfg.sectionid = sec.id
+                and pfg.studentid = s.id
+                and pfg.finalgradename = '~(gpv.storecode)'
+            where
+            s.id = ~(curstudid)
+            and sec.course_number in ('HRAM','HR')
+            and cc.termid = ~(curyearid) * 100
+          ]
+            "teacher": "~(teachers;json)",
+            "comment": "~(comment;json)",
+          [/tlist_sql]
+        ~[tlist_sql;
+        with termGrades as (select
+              s.id,
+              lower(st.identifier) as ident,
+              sgs.storecode,
+              sgs.standardgrade as grade
+          from students s
+            join standardgradesection sgs
+                on sgs.studentsdcid = s.dcid
+            left join sections sec
+                on sec.dcid = sgs.sectionsdcid
+            join standard st
+                on st.standardid = sgs.standardid
+            where
+            s.id = ~(curstudid)
+            and substr(sec.course_number,1,4) = 'HRAM' 
+            and sec.schoolid = s.schoolid   --include only grades from current school
+            and sgs.storecode in (~[if#sy.~(yearid)=32]'E1','E2','E3'[else#sy]'R1','R2','R3'[/if#sy])
+            and sgs.yearid = ~(gpv.yearid))
+            
+        select ident, ~[if#sy.~(yearid)=32]E1,E2,E3[else#sy]R1,R2,R3[/if#sy] from termGrades
+            PIVOT (
+            MAX ( grade )
+            FOR storecode
+            IN ( ~[if#rc.~(yearid)=32]'E1' E1, 'E2' E2, 'E3' E3[else#rc]'R1' R1, 'R2' R2, 'R3' R3 [/if#rc]))
+            order by ident;] 
+            "~(ident)": {
+                "e1":"~(e1)",
+                "e2":"~(e2)",
+                "e3":"~(e3)"
+            },
+            [/tlist_sql]
+            "null": {}
+          },
          "courses": [
             ~[tlist_sql;
                with currentTerm as (select
                      s.id,
                      cc.course_number,
                      co.course_name,
-                     t.lastfirst,
-                     pfg.comment_value
+                     ~[if.~(gpv.coteachers)=true](SELECT
+                        LISTAGG(t.first_name || ' ' || t.last_name, ', ') within group (order by st.roleid, st.start_date) as "Co-Teachers"
+                        FROM
+                        sectionteacher st
+                        JOIN teachers t
+                        ON st.teacherid = t.id
+                        where
+                        st.roleid IN (41,42)
+                        and st.sectionid = sec.id)
+                    [else](tea.first_name || ' ' || tea.last_name)[/if] as teachers,                     
+                    pfg.comment_value
                  from students s
                  join cc 
                      on cc.studentid = s.id
@@ -430,8 +468,8 @@
                      on cc.course_number = co.course_number
                  join sections sec 
                      on sec.id = cc.sectionid
-                 join teachers t
-                     on t.id = sec.teacher
+                 join teachers tea
+                     on tea.id = sec.teacher
                  join pgfinalgrades pfg
                      on pfg.sectionid = sec.id
                      and pfg.studentid = s.id
@@ -462,13 +500,13 @@
                      PIVOT (
                      MAX ( grade )
                      FOR finalgradename
-                     IN ( 'E1' E1, 'E2' E2, 'E3' E3))
+                     IN ( ~[if#rc.~(yearid)=32]'E1' E1, 'E2' E2, 'E3' E3[else#rc]'R1' R1, 'R2' R2, 'R3' R3 [/if#rc]))
                      order by id, course_number)
                      
                  select
                      ct.course_number,
                      ct.course_name,
-                     ct.lastfirst,
+                     ct.teachers,
                      ct.comment_value,
                      gp.e1,
                      gp.e2,
@@ -529,7 +567,7 @@
             {
                  "course_number": "~(course_number;json)",
                  "course_name": "~(cname;json)",
-                 "teacher": "~(teacher;json)",
+                 "teacher": "~(teachers;json)",
                  "comment": "~(comment;json)",
                  "e1": "~(i1;json)",
                  "e2": "~(i2;json)",

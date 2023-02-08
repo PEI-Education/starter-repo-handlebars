@@ -30,11 +30,11 @@
       order by sid;]
          "sid":            "~(sid)",
          "schoolid":       "~(schoolid)",
-         "school":         "~(school)",
-         "principal":      "~(principal)",
+         "school":         "~(school;json)",
+         "principal":      "~(principaljson)",
          "student_number": "~(student_number)",
          "home_room":      "~(home_room)",
-         "student_name":   "~(student_name)",
+         "student_name":   "~(student_name;json)",
          "dob":            "~(dob)",
          "grade_level":    "~(grade_level)",
       [/tlist_sql]
