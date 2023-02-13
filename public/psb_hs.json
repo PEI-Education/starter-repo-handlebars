@@ -69,7 +69,6 @@
          on c.course_number = cc.course_number
       where 
          s.id = ~(curstudid)
-         and sg.schoolid = ~(curschoolid)
          and sg.termid = ~(gpv.termid)
          and sg.storecode IN (~(gpv.storecode))
          and nvl(c.sched_do_not_print,0) = 0
@@ -171,7 +170,6 @@
          on c.course_number = cc.course_number
       where 
          s.id = ~(curstudid)
-         and sg.schoolid = ~(curschoolid)
          and sg.termid = ~(curyearid) * 100
          and sg.storecode IN (~(gpv.storecode))
          and nvl(c.sched_do_not_print,0) = 0
@@ -259,7 +257,7 @@
                   on sg.studentid = s.id
                join terms t
                   on t.id = sg.termid
-                  and t.schoolid = s.schoolid
+                  and t.schoolid = sg.schoolid
                join courses c
                   on sg.course_number = c.course_number
                where
