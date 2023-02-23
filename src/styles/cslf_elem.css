@@ -1,0 +1,206 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', serif;
+  font-size: 9pt;
+}
+
+.page {
+  display: block;
+  height: 13.1in;
+  width: 7.5in;
+  margin: 0.2in 0.5in;
+  position: relative;
+}
+
+@media print {
+
+  .noprint {
+      display: none;
+  }
+
+  .pageBreak {
+      page-break-after: always;
+  }
+    
+}
+
+.red {
+    color: red;
+}
+
+header {
+  width: 7.5in;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+header td {
+  vertical-align: bottom;
+}
+
+.logo {
+  height: 120px;
+}
+
+h1  {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.wide {
+  width: 7.5in;
+}
+
+.student-info {
+  font-size: 11px;
+}
+
+.student-info td {
+  vertical-align: top;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+td, th {
+  border: 1px solid black;
+  margin: 0;
+  padding: 0 2px 0 2px;
+}
+
+.results-key {
+    width: 7.0in;
+    margin: auto;
+}
+
+.noborder {
+    border: none;
+}
+
+.tableHead {
+  text-align: center;
+  font-size: 11pt;
+  font-weight: bold;
+  background: #bbb;
+}
+
+.twelve {
+    font-size: 10pt;
+}
+
+.readItem {
+  display: inline-block;
+  width: 19.5%;
+  text-align: center;
+}
+
+.readEtape {
+  position: relative;
+  display: inline-block;
+  width: 32.5%;
+  text-align: center;
+  padding: 10px 0 10px 0;
+}
+
+.readEtapeLabel {
+    position: relative;
+    display: block;
+    width: 90%;
+    text-align: center;
+    vertical-align: bottom;
+    font-weight: bold;
+    margin: 0 auto 0 auto;
+}
+
+.readEtapeData {
+    position: relative;
+    display: block;
+    width: 90%;
+    text-align: center;
+    height: 20px;
+    border: 1px solid black;
+    vertical-align: middle;
+    margin: 0 auto 0 auto;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.comment-big {
+  min-height: 1.25in;
+  height: 1.25in;
+  vertical-align: top;
+  font-size: 10pt;
+  padding: 8px;
+}
+
+.attendance {
+  font-size: 8px;
+  table-layout: fixed;
+}
+
+.attendance h3 {
+  margin-top: 0.15in;
+}
+
+.attendance table {
+  margin-bottom: 0.15in;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+.sig-line {
+  display: inline-block;
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid;
+}
+
+h4 {
+  font-size: 12px;
+  text-decoration: underline;
+  margin-bottom: 6px;
+}
+
+.definitions p {
+  margin-bottom: 6px;
+}
+
+.footer {
+  position: absolute;
+  width: 7.5in;
+  bottom: 0;
+}
+
+.comment-title {
+    font-weight: bold;
+}
+
+.signatures {
+    width: 7.5in;    
+}
+
+.noborderright {
+    border-right: none;
+}
+
+.noborderleft {
+    border-left: none;
+    padding-right: 2px;
+}

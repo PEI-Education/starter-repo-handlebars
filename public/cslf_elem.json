@@ -1,0 +1,154 @@
+[
+~[x:GetDoThisForStudents]
+~[x:SortSelection;Students:~[displayprefschool:report_card_sort]]
+~[RepeatForEach:Students]
+   ~[tlist_sql;
+   select
+      s.id,
+      case
+            when u.pei_uselegal = 1 then (scf.pscore_legal_first_name || ' ' || scf.pscore_legal_last_name) 
+            else (s.first_name || ' ' || s.last_name) 
+            end
+      as student_name,
+      s.student_number,
+      pse.grade_level,
+      case when pse.grade_level > 3 then 'True' else 'False' end as overGrade3,
+      case when pse.grade_level > 4 then 'True' else 'False' end as overGrade4,
+      case when pse.grade_level < 4 then 'True' else 'False' end as underGrade4,
+      case
+         when pse.grade_level=6 then 'À la fin de juin, on s''attend à ce que l''élève soit un lecteur avancé.'
+         when pse.grade_level=5 then 'À la fin de juin, on s''attend à ce que l''élève soit un lecteur en début de voie d''autonomie.'
+         when pse.grade_level=4 then 'À la fin de juin, on s''attend à ce que l''élève soit un lecteur en début de voie d''autonomie.'
+         when pse.grade_level=3 then 'À la fin de juin, on s''attend à ce que l''élève soit un lecteur fin transition.'
+         when pse.grade_level=2 then 'À la fin de juin, on s''attend à ce que l''élève soit un lecteur mi-transition.'
+         when pse.grade_level=1 then 'À la fin de juin, on s''attend à ce que l''élève soit un lecteur fin débutant.'
+         else 'NA'
+      end as readingGoal,
+      pse.schoolname,
+      pse.principal,
+      schext.schoolurl,
+      pse.schoolid,
+      to_char(1990+32) || '-' || to_char(1991+32) as yearname,
+      (Select
+         LISTAGG(t.first_name || ' ' || t.last_name, ', ') within group (order by st.roleid, st.start_date) 
+            FROM
+               sectionteacher st
+            JOIN teachers t
+               ON st.teacherid = t.id
+            where
+               st.roleid IN (41,42)
+               and cc.course_number like '%CT'
+               and st.sectionid = cc.sectionid) as teachers,
+      (tea.first_name || ' ' || tea.last_name) as teacher,
+      rpt.F_CONTINUUM_R1,
+      rpt.F_CONTINUUM_R2,
+      rpt.F_CONTINUUM_R3,
+      rpt.F_FLA_R1_PROGRAM,
+      rpt.F_FLA_R2_PROGRAM,
+      rpt.F_FLA_R3_PROGRAM,
+      rpt.F_MATH_R1_PROGRAM,
+      rpt.F_MATH_R2_PROGRAM,
+      rpt.F_MATH_R3_PROGRAM,
+      rpt.F_ELA_R1_PROGRAM,
+      rpt.F_ELA_R2_PROGRAM,
+      rpt.F_ELA_R3_PROGRAM
+   from students s
+   left join u_def_ext_students u
+      on u.studentsdcid = s.dcid
+   left join studentcorefields scf 
+      on scf.studentsdcid = s.dcid
+   left join u_def_ext_students0 rpt
+      on s.dcid = rpt.studentsdcid
+   join ps_schoolenrollment pse
+      on s.id = pse.studentid and pse.yearid = 32 --~(curyearid)
+   left join schools sch
+      on sch.school_number = pse.schoolid
+   left join u_dyn_schools_1 schext
+      on schext.schoolsdcid = sch.dcid
+   join cc 
+      on cc.studentid = s.id and substr(cc.termid,1,2) = 32
+   join sections sec
+      on sec.id = cc.sectionid
+   join teachers tea
+      on tea.id = sec.teacher
+   where
+      pse.schoolid=510
+      and cc.course_number like '%CT'
+      and pse.grade_level < 7]
+   {
+      "sid":            "~(sid;l)",
+      "studentName":    "~(stuName;json)",
+      "studentNumber":  "~(stuNum;l)",
+      "grade_level":    "~(grade_level;l)",
+      "overGrade3":     "~(overGrade3)",
+      "overGrade4":     "~(overGrade4)",
+      "underGrade4":    "~(underGrade4)",
+      "readigGoal":     "~(readingGoal;json)",
+      "school": {    
+         "name":        "~(schname;json)",
+         "principal":   "~(principal;json)",
+         "url":         "~(url;url)",
+         "id":          "~(schid;l)"
+      },
+      "yearname":       "~(yearname;json)",
+      "hr": {
+         "coteachers":  "~(hrTeachers;json)",
+         "teacher":     "~{teacer}"
+      },
+      "continuum": {
+         "E1":          "~(contE1)",
+         "E2":          "~(contE2)",
+         "E3":          "~(contE3)"
+      },
+      "progF": {
+         "E1":          "~(progFE1)",
+         "E2":          "~(progFE2)",
+         "E3":          "~(progFE3)"
+      },
+      "progM": {
+         "E1":          "~(progME1)",
+         "E2":          "~(progME2)",
+         "E3":          "~(progME3)"
+      },
+      "progA": {
+         "E1":          "~(progAE1)",
+         "E2":          "~(progAE2)",
+         "E3":          "~(progAE3)"
+      },
+   [/tlist_sql]
+   ~[tlist_sql;
+         with standards as (select
+         st.identifier,
+         sgs.storecode term,
+         sgs.standardgrade grade
+      from students s
+      join standardgradesection sgs
+         on sgs.studentsdcid = s.dcid
+      left join sections sec
+         on sec.dcid = sgs.sectionsdcid
+      join standard st
+         on st.standardid = sgs.standardid
+      where
+      s.id = 1031
+      and sgs.storecode in ('E1','E2')
+      and sgs.yearid = 32)
+
+
+      select *
+      from standards
+      PIVOT (
+      MAX ( grade )
+      FOR term
+      IN ( 'E1' E1, 'E2' E2, 'E3' E3 ))
+      order by identifier]
+         "~(identifier)": {
+            "E1": "~{e1}",
+            "E2": "~{e2}",
+            "E3": "~{e3}"
+         },
+      [/tlist_sql]
+      {}
+   }
+   [between:Students],
+   [/RepeatForEach:Students] 
+]

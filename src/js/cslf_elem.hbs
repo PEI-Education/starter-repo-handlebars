@@ -1,0 +1,892 @@
+{{#each students}}
+  <div class="page">
+     <header>
+         <table class="wide">
+             <tr>
+                 <td class="noborder">
+                    École : {{ school.name }}<br />
+                    Direction scolaire : {{ school.principal }}<br />
+                    {{ school.url }}<br />
+                    <br />
+                    Nom de l'élève : {{ studentName }} <br />
+                    Numéro de l'élève : {{ studentNumber }}<br />
+                    Niveau scolaire : {{ gradeLevel}}
+                 </td>
+                 <td class="noborder"><img class="logo" src="image/~{{school.id}}.jpg" /></td>
+                 <td class="noborder">
+                     Enseignant.e.s : {{ hr.teacher }}<br />
+                     Année scolaire : {{ yearname }}
+                 </td>
+             </tr>
+         </table>
+
+     </header>
+
+    <table class="wide">
+      <colgroup>
+          <col style="width: 5.1in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+      </colgroup>
+      <tr>
+        <td colspan="4" class="tableHead">HABILETÉS, ATTITUDES ET ENGAGEMENT</td>
+      </tr>
+      <tr>
+        <td colspan="4" class="center twelve"><strong>4</strong> - excellent &emsp;&emsp; <strong>3</strong> - très bien &emsp;&emsp; <strong>2</strong> - bien &emsp;&emsp; <strong>1</strong> - besoin d'amélioration</td>
+      </tr>
+      <tr>
+        <td class="left"></td>
+        <td class="center"><strong>Étape 1</strong></td>
+        <td class="center"><strong>Étape 2</strong></td>
+        <td class="center"><strong>Étape 3</strong></td>
+      </tr>
+      <tr>
+        <td class="left">Utiliser le français pour communiquer.</td>
+        <td class="center">{{ HAE-1-1.E1 }}</td>
+        <td class="center">{{ HAE-1-1.E2 }}</td>
+        <td class="center">{{ HAE-1-1.E3 }}</td>
+      </tr>
+      <tr>
+        <td class="left">Soigner la présentation de ses travaux incluant la calligraphie.</td>
+        <td class="center">{{ HAE-1-2.E1 }}</td>
+        <td class="center">{{ HAE-1-2.E2 }}</td>
+        <td class="center">{{ HAE-1-2.E3 }}</td>
+      </tr>
+      <tr>
+        <td class="left">Faire ses devoirs à la maison et remettre ses travaux à temps.</td>
+        <td class="center">{{ HAE-1-3.E1 }}</td>
+        <td class="center">{{ HAE-1-3.E2 }}</td>
+        <td class="center">{{ HAE-1-3.E3 }}</td>
+      </tr>
+      <tr>
+        <td class="left">Être attentif en classe.</td>
+        <td class="center">{{ HAE-1-4.E1 }}</td>
+        <td class="center">{{ HAE-1-4.E2 }}</td>
+        <td class="center">{{ HAE-1-4.E3 }}</td>
+      </tr>
+      <tr>
+        <td class="left">Respecter les consignes de la classe et de l'école.</td>
+        <td class="center">{{ HAE-1-5.E1 }}</td>
+        <td class="center">{{ HAE-1-5.E2 }}</td>
+        <td class="center">{{ HAE-1-5.E3 }}</td>
+      </tr>
+      <tr>
+        <td class="left">Adopter des comportements sécuritaires en tout temps.</td>
+        <td class="center">{{ HAE-1-6.E1 }}</td>
+        <td class="center">{{ HAE-1-6.E2 }}</td>
+        <td class="center">{{ HAE-1-6.E3 }}</td>
+      </tr>
+      <tr>
+        <td class="left">Respecter le matériel (le sien et celui des autres) ainsi que l'environnement.</td>
+        <td class="center">{{ HAE-1-7.E1 }}</td>
+        <td class="center">{{ HAE-1-7.E2 }}</td>
+        <td class="center">{{ HAE-1-7.E3 }}</td>
+      </tr>
+      <tr>
+        <td class="left">Respecter l'autorité en place.</td>
+        <td class="center">{{ HAE-1-8.E1 }}</td>
+        <td class="center">{{ HAE-1-8.E2 }}</td>
+        <td class="center">{{ HAE-1-8.E3 }}</td>
+      </tr>
+      <tr>
+        <td class="left">Respecter les autres élèves et régler ses conflits efficacement.</td>
+        <td class="center">{{ HAE-1-9.E1 }}</td>
+        <td class="center">{{ HAE-1-9.E2 }}</td>
+        <td class="center">{{ HAE-1-9.E3 }}</td>
+      </tr>
+      <tr>
+        <td class="left">Travailler en collaboration.</td>
+        <td  class="center"{{ HAE-1-10.E1 }}></td>
+        <td  class="center"{{ HAE-1-10.E2 }}></td>
+        <td  class="center"{{ HAE-1-10.E3 }}></td>
+      </tr>
+{{#if overGrade3 }}
+      <tr>
+        <td class="left">Gérer son temps efficacement et être organisé.</td>
+        <td  class="center"{{ HAE-1-11.E1 }}></td>
+        <td  class="center"{{ HAE-1-11.E2 }}></td>
+        <td  class="center"{{ HAE-1-11.E3 }}></td>
+      </tr>
+{{/if}}
+    </table>
+    <table class="wide">
+      <tr>
+          <td class="tableHead">RESULTATS ACADEMIQUES</td>
+      </tr>
+      <tr>
+        <td>
+          <table class="results-key">
+            <tr>
+              <td class="noborder">L'élève...</td>
+              <td class="noborder">4 - atteint les résultats attendus avec facilité.</td>
+              <td class="noborder">2 - est en voie d'atteindre les résultats attendus.</td>
+            </tr>
+            <tr>
+              <td class="noborder"></td>
+              <td class="noborder">3 - atteint les résultats attendus.</td>
+              <td class="noborder">1 - n'atteint pas les résultats attendus.</td>
+            </tr>
+            <tr>
+              <td class="noborder"></td>
+              <td class="noborder">DNE - développé mais non évalué</td>
+              <td class="noborder">SO - sans objet</td>
+          </tr>
+        </table>
+      </td>
+      </tr>
+    </table>
+    <table class="wide">
+      <tr>
+          <td class="tableHead">PROGRAMME</td>
+      </tr>
+      <tr>
+          <td>
+            <strong>Régulier (R)</strong> - Programme régulier pour le niveau scolaire de l'élève.<br />
+            <strong>Adapté (A)</strong> - Programme régulier pour le niveau scolaire de l'élève avec des adaptations dans le format, et/ou les évaluations.<br />
+            <strong>Modifié (M)</strong> - Programme qui répond aux besoins de l'élève.
+          </td>
+      </tr>
+    </table>
+    <table class="wide">
+      <colgroup>
+          <col style="width: 4.1in;" />
+          <col style="width: 1in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+      </colgroup>
+      <tr>
+          <td colspan="8" class="tableHead">FRANÇAIS</td>
+      </tr>
+      <tr>
+          <td colspan="8" class="center"><strong>Continuum en lecture</strong></td>
+      </tr>
+      <tr>
+          <td colspan="8" class="center">
+              <div class="readItem">En émergence</div>
+              <div class="readItem">Débutant</div>
+              <div class="readItem">En transition</div>
+              <div class="readItem">En voie d'autonomie</div>
+              <div class="readItem">Avancé</div>
+          </td>
+      </tr>
+      <tr>
+          <td colspan="8" class="center">
+            <p>{{{ readingGoal }}}</p>
+            <div class="readEtape">
+                <div class="readEtapeLabel">Étape 1</div>
+                <div class="readEtapeData">{{ continuum.E1 }}</div>
+            </div>
+            <div class="readEtape">
+                <div class="readEtapeLabel">Étape 2</div>
+                <div class="readEtapeData">{{ continuum.E2 }}</div>
+            </div>er
+            <div class="readEtape">
+                <div class="readEtapeLabel">Étape 3</div>
+                <div class="readEtapeData">{{ continuum.E3 }}</div>
+            </div>
+          </td>
+      </tr>
+      <tr>
+          <td rowspan="2" colspan="2" class="left">&nbsp;</td>
+          <td class="center">Étape</td>
+          <td class="center">Prog.</td>
+          <td class="center">Étape</td>
+          <td class="center">Prog.</td>
+          <td class="center">Étape</td>
+          <td class="center">Prog.</td>
+      </tr>
+      <tr>
+          <td class="center">1</td>
+          <td class="center">{{ ProgF.E1 }}</td>
+          <td class="center">2</td>
+          <td class="center">{{ ProgF.E2 }}</td>
+          <td class="center">3</td>
+          <td class="center">{{ ProgF.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left noborderright"><strong>Lecture</strong></td>
+          <td class="right noborderleft">Engagement</td>
+          <td class="center" colspan="2">{{ LEC-ENG.E1 }}</td>
+          <td class="center" colspan="2">{{ LEC-ENG.E2 }}</td>
+          <td class="center" colspan="2">{{ LEC-ENG.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Témoigner de son goût de lire.</td>
+          <td class="center" colspan="2">{{ L1-1.E1 }}</td>
+          <td class="center" colspan="2">{{ L1-1.E2 }}</td>
+          <td class="center" colspan="2">{{ L1-1.E3 }}</td>
+      </tr>
+      <tr>
+          <td colspan="8"><strong>Utiliser ses connaissances et ses stratégies pour :</strong></td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Lire avec précision.</td>
+          <td id="~(id)-L1-2-1-E1" class="center" colspan="2"></td>
+          <td id="~(id)-L1-2-1-E2" class="center" colspan="2"></td>
+          <td id="~(id)-L1-2-1-E3" class="center" colspan="2"></td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Lire avec fluidité.</td>
+          <td class="center" colspan="2">{{ L1-2-2.E1 }}</td>
+          <td class="center" colspan="2">{{ L1-2-2.E2 }}</td>
+          <td class="center" colspan="2">{{ L1-2-2.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Comprendre les informations de base dans le texte.</td>
+          <td class="center" colspan="2">{{ L1-2-3.E1 }}</td>
+          <td class="center" colspan="2">{{ L1-2-3.E2 }}</td>
+          <td class="center" colspan="2">{{ L1-2-3.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Comprendre les informations pour interpréter le texte.</td>
+          <td class="center" colspan="2">{{ L1-2-4.E1 }}</td>
+          <td class="center" colspan="2">{{ L1-2-4.E2 }}</td>
+          <td class="center" colspan="2">{{ L1-2-4.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Comprendre les informations pour analyser et critiquer le texte.</td>
+          <td class="center" colspan="2">{{ L1-2-5.E1 }}</td>
+          <td class="center" colspan="2">{{ L1-2-5.E2 }}</td>
+          <td class="center" colspan="2">{{ L1-2-5.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left noborderright"><strong>Écriture</strong></td>
+          <td class="right noborderleft">Engagement</td>
+          <td class="center" colspan="2">{{ ECR-ENG.E1 }}</td>
+          <td class="center" colspan="2">{{ ECR-ENG.E2 }}</td>
+          <td class="center" colspan="2">{{ ECR-ENG.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Idées: Développer ses textes avec des idées claires.</td>
+          <td class="center" colspan="2">{{ E1-1.E1 }}</td>
+          <td class="center" colspan="2">{{ E1-1.E2 }}</td>
+          <td class="center" colspan="2">{{ E1-1.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Structure: Organiser ses textes selon un ordre logique.</td>
+          <td class="center" colspan="2">{{ E1-2.E1 }}</td>
+          <td class="center" colspan="2">{{ E1-2.E2 }}</td>
+          <td class="center" colspan="2">{{ E1-2.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Choix de mots: Utiliser des mots et des expressions qui conviennent.</td>
+          <td class="center" colspan="2">{{ E1-3.E1 }}</td>
+          <td class="center" colspan="2">{{ E1-3.E2 }}</td>
+          <td class="center" colspan="2">{{ E1-3.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Fluidité des phrases: Varier ses phrases et les enchainer de façon cohérente.</td>
+          <td class="center" colspan="2">{{ E1-4.E1 }}</td>
+          <td class="center" colspan="2">{{ E1-4.E2 }}</td>
+          <td class="center" colspan="2">{{ E1-4.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Voix: Faire ressortir sa personnalité (son style) dans ses textes.</td>
+          <td class="center" colspan="2">{{ E1-5.E1 }}</td>
+          <td class="center" colspan="2">{{ E1-5.E2 }}</td>
+          <td class="center" colspan="2">{{ E1-5.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Conventions: Appliquer les notions grammaticales et orthographiques apprises.</td>
+          <td class="center" colspan="2">{{ E1-6.E1 }}</td>
+          <td class="center" colspan="2">{{ E1-6.E2 }}</td>
+          <td class="center" colspan="2">{{ E1-6.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left noborderright"><strong>Communication orale</strong></td>
+          <td class="right noborderleft">Engagement</td>
+          <td class="center" colspan="2">{{ CO-ENG.E1 }}</td>
+          <td class="center" colspan="2">{{ CO-ENG.E2 }}</td>
+          <td class="center" colspan="2">{{ CO-ENG.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Écouter et comprendre des messages variés.</td>
+          <td class="center" colspan="2">{{ CO1-1.E1 }}</td>
+          <td class="center" colspan="2">{{ CO1-1.E2 }}</td>
+          <td class="center" colspan="2">{{ CO1-1.E3 }}</td>
+      </tr>
+{{#if overGrade3 }}
+       <tr>
+          <td class="left" colspan="2">Planifier ses interventions verbales</td>
+          <td class="center" colspan="2">{{ CO1-3.E1 }}</td>
+          <td class="center" colspan="2">{{ CO1-3.E2 }}</td>
+          <td class="center" colspan="2">{{ CO1-3.E3 }}</td>
+      </tr>
+{{/if}}
+      <tr>
+          <td class="left" colspan="2">Communiquer clairement dans diverses situations.</td>
+          <td class="center" colspan="2">{{ CO1-2.E1 }}</td>
+          <td class="center" colspan="2">{{ CO1-2.E2 }}</td>
+          <td class="center" colspan="2">{{ CO1-2.E3 }}</td>
+      </tr>
+    </table>
+    <table class="wide">
+      <colgroup>
+          <col style="width: 5.1in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+      </colgroup>
+      <tr>
+          <td colspan="7" class="tableHead">MATHÉMATIQUES</td>
+      </tr>
+      <tr>
+          <td class="right">Engagement</td>
+          <td class="center" colspan="2">{{ MAT-ENG.E1 }}</td>
+          <td class="center" colspan="2">{{ MAT-ENG.E2 }}</td>
+          <td class="center" colspan="2">{{ MAT-ENG.E3 }}</td>
+      </tr>
+      <tr>
+          <td rowspan="2" class="left"></td>
+          <td class="center">Étape</td>
+          <td class="center">Prog.</td>
+          <td class="center">Étape</td>
+          <td class="center">Prog.</td>
+          <td class="center">Étape</td>
+          <td class="center">Prog.</td>
+      </tr>
+      <tr>
+          <td class="center">1</td>
+          <td class="center">{{ ProgM.E1 }}</td>
+          <td class="center">2</td>
+          <td class="center">{{ ProgM.E2 }}</td>
+          <td class="center">3</td>
+          <td class="center">{{ ProgM.E3 }}</td>
+      </tr>
+      ~[if#elem.~(grade_level)>3]
+      <tr>
+          <td class="left">Démontrer une compréhension du sens du nombre (compter, estimer, valeurs de position, fractions et nombres décimaux).</td>
+          <td class="center" colspan="2">{{ MAT-1-E1 }}</td>
+          <td class="center" colspan="2">{{ MAT-1-E2 }}</td>
+          <td class="center" colspan="2">{{ MAT-1-E3 }}</td>
+      </tr>
+     [else#elem]
+      <tr>
+        <td class="left">Démontrer une compréhension du sens du nombre (compter, estimer, valeurs de position).</td>
+        <td class="center" colspan="2">{{ MAT-1-1.E1 }}</td>
+        <td class="center" colspan="2">{{ MAT-1-1.E2 }}</td>
+        <td class="center" colspan="2">{{ MAT-1-1.E3 }}</td>
+     </tr>
+     [/if#elem]
+     ~[if#elem2.~(grade_level)>3]
+      <tr>
+          <td class="left">Solutionner des opérations mathématiques (addition, soustraction, multiplication et division).</td>
+          <td class="center" colspan="2">{{ MAT-2.E1 }}</td>
+          <td class="center" colspan="2">{{ MAT-2.E2 }}</td>
+          <td class="center" colspan="2">{{ MAT-2.E3 }}</td>
+      </tr>
+     [else#elem2]
+      <tr>
+        <td class="left">Solutionner des opérations mathématiques (addition et soustraction).</td>
+        <td class="center" colspan="2">{{ MAT-2-2.E1 }}</td>
+        <td class="center" colspan="2">{{ MAT-2-2.E2 }}</td>
+        <td class="center" colspan="2">{{ MAT-2-2.E3 }}</td>
+      </tr>
+    [/if#elem2]          
+      <tr>
+          <td class="left">Reconnaître des régularités.</td>
+          <td class="center" colspan="2">{{ MAT-3.E1 }}</td>
+          <td class="center" colspan="2">{{ MAT-3.E2 }}</td>
+          <td class="center" colspan="2">{{ MAT-3.E3 }}</td>
+      </tr>
+            <tr>
+          <td class="left">Utiliser des stratégies de calcul mental.</td>
+          <td class="center" colspan="2">{{ MAT-4.E1 }}</td>
+          <td class="center" colspan="2">{{ MAT-4.E2 }}</td>
+          <td class="center" colspan="2">{{ MAT-4.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left">Comprendre et appliquer les notions de mesure et de géométrie.</td>
+          <td class="center" colspan="2">{{ MAT-5.E1 }}</td>
+          <td class="center" colspan="2">{{ MAT-5.E2 }}</td>
+          <td class="center" colspan="2">{{ MAT-5.E3 }}</td>
+      </tr>
+{{#if overGrade3}}
+      <tr>
+          <td class="left">Collecter, présenter et analyser des données.</td>
+          <td class="center" colspan="2">{{ MAT-6.E1 }}</td>
+          <td class="center" colspan="2">{{ MAT-6.E2 }}</td>
+          <td class="center" colspan="2">{{ MAT-6.E3 }}</td>
+      </tr>
+{{/if}}
+    </table>
+{{#if underGrade4}}
+       <table class="wide">
+       <colgroup>
+          <col style="width: 5.1in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+      </colgroup>
+      <tr>
+          <td colspan="4" class="tableHead">UNITÉS TRANSDISCIPLINAIRES</td>
+      </tr>
+      <tr>
+          <td class="right">Engagement</td>
+          <td class="center"><{{ SCH-ENG.E1 }}/td>
+          <td class="center"><{{ SCH-ENG.E2 }}/td>
+          <td class="center"><{{ SCH-ENG.E3 }}/td>
+      </tr>
+      <tr>
+          <td class="left"></td>
+          <td class="center">Étape 1</td>
+          <td class="center">Étape 2</td>
+          <td class="center">Étape 3</td>
+      </tr>
+      <tr>
+          <td class="left">Développer des connaissances dans les domaines suivants : géographie; histoire; économie; culture et société; citoyenneté, organisme et gouvernement.</td>
+          <td class="center">{{ SCH-1.E1 }}</td>
+          <td class="center">{{ SCH-1.E2 }}</td>
+          <td class="center">{{ SCH-1.E3 }}</td>
+      </tr>
+     </table>
+{{/if}}
+  </div>
+<!-- Page break -->
+  <div class="pageBreak" style="clear: both;">
+      <div class="noprint" style="border-top: thin dotted;width: 100%;"></div>
+  </div>
+
+<!-- Start of page 2 -->
+  <div class="page">
+{{#if overGrade3 }}
+    <table class="wide">
+      <colgroup>
+          <col style="width: 4.1in;" />
+          <col style="width: 1in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+          <col style="width: 0.4in;" />
+      </colgroup>
+      <tr>
+          <td colspan="8" class="tableHead">ANGLAIS</td>
+      </tr>
+      <tr>
+          <td class="left noborderright"></td>
+          <td class="right noborderleft">Engagement</td>
+          <td class="center" colspan="2">{{ ANG-ENG.E1 }}</td>
+          <td class="center" colspan="2">{{ ANG-ENG.E2 }}</td>
+          <td class="center" colspan="2">{{ ANG-ENG.E3 }}</td>
+      </tr>
+      <tr>
+          <td rowspan="2" colspan="2" class="left"></td>
+          <td class="center">Étape</td>
+          <td class="center">Prog.</td>
+          <td class="center">Étape</td>
+          <td class="center">Prog.</td>
+          <td class="center">Étape</td>
+          <td class="center">Prog.</td>
+      </tr>
+
+      <tr>
+          <td class="center">1</td>
+          <td class="center">{{ ProgA.E1 }}</td>
+          <td class="center">2</td>
+          <td class="center">{{ ProgA.E2 }}</td>
+          <td class="center">3</td>
+          <td class="center">{{ ProgA.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2"><strong>Lecture</strong></td>
+          <td class="center" colspan="2">Étape 1</td>
+          <td class="center" colspan="2">Étape 2</td>
+          <td class="center" colspan="2">Étape 3</td>
+      </tr>
+       <tr>
+          <td class="left" colspan="2">Utiliser des connaissances et des stratégies pour démontrer sa compréhension.</td>
+          <td class="center" colspan="2">{{ AL1-1.E1 }}</td>
+          <td class="center" colspan="2">{{ AL1-1.E2 }}</td>
+          <td class="center" colspan="2">{{ AL1-1.E3 }}</td>
+      </tr>
+       <tr>
+          <td class="left" colspan="2"><strong>Écriture</strong></td>
+          <td class="center" colspan="2">Étape 1</td>
+          <td class="center" colspan="2">Étape 2</td>
+          <td class="center" colspan="2">Étape 3</td>
+      </tr>
+       <tr>
+          <td class="left" colspan="2">Rédiger des textes en portant attention à la fluidité et à la cohérence de ses phrases.</td>
+          <td class="center" colspan="2">{{ AE1-1-E1 }}</td>
+          <td class="center" colspan="2">{{ AE1-1-E2 }}</td>
+          <td class="center" colspan="2">{{ AE1-1-E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Appliquer les conventions de la langue dans ses productions écrites.</td>
+          <td class="center" colspan="2">{{ AE1-2.E1 }}</td>
+          <td class="center" colspan="2">{{ AE1-2.E2 }}</td>
+          <td class="center" colspan="2">{{ AE1-2.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2"><strong>Communication Orale</strong></td>
+          <td class="center" colspan="2">Étape 1</td>
+          <td class="center" colspan="2">Étape 2</td>
+          <td class="center" colspan="2">Étape 3</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Écouter et comprendre des messages variés.</td>
+          <td class="center" colspan="2">{{ AC1-1.E1 }}</td>
+          <td class="center" colspan="2">{{ AC1-1.E2 }}</td>
+          <td class="center" colspan="2">{{ AC1-1.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left" colspan="2">Communiquer clairement dans diverses situations.</td>
+          <td class="center" colspan="2">{{ AC1-2.E1 }}</td>
+          <td class="center" colspan="2">{{ AC1-2.E2 }}</td>
+          <td class="center" colspan="2">{{ AC1-2.E3 }}</td>
+      </tr>
+    </table>
+    <table class="wide">
+      <colgroup>
+          <col style="width: 5.1in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+      </colgroup>
+      <tr>
+          <td colspan="4" class="tableHead">ARTS PLASTIQUES</td>
+      </tr>
+      <tr>
+          <td class="right">Engagement</td>
+          <td class="center">{{ ART-ENG.E1 }}</td>
+          <td class="center">{{ ART-ENG.E2 }}</td>
+          <td class="center">{{ ART-ENG.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left"></td>
+          <td class="center">Étape 1</td>
+          <td class="center">Étape 2</td>
+          <td class="center">Étape 3</td>
+      </tr>
+      <tr>
+          <td class="left">Développer différentes techniques tout en s'exprimant à travers ses oeuvres.</td>
+          <td class="center">{{ ART-1.E1 }}</td>
+          <td class="center">{{ ART-1.E2 }}</td>
+          <td class="center">{{ ART-1.E3 }}</td>
+      </tr>
+    </table>
+{{/if}}
+    <table class="wide">
+       <colgroup>
+          <col style="width: 5.1in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+      </colgroup>
+      <tr>
+          <td colspan="4" class="tableHead">ÉDUCATION PHYSIQUE</td>
+      </tr>
+      <tr>
+          <td class="right">Engagement</td>
+          <td class="center">{{ EDP-ENG.E1 }}</td>
+          <td class="center">{{ EDP-ENG.E2 }}</td>
+          <td class="center">{{ EDP-ENG.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left"></td>
+          <td class="center">Étape 1</td>
+          <td class="center">Étape 2</td>
+          <td class="center">Étape 3</td>
+      </tr>
+      <tr>
+          <td class="left">Environnement physique et naturel (attitude posturale, locomotion, manipulation)</td>
+          <td class="center">{{ EDP-1.E1 }}</td>
+          <td class="center">{{ EDP-1.E2 }}</td>
+          <td class="center">{{ EDP-1.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left">Environnement social (coopération, opération, coopération-opération, expression)</td>
+          <td class="center">{{ EDP-2.E1 }}</td>
+          <td class="center">{{ EDP-2.E2 }}</td>
+          <td class="center">{{ EDP-2.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left">Environnement personnel et intérieur (effort physique et vie active)</td>
+          <td class="center">{{ EDP-3.E1 }}</td>
+          <td class="center">{{ EDP-3.E2 }}</td>
+          <td class="center">{{ EDP-3.E3 }}</td>
+      </tr>
+    </table>
+    <table class="wide">
+       <colgroup>
+          <col style="width: 5.1in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+      </colgroup>
+      <tr>
+          <td colspan="4" class="tableHead">MUSIQUE</td>
+      </tr>
+      <tr>
+          <td class="right">Engagement</td>
+          <td class="center">{{ MUS-ENG.E1 }}</td>
+          <td class="center">{{ MUS-ENG.E2 }}</td>
+          <td class="center">{{ MUS-ENG.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left"></td>
+          <td class="center">Étape 1</td>
+          <td class="center">Étape 2</td>
+          <td class="center">Étape 3</td>
+      </tr>
+      <tr>
+          <td class="left">Comprende les concepts musicaux.</td>
+          <td class="center">{{ MUS-1.E1 }}</td>
+          <td class="center">{{ MUS-1.E2 }}</td>
+          <td class="center">{{ MUS-1.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left">Appliquer les concepts musicaux.</td>
+          <td class="center">{{ MUS-2.E1 }}</td>
+          <td class="center">{{ MUS-2.E2 }}</td>
+          <td class="center">{{ MUS-2.E3 }}</td>
+      </tr>
+    </table>
+{{#if overGrade3}}
+       <table class="wide">
+       <colgroup>
+          <col style="width: 5.1in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+      </colgroup>
+      <tr>
+          <td colspan="4" class="tableHead">SCIENCES</td>
+      </tr>
+      <tr>
+          <td class="right">Engagement</td>
+          <td class="center">{{ SCI-ENG.E1 }}</td>
+          <td class="center">{{ SCI-ENG.E2 }}</td>
+          <td class="center">{{ SCI-ENG.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left"></td>
+          <td class="center">Étape 1</td>
+          <td class="center">Étape 2</td>
+          <td class="center">Étape 3</td>
+      </tr>
+      <tr>
+          <td class="left">Démontrer sa compréhension des concepts à travers des expérimentations et des observations.</td>
+          <td class="center">{{ SCI-1.E1 }}</td>
+          <td class="center">{{ SCI-1.E2 }}</td>
+          <td class="center">{{ SCI-1.E3 }}</td>
+      </tr>
+{{#if overeGrade4}}
+      <tr>
+          <td class="left">Démontrer sa compréhension des liens entre les sciences, la technologie, l'environnement et la société.</td>
+          <td class="center">{{ SCI-2.E1 }}</td>
+          <td class="center">{{ SCI-2.E2 }}</td>
+          <td class="center">{{ SCI-2.E3 }}</td>
+      </tr>
+{{/if}}
+     </table>
+       <table class="wide">
+       <colgroup>
+          <col style="width: 5.1in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+      </colgroup>
+      <tr>
+          <td colspan="4" class="tableHead">SCIENCES HUMAINES</td>
+      </tr>
+      <tr>
+          <td class="right">Engagement</td>
+          <td class="center">{{ SCH-ENG.E1 }}</td>
+          <td class="center">{{ SCH-ENG.E2 }}</td>
+          <td class="center">{{ SCH-ENG.E3 }}</td>
+      </tr>
+      <tr>
+          <td class="left"></td>
+          <td class="center">Étape 1</td>
+          <td class="center">Étape 2</td>
+          <td class="center">Étape 3</td>
+      </tr>
+      <tr>
+          <td class="left">Développer des connaissances dans les domaines suivants : géographie; histoire; économie; culture et société; citoyenneté, organisme et gouvernement.</td>
+          <td class="center">{{ SCH-1.E1 }}</td>
+          <td class="center">{{ SCH-1.E2 }}</td>
+          <td class="center">{{ SCH-1.E3 }}</td>
+      </tr>
+     </table>
+     <table class="wide">
+       <colgroup>
+          <col style="width: 5.1in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+          <col style="width: 0.8in;" />
+      </colgroup>
+      <tr>
+          <td colspan="4" class="tableHead">TECHNOLOGIES</td>
+      </tr>
+      <tr>
+          <td class="right">Engagement</td>
+          <td class="center"><{{ TEC-ENG.E1 }}/td>
+          <td class="center"><{{ TEC-ENG.E2 }}/td>
+          <td class="center"><{{ TEC-ENG.E3 }}/td>
+      </tr>
+      <tr>
+          <td class="left"></td>
+          <td class="center">Étape 1</td>
+          <td class="center">Étape 2</td>
+          <td class="center">Étape 3</td>
+      </tr>
+      <tr>
+          <td class="left">Utiliser la technologie afin d'effectuer différentes tâches.</td>
+          <td class="center">{{ TEC-1.E1 }}</td>
+          <td class="center">{{ TEC-1.E2 }}</td>
+          <td class="center">{{ TEC-1.E3 }}</td>
+      </tr>
+    </table>
+{{/if}}
+
+    <table class="wide">
+      <colgroup>
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+          <col style="width: 0.375in;" />
+      </colgroup>
+      <tr>
+          <td colspan="20" class="tableHead">NOMBRE D'ABSENCES ET RETARDS</td>
+      </tr>
+      <tr>
+          <td colspan="2" class="center">Septembre</td>
+          <td colspan="2" class="center">Octobre</td>
+          <td colspan="2" class="center">Novembre</td>
+          <td colspan="2" class="center">Décembre</td>
+          <td colspan="2" class="center">Janvier</td>
+          <td colspan="2" class="center">Février</td>
+          <td colspan="2" class="center">Mars</td>
+          <td colspan="2" class="center">Avril</td>
+          <td colspan="2" class="center">Mai</td>
+          <td colspan="2" class="center">Juin</td>
+      </tr>
+      <tr>
+          <td class="center">A</td>
+          <td class="center">R</td>
+          <td class="center">A</td>
+          <td class="center">R</td>
+          <td class="center">A</td>
+          <td class="center">R</td>
+          <td class="center">A</td>
+          <td class="center">R</td>
+          <td class="center">A</td>
+          <td class="center">R</td>
+          <td class="center">A</td>
+          <td class="center">R</td>
+          <td class="center">A</td>
+          <td class="center">R</td>
+          <td class="center">A</td>
+          <td class="center">R</td>
+          <td class="center">A</td>
+          <td class="center">R</td>
+          <td class="center">A</td>
+          <td class="center">R</td>
+      </tr>
+            <tr>
+          <td class="center">{{ sep-abs }}</td>
+          <td class="center">{{ sep-late }}</td>
+          <td class="center">{{ oct-abs }}</td>
+          <td class="center">{{ oct-late }}</td>
+          <td class="center">{{ nov-abs }}</td>
+          <td class="center">{{ nov-late }}</td>
+          <td class="center">{{ dec-abs }}</td>
+          <td class="center">{{ dec-late }}</td>
+          <td class="center">{{ jan-abs }}</td>
+          <td class="center">{{ jan-late }}</td>
+          <td class="center">{{ feb-abs }}</td>
+          <td class="center">{{ feb-late }}</td>
+          <td class="center">{{ mar-abs }}</td>
+          <td class="center">{{ mar-late }}</td>
+          <td class="center">{{ apr-abs }}</td>
+          <td class="center">{{ apr-late }}</td>
+          <td class="center">{{ may-abs }}</td>
+          <td class="center">{{ may-late }}</td>
+          <td class="center">{{ jun-abs }}</td>
+          <td class="center">{{ jun-late }}</td>
+      </tr>
+    </table>
+
+    <div class="wide">
+        <table class="wide">
+            <tr>
+                <td class="comment-big">
+                    <span class="comment-title">Étape 1 - Commentaire de l'enseignant.e : </span>
+                    {{{ comment.E1 }}}
+                </td>
+            </tr>
+        </table>
+        <table class="wide">
+            <tr>
+                <td class="comment-big">
+                    <span class="comment-title">Étape 2 - Commentaire de l'enseignant.e : </span>
+                     {{{ comment.E2 }}}                
+                </td>
+            </tr>
+        </table>
+        <table class="wide">
+            <tr>
+                <td class="comment-big">
+                    <span class="comment-title">Étape 3 - Commentaire de l'enseignant.e : </span>
+                    {{{ comment.E3 }}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer">
+        <table class="signature">
+            <colgroup>
+                <col style="width: 2.5in;" />
+                <col style="width: 1in;" />
+                <col style="width: 1in;" />
+                <col style="width: 2.5in;" />
+                <col style="width: 1in;" />
+            </colgroup>
+            <tr>
+                <td class="noborder"><div class="sig-line"></div></td>
+                <td class="noborder"><div class="sig-line"></div></td>
+                <td class="noborder"></td>
+                <td class="noborder"><div class="sig-line"></div></td>
+                <td class="noborder"><div class="sig-line"></div></td>
+            </tr>
+            <tr>
+                <td class="noborder center">Signature de l'enseignant.e</td>
+                <td class="noborder center">Date</td>
+                <td class="noborder">&nbsp;</td>
+                <td class="noborder center">Signature de la direction</td>
+                <td class="noborder center">Date</td>
+            </tr>
+        </table>
+    </div>
+  </div>
+   <div class="pageBreak" style="clear: both;">
+      <div class="noprint" style="border-top: thin dotted;width: 100%;"></div>
+   </div>
+{{/each}}
