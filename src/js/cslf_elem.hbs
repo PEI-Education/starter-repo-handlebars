@@ -431,9 +431,9 @@
       </tr>
       <tr>
           <td class="right">Engagement</td>
-          <td class="center"><{{ SCH-ENG.E1 }}/td>
-          <td class="center"><{{ SCH-ENG.E2 }}/td>
-          <td class="center"><{{ SCH-ENG.E3 }}/td>
+          <td class="center">{{ SCH-ENG.E1 }}</td>
+          <td class="center">{{ SCH-ENG.E2 }}</td>
+          <td class="center">{{ SCH-ENG.E3 }}</td>
       </tr>
       <tr>
           <td class="left"></td>
@@ -811,26 +811,26 @@
           <td class="center">R</td>
       </tr>
             <tr>
-          <td class="center">{{ sep-abs }}</td>
-          <td class="center">{{ sep-late }}</td>
-          <td class="center">{{ oct-abs }}</td>
-          <td class="center">{{ oct-late }}</td>
-          <td class="center">{{ nov-abs }}</td>
-          <td class="center">{{ nov-late }}</td>
-          <td class="center">{{ dec-abs }}</td>
-          <td class="center">{{ dec-late }}</td>
-          <td class="center">{{ jan-abs }}</td>
-          <td class="center">{{ jan-late }}</td>
-          <td class="center">{{ feb-abs }}</td>
-          <td class="center">{{ feb-late }}</td>
-          <td class="center">{{ mar-abs }}</td>
-          <td class="center">{{ mar-late }}</td>
-          <td class="center">{{ apr-abs }}</td>
-          <td class="center">{{ apr-late }}</td>
-          <td class="center">{{ may-abs }}</td>
-          <td class="center">{{ may-late }}</td>
-          <td class="center">{{ jun-abs }}</td>
-          <td class="center">{{ jun-late }}</td>
+          <td class="center">{{ absences.sep }}</td>
+          <td class="center">{{ lates.sep }}</td>
+          <td class="center">{{ absences.oct }}</td>
+          <td class="center">{{ lates.oct }}</td>
+          <td class="center">{{ absences.nov }}</td>
+          <td class="center">{{ lates.nov }}</td>
+          <td class="center">{{ absences.dec }}</td>
+          <td class="center">{{ lates.dec }}</td>
+          <td class="center">{{ absences.jan }}</td>
+          <td class="center">{{ lates.jan }}</td>
+          <td class="center">{{ absences.feb }}</td>
+          <td class="center">{{ lates.feb }}</td>
+          <td class="center">{{ absences.mar }}</td>
+          <td class="center">{{ lates.mar }}</td>
+          <td class="center">{{ absences.apr }}</td>
+          <td class="center">{{ lates.apr }}</td>
+          <td class="center">{{ absences.may }}</td>
+          <td class="center">{{ lates.may }}</td>
+          <td class="center">{{ absences.jun }}</td>
+          <td class="center">{{ lates.jun }}</td>
       </tr>
     </table>
 
@@ -839,7 +839,7 @@
             <tr>
                 <td class="comment-big">
                     <span class="comment-title">Étape 1 - Commentaire de l'enseignant.e : </span>
-                    {{{ comment.E1 }}}
+                    {{{ comments.E1 }}}
                 </td>
             </tr>
         </table>
@@ -847,7 +847,7 @@
             <tr>
                 <td class="comment-big">
                     <span class="comment-title">Étape 2 - Commentaire de l'enseignant.e : </span>
-                     {{{ comment.E2 }}}                
+                     {{{ comments.E2 }}}                
                 </td>
             </tr>
         </table>
@@ -855,7 +855,7 @@
             <tr>
                 <td class="comment-big">
                     <span class="comment-title">Étape 3 - Commentaire de l'enseignant.e : </span>
-                    {{{ comment.E3 }}}
+                    {{{ comments.E3 }}}
                 </td>
             </tr>
         </table>

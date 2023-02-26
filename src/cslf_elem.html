@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSLF Bulletin Élémentaire</title>
+   <script>
+    let reportconfig = {
+      dothisfor: '~[gpv:dothisfor]',
+      terms: "~(gpv.terms)",
+      coteachers: '~(gpv.coteachers)',
+      attcutoff: '~(gpv.attcutoff)',
+      yearid: '~(gpv.yearid)'
+    }
+  </script>
+</head>
+<body>
+   <!-- Loading spinner -->
+   <div id="overlay">
+     <div class="spinner"></div>
+     <br/>
+     Loading...
+   </div>
+   <!-- -->
+   ~[x:insertfile;/admin/pei_report_cards/instruction_template/instuctions.html]
+   <div id="output"></div>
+ </body>
+</html>
