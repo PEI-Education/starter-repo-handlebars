@@ -5,14 +5,19 @@ Rebuilt PEI Report Cards using Handlebars.js for templating. Significant perform
 This plugin will eventually contain new versions of all report cards. Structure will have to be different from v1.
 
 ## Current Report Cards
-There are four report cards currently working in production:
+There are 8 report cards currently working in production:
+- PSB Kindergarten Report Card
 - PSB Elementary Report Card
 - PSB Intermediate Report Card, 3-term version 
 - PSB Intermediate Report Card, 4-term version 
+- PSB High School Report Card
+- CSLF Elementary Report Card
 - CSLF Intermediate Report Card 
 - CSLF High School Report Card
 
 In the current version, all re-written report cards support both adding co-teachers and the pei_uselegal flag.
+
+The remaining 2 report cards (CSLF Maternelle and Summer School) will be available by June 2023.
 
 ## Background notes on this repo
 

@@ -48,7 +48,8 @@
         "yearname": "~(yearname;json)",
         "school": {
           "name": "~(name;json)",
-          "principal": "~(principal;json)"
+          "principal": "~(principal;json)",
+          "url":"~(url;json)"
         },
         [/tlist_sql]
          ~[tlist_sql;

@@ -3,9 +3,9 @@ import './styles/spinner.css';
 
 const template = require('./js/psb_hs.hbs')
 
-const dataSource = `./assets/psb_hs.json?dothisfor=${reportconfig.dothisfor}&coteachers=${reportconfig.coteachers}&termid=${reportconfig.termid}&storecode=${reportconfig.storecode}`
+const dataSource = `./json/psb_hs.json?dothisfor=${reportconfig.dothisfor}&coteachers=${reportconfig.coteachers}&termid=${reportconfig.termid}&storecode=${reportconfig.storecode}`
 
-// Test data -> const dataSource = `./assets/psb_hs.fake.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}&termid=${reportconfig.termid}`
+// Test data -> const dataSource = `./json/psb_hs.fake.json?dothisfor=${reportconfig.dothisfor}&yearid=${reportconfig.yearid}&termid=${reportconfig.termid}`
 
 const fadeOutEffect = () => {
    let fadeTarget = document.getElementById("overlay");

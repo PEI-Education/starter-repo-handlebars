@@ -38,8 +38,8 @@ module.exports = merge(common, {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: paths.public,
-          to: 'assets',
+          from: paths.json,
+          to: 'json',
           globOptions: {
             ignore: ['*.DS_Store'],
           },
@@ -60,7 +60,7 @@ module.exports = merge(common, {
             ignore: ['*.DS_Store'],
           },
           noErrorOnMissing: true,          
-        }
+        },
       ],    
 
     }),

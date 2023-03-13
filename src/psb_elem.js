@@ -5,9 +5,9 @@ import './styles/spinner.css';
 
 const template = require('./js/psb_elem.hbs')
 
-const dataSource = `./assets/psb_elem_students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yearid=${reportconfig.yearid}&storecode=${reportconfig.storecode}&coteachers=${reportconfig.coteachers}`
+const dataSource = `./json/psb_elem_students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yearid=${reportconfig.yearid}&storecode=${reportconfig.storecode}&coteachers=${reportconfig.coteachers}`
 
-// Test data at `./assets/elem-fake-students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yearid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
+// Test data at `./json/elem-fake-students.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}&yearid=${reportconfig.yearid}&storecode=${reportconfig.storecode}`),
 
 function fadeOutEffect() {
   let fadeTarget = document.getElementById("overlay");

@@ -3,7 +3,7 @@ import './styles/spinner.css';
 
 const template = require('./js/cslf_hs.hbs')
 
-const dataSource = `./assets/cslf_hs.json?dothisfor=${reportconfig.dothisfor}&coteachers=${reportconfig.coteachers}&termid=${reportconfig.termid}&storecode=${reportconfig.storecode}`
+const dataSource = `./json/cslf_hs.json?dothisfor=${reportconfig.dothisfor}&coteachers=${reportconfig.coteachers}&termid=${reportconfig.termid}&storecode=${reportconfig.storecode}`
 
 const fadeOutEffect = () => {
    let fadeTarget = document.getElementById("overlay");

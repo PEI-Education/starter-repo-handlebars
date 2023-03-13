@@ -93,9 +93,9 @@ const populate = async () => {
   try {
     const results = await Promise.all([
       // eslint-disable-next-line no-undef
-      fetch(`./assets/psb_int_3term.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}`),
+      fetch(`./json/psb_int_3term.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}`),
       // eslint-disable-next-line no-undef
-      fetch(`./assets/psb_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}&coteachers=${reportconfig.coteachers}`),
+      fetch(`./json/psb_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}&coteachers=${reportconfig.coteachers}`),
     ])
     const finalData = await Promise.all(results.map((result) => result.json()))
 

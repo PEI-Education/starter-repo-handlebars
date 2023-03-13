@@ -81,8 +81,8 @@ const outputData = {reportconfig: reportconfig, students: students}
 const populate = async () => {
   try {
     const results = await Promise.all([
-      fetch(`./assets/psb_int_4term.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}`),
-      fetch(`./assets/psb_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}&coteachers=${reportconfig.coteachers}`)
+      fetch(`./json/psb_int_4term.json?dothisfor=${reportconfig.dothisfor}&attcutoff=${reportconfig.attcutoff}`),
+      fetch(`./json/psb_int_courses.json?dothisfor=${reportconfig.dothisfor}&storecode=${reportconfig.storecode}&coteachers=${reportconfig.coteachers}`)
     ])
     const finalData = await Promise.all(results.map((result) => result.json()))
 

@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CSLF Bulletin Secondaire</title>
-  <style>
-   .page {
-      height: ~(gpv.papersize)in !important;
-   }
-  </style>
+   <title>PSB Kindergarten Report Card</title>
+   ~[wc:commonscripts]
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
    <script>
-    let termEquivalents = {"'Q1','Q1'":'~(curyearid)01',"'S1','Q2'":'~(curyearid)01',"'Q3','Q3'":'~(curyearid)02',"'S2','Q4'":'~(curyearid)02'}
     let reportconfig = {
       dothisfor: '~[gpv:dothisfor]',
-      termid: termEquivalents["~(gpv.reportingTerm)"],
-      printDate: '~(gpv.reportdate)',
+      terms: "~(gpv.terms)",
       coteachers: '~(gpv.coteachers)',
-      storecode: "~(gpv.reportingTerm)",
-      reportperiod: "~(gpv.reportperiod)",
-      addcomment: "~(gpv.addcomment)"
-    }   
+      attcutoff: '~(gpv.attcutoff)',
+      yearid: '~(gpv.yearid)',
+      reportdate: '~[date]'
+    }
     if ("~(gpv.teachersig)"==="true") {
         reportconfig.teachersig = "true"
     }
     if ("~(gpv.principalsig)"==="true") {
         reportconfig.principalsig = "true"
     }
+    if (reportconfig.terms.length < 5) {
+      reportconfig.is_term1 = true;
+    } else if (reportconfig.terms.length < 10) {
+      reportconfig.is_term2 = true;
+    } else {
+      reportconfig.is_term3 = true;
+    }
   </script>
 </head>
 <body>
    <!-- Loading spinner -->
    <div id="overlay">
-     <div class="spinner"></div>
-     <br/>
-     Loading...
+      <div class="spinner"></div>
+      <br/>
+      Loading...
    </div>
    <!-- -->
    <div class="noprint" style="font-size: 12px; color: red; width: 8in; padding: 5px; margin: 0.25in;">
@@ -50,7 +54,7 @@
     </ol>
     <br>
     <p>~[text:psx.html.admin_reports.studschedmatrix.also_note_that_this_report_has_been_opened_in_a_new_window__]</p>
-</div>
-   <div id="output"></div>
+</div>  
+ <div id="output"></div>
  </body>
 </html>

@@ -11,7 +11,7 @@ module.exports = {
   build: path.resolve(__dirname, '../dist/WEB_ROOT/admin/pei_reportcards_v2'),
 
   // Static files that get copied to build folder
-  public: path.resolve(__dirname, '../public'),
+  json: path.resolve(__dirname, '../json'),
 
   // Images that get copied to build folder
   images: path.resolve(__dirname, '../images'),
