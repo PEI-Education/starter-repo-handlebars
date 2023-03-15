@@ -35,10 +35,6 @@ const process = (students, courses) => {
       delete course.i4grade
       delete course.r4effort
     }
-
-    if (course.comment) {
-      course.comment = course.comment.substr(0,500)    
-    }
     if (course.eal==="0") {
       delete course.eal
     }

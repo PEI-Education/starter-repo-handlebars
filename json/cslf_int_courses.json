@@ -18,7 +18,10 @@
             nvl(sg.absences,0) as absences,
             nvl(sg.tardies,0) as lates
         from students s
-        join cc on cc.studentid = s.id
+        join cc 
+            on cc.studentid = s.id
+        join courses c 
+            on c.course_number = cc.course_number
         join storedgrades sg
             on sg.studentid = cc.studentid and sg.sectionid = cc.sectionid
         join sections sec
@@ -32,6 +35,8 @@
             ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.school]
             and sg.storecode = '~(gpv.storecode)'
             and substr(sg.termid,1,2) = ~(curyearid)
+            and nvl(c.sched_do_not_print,0) = 0
+            and nvl(sg.excludefromtranscripts,0) = 0
             and cc.termid > 0),
     termGrades as (select
             s.id,
@@ -60,7 +65,7 @@
             ct.course_number,
             ct.course_name,
             ct.teachers,
-            ct.comment_value,
+            substr(ct.comment_value,0,500) comment_value,
             ct.absences,
             ct.lates,
             gp.i1,

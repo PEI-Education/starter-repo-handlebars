@@ -237,10 +237,10 @@
                   and st.sectionid = sec.id)
               [else](tea.first_name || ' ' || tea.last_name)[/if] as teachers,
                   SUBSTR(pfg.comment_value,1,1048) as termscomment,
-                  NVL(rpt.e_ela_adaptation,0) as adaptation,
-                  NVL(rpt.e_ela_program, 'Regular') as program,
-                  NVL(rpt.e_ela_iep,0) as iep,
-                  NVL(rpt.e_ela_eal,0) as eal
+                  NVL(rpt.e_fla_adaptation,0) as adaptation,
+                  NVL(rpt.e_fla_program, 'Regular') as program,
+                  NVL(rpt.e_fla_iep,0) as iep,
+                  NVL(rpt.e_fla_eal,0) as eal
                 from students s
                 join cc
                   on cc.studentid = s.id
@@ -314,10 +314,10 @@
                   and st.sectionid = sec.id)
               [else](tea.first_name || ' ' || tea.last_name)[/if] as teachers,
                  SUBSTR(pfg.comment_value,1,1048) as termscomment,
-                 NVL(rpt.e_ela_adaptation,0) as adaptation,
-                 NVL(rpt.e_ela_program, 'Regular') as program,
-                 NVL(rpt.e_ela_iep,0) as iep,
-                 NVL(rpt.e_ela_eal,0) as eal
+                 NVL(rpt.e_math_adaptation,0) as adaptation,
+                 NVL(rpt.e_math_program, 'Regular') as program,
+                 NVL(rpt.e_math_iep,0) as iep,
+                 NVL(rpt.e_mat_eal,0) as eal
                from students s
                join cc
                  on cc.studentid = s.id
