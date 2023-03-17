@@ -100,7 +100,7 @@
             ci.course_level,
             ci.absences,
             ci.tardies,
-            ci.comment_value,
+            substr(ci.comment_value,0,400) comment_value,
             cg.q1,
             cg.s1,
             cg.q3,
@@ -141,7 +141,7 @@
          {}],
          "fyCourses":[
          ~[tlist_sql;
-               with currentcourses as (select
+         with currentcourses as (select
             cc.sectionid,
             sg.course_name,
             sg.course_number,
@@ -203,7 +203,7 @@
             ci.course_level,
             ci.absences,
             ci.tardies,
-            ci.comment_value,
+            substr(ci.comment_value,0,415) comment_value,
             cg.q1,
             cg.q2,
             cg.q3,

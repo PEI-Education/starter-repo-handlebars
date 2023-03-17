@@ -21,6 +21,8 @@
             on sg.studentid = cc.studentid and sg.sectionid = cc.sectionid
         join sections sec
             on cc.sectionid = sec.id 
+        join courses c
+            on c.course_number = cc.course_number
         join teachers tea
             on tea.id = sec.teacher
         where
@@ -30,6 +32,8 @@
             ~[if.is.a.school] and sg.schoolid = ~(curschoolid) [/if.is.a.school]
             and sg.storecode = '~(gpv.storecode)'
             and substr(sg.termid,1,2) = ~(curyearid)
+            and nvl(c.sched_do_not_print,0) = 0
+            and nvl(sg.excludefromtranscripts,0) = 0
             and cc.termid > 0),
         termGrades as (select
             s.id,
@@ -58,7 +62,7 @@
             ct.course_number,
             ct.course_name,
             ct.teachers,
-            ct.comment_value,
+            substr(ct.comment_value,0,515) comment_value,
             gp.i1,
             gp.i2,
             gp.i3,
@@ -211,7 +215,7 @@
     {
         "id": "~(id)",
         "course_number": "~(course_number;json)",
-        "course_name": "~(cname;json)",
+        "course_name": "~(cname;json)", 
         "teacher": "~(teacher;json)",
         "comment": "~(comment;json)",
         "i1grade": "~(i1;json)",

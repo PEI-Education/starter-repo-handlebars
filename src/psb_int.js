@@ -36,21 +36,6 @@ const process = (students, courses) => {
       delete course.i4grade
       delete course.r4effort
     }
-    if (course.i1grade) {
-      course.i1grade = course.i1grade == '' ? course.i1grade : isNaN(course.i1grade) ? course.i1grade : Math.round(parseFloat(course.i1grade))
-    } 
-    if (course.i2grade) {
-      course.i2grade = course.i2grade == '' ? course.i2grade : isNaN(course.i2grade) ? course.i2grade : Math.round(parseFloat(course.i2grade))
-    }
-    if (course.i3grade) {
-      course.i3grade = course.i3grade == '' ? course.i3grade : isNaN(course.i3grade) ? course.i3grade : Math.round(parseFloat(course.i3grade))
-    }
-    if (course.i4grade) { 4
-      course.i4grade = course.i4grade == '' ? course.i4grade : isNaN(course.i4grade) ? course.i4grade : Math.round(parseFloat(course.i4grade))
-    }
-    if (course.comment) {
-      course.comment = course.comment.substr(0,515)    
-    }
     if (course.eal==="0") {
       delete course.eal
     }
@@ -72,7 +57,7 @@ const process = (students, courses) => {
         ) {
           student.fla = course
         } else if (course.course_number.substr(1, 4) === 'RESA') {
-          student.resa = course.comment          
+          student.resa = course.comment.substr(0,300)        
         } else {
           student.courses.push(course)
         }

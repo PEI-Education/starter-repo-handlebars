@@ -31,9 +31,6 @@ const process = (students, courses) => {
     if (highestTerm <= 3) {
       delete course.i4grade
     }
-    if (course.comment) {
-      course.comment = course.comment.substr(0,500)    
-    }
     students.forEach((student) => {
       if (student.id === course.id) {
           student.courses.push(course)
