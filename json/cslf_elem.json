@@ -94,6 +94,8 @@
             s.id = ~(curstudid)
             ~[if.is.a.school]and s.schoolid = ~(curschoolid)[/if]
             and cc.course_number like '%CT'
+            and pse.exitdate >= to_date('~(gpv.attcutoff)','mm/dd/yyyy')
+            and pse.entrydate <= to_date('~(gpv.attcutoff)','mm/dd/yyyy')
             and pse.grade_level < 7]
      
          "sid":            "~(sid;l)",
