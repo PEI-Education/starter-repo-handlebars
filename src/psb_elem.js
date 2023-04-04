@@ -78,7 +78,6 @@ function process(students) {
       delete student.mat
     }
   })
-  
   const outputData = { reportconfig: reportconfig, students: students }
   const container = document.getElementById('output')
   container.innerHTML = template(outputData)
