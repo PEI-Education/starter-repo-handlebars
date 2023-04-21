@@ -31,7 +31,7 @@
       left join studentcorefields scf 
          on scf.studentsdcid = s.dcid      
       where s.id = ~(curstudid)
-      and s.schoolid = ~(curschoolid)
+      ~[if.is.a.school]and s.schoolid = ~(curschoolid)[/if]
       order by sid;]
          "sid":            "~(sid)",
          "schoolNumber":   "~(schoolid)",
@@ -246,7 +246,7 @@
                    on sg.course_number = c.course_number
                 where
                    s.id = ~(curstudid)
-                   and s.schoolid = ~(curschoolid)
+                   ~[if.is.a.school]and s.schoolid = ~(curschoolid)[/if]
                    and sg.storecode = 'F1'
                    and nvl(c.sched_do_not_print,0) = 0
                    and nvl(sg.excludefromtranscripts,0) = 0                 
@@ -274,7 +274,7 @@
                on sg.course_number = c.course_number
             where
                s.id = ~(curstudid)
-               and s.schoolid = ~(curschoolid)
+               ~[if.is.a.school]and s.schoolid = ~(curschoolid)[/if]
                and sg.storecode = 'F1'
                and nvl(sg.excludefromtranscripts,0) = 0 
              order by 1;]
