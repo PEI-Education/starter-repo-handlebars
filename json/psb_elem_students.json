@@ -5,6 +5,8 @@
       {
         ~[tlist_sql;
           select
+          case when sysdate > t.lastday then "past"
+          else "current" end as reporttype,
              s.id,
              case
                 when stuext.pei_uselegal = 1 then (scf.pscore_legal_first_name || ' ' || scf.pscore_legal_last_name) 
@@ -13,7 +15,7 @@
             s.student_number,
             to_char(s.dob,'mm/dd/yyyy'),
             s.home_room,
-            se.grade_level,
+            pse.grade_level,
             case 
                 when stuext.pei_frenchprograms = 'E' then 'French Immersion'
                 when stuext.pei_frenchprograms = 'M' then 'French Immersion'
@@ -21,8 +23,8 @@
                 when stuext.pei_frenchprograms = 'B' then 'French Immersion'
             else 'English' end as progam,
             to_char(1990+~(yearid)) || '-' || to_char(1991+~(yearid)) AS yearname,
-            sch.name,
-            sch.principal,
+            pse.schoolname,
+            pse.principal,
             schext.schoolurl
           from students s
           join u_def_ext_students stuext
@@ -33,10 +35,16 @@
              on schext.schoolsdcid = sch.dcid
           left join studentcorefields scf 
              on scf.studentsdcid = s.dcid
-          join ps_schoolenrollment se
-        	on se.studentid = s.id
-        	and se.yearid = ~(curyearid)
-          where s.id = ~(curstudid);  
+          join ps_schoolenrollment pse
+        	on pse.studentid = s.id
+        	and pse.yearid = ~(curyearid)
+          join terms t
+            on t.yearid = ~(curyearid)
+            and t.isyearrec
+          where s.id = ~(curstudid)
+          and pse.exitdate >= to_date('~(gpv.attcutoff)','mm/dd/yyyy')
+          and pse.entrydate <= to_date('~(gpv.attcutoff)','mm/dd/yyyy')
+          and pse.grade_level < 7;  
         ]
         "id": "~(id;l)",
         "studentName": "~(student_name;json)",
@@ -190,31 +198,31 @@
                  "eal": "~(eal;json)",
              [/tlist_sql]
              ~[tlist_sql;
-             with termGrades as (select
-             s.id,
-             lower(substr(st.identifier,6)) as ident,
-             sgs.storecode,
-             sgs.standardgrade as grade
-         from students s
-         join standardgradesection sgs
-             on sgs.studentsdcid = s.dcid
-         left join sections sec
-             on sec.dcid = sgs.sectionsdcid
-         join standard st
-             on st.standardid = sgs.standardid
-         where
-         s.id = ~(curstudid)
-         and substr(sec.course_number,2,3) = 'LAN'
-         and sec.schoolid = s.schoolid   --include only grades from current school
-         and sgs.storecode in (~[if#sy.~(yearid)=32]'E1','E2','E3'[else#sy]'R1','R2','R3'[/if#sy])
-         and sgs.yearid = ~(gpv.yearid))
-         
-      select ident, ~[if#sy.~(yearid)=32]E1,E2,E3[else#sy]R1,R2,R3[/if#sy] from termGrades
-         PIVOT (
-         MAX ( grade )
-         FOR storecode
-         IN ( ~[if#rc.~(yearid)=32]'E1' E1, 'E2' E2, 'E3' E3[else#rc]'R1' R1, 'R2' R2, 'R3' R3 [/if#rc]))
-         order by ident;] 
+                with termGrades as (select
+                s.id,
+                lower(substr(st.identifier,6)) as ident,
+                sgs.storecode,
+                sgs.standardgrade as grade
+            from students s
+            join standardgradesection sgs
+                on sgs.studentsdcid = s.dcid
+            left join sections sec
+                on sec.dcid = sgs.sectionsdcid
+            join standard st
+                on st.standardid = sgs.standardid
+            where
+            s.id = ~(curstudid)
+            and substr(sec.course_number,2,3) = 'LAN'
+            and sec.schoolid = s.schoolid   --include only grades from current school
+            and sgs.storecode in (~[if#sy.~(yearid)=32]'E1','E2','E3'[else#sy]'R1','R2','R3'[/if#sy])
+            and sgs.yearid = ~(gpv.yearid))
+            
+        select ident, ~[if#sy.~(yearid)=32]E1,E2,E3[else#sy]R1,R2,R3[/if#sy] from termGrades
+            PIVOT (
+            MAX ( grade )
+            FOR storecode
+            IN ( ~[if#rc.~(yearid)=32]'E1' E1, 'E2' E2, 'E3' E3[else#rc]'R1' R1, 'R2' R2, 'R3' R3 [/if#rc]))
+            order by ident;] 
           "~(ident)": {
              "e1":"~(e1)",
              "e2":"~(e2)",

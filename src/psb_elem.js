@@ -62,6 +62,8 @@ function process(students) {
       clearTag(course)
     })
     
+
+
     clearTag(student.ela)
     clearTag(student.fla)
     clearTag(student.mat)
@@ -77,6 +79,45 @@ function process(students) {
     if (!student.mat.teacher) {
       delete student.mat
     }
+
+    if (highestTerm <= 1) {
+      if (student.ela) {
+        delete student.ela.readview.e2;
+        delete student.ela.speaklisten.e2;
+        delete student.ela.writerep.e2;
+      }
+      if (student.fla) {
+        delete student.fla.readview.e2;
+        delete student.fla.speaklisten.e2;
+        delete student.fla.writerep.e2;
+      }
+      if (student.mat) {
+        delete student.mat.numbersense.e2;
+        delete student.mat.patternsrel.e2;
+        delete student.mat.shapespace.e2;
+        delete student.mat.statprob.e2;
+      }
+    }
+
+    if (highestTerm <= 2) {
+      if (student.ela) {
+        delete student.ela.readview.e3;
+        delete student.ela.speaklisten.e3;
+        delete student.ela.writerep.e3;
+      }
+      if (student.fla) {
+        delete student.fla.readview.e3;
+        delete student.fla.speaklisten.e3;
+        delete student.fla.writerep.e3;
+      }
+      if (student.mat) {
+        delete student.mat.numbersense.e3;
+        delete student.mat.patternsrel.e3;
+        delete student.mat.shapespace.e3;
+        delete student.mat.statprob.e3;
+      }
+    }
+
   })
   const outputData = { reportconfig: reportconfig, students: students }
   const container = document.getElementById('output')
