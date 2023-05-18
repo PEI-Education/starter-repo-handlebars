@@ -1,4 +1,7 @@
 # Change Log
+## May 17, 2023 v1.10.22
+Bug fix to PSB Elem Report Card:
+- Fixed issue where report card would not load for a previous term if there was no grade for one or more standards in ELA, FLA or MAT
 ## May 2, 2023 v1.10.17
 Bug fixes to PSB Elem Report Card:
 - Fixed issue with Writing and Representing standard grade for term 3.

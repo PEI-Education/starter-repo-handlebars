@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const paths = require('./paths')
 
-const pages = ["psb_k","psb_elem","psb_int","psb_int4","psb_hs","cslf_elem","cslf_int","cslf_hs"];
+const pages = ["psb_k","psb_elem","psb_int","psb_int4","psb_hs","cslf_m","cslf_elem","cslf_int","cslf_hs"];
 
 module.exports = {
   // Where webpack looks to start building the bundle

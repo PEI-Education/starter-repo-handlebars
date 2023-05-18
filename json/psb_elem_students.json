@@ -4,18 +4,16 @@
     ~[RepeatForEach:Students]
       {
         ~[tlist_sql;
-          select
-          case when sysdate > t.lastday then "past"
-          else "current" end as reporttype,
-             s.id,
-             case
+                select
+                s.id,
+                case
                 when stuext.pei_uselegal = 1 then (scf.pscore_legal_first_name || ' ' || scf.pscore_legal_last_name) 
                 else (s.first_name || ' ' || s.last_name) 
             end as student_name,
             s.student_number,
             to_char(s.dob,'mm/dd/yyyy'),
             s.home_room,
-            pse.grade_level,
+            se.grade_level,
             case 
                 when stuext.pei_frenchprograms = 'E' then 'French Immersion'
                 when stuext.pei_frenchprograms = 'M' then 'French Immersion'
@@ -23,28 +21,22 @@
                 when stuext.pei_frenchprograms = 'B' then 'French Immersion'
             else 'English' end as progam,
             to_char(1990+~(yearid)) || '-' || to_char(1991+~(yearid)) AS yearname,
-            pse.schoolname,
-            pse.principal,
+            sch.name,
+            sch.principal,
             schext.schoolurl
-          from students s
-          join u_def_ext_students stuext
-             on stuext.studentsdcid = s.dcid
-          join schools sch
-             on sch.school_number = s.schoolid
-          join u_dyn_schools_1 schext
-             on schext.schoolsdcid = sch.dcid
-          left join studentcorefields scf 
-             on scf.studentsdcid = s.dcid
-          join ps_schoolenrollment pse
-        	on pse.studentid = s.id
-        	and pse.yearid = ~(curyearid)
-          join terms t
-            on t.yearid = ~(curyearid)
-            and t.isyearrec
-          where s.id = ~(curstudid)
-          and pse.exitdate >= to_date('~(gpv.attcutoff)','mm/dd/yyyy')
-          and pse.entrydate <= to_date('~(gpv.attcutoff)','mm/dd/yyyy')
-          and pse.grade_level < 7;  
+            from students s
+            join u_def_ext_students stuext
+                on stuext.studentsdcid = s.dcid
+            join schools sch
+                on sch.school_number = s.schoolid
+            join u_dyn_schools_1 schext
+                on schext.schoolsdcid = sch.dcid
+            left join studentcorefields scf 
+                on scf.studentsdcid = s.dcid
+            join ps_schoolenrollment se
+            on se.studentid = s.id
+            and se.yearid = ~(curyearid)
+            where s.id = ~(curstudid);  
         ]
         "id": "~(id;l)",
         "studentName": "~(student_name;json)",
@@ -55,9 +47,9 @@
         "program": "~(program;json)",
         "yearname": "~(yearname;json)",
         "school": {
-          "name": "~(name;json)",
-          "principal": "~(principal;json)",
-          "url":"~(url;json)"
+            "name": "~(name;json)",
+            "principal": "~(principal;json)",
+            "url":"~(url;json)"
         },
         [/tlist_sql]
          ~[tlist_sql;
