@@ -5,7 +5,7 @@ Rebuilt PEI Report Cards using Handlebars.js for templating. Significant perform
 This plugin will eventually contain new versions of all report cards. Structure will have to be different from v1.
 
 ## Current Report Cards
-There are 8 report cards currently working in production:
+There are 9 report cards currently working in production:
 - PSB Kindergarten Report Card
 - PSB Elementary Report Card
 - PSB Intermediate Report Card, 3-term version 
@@ -14,25 +14,27 @@ There are 8 report cards currently working in production:
 - CSLF Elementary Report Card
 - CSLF Intermediate Report Card 
 - CSLF High School Report Card
+- Summer School Report Card
 
-In the current version, all re-written report cards support both adding co-teachers and the pei_uselegal flag.
+In the current version, all re-written report cards support both adding co-teachers (except Summer School, which does not offer any co-taught sections),the pei_uselegal flag, and honours the do-not-print options available in PowerSchool.
 
-The remaining 2 report cards (CSLF Maternelle and Summer School) will be available by June 2023.
-
-## Background notes on this repo
-
-Originally started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), because using Node allows us to precompile handlebars templates for faster rendering, and webpack let us bundle the necessary code without intererence from the built-in versions of the same packages in PowerSchool (specifically, Handlebars was giving problems.). 
-
-Note: Updated Webpack config to support multiple entry points, so all report cards can live together easily, and removed Babel as a dependencies, since we have no need to transpile ES6.
-
-Code for the original versions of the report cards plugin will be maintained in the [Report Card Plugin repo](https://github.com/ubershibs/pei_report_card_plugin), until all report cards are migrated to Handlebars.
+The remaining report card (CSLF Maternelle) will be available by September 2023.
 
 ### PEI ASP
 Versions of the HBS templates for the Affiliated Schools Program can be found in PEIASP. To build that verrsion of the plugin, make sure there is a current backup of the existing templates in the PEI_HBS directory, replace the templates in ./src/js with the PEIASP versions, and run start or build.
 
 We should eventually set up some variables to handle this as, once we figure out what the differences are in all cases. 
 
-## Installation
+# About this repository
+## Background notes
+Originally started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), because using Node allows us to precompile handlebars templates for faster rendering, and webpack let us bundle the necessary code without intererence from the built-in versions of the same packages in PowerSchool (specifically, Handlebars was giving problems.). 
+
+To simplify, I updated Webpack config to support multiple entry points, so all report cards can live together easily, and removed Babel as a dependencies, since we have no need to transpile ES6. I also made a few changes to the production output to make it easier to debug, since we can't run a dev server like most projects, as this code only runs within the PowerSchool environment and debugging has to happen there.
+
+Code for the original versions of the report cards plugin will be maintained in the [Report Card Plugin repo](https://github.com/ubershibs/pei_report_card_plugin), until all report cards are migrated to Handlebars.
+
+## Installing thie repo
+*Note: these are not the instructions for installing the plugin in PowerSchool. These are the instructions for installing the repo on your local machine for development purposes.*
 
 Clone this repo and npm install (note: unless you have admin rights, and EUS Technician from ITSS will have to install Node on your machine - get them to select the latest LTS version.)
 
@@ -67,7 +69,6 @@ Reports must then be content of each project's 'dist' folder can be added to a n
 ## Dependencies
 
 ### webpack
-
 - [`webpack`](https://github.com/webpack/webpack) - Module and asset bundler.
 - [`webpack-cli`](https://github.com/webpack/webpack-cli) - Command line interface for webpack
 - [`webpack-dev-server`](https://github.com/webpack/webpack-dev-server) - Development server for webpack
@@ -78,13 +79,11 @@ Reports must then be content of each project's 'dist' folder can be added to a n
 - [`handlebars`](https://www.npmjs.com/package/handlebars) - Templating language used in v2 of report cards
 
 ### Loaders
-
 - [`css-loader`](https://webpack.js.org/loaders/css-loader/) - Resolve CSS imports
 - [`style-loader`](https://webpack.js.org/loaders/style-loader/) - Inject CSS into the DOM
 - [`handlebars-loader`](https://webpack.js.org/loaders/handlebars-loader) -
 
 ### Plugins
-
 - [`clean-webpack-plugin`](https://github.com/johnagan/clean-webpack-plugin) - Remove/clean build folders
 - [`copy-webpack-plugin`](https://github.com/webpack-contrib/copy-webpack-plugin) - Copy files to build directory
 - [`html-webpack-plugin`](https://github.com/jantimon/html-webpack-plugin) - Generate HTML files from template
@@ -92,7 +91,6 @@ Reports must then be content of each project's 'dist' folder can be added to a n
 - [`css-minimizer-webpack-plugin`](https://webpack.js.org/plugins/css-minimizer-webpack-plugin/) - Optimize and minimize CSS assets
 
 ### Linters
-
 - [`eslint`](https://github.com/eslint/eslint) - Enforce styleguide across application
 - [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) - Implement prettier rules
   - - [`prettier`](https://github.com/prettier/prettier) - Dependency for `prettier-webpack-plugin` plugin

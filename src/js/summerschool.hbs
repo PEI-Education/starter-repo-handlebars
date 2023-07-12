@@ -13,15 +13,14 @@
                <h4 class="bold">Public Schools Branch</h4>
                <h4>Prince  Edward Island</h4>
                <h4>Principal: {{ principal }}</h4>
-               <h3>{{ ../reportconfig.title }}</h3>
-               <h4>{{ ../reportconfig.yearname }}</h4>
+               <h3>Final Report Card</h3>
+               <h4>{{ ../reportconfig.year }}</h4>
             </td>
             <td>&nbsp;</td>   
          </tr>
          <tr class="bottom">
             <td class="left">
                Student Number: {{ student_number}}<br />
-               Homeroom: {{ home_room }}
             </td>
             <td class="center"><h1>{{ student_name }}</h1></td>
             <td class="right">
@@ -30,7 +29,7 @@
             </td>
          </tr>
       </table> 
-      {{#each semCourses}}
+      {{#each courses}}
          <table id="semcourse0" class="course">
             <colgroup>
                <col style="width: 2in;" />
@@ -55,65 +54,23 @@
                </td>
             </tr>
             <tr>
-               <td class="sem bold">Progress</td>
-               <td class="sem bold">Final</td>
+               <td colspan="2" class="s-head bold">Final</td>
             </tr>
             <tr>
-               <td class="sem">{{#if q3}}{{ round q3 }}{{else}}{{ round q1 }}{{/if}}</td>
-               <td class="sem">{{#if s2}}{{ round s2 }}{{else}}{{ round s1 }}{{/if}}</td>
+               <td colspan="2" class="s-mark">{{ round grade }}</td>
             </tr>
          </table>
       {{/each}}
-      {{#each fyCourses}}
-         <table id="fycourse0" class="course">
-            <colgroup>
-               <col style="width: 1in;" />
-               <col style="width: 1in;" />
-               <col style="width: 1in;">
-               <col style="width: 1in;">
-               <col style="width: 4in;" />
-            </colgroup>
-            <tr>
-               <td class="courseinfo" colspan="4">
-                  <div class="leftblock">
-                     Course name: {{{ course_name }}}<br/>
-                     Course code: {{ course_number }}<br/>
-                     Level: {{ level }}<br/>
-                     Teacher(s): {{ teachers }}<br/>
-                  </div>
-                  <div class="rightblock">
-                     Abs: {{ abs }}<br />
-                     Late: {{lates }}
-                  </div>
-               </td>
-               <td class="comment left" rowspan="3">
-                  <strong>Strengths and Areas for Growth: </strong>{{{comment}}}
-               </td>
-            </tr>
-            <tr>
-               <td class="sem bold">Q1</td>
-               <td class="sem bold">Q2</td>
-               <td class="sem bold">Q3</td>
-               <td class="sem bold">Final</td>
-            </tr>
-            <tr>
-               <td class="sem">{{ round q1}}</td>
-               <td class="sem">{{ round q2}}</td>
-               <td class="sem">{{ round q3}}</td>
-               <td class="sem">{{ round q4}}</td>
-            </tr>
-         </table> 
-      {{/each}}   
       <div class="footer">
          <div class="signature">
                     {{#if ../reportconfig.teachersig}}<span class="teacher">Teacher(s): <span class="sig-line">&nbsp;</span></span> &nbsp; &nbsp; {{/if}}{{#if ../reportconfig.principalsig}}<span class="principal">Principal: <span class="sig-line">&nbsp;</span></span>{{/if}}
          </div>
          <table class="footer1">
             <colgroup>
-               <col style="width: 2in;">
-               <col style="width: 2in;">
-               <col style="width: 2in;">
-               <col style="width: 2in;">
+               <col style="width: 1.5in;">
+               <col style="width: 2.5in;">
+               <col style="width: 1.5in;">
+               <col style="width: 2.5in;">
             </colgroup>
             <tr>
                <td class="top footer1--padding ">
