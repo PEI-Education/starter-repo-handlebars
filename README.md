@@ -1,42 +1,13 @@
-# PEI Report Cards v2
-
-Rebuilt PEI Report Cards using Handlebars.js for templating. Significant performance improvement on first one done (PSB Intermediate) - loads all of SIS's R3 report cards in under 30 seconds, with no reloading or errors.
-
-This plugin will eventually contain new versions of all report cards. Structure will have to be different from v1.
-
-## Current Report Cards
-There are 9 report cards currently working in production:
-- PSB Kindergarten Report Card
-- PSB Elementary Report Card
-- PSB Intermediate Report Card, 3-term version 
-- PSB Intermediate Report Card, 4-term version 
-- PSB High School Report Card
-- CSLF Elementary Report Card
-- CSLF Intermediate Report Card 
-- CSLF High School Report Card
-- Summer School Report Card
-
-In the current version, all re-written report cards support both adding co-teachers (except Summer School, which does not offer any co-taught sections),the pei_uselegal flag, and honours the do-not-print options available in PowerSchool.
-
-The remaining report card (CSLF Maternelle) will be available by September 2023.
-
-### PEI ASP
-Versions of the HBS templates for the Affiliated Schools Program can be found in PEIASP. To build that verrsion of the plugin, make sure there is a current backup of the existing templates in the PEI_HBS directory, replace the templates in ./src/js with the PEIASP versions, and run start or build.
-
-We should eventually set up some variables to handle this as, once we figure out what the differences are in all cases. 
-
 # About this repository
 ## Background notes
 Originally started with a modified version of [Tania Rascia](https://www.taniarascia.com)'s [webpack Boilerplate](https://github.com/taniarascia/webpack-boilerplate), because using Node allows us to precompile handlebars templates for faster rendering, and webpack let us bundle the necessary code without intererence from the built-in versions of the same packages in PowerSchool (specifically, Handlebars was giving problems.). 
 
 To simplify, I updated Webpack config to support multiple entry points, so all report cards can live together easily, and removed Babel as a dependencies, since we have no need to transpile ES6. I also made a few changes to the production output to make it easier to debug, since we can't run a dev server like most projects, as this code only runs within the PowerSchool environment and debugging has to happen there.
 
-Code for the original versions of the report cards plugin will be maintained in the [Report Card Plugin repo](https://github.com/ubershibs/pei_report_card_plugin), until all report cards are migrated to Handlebars.
-
 ## Installing thie repo
-*Note: these are not the instructions for installing the plugin in PowerSchool. These are the instructions for installing the repo on your local machine for development purposes.*
+*Note: these are not the instructions for installing a plugin in PowerSchool. These are the instructions for installing the repo on your local machine for development purposes.
 
-Clone this repo and npm install (note: unless you have admin rights, and EUS Technician from ITSS will have to install Node on your machine - get them to select the latest LTS version.)
+Clone this repo and npm install (note: unless you have admin rights, an EUS Technician from ITSS will have to install Node on your machine - get them to select the latest LTS version.)
 
 ```bash
 npm i
@@ -52,7 +23,7 @@ npm start
 
 You can view the development server at `localhost:8080`.
 
-To view report cards in development, change the reference to 'students.json' in 'index.js' to 'students_fake.json', and the same thing for 'courses.json'. This file contains fake data in the correct format, with no SQL queries or PSHTML tags that only work within PowerSchool. 
+To view report cards in development, change the reference to your JSON file in 'index.js' to 'students_fake.json', and the same thing for 'courses.json'. This file contains fake data in the correct format, with no SQL queries or PSHTML tags that only work within PowerSchool. 
 
 ### Production build
 
@@ -97,6 +68,7 @@ Reports must then be content of each project's 'dist' folder can be added to a n
 - [`eslint-import-resolver-webpack`](https://github.com/benmosher/eslint-plugin-import/tree/master/resolvers/webpack) - Throw exceptions for import/export in webpack
 
 Notes on diffs from original config: 
+- I adjusted the config files to handle multi-page projects instead of single pages. Each page (handlebars template) needs to be added to the *pages* array in webpack.common.js using the same name as the template file.
 - I removed Sass and PostCSS because they were introducing vulnerabilities and neither was going to be in use. 
 - I removed Babel because all users are on managed evergreen versions of Chrome or Edge and can interpret ES6 code without transpiling.
 - The linters are having a hard time with both Handlebars templates (mixed context) and PowerSchool DATs (tlist_sql especially), but I haven't had a chance to really investigate how we could possibly solve that
